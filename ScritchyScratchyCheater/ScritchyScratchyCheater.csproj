@@ -6,6 +6,38 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>app_logo.ico</ApplicationIcon>
+	  <Authors>corv1njano</Authors>
+	  <Company>corv1njano</Company>
+	  <Version>1.1.0</Version>
   </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<PublishSingleFile>true</PublishSingleFile>
+		<SelfContained>false</SelfContained>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<DebugSymbols>false</DebugSymbols>
+		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+		<DebugType>none</DebugType>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Data\sprite.json" />
+    <None Remove="Resources\Fonts\montserrat_bold.ttf" />
+    <None Remove="Resources\Images\app_logo.png" />
+    <None Remove="Resources\montserrat_medium.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="app_logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Data\sprite.json" />
+    <Resource Include="Resources\Fonts\montserrat_bold.ttf" />
+    <Resource Include="Resources\Images\app_logo.png" />
+    <Resource Include="Resources\Fonts\montserrat_medium.ttf" />
+    <Resource Include="Resources\Images\sprite_images.png" />
+  </ItemGroup>
 
 </Project>

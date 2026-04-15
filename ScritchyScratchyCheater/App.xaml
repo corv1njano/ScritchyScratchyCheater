@@ -4,6 +4,20 @@
              xmlns:local="clr-namespace:ScritchyScratchyCheater"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="/Styles/UiColors.xaml"/>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+                <ResourceDictionary Source="/Resources/Fonts/Fonts.xaml"/>
+                <ResourceDictionary Source="/Styles/Button.xaml"/>
+                <ResourceDictionary Source="/Styles/TextBlock.xaml"/>
+                <ResourceDictionary Source="/Styles/ToolTip.xaml"/>
+                <ResourceDictionary Source="/Styles/TabNavigation.xaml"/>
+                <ResourceDictionary Source="/Styles/GroupBox.xaml"/>
+                <ResourceDictionary Source="/Styles/TextBox.xaml"/>
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

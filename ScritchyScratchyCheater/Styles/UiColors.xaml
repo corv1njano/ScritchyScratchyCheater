@@ -1,0 +1,36 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="Color.Titlebar.Background">#1B1D22</Color>
+    <Color x:Key="Color.Titlebar.Button.Hover">#24262E</Color>
+    <Color x:Key="Color.Titlebar.CloseButton.Hover">#F74949</Color>
+
+    <SolidColorBrush x:Key="ControlElement.Background" Color="#2C68F5"/>
+    <SolidColorBrush x:Key="ControlElement.Background.Hover" Color="#4F83F7"/>
+    <SolidColorBrush x:Key="ControlElement.Background.Disabled" Color="#0B3EBA"/>
+    <SolidColorBrush x:Key="ControlElement.Text.Disabled" Color="#6D7A82"/>
+
+    <SolidColorBrush x:Key="ControlElement.Flat.Background" Color="#323741"/>
+    <SolidColorBrush x:Key="ControlElement.Flat.Background.Hover" Color="#2A2E35"/>
+    <SolidColorBrush x:Key="ControlElement.Flat.Border" Color="#78808F"/>
+    <SolidColorBrush x:Key="ControlElement.Flat.Border.Invalid" Color="#F74949"/>
+    <SolidColorBrush x:Key="ControlElement.Flat.Border.Hover" Color="#2C68F5"/>
+    <SolidColorBrush x:Key="ControlElement.Flat.BackgroundDark" Color="#1B1D22"/>
+    <SolidColorBrush x:Key="ControlElement.Flat.BackgroundDark.Hover" Color="#323340"/>
+
+    <SolidColorBrush x:Key="Dialog.TypeColor.Neutral" Color="{StaticResource Color.Titlebar.Background}"/>
+    <SolidColorBrush x:Key="Dialog.TypeColor.Info" Color="#2C68F5"/>
+    <SolidColorBrush x:Key="Dialog.TypeColor.Warning" Color="#B09D4F"/>
+    <SolidColorBrush x:Key="Dialog.TypeColor.Error" Color="{StaticResource Color.Titlebar.CloseButton.Hover}"/>
+
+    <SolidColorBrush x:Key="Titlebar.Background" Color="{StaticResource Color.Titlebar.Background}"/>
+    <SolidColorBrush x:Key="Titlebar.Background.Button.Hover" Color="{StaticResource Color.Titlebar.Button.Hover}"/>
+    <SolidColorBrush x:Key="Titlebar.Background.CloseButton.Hover" Color="{StaticResource Color.Titlebar.CloseButton.Hover}"/>
+
+    <SolidColorBrush x:Key="Window.Background" Color="#272930"/>
+
+    <SolidColorBrush x:Key="Font.Primary" Color="#e8e8e8"/>
+    <SolidColorBrush x:Key="Font.Secondary" Color="#939BAD"/>
+    <SolidColorBrush x:Key="Font.Secondary.Hover" Color="#CED2E0"/>
+    
+</ResourceDictionary>

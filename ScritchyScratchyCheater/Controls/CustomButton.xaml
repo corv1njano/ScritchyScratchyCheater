@@ -1,0 +1,49 @@
+﻿<Button x:Class="ScritchyScratchyCheater.Controls.CustomButton"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:ScritchyScratchyCheater.Controls"
+        mc:Ignorable="d" 
+        d:DesignHeight="450" d:DesignWidth="800">
+    
+    <Button.Resources>
+        <Style TargetType="local:CustomButton" BasedOn="{StaticResource Button.Base}">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="MinHeight" Value="30"/>
+            <Setter Property="MinWidth" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:CustomButton">
+                        <Border x:Name="ButtonBorder"
+                                Background="{Binding BackgroundColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderThickness="{Binding BorderSize, RelativeSource={RelativeSource TemplatedParent}}"
+                                BorderBrush="{Binding BorderColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}}">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock x:Name="Text"
+                                           FontSize="12"
+                                           Style="{StaticResource TextBlock.Base}"
+                                           Padding="8,4"
+                                           Foreground="{Binding ForegroundColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                           HorizontalAlignment="{Binding TextHorizontalAlignment, RelativeSource={RelativeSource TemplatedParent}}"
+                                           Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="ButtonBorder" Value="{Binding BackgroundHoverColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter Property="BorderBrush" TargetName="ButtonBorder" Value="{Binding BorderHoverColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter Property="Foreground" TargetName="Text" Value="{Binding ForegroundHoverColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" TargetName="ButtonBorder" Value="{Binding DisabledBackgroundColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter Property="Foreground" TargetName="Text" Value="{Binding DisabledForegroundColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Button.Resources>
+</Button>

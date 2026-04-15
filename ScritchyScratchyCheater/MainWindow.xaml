@@ -4,17 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScritchyScratchyCheater"
+        xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
         mc:Ignorable="d"
-        Title="Scritchy Scratchy Cheater" Height="330" Width="400"
-        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Scritchy Scratchy Cheater" Height="560" Width="580"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        Background="{StaticResource Window.Background}">
 
-    <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Padding" Value="5"/>
-        </Style>
-    </Window.Resources>
-
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="32"
+                      UseAeroCaptionButtons="False"
+                      ResizeBorderThickness="8"/>
+    </WindowChrome.WindowChrome>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -22,71 +23,51 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="8">
-            <GroupBox Header="Save File" FontSize="14">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-
-                    <Button x:Name="LoadSaveFile" Content="Load Save File..." Click="LoadSaveFile_Click" Grid.Column="0" Grid.Row="0" Margin="5" ToolTip="Automatically opens the save file from default loation (if present only)"/>
-                    <Button x:Name="ImportSaveFile" Content="Import Save File..." Click="ImportSaveFile_Click" Grid.Column="1" Grid.Row="0" Margin="0,5,5,5" ToolTip="Import save file from a different location"/>
-                    <Button x:Name="GetHelp" Content="?" Width="30" FontWeight="Bold" Click="GetHelp_Click" Grid.Column="2" Grid.Row="0" Margin="0,5,5,5" ToolTip="Open help"/>
-
-                    <TextBlock Text="Selected: None" TextTrimming="CharacterEllipsis" Margin="5,10,5,5" x:Name="SelectedSaveFilePath" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3"/>
-                </Grid>
-            </GroupBox>
-        </Grid>
-
-        <Grid Grid.Row="1" VerticalAlignment="Center" Margin="8,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Margin" Value="0,0,5,0"/>
-                    <Setter Property="FontSize" Value="16"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                </Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Margin" Value="0,5,0,0"/>
-                    <Setter Property="Height" Value="25"/>
-                    <Setter Property="VerticalAlignment" Value="Center"/>
-                </Style>
-            </Grid.Resources>
-
-            <TextBlock Text="Money:" Grid.Column="0" Grid.Row="0"/>
-            <TextBox x:Name="InputMoney" Grid.Column="1" Grid.Row="0"/>
-
-            <TextBlock Text="Prestige:" Grid.Column="0" Grid.Row="1"/>
-            <TextBox x:Name="InputPrestige" Grid.Column="1" Grid.Row="1"/>
-
-            <TextBlock Text="Tokens:" Grid.Column="0" Grid.Row="2"/>
-            <TextBox x:Name="InputTokens" Grid.Column="1" Grid.Row="2"/>
-
-            <Button x:Name="SetAllMax" Content="Max all" Grid.Column="2" Grid.Row="3" Margin="0,5,0,0" Width="100" Click="SetAllMax_Click" HorizontalAlignment="Right" ToolTip="Set maximum value for all currencies"/>
-        </Grid>
-
-        <Grid Grid.Row="2" Margin="8">
+        <!-- titlebar -->
+        <Grid Grid.Row="0" Background="{StaticResource Titlebar.Background}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="v1.0.0 by corv1njano" Grid.Column="0" VerticalAlignment="Bottom" FontSize="14"/>
-            <Button x:Name="SaveData" Content="Save Changes" Click="SaveData_Click" Grid.Column="1" ToolTip="Override save file and apply changes" IsEnabled="False"/>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Image Source="/Resources/Images/app_logo.png"
+                       Width="22"
+                       Height="22"
+                       Margin="10,0"
+                       VerticalAlignment="Center"
+                       RenderOptions.BitmapScalingMode="HighQuality"/>
+                <TextBlock Text="Scritchy Scratchy Cheater"
+                           Style="{StaticResource TextBlock.Base}"
+                           Foreground="{StaticResource Font.Secondary}"
+                           FontSize="14"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel.Resources>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Height" Value="10"/>
+                        <Setter Property="Width" Value="10"/>
+                        <Setter Property="Fill" Value="{DynamicResource Font.Secondary}"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Style="{StaticResource Button.WindowControl.Info}" ToolTip="About this App" Click="Info_Click"/>
+                <Button Style="{StaticResource Button.WindowControl.Minimize}" Click="Button_Minimize"/>
+                <Button Style="{StaticResource Button.WindowControl.Close}" Click="Button_Close"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Frame x:Name="PageContainer" NavigationUIVisibility="Hidden" JournalOwnership="OwnsJournal" IsTabStop="False"/>
+        </Grid>
+
+        <!-- statusbar -->
+        <Grid Grid.Row="2" Background="{StaticResource Titlebar.Background}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.StatusBar}" Text="v1.1.0"/>
+            <TextBlock x:Name="SelectedSaveFilePath" Grid.Column="1" Style="{StaticResource TextBlock.StatusBar}" HorizontalAlignment="Right" Text="No save file selected."/>
         </Grid>
     </Grid>
 </Window>
