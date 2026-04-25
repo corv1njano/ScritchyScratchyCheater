@@ -8,10 +8,10 @@ Download latest version [here](https://github.com/corv1njano/ScritchyScratchyChe
 
 # Features
 
-![App UI](https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/Docs/img/app.png)
+<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/Docs/img/app_1-2-0.gif" Alt="App UI" width="300">
 
 - edit Money, Prestige Currency, Tokens, and Souls
-- set maximum value for all currencies
+- edit achievements
 - load save file directly from path or any other location
 - reload current save file during session
 - locate current save file in file explorer
