@@ -9,7 +9,7 @@
     <ApplicationIcon>app_logo.ico</ApplicationIcon>
 	  <Authors>corv1njano</Authors>
 	  <Company>corv1njano</Company>
-	  <Version>1.1.0</Version>
+	  <Version>1.2.0</Version>
 	  <Configurations>Debug;Release;ReleaseNetIncluded</Configurations>
   </PropertyGroup>
 

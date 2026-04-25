@@ -1,0 +1,186 @@
+{
+    "saveVersion": "0.1",
+    "gameVersion": "1.0.30d",
+    "gameData": [
+        {
+            "type": "achievements",
+            "data": [
+                {
+                    "id": "Achievement Hunter",
+                    "name_en": "Achievement Hunter",
+                    "iconId": "achievement_hunter"
+                },
+                {
+                    "id": "Bad Kitty",
+                    "name_en": "Bad Kitty",
+                    "iconId": "bad_kitty"
+                },
+                {
+                    "id": "Big Win",
+                    "name_en": "Big Win",
+                    "iconId": "big_win"
+                },
+                {
+                    "id": "Broken Plates",
+                    "name_en": "Bad Luck",
+                    "iconId": "borken_plates"
+                },
+                {
+                    "id": "Clicker minigame",
+                    "name_en": "Clicker minigame",
+                    "iconId": "clicker_minigame"
+                },
+                {
+                    "id": "Death_1",
+                    "name_en": "Gambling never pays off",
+                    "iconId": "death_1"
+                },
+                {
+                    "id": "Death_2",
+                    "name_en": "A loosing bet",
+                    "iconId": "death_2"
+                },
+                {
+                    "id": "Death_3",
+                    "name_en": "Go for broke",
+                    "iconId": "death_3"
+                },
+                {
+                    "id": "Death_4",
+                    "name_en": "House always wins",
+                    "iconId": "death_4"
+                },
+                {
+                    "id": "Death_1",
+                    "name_en": "Gambling never pays off",
+                    "iconId": "death_1"
+                },
+                {
+                    "id": "Faithful Servant",
+                    "name_en": "Faithful Servant",
+                    "iconId": "faithful_servant"
+                },
+                {
+                    "id": "High level gambling",
+                    "name_en": "High level gambling",
+                    "iconId": "high_level_gambling"
+                },
+                {
+                    "id": "Honest work",
+                    "name_en": "Honest work",
+                    "iconId": "honest_work"
+                },
+                {
+                    "id": "Idle game",
+                    "name_en": "Idle game",
+                    "iconId": "idle_game"
+                },
+                {
+                    "id": "Jackpot on First Ticket",
+                    "name_en": "Good luck",
+                    "iconId": "jackpot_on_first_ticket"
+                },
+                {
+                    "id": "Lucky cat",
+                    "name_en": "Lucky cat",
+                    "iconId": "lucky_cat"
+                },
+                {
+                    "id": "Lucky ticket",
+                    "name_en": "Lucky ticket",
+                    "iconId": "lucky_ticket"
+                },
+                {
+                    "id": "Max out skill tree",
+                    "name_en": "Max out skill tree",
+                    "iconId": "max_out_skill_tree"
+                },
+                {
+                    "id": "Nap time",
+                    "name_en": "Nap time",
+                    "iconId": "nap_time"
+                },
+                {
+                    "id": "One of each please",
+                    "name_en": "One of each please",
+                    "iconId": "one_of_each_please"
+                },
+                {
+                    "id": "Scratch Final Chance Without Dying",
+                    "name_en": "Win everything?",
+                    "iconId": "scratch_final_chance_without_dying"
+                },
+                {
+                    "id": "Skip a catalogue",
+                    "name_en": "Skip a catalogue",
+                    "iconId": "skip_a_catalogue"
+                },
+                {
+                    "id": "Soul Siphon",
+                    "name_en": "Soul Siphon",
+                    "iconId": "soul_siphon"
+                },
+                {
+                    "id": "Speedrun",
+                    "name_en": "Speedrun",
+                    "iconId": "speedrun"
+                },
+                {
+                    "id": "Spend all the worlds money",
+                    "name_en": "Spend all the worlds money",
+                    "iconId": "spend_all_the_worlds_money"
+                },
+                {
+                    "id": "Super Jackpot",
+                    "name_en": "What are the odds?",
+                    "iconId": "super_jackpot"
+                },
+                {
+                    "id": "Take Loan",
+                    "name_en": "Don't read the fine print",
+                    "iconId": "take_loan"
+                },
+                {
+                    "id": "Time machine",
+                    "name_en": "Time machine",
+                    "iconId": "time_machine"
+                },
+                {
+                    "id": "Trash Jackpot",
+                    "name_en": "Why?",
+                    "iconId": "trash_jackpot"
+                },
+                {
+                    "id": "Visit the Night Market",
+                    "name_en": "Visit the Night Market",
+                    "iconId": "visit_the_night_market"
+                },
+                {
+                    "id": "Walk-in-closet",
+                    "name_en": "Walk-in-closet",
+                    "iconId": "walk_in_closet"
+                },
+                {
+                    "id": "Win your job",
+                    "name_en": "Win your job",
+                    "iconId": "win_your_job"
+                },
+                {
+                    "id": "Winning streak",
+                    "name_en": "Winning streak",
+                    "iconId": "winning_streak"
+                },
+                {
+                    "id": "Wizard",
+                    "name_en": "Wizard",
+                    "iconId": "wizard"
+                },
+                {
+                    "id": "Workaholic",
+                    "name_en": "Workaholic",
+                    "iconId": "workaholic"
+                }
+            ]
+        }
+    ]
+}

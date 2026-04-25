@@ -1,0 +1,466 @@
+{
+  "saveVersion": "0.1",
+  "gameVersion": "1.0.30d",
+  "timestamp": 1777157886398,
+  "playedTime": 3328,
+  "layerOne": {
+    "money": 1.0,
+    "timeSpentInThisPrestige": 2.67001271,
+    "ticketProgressionDict": {
+      "Loan": {
+        "id": "Loan",
+        "xp": 0,
+        "level": 0
+      },
+      "Day Job": {
+        "id": "Day Job",
+        "xp": 0,
+        "level": 0
+      },
+      "Two Win": {
+        "id": "Two Win",
+        "xp": 0,
+        "level": 0
+      },
+      "Mini Scratch": {
+        "id": "Mini Scratch",
+        "xp": 0,
+        "level": 0
+      },
+      "Apple Tree": {
+        "id": "Apple Tree",
+        "xp": 0,
+        "level": 0
+      },
+      "Quick Cash": {
+        "id": "Quick Cash",
+        "xp": 0,
+        "level": 0
+      },
+      "Lucky Cat": {
+        "id": "Lucky Cat",
+        "xp": 0,
+        "level": 0
+      },
+      "Final Chance": {
+        "id": "Final Chance",
+        "xp": 0,
+        "level": 0
+      },
+      "Sand Dollars": {
+        "id": "Sand Dollars",
+        "xp": 0,
+        "level": 0
+      },
+      "Scratch My Back": {
+        "id": "Scratch My Back",
+        "xp": 0,
+        "level": 0
+      },
+      "Snake Eyes": {
+        "id": "Snake Eyes",
+        "xp": 0,
+        "level": 0
+      },
+      "The Bomb": {
+        "id": "The Bomb",
+        "xp": 0,
+        "level": 0
+      },
+      "Final Chance_2": {
+        "id": "Final Chance_2",
+        "xp": 0,
+        "level": 0
+      },
+      "Bank Break": {
+        "id": "Bank Break",
+        "xp": 0,
+        "level": 0
+      },
+      "Xmas Countdown": {
+        "id": "Xmas Countdown",
+        "xp": 0,
+        "level": 0
+      },
+      "Thrift Store": {
+        "id": "Thrift Store",
+        "xp": 0,
+        "level": 0
+      },
+      "Berry Picking": {
+        "id": "Berry Picking",
+        "xp": 0,
+        "level": 0
+      },
+      "Final Chance_3": {
+        "id": "Final Chance_3",
+        "xp": 0,
+        "level": 0
+      },
+      "Trick or Treat": {
+        "id": "Trick or Treat",
+        "xp": 0,
+        "level": 0
+      },
+      "Slot Machine": {
+        "id": "Slot Machine",
+        "xp": 0,
+        "level": 0
+      },
+      "To the Moon": {
+        "id": "To the Moon",
+        "xp": 0,
+        "level": 0
+      },
+      "Booster Pack": {
+        "id": "Booster Pack",
+        "xp": 0,
+        "level": 0
+      },
+      "Final Chance_4": {
+        "id": "Final Chance_4",
+        "xp": 0,
+        "level": 0
+      },
+      "Final Chance_Win": {
+        "id": "Final Chance_Win",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Day Job": {
+        "id": "Super_Day Job",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Two Win": {
+        "id": "Super_Two Win",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Mini Scratch": {
+        "id": "Super_Mini Scratch",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Apple Tree": {
+        "id": "Super_Apple Tree",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Quick Cash": {
+        "id": "Super_Quick Cash",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Lucky Cat": {
+        "id": "Super_Lucky Cat",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Sand Dollars": {
+        "id": "Super_Sand Dollars",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Scratch My Back": {
+        "id": "Super_Scratch My Back",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Snake Eyes": {
+        "id": "Super_Snake Eyes",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_The Bomb": {
+        "id": "Super_The Bomb",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Bank Break": {
+        "id": "Super_Bank Break",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Xmas Countdown": {
+        "id": "Super_Xmas Countdown",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Thrift Store": {
+        "id": "Super_Thrift Store",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Berry Picking": {
+        "id": "Super_Berry Picking",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Trick or Treat": {
+        "id": "Super_Trick or Treat",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Slot Machine": {
+        "id": "Super_Slot Machine",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_To the Moon": {
+        "id": "Super_To the Moon",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Booster Pack": {
+        "id": "Super_Booster Pack",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Final Chance_Win": {
+        "id": "Super_Final Chance_Win",
+        "xp": 0,
+        "level": 0
+      }
+    },
+    "upgradeDataDict": {
+      "The Machine": {
+        "id": "The Machine",
+        "buyCount": 0
+      },
+      "Scratch Luck": {
+        "id": "Scratch Luck",
+        "buyCount": 0
+      },
+      "Scratch Size_Base Coin": {
+        "id": "Scratch Size_Base Coin",
+        "buyCount": 0
+      },
+      "Tin Coin": {
+        "id": "Tin Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Tin Coin": {
+        "id": "Scratch Size_Tin Coin",
+        "buyCount": 0
+      },
+      "Aluminum Coin": {
+        "id": "Aluminum Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Aluminum Coin": {
+        "id": "Scratch Size_Aluminum Coin",
+        "buyCount": 0
+      },
+      "Copper Coin": {
+        "id": "Copper Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Copper Coin": {
+        "id": "Scratch Size_Copper Coin",
+        "buyCount": 0
+      },
+      "Bronze Coin": {
+        "id": "Bronze Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Bronze Coin": {
+        "id": "Scratch Size_Bronze Coin",
+        "buyCount": 0
+      },
+      "Iron Coin": {
+        "id": "Iron Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Iron Coin": {
+        "id": "Scratch Size_Iron Coin",
+        "buyCount": 0
+      },
+      "Steel Coin": {
+        "id": "Steel Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Steel Coin": {
+        "id": "Scratch Size_Steel Coin",
+        "buyCount": 0
+      },
+      "Titanium Coin": {
+        "id": "Titanium Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Titanium Coin": {
+        "id": "Scratch Size_Titanium Coin",
+        "buyCount": 0
+      },
+      "Tungsten Coin": {
+        "id": "Tungsten Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Tungsten Coin": {
+        "id": "Scratch Size_Tungsten Coin",
+        "buyCount": 0
+      },
+      "Trash Can": {
+        "id": "Trash Can",
+        "buyCount": 0
+      },
+      "Scratch Bot": {
+        "id": "Scratch Bot",
+        "buyCount": 0
+      },
+      "Scratch Bot Speed": {
+        "id": "Scratch Bot Speed",
+        "buyCount": 0
+      },
+      "Scratch Bot Capacity": {
+        "id": "Scratch Bot Capacity",
+        "buyCount": 0
+      },
+      "Scratch Bot Strength": {
+        "id": "Scratch Bot Strength",
+        "buyCount": 0
+      },
+      "Fan": {
+        "id": "Fan",
+        "buyCount": 0
+      },
+      "Fan Speed": {
+        "id": "Fan Speed",
+        "buyCount": 0
+      },
+      "Fan Battery": {
+        "id": "Fan Battery",
+        "buyCount": 0
+      },
+      "Sticky Mat": {
+        "id": "Sticky Mat",
+        "buyCount": 0
+      },
+      "Badge Collection": {
+        "id": "Badge Collection",
+        "buyCount": 0
+      },
+      "Mundo": {
+        "id": "Mundo",
+        "buyCount": 0
+      },
+      "Mundo Speed": {
+        "id": "Mundo Speed",
+        "buyCount": 0
+      },
+      "Spell Book": {
+        "id": "Spell Book",
+        "buyCount": 0
+      },
+      "Spell Charge Speed": {
+        "id": "Spell Charge Speed",
+        "buyCount": 0
+      },
+      "Subscription Bot": {
+        "id": "Subscription Bot",
+        "buyCount": 0
+      },
+      "Buying Speed": {
+        "id": "Buying Speed",
+        "buyCount": 0
+      },
+      "Egg Timer": {
+        "id": "Egg Timer",
+        "buyCount": 0
+      },
+      "Timer Capacity": {
+        "id": "Timer Capacity",
+        "buyCount": 0
+      },
+      "Timer Charge": {
+        "id": "Timer Charge",
+        "buyCount": 0
+      },
+      "Warp Speed": {
+        "id": "Warp Speed",
+        "buyCount": 0
+      }
+    },
+    "tableItems": [],
+    "tableItemSaves": [],
+    "jackpotsGotten": [],
+    "superJackpotsGotten": [],
+    "lastUnlockedProgressionGoal": 0.0,
+    "totalMoneyEarnedThisProgressionGoal": 0.0,
+    "claimedCustomTableItems": [],
+    "firstTicketOpened": false,
+    "loans": [],
+    "bankruptcyWarningGiven": false,
+    "initializedChallenge": true,
+    "initializedPerks": true,
+    "machineTier": 0,
+    "machineFeedCount": 0,
+    "machineProcessingTimeLeft": 0.0,
+    "souls": 0,
+    "lastTicketUnlocked": null,
+    "electricFanChargeLeft": 0.0,
+    "fanPaused": false,
+    "eggTimerChargeLeft": 0.0,
+    "mundoDead": false,
+    "trashCanDead": false,
+    "boughtScratchOff": false
+  },
+  "prestigeCount": 0,
+  "prestigeCurrency": 0,
+  "currentAct": 1,
+  "deathByFinalChanceCount": 0,
+  "fadeInFromWhite": false,
+  "diamondsGottenFromTicket": [],
+  "dialoguesPlayed": [],
+  "boughtPrestigeUpgrades": {},
+  "totalPrestigeCurrencySpent": 0,
+  "activeChallenge": null,
+  "completedChallenges": [],
+  "achievementsGotten": [
+    "Death_1",
+    "Death_2",
+    "Death_3",
+    "Death_4",
+    "Take Loan",
+    "Super Jackpot",
+    "Broken Plates",
+    "Jackpot on First Ticket",
+    "Trash Jackpot",
+    "Bad kitty",
+    "Lucky cat",
+    "Win your job",
+    "One of each please",
+    "Winning streak",
+    "Skip a catalogue",
+    "Spend all the worlds money",
+    "Nap time",
+    "Lucky ticket",
+    "Big win",
+    "High level gambling",
+    "Clicker minigame",
+    "Idle game",
+    "Visit the Night Market",
+    "Walk-in-closet",
+    "Honest work",
+    "Workaholic",
+    "Soul Siphon",
+    "Wizard",
+    "Time machine",
+    "Scratch Final Chance Without Dying",
+    "Faithful Servant",
+    "Speedrun",
+    "Max out skill tree",
+    "Achievement Hunter"
+  ],
+  "achievementsClaimed": [],
+  "unlockedCosmetics": [],
+  "boughtCosmetics": [],
+  "equippedCosmetics": [],
+  "completedOnboardingSteps": [],
+  "dlcUnlocked": [],
+  "isPrestiging": false,
+  "deathByFinalChance": false,
+  "deathCount": 0,
+  "loanCount": 0,
+  "tokens": 0.0
+}
