@@ -15,3 +15,9 @@ Download latest version [here](https://github.com/corv1njano/ScritchyScratchyChe
 - load save file directly from path or any other location
 - reload current save file during session
 - locate current save file in file explorer
+
+---
+
+# Documentation
+
+Read more about the project [here](https://github.com/corv1njano/ScritchyScratchyCheater/tree/master/Docs). More documentation will follow in the future.
