@@ -1,5 +1,5 @@
-﻿using System.Text.Json;
-using System.IO;
+﻿using System.IO;
+using System.Text.Json;
 
 namespace ScritchyScratchyCheater
 {
@@ -26,7 +26,7 @@ namespace ScritchyScratchyCheater
             Tokens = root.GetProperty("tokens").GetDouble();
             Money = FindDecimal(root, "money") ?? 0m;
         }
-        
+
         /// <summary>
         /// money is stored under root > layerOne > money
         /// </summary>

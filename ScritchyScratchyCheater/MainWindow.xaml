@@ -57,7 +57,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <Frame x:Name="PageContainer" NavigationUIVisibility="Hidden" JournalOwnership="OwnsJournal" IsTabStop="False"/>
+            <ContentControl x:Name="PageContainer" IsTabStop="False"/>
         </Grid>
 
         <!-- statusbar -->
@@ -66,7 +66,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.StatusBar}" Text="v1.1.0"/>
+            <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.StatusBar}" Text="v1.2.0"/>
             <TextBlock x:Name="SelectedSaveFilePath" Grid.Column="1" Style="{StaticResource TextBlock.StatusBar}" HorizontalAlignment="Right" Text="No save file selected."/>
         </Grid>
     </Grid>

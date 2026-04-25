@@ -34,6 +34,7 @@ namespace ScritchyScratchyCheater.Services
             Reset();
 
             if (!File.Exists(filePath)) return (false, null);
+            if (new FileInfo(filePath).Length == 0) return (false, null);
 
             var json = await File.ReadAllTextAsync(filePath);
             SaveFileVersionInfo? versionInfo = JsonSerializer.Deserialize<SaveFileVersionInfo>(json, App.JsonOptions);

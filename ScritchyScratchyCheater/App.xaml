@@ -10,12 +10,15 @@
                 <ResourceDictionary Source="/Styles/UiColors.xaml"/>
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
                 <ResourceDictionary Source="/Resources/Fonts/Fonts.xaml"/>
+                <ResourceDictionary Source="/Styles/ScrollBar.xaml"/>
                 <ResourceDictionary Source="/Styles/Button.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBlock.xaml"/>
                 <ResourceDictionary Source="/Styles/ToolTip.xaml"/>
                 <ResourceDictionary Source="/Styles/TabNavigation.xaml"/>
                 <ResourceDictionary Source="/Styles/GroupBox.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBox.xaml"/>
+                <ResourceDictionary Source="/Styles/ListBox.xaml"/>
+                <ResourceDictionary Source="/Styles/CheckBox.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

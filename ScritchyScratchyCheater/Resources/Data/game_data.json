@@ -1,0 +1,181 @@
+{
+  "saveVersion": "0.1",
+  "gameVersion": "1.0.30d",
+  "gameData": [
+    {
+      "type": "achievements",
+      "data": [
+        {
+          "id": "Achievement Hunter",
+          "name": "Achievement Hunter",
+          "iconId": "aAchievementHunter"
+        },
+        {
+          "id": "Bad kitty",
+          "name": "Bad kitty",
+          "iconId": "aBadKitty"
+        },
+        {
+          "id": "Big win",
+          "name": "Big win",
+          "iconId": "aBigWin"
+        },
+        {
+          "id": "Broken Plates",
+          "name": "Bad Luck",
+          "iconId": "aBrokenPlates"
+        },
+        {
+          "id": "Clicker minigame",
+          "name": "Clicker minigame",
+          "iconId": "aClickerMinigame"
+        },
+        {
+          "id": "Death_1",
+          "name": "Gambling never pays off",
+          "iconId": "aDeath1"
+        },
+        {
+          "id": "Death_2",
+          "name": "A loosing bet",
+          "iconId": "aDeath2"
+        },
+        {
+          "id": "Death_3",
+          "name": "Go for broke",
+          "iconId": "aDeath3"
+        },
+        {
+          "id": "Death_4",
+          "name": "House always wins",
+          "iconId": "aDeath4"
+        },
+        {
+          "id": "Faithful Servant",
+          "name": "Faithful Servant",
+          "iconId": "aFaithfulServant"
+        },
+        {
+          "id": "High level gambling",
+          "name": "High level gambling",
+          "iconId": "aHighLevelGambling"
+        },
+        {
+          "id": "Honest work",
+          "name": "Honest work",
+          "iconId": "aHonestWork"
+        },
+        {
+          "id": "Idle game",
+          "name": "Idle game",
+          "iconId": "aIdleGame"
+        },
+        {
+          "id": "Jackpot on First Ticket",
+          "name": "Good luck",
+          "iconId": "aJackpotOnFirstTicket"
+        },
+        {
+          "id": "Lucky cat",
+          "name": "Lucky cat",
+          "iconId": "aLuckyCat"
+        },
+        {
+          "id": "Lucky ticket",
+          "name": "Lucky ticket",
+          "iconId": "aLuckyTicket"
+        },
+        {
+          "id": "Max out skill tree",
+          "name": "Max out skill tree",
+          "iconId": "aMaxOutSkillTree"
+        },
+        {
+          "id": "Nap time",
+          "name": "Nap time",
+          "iconId": "aNapTime"
+        },
+        {
+          "id": "One of each please",
+          "name": "One of each please",
+          "iconId": "aOneOfEachPlease"
+        },
+        {
+          "id": "Scratch Final Chance Without Dying",
+          "name": "Win everything?",
+          "iconId": "aScratchFinalChanceWithoutDying"
+        },
+        {
+          "id": "Skip a catalogue",
+          "name": "Skip a catalogue",
+          "iconId": "aSkipACatalogue"
+        },
+        {
+          "id": "Soul Siphon",
+          "name": "Soul Siphon",
+          "iconId": "aSoulSiphon"
+        },
+        {
+          "id": "Speedrun",
+          "name": "Speedrun",
+          "iconId": "aSpeedrun"
+        },
+        {
+          "id": "Spend all the worlds money",
+          "name": "Spend all the worlds money",
+          "iconId": "aSpendAllTheWorldsMoney"
+        },
+        {
+          "id": "Super Jackpot",
+          "name": "What are the odds?",
+          "iconId": "aSuperJackpot"
+        },
+        {
+          "id": "Take Loan",
+          "name": "Don't read the fine print",
+          "iconId": "aTakeLoan"
+        },
+        {
+          "id": "Time machine",
+          "name": "Time machine",
+          "iconId": "aTimeMachine"
+        },
+        {
+          "id": "Trash Jackpot",
+          "name": "Why?",
+          "iconId": "aTrashJackpot"
+        },
+        {
+          "id": "Visit the Night Market",
+          "name": "Visit the Night Market",
+          "iconId": "aVisitTheNightMarket"
+        },
+        {
+          "id": "Walk-in-closet",
+          "name": "Walk-in-closet",
+          "iconId": "aWalkInCloset"
+        },
+        {
+          "id": "Win your job",
+          "name": "Win your job",
+          "iconId": "aWinYourJob"
+        },
+        {
+          "id": "Winning streak",
+          "name": "Winning streak",
+          "iconId": "aWinningStreak"
+        },
+        {
+          "id": "Wizard",
+          "name": "Wizard",
+          "iconId": "aWizard"
+        },
+        {
+          "id": "Workaholic",
+          "name": "Workaholic",
+          "iconId": "aWorkaholic"
+        }
+      ]
+    }
+  ]
+}

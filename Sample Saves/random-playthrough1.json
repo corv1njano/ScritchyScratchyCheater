@@ -1,0 +1,2156 @@
+{
+  "saveVersion": "0.2",
+  "gameVersion": "1.0.30d",
+  "timestamp": 1776017884090,
+  "playedTime": 40348063,
+  "layerOne": {
+    "money": 2.7922323232323E+247,
+    "timeSpentInThisPrestige": 325.249817,
+    "ticketProgressionDict": {
+      "Loan": {
+        "id": "Loan",
+        "xp": 0,
+        "level": 0
+      },
+      "Day Job": {
+        "id": "Day Job",
+        "xp": 0,
+        "level": 0
+      },
+      "Two Win": {
+        "id": "Two Win",
+        "xp": 1,
+        "level": 3
+      },
+      "Mini Scratch": {
+        "id": "Mini Scratch",
+        "xp": 0,
+        "level": 1
+      },
+      "Apple Tree": {
+        "id": "Apple Tree",
+        "xp": 2,
+        "level": 2
+      },
+      "Quick Cash": {
+        "id": "Quick Cash",
+        "xp": 0,
+        "level": 0
+      },
+      "Lucky Cat": {
+        "id": "Lucky Cat",
+        "xp": 2,
+        "level": 4
+      },
+      "Final Chance": {
+        "id": "Final Chance",
+        "xp": 0,
+        "level": 0
+      },
+      "Sand Dollars": {
+        "id": "Sand Dollars",
+        "xp": 2,
+        "level": 1
+      },
+      "Scratch My Back": {
+        "id": "Scratch My Back",
+        "xp": 1,
+        "level": 2
+      },
+      "Snake Eyes": {
+        "id": "Snake Eyes",
+        "xp": 0,
+        "level": 3
+      },
+      "The Bomb": {
+        "id": "The Bomb",
+        "xp": 0,
+        "level": 7
+      },
+      "Final Chance_2": {
+        "id": "Final Chance_2",
+        "xp": 0,
+        "level": 0
+      },
+      "Bank Break": {
+        "id": "Bank Break",
+        "xp": 2,
+        "level": 9
+      },
+      "Xmas Countdown": {
+        "id": "Xmas Countdown",
+        "xp": 0,
+        "level": 13
+      },
+      "Thrift Store": {
+        "id": "Thrift Store",
+        "xp": 1,
+        "level": 7
+      },
+      "Berry Picking": {
+        "id": "Berry Picking",
+        "xp": 1,
+        "level": 8
+      },
+      "Final Chance_3": {
+        "id": "Final Chance_3",
+        "xp": 0,
+        "level": 0
+      },
+      "Trick or Treat": {
+        "id": "Trick or Treat",
+        "xp": 3,
+        "level": 3
+      },
+      "Slot Machine": {
+        "id": "Slot Machine",
+        "xp": 6,
+        "level": 8
+      },
+      "To the Moon": {
+        "id": "To the Moon",
+        "xp": 4,
+        "level": 16
+      },
+      "Booster Pack": {
+        "id": "Booster Pack",
+        "xp": 10,
+        "level": 22
+      },
+      "Final Chance_4": {
+        "id": "Final Chance_4",
+        "xp": 0,
+        "level": 0
+      },
+      "Final Chance_Win": {
+        "id": "Final Chance_Win",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Day Job": {
+        "id": "Super_Day Job",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Two Win": {
+        "id": "Super_Two Win",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Mini Scratch": {
+        "id": "Super_Mini Scratch",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Apple Tree": {
+        "id": "Super_Apple Tree",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Quick Cash": {
+        "id": "Super_Quick Cash",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Lucky Cat": {
+        "id": "Super_Lucky Cat",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Sand Dollars": {
+        "id": "Super_Sand Dollars",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Scratch My Back": {
+        "id": "Super_Scratch My Back",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Snake Eyes": {
+        "id": "Super_Snake Eyes",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_The Bomb": {
+        "id": "Super_The Bomb",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Bank Break": {
+        "id": "Super_Bank Break",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Xmas Countdown": {
+        "id": "Super_Xmas Countdown",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Thrift Store": {
+        "id": "Super_Thrift Store",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Berry Picking": {
+        "id": "Super_Berry Picking",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Trick or Treat": {
+        "id": "Super_Trick or Treat",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Slot Machine": {
+        "id": "Super_Slot Machine",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_To the Moon": {
+        "id": "Super_To the Moon",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Booster Pack": {
+        "id": "Super_Booster Pack",
+        "xp": 0,
+        "level": 0
+      },
+      "Super_Final Chance_Win": {
+        "id": "Super_Final Chance_Win",
+        "xp": 0,
+        "level": 0
+      }
+    },
+    "upgradeDataDict": {
+      "The Machine": {
+        "id": "The Machine",
+        "buyCount": 1
+      },
+      "Scratch Luck": {
+        "id": "Scratch Luck",
+        "buyCount": 45
+      },
+      "Scratch Size_Base Coin": {
+        "id": "Scratch Size_Base Coin",
+        "buyCount": 0
+      },
+      "Tin Coin": {
+        "id": "Tin Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Tin Coin": {
+        "id": "Scratch Size_Tin Coin",
+        "buyCount": 0
+      },
+      "Aluminum Coin": {
+        "id": "Aluminum Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Aluminum Coin": {
+        "id": "Scratch Size_Aluminum Coin",
+        "buyCount": 0
+      },
+      "Copper Coin": {
+        "id": "Copper Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Copper Coin": {
+        "id": "Scratch Size_Copper Coin",
+        "buyCount": 0
+      },
+      "Bronze Coin": {
+        "id": "Bronze Coin",
+        "buyCount": 0
+      },
+      "Scratch Size_Bronze Coin": {
+        "id": "Scratch Size_Bronze Coin",
+        "buyCount": 2
+      },
+      "Iron Coin": {
+        "id": "Iron Coin",
+        "buyCount": 1
+      },
+      "Scratch Size_Iron Coin": {
+        "id": "Scratch Size_Iron Coin",
+        "buyCount": 0
+      },
+      "Steel Coin": {
+        "id": "Steel Coin",
+        "buyCount": 1
+      },
+      "Scratch Size_Steel Coin": {
+        "id": "Scratch Size_Steel Coin",
+        "buyCount": 0
+      },
+      "Titanium Coin": {
+        "id": "Titanium Coin",
+        "buyCount": 1
+      },
+      "Scratch Size_Titanium Coin": {
+        "id": "Scratch Size_Titanium Coin",
+        "buyCount": 0
+      },
+      "Tungsten Coin": {
+        "id": "Tungsten Coin",
+        "buyCount": 1
+      },
+      "Scratch Size_Tungsten Coin": {
+        "id": "Scratch Size_Tungsten Coin",
+        "buyCount": 2
+      },
+      "Trash Can": {
+        "id": "Trash Can",
+        "buyCount": 1
+      },
+      "Scratch Bot": {
+        "id": "Scratch Bot",
+        "buyCount": 1
+      },
+      "Scratch Bot Speed": {
+        "id": "Scratch Bot Speed",
+        "buyCount": 30
+      },
+      "Scratch Bot Capacity": {
+        "id": "Scratch Bot Capacity",
+        "buyCount": 10
+      },
+      "Scratch Bot Strength": {
+        "id": "Scratch Bot Strength",
+        "buyCount": 20
+      },
+      "Fan": {
+        "id": "Fan",
+        "buyCount": 1
+      },
+      "Fan Speed": {
+        "id": "Fan Speed",
+        "buyCount": 5
+      },
+      "Fan Battery": {
+        "id": "Fan Battery",
+        "buyCount": 5
+      },
+      "Sticky Mat": {
+        "id": "Sticky Mat",
+        "buyCount": 1
+      },
+      "Badge Collection": {
+        "id": "Badge Collection",
+        "buyCount": 1
+      },
+      "Mundo": {
+        "id": "Mundo",
+        "buyCount": 1
+      },
+      "Mundo Speed": {
+        "id": "Mundo Speed",
+        "buyCount": 10
+      },
+      "Spell Book": {
+        "id": "Spell Book",
+        "buyCount": 1
+      },
+      "Spell Charge Speed": {
+        "id": "Spell Charge Speed",
+        "buyCount": 10
+      },
+      "Subscription Bot": {
+        "id": "Subscription Bot",
+        "buyCount": 1
+      },
+      "Buying Speed": {
+        "id": "Buying Speed",
+        "buyCount": 10
+      },
+      "Egg Timer": {
+        "id": "Egg Timer",
+        "buyCount": 1
+      },
+      "Timer Capacity": {
+        "id": "Timer Capacity",
+        "buyCount": 10
+      },
+      "Timer Charge": {
+        "id": "Timer Charge",
+        "buyCount": 10
+      },
+      "Warp Speed": {
+        "id": "Warp Speed",
+        "buyCount": 3
+      }
+    },
+    "tableItems": [],
+    "tableItemSaves": [
+      {
+        "id": "Badge Collection",
+        "cachedSymbols": [],
+        "posX": 0.348121971,
+        "posY": 1.17131412,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Super_Booster Pack",
+        "cachedSymbols": [],
+        "posX": 0.10090661,
+        "posY": -0.8904319,
+        "onStickyMat": true,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -1.192426,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.709,
+        "posY": -0.619,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.70750582,
+        "posY": -0.618526638,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.58329034,
+        "posY": -0.5450597,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2361697,
+        "posY": -0.4971387,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26034927,
+        "posY": -0.409437746,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26073337,
+        "posY": -0.439835578,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24017668,
+        "posY": -0.4571194,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.3439064,
+        "posY": -0.284736872,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24229836,
+        "posY": -0.514605761,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.33470035,
+        "posY": -0.323451638,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.3098141,
+        "posY": -0.327469021,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.33371532,
+        "posY": -0.383409262,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24585629,
+        "posY": -0.540817,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.27128315,
+        "posY": -0.4028637,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.30249524,
+        "posY": -0.343098342,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24227321,
+        "posY": -0.508787155,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25928974,
+        "posY": -0.417077541,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29137969,
+        "posY": -0.357017964,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.30350637,
+        "posY": -0.340964347,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.22502315,
+        "posY": -0.531880736,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2912358,
+        "posY": -0.39141497,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26127219,
+        "posY": -0.472304821,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2267009,
+        "posY": -0.499136835,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.21670926,
+        "posY": -0.532305,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.34375751,
+        "posY": -0.313068181,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29534984,
+        "posY": -0.346178263,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2319479,
+        "posY": -0.5449941,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25124013,
+        "posY": -0.420908362,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23476672,
+        "posY": -0.5399454,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29857755,
+        "posY": -0.347489268,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29085553,
+        "posY": -0.433410645,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26401031,
+        "posY": -0.433260441,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.31356215,
+        "posY": -0.3507128,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24756908,
+        "posY": -0.453326851,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.27707744,
+        "posY": -0.394246221,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29943454,
+        "posY": -0.378812581,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.22132909,
+        "posY": -0.5199402,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2960366,
+        "posY": -0.3719008,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.247291,
+        "posY": -0.455825448,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29698944,
+        "posY": -0.382034659,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25359178,
+        "posY": -0.432822049,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29593706,
+        "posY": -0.384978622,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.27347,
+        "posY": -0.397892,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.28917122,
+        "posY": -0.349259377,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.22109866,
+        "posY": -0.5278874,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23677909,
+        "posY": -0.484314024,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24888849,
+        "posY": -0.444976658,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2415657,
+        "posY": -0.497837722,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.31054378,
+        "posY": -0.36675176,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.31521273,
+        "posY": -0.344388068,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.22860479,
+        "posY": -0.5165245,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.30343711,
+        "posY": -0.345266253,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24876845,
+        "posY": -0.479092419,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2571398,
+        "posY": -0.42655468,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29431176,
+        "posY": -0.367304772,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.32974768,
+        "posY": -0.294334561,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25516284,
+        "posY": -0.4222477,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.33361244,
+        "posY": -0.3344878,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26584065,
+        "posY": -0.4215154,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25341678,
+        "posY": -0.464284837,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26379633,
+        "posY": -0.428837448,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23348415,
+        "posY": -0.509383559,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26822162,
+        "posY": -0.401697218,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25248766,
+        "posY": -0.4746014,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.27093744,
+        "posY": -0.4305026,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.28794241,
+        "posY": -0.3658162,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.30325687,
+        "posY": -0.3313123,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.28203785,
+        "posY": -0.4022388,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26904023,
+        "posY": -0.422551543,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23193657,
+        "posY": -0.5576553,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.22452092,
+        "posY": -0.537876,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.21802568,
+        "posY": -0.5410837,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.238508,
+        "posY": -0.4720522,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.266506,
+        "posY": -0.448577374,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23779941,
+        "posY": -0.458784074,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.30100238,
+        "posY": -0.3680368,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.21610153,
+        "posY": -0.5664949,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29184532,
+        "posY": -0.3802714,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.298872,
+        "posY": -0.3348053,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23910785,
+        "posY": -0.485816777,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24243033,
+        "posY": -0.5471269,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24609232,
+        "posY": -0.478604227,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.21762037,
+        "posY": -0.5304463,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.28875184,
+        "posY": -0.3790102,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.39618886,
+        "posY": -0.480214983,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23142624,
+        "posY": -0.553197563,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.3292222,
+        "posY": -0.308606237,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.245036,
+        "posY": -0.53346616,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.22999668,
+        "posY": -0.506561,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.33898842,
+        "posY": -0.326929778,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.28010809,
+        "posY": -0.396601737,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.38873482,
+        "posY": -0.257396072,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.33681953,
+        "posY": -0.3173415,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2975328,
+        "posY": -0.357215166,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.303856,
+        "posY": -0.37901327,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.33535552,
+        "posY": -0.28677097,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.33231,
+        "posY": -0.305309743,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26246762,
+        "posY": -0.4547845,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.27721691,
+        "posY": -0.373445,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.28874958,
+        "posY": -0.457442582,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26379323,
+        "posY": -0.395964473,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.32376468,
+        "posY": -0.302899182,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25036407,
+        "posY": -0.4375646,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23818994,
+        "posY": -0.484832436,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.31413567,
+        "posY": -0.346855253,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25671256,
+        "posY": -0.480485946,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.280606,
+        "posY": -0.410779536,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24586713,
+        "posY": -0.456547141,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.31704056,
+        "posY": -0.353731364,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2589066,
+        "posY": -0.457188725,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.350161,
+        "posY": -0.273117483,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.256891,
+        "posY": -0.421787649,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.30221188,
+        "posY": -0.376990557,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.3093859,
+        "posY": -0.352638274,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.21643627,
+        "posY": -0.5534513,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.30103481,
+        "posY": -0.3664137,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.220172,
+        "posY": -0.551658154,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.32299268,
+        "posY": -0.319701,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.35184884,
+        "posY": -0.331515223,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.31420445,
+        "posY": -0.3600798,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.28198016,
+        "posY": -0.365274578,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.22045481,
+        "posY": -0.5517534,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.27841115,
+        "posY": -0.412230581,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.232135,
+        "posY": -0.5157889,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.33520842,
+        "posY": -0.49052763,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23962891,
+        "posY": -0.497994453,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.34520924,
+        "posY": -0.314668,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2347523,
+        "posY": -0.472560227,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.27945912,
+        "posY": -0.409007221,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25633228,
+        "posY": -0.456595063,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23517227,
+        "posY": -0.47894302,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.332307,
+        "posY": -0.3252663,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.32887709,
+        "posY": -0.3334923,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23301888,
+        "posY": -0.484580547,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24070883,
+        "posY": -0.565635741,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.29417264,
+        "posY": -0.3640551,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26827168,
+        "posY": -0.404176563,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2263695,
+        "posY": -0.5540765,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24425089,
+        "posY": -0.504995346,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.30629838,
+        "posY": -0.339334726,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24414337,
+        "posY": -0.490751117,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.33403027,
+        "posY": -0.307303369,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24571121,
+        "posY": -0.4897951,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.26769185,
+        "posY": -0.403438,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.23412859,
+        "posY": -0.47965014,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.27668715,
+        "posY": -0.3813427,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.28174627,
+        "posY": -0.380925536,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.24058688,
+        "posY": -0.5235576,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25497353,
+        "posY": -0.4811341,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.2747333,
+        "posY": -0.434676766,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.302846,
+        "posY": -0.34720692,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.27026665,
+        "posY": -0.4263646,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.25061345,
+        "posY": -0.4504598,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 1.35226083,
+        "posY": -0.288102478,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 0.96379894,
+        "posY": -0.5099097,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 0.9624833,
+        "posY": -0.168758139,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 0.757209539,
+        "posY": 0.07317602,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 0.424034327,
+        "posY": -0.328566343,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 0.153677091,
+        "posY": 0.427842557,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 0.141736835,
+        "posY": 0.5021157,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": -0.0374511853,
+        "posY": 1.243609,
+        "onStickyMat": false,
+        "autoScratched": false
+      },
+      {
+        "id": "Booster Pack",
+        "cachedSymbols": [],
+        "posX": 0.0756122,
+        "posY": 1.826472,
+        "onStickyMat": false,
+        "autoScratched": false
+      }
+    ],
+    "jackpotsGotten": [
+      "Two Win",
+      "Mini Scratch",
+      "Apple Tree",
+      "Lucky Cat",
+      "Sand Dollars",
+      "Scratch My Back",
+      "Snake Eyes",
+      "The Bomb",
+      "Bank Break",
+      "Xmas Countdown",
+      "Thrift Store",
+      "Berry Picking",
+      "Trick or Treat",
+      "Slot Machine",
+      "To the Moon",
+      "Booster Pack"
+    ],
+    "superJackpotsGotten": [
+      "Booster Pack",
+      "To the Moon"
+    ],
+    "lastUnlockedProgressionGoal": 1E+30,
+    "totalMoneyEarnedThisProgressionGoal": 0,
+    "claimedCustomTableItems": [
+      "Upgrade Catalog",
+      "Act 1 Catalog",
+      "Act 2 Catalog",
+      "Act 3 Catalog",
+      "Act 4 Catalog"
+    ],
+    "firstTicketOpened": true,
+    "loans": [],
+    "bankruptcyWarningGiven": false,
+    "initializedChallenge": true,
+    "initializedPerks": true,
+    "machineTier": 6,
+    "machineFeedCount": 13,
+    "machineProcessingTimeLeft": 27.775732,
+    "souls": 31,
+    "lastTicketUnlocked": null,
+    "electricFanChargeLeft": 704.8237,
+    "fanPaused": false,
+    "eggTimerChargeLeft": 133.531357,
+    "mundoDead": false,
+    "trashCanDead": false,
+    "boughtScratchOff": true
+  },
+  "prestigeCount": 17,
+  "prestigeCurrency": 3501932,
+  "currentAct": 5,
+  "deathByFinalChanceCount": 5,
+  "fadeInFromWhite": false,
+  "diamondsGottenFromTicket": [],
+  "dialoguesPlayed": [
+    "dayJob",
+    "trashCanTutorial",
+    "upgrades",
+    "newTicket",
+    "scratchBot",
+    "appleTreeWorms",
+    "fanUnlock",
+    "stickyMat",
+    "death1",
+    "prestigeUnlock",
+    "badgeCollection",
+    "mundo",
+    "moneyTrouble",
+    "bankrupt",
+    "firstLoan",
+    "notBankrupt",
+    "death2",
+    "catalogue3",
+    "spellBook",
+    "subscriptionBot",
+    "death3",
+    "catalogue4",
+    "eggTimer",
+    "death4",
+    "theMachine",
+    "ending",
+    "death5"
+  ],
+  "boughtPrestigeUpgrades": {
+    "Muscle Memory": 1,
+    "Starter Kit": 1,
+    "Booster Kit": 5,
+    "Jackpot Power": 5,
+    "Big Winner": 7,
+    "Tool Belt": 5,
+    "Night Market": 1,
+    "Ignorance is Bliss": 5,
+    "Electric Fan": 1,
+    "Clean Freak": 10,
+    "Self Made Millionaire": 10,
+    "Less is More": 10,
+    "Allowance": 1,
+    "Super Lucky": 1,
+    "Pet Lover": 1,
+    "Picky Eater": 1,
+    "Shopping Spree": 1,
+    "Air Condition": 1,
+    "Fully Automated": 1,
+    "Completionist": 5,
+    "Dishwasher": 1,
+    "Fine Dining": 1,
+    "Learn by Doing": 5,
+    "Time Travel": 1,
+    "PlateMaster5000": 1,
+    "Magic": 1,
+    "Soft Hands": 5,
+    "Recycling": 5,
+    "Refund": 10,
+    "Smart Investment": 5,
+    "Hotkeys": 1,
+    "Collector": 10,
+    "Experienced": 5,
+    "Built Different": 5,
+    "Loan Shark": 1
+  },
+  "totalPrestigeCurrencySpent": 20965,
+  "activeChallenge": null,
+  "completedChallenges": [],
+  "achievementsGotten": [
+    "Super Jackpot",
+    "Lucky ticket",
+    "Death_1",
+    "Lucky cat",
+    "Take Loan",
+    "Honest work",
+    "Workaholic",
+    "Spend all the worlds money",
+    "Bad kitty",
+    "Clicker minigame",
+    "Visit the Night Market",
+    "Death_2",
+    "Jackpot on First Ticket",
+    "Walk-in-closet",
+    "Trash Jackpot",
+    "Wizard",
+    "Death_3",
+    "Death_4",
+    "Idle game",
+    "Soul Siphon",
+    "Win your job",
+    "One of each please",
+    "Time machine",
+    "Winning streak",
+    "Big win",
+    "Nap time",
+    "Skip a catalogue",
+    "High level gambling",
+    "Scratch Final Chance Without Dying",
+    "Broken Plates",
+    "Speedrun",
+    "Faithful Servant",
+    "Max out skill tree",
+    "Achievement Hunter"
+  ],
+  "achievementsClaimed": [
+    "Death_1",
+    "Lucky ticket",
+    "Super Jackpot",
+    "Lucky cat",
+    "Bad kitty",
+    "Spend all the worlds money",
+    "Clicker minigame",
+    "Honest work",
+    "Visit the Night Market",
+    "Death_2",
+    "Death_3",
+    "Death_4",
+    "Take Loan",
+    "Trash Jackpot",
+    "Jackpot on First Ticket",
+    "Walk-in-closet",
+    "Wizard",
+    "Workaholic",
+    "Soul Siphon",
+    "Win your job",
+    "One of each please",
+    "Winning streak",
+    "Idle game",
+    "Time machine",
+    "Skip a catalogue",
+    "Nap time",
+    "High level gambling",
+    "Big win",
+    "Scratch Final Chance Without Dying",
+    "Broken Plates",
+    "Speedrun",
+    "Max out skill tree",
+    "Achievement Hunter"
+  ],
+  "unlockedCosmetics": [],
+  "boughtCosmetics": [
+    "Astronomy_Table",
+    "Blue_Phone",
+    "Pink_Trash Can",
+    "Rusty_Trash Can",
+    "Cream_Phone",
+    "Mahogany_Table"
+  ],
+  "equippedCosmetics": [
+    "Cream_Phone",
+    "Astronomy_Table",
+    "Pink_Trash Can"
+  ],
+  "completedOnboardingSteps": [
+    "ScratchTicket"
+  ],
+  "dlcUnlocked": [],
+  "isPrestiging": false,
+  "deathByFinalChance": false,
+  "deathCount": 9,
+  "loanCount": 2,
+  "tokens": 205
+}

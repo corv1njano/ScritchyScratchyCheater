@@ -17,6 +17,7 @@
     <SolidColorBrush x:Key="ControlElement.Flat.Border.Hover" Color="#2C68F5"/>
     <SolidColorBrush x:Key="ControlElement.Flat.BackgroundDark" Color="#1B1D22"/>
     <SolidColorBrush x:Key="ControlElement.Flat.BackgroundDark.Hover" Color="#323340"/>
+    <SolidColorBrush x:Key="ControlElement.Flat.BackgroundDark.Hover2" Color="#22242B"/>
 
     <SolidColorBrush x:Key="Dialog.TypeColor.Neutral" Color="{StaticResource Color.Titlebar.Background}"/>
     <SolidColorBrush x:Key="Dialog.TypeColor.Info" Color="#2C68F5"/>

@@ -9,7 +9,7 @@
         ShowInTaskbar="False"
         Topmost="True"
         WindowStartupLocation="CenterOwner"
-        Title="Message" Height="190" Width="330"
+        Title="Message" Height="190" Width="310"
         Background="{StaticResource Window.Background}">
 
     <WindowChrome.WindowChrome>
@@ -34,7 +34,7 @@
                 <StackPanel Orientation="Vertical" Grid.Row="0" VerticalAlignment="Center" Margin="8,0,8,8">
                     <TextBlock x:Name="MessageTitle" Text="Title"
                                Style="{StaticResource TextBlock.Base}"
-                               Margin="0,0,0,16" FontFamily="{StaticResource Montserrat.Bold}" FontWeight="Bold"/>
+                               Margin="0,0,0,16" FontFamily="{StaticResource Montserrat}" FontWeight="Bold"/>
                     <TextBlock x:Name="MessageBody" Text="Message could not be displayed."
                                Style="{StaticResource TextBlock.Base}"
                                TextWrapping="Wrap"/>
@@ -44,7 +44,7 @@
                     <Grid.Resources>
                         <Style TargetType="Button" x:Key="btn" BasedOn="{StaticResource Button.Dialog}">
                             <Setter Property="Height" Value="26"/>
-                            <Setter Property="Width" Value="80"/>
+                            <Setter Property="Width" Value="60"/>
                         </Style>
                         <Style TargetType="StackPanel">
                             <Setter Property="HorizontalAlignment" Value="Right"/>

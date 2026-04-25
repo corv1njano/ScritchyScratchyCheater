@@ -8,7 +8,7 @@ Download latest version [here](https://github.com/corv1njano/ScritchyScratchyChe
 
 # Features
 
-![App UI](https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/res/app.png)
+![App UI](https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/Docs/img/app.png)
 
 - edit Money, Prestige Currency and Tokens
 - set maximum for all currencies with one click

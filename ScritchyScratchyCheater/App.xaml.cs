@@ -15,9 +15,10 @@ namespace ScritchyScratchyCheater
             WriteIndented = true
         };
 
+        public static PageNavigator PageNavigator { get; } = new();
         public static SaveFileService SaveFileService { get; } = new();
         public static ResourceParser ResourceParser { get; } = new();
-        public static PageNavigator PageNavigator { get; } = new();
+        public static GameDataParser GameDataParser { get; } = new();
 
         protected override void OnStartup(StartupEventArgs e)
         {

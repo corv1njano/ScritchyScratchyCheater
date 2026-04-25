@@ -6,7 +6,7 @@ namespace ScritchyScratchyCheater.Utilities
 {
     public static class ShowMessage
     {
-        public static bool Neutral(string title, string body, Window owner, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.None)
+        public static bool Neutral(string title, string body, Window owner, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.Info) // sound changed from DialogSound.None to Info
         {
             var d = new MessageDialog(title, body, options, sound, DialogColor.Neutral);
             d.Owner = owner ?? App.Current.MainWindow;

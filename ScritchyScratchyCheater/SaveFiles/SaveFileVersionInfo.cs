@@ -8,7 +8,7 @@ namespace ScritchyScratchyCheater.SaveFiles
 
         public string ToJson()
         {
-            return string.IsNullOrWhiteSpace(SaveVersion) ? "<no version identified>" : $"Version: '{SaveVersion}'"; 
+            return string.IsNullOrWhiteSpace(SaveVersion) ? "<no version identified>" : $"Version: '{SaveVersion}'";
         }
     }
 }

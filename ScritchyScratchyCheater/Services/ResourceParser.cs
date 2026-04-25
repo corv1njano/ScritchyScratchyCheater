@@ -11,7 +11,7 @@ namespace ScritchyScratchyCheater.Services
 
         private readonly Dictionary<string, BitmapSource> _sprites = new();
 
-        private const string JsonResourcePath = "pack://application:,,,/Resources/Data/sprite.json";
+        private const string JsonResourcePath = "pack://application:,,,/Resources/Data/sprite_data.json";
         private const string SpriteSheetResourcePath = "pack://application:,,,/Resources/Images/sprite_images.png";
 
         public async Task<IReadOnlyDictionary<string, BitmapSource>> LoadSpritesAsync()
@@ -92,10 +92,7 @@ namespace ScritchyScratchyCheater.Services
             using var reader = new StreamReader(resourceInfo.Stream);
             var json = reader.ReadToEnd();
 
-            return JsonSerializer.Deserialize<SpriteRoot>(json, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
+            return JsonSerializer.Deserialize<SpriteRoot>(json, App.JsonOptions);
         }
 
         private static BitmapImage LoadSpriteSheet(string uriSource)
@@ -113,9 +110,10 @@ namespace ScritchyScratchyCheater.Services
         }
     }
 
+    #region sprite data
     public sealed class SpriteRoot
     {
-        public string LatestVersion { get; set; } = string.Empty;
+        public string LatestGameVersion { get; set; } = string.Empty;
         public int SpriteSize { get; set; }
         public List<SpriteDataset>? SpriteDatasets { get; set; }
     }
@@ -132,4 +130,5 @@ namespace ScritchyScratchyCheater.Services
         public int X { get; set; }
         public int Y { get; set; }
     }
+    #endregion
 }

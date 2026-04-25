@@ -5,12 +5,12 @@ namespace ScritchyScratchyCheater.Services
 {
     public class PageNavigator
     {
-        public Page CurrentPage { get; private set; }
-        public event Action<Page>? CurrentPageChanged;
+        public UserControl CurrentPage { get; private set; }
+        public event Action<UserControl>? CurrentPageChanged;
 
         public PageNavigator()
         {
-            CurrentPage = new StartPage();
+            CurrentPage = new StartingPage();
         }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace ScritchyScratchyCheater.Services
         /// <remarks>This method raises the CurrentPageChanged event if the navigation is successful,
         /// allowing subscribers to respond to the page change.</remarks>
         /// <param name="page">The page to navigate to. This parameter must not be null; if null, the navigation is ignored.</param>
-        public void Navigate(Page page)
+        public void Navigate(UserControl page)
         {
             if (page == null) return;
 

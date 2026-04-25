@@ -31,8 +31,8 @@ namespace ScritchyScratchyCheater.SaveFiles
         public object? ActiveChallenge { get; set; }
 
         public List<object>? CompletedChallenges { get; set; }
-        public List<object>? AchievementsGotten { get; set; }
-        public List<object>? AchievementsClaimed { get; set; }
+        public List<string>? AchievementsGotten { get; set; }
+        public List<string>? AchievementsClaimed { get; set; }
 
         public List<object>? UnlockedCosmetics { get; set; }
         public List<object>? BoughtCosmetics { get; set; }

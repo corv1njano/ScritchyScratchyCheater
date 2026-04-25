@@ -1,29 +1,39 @@
-﻿using ScritchyScratchyCheater.Utilities;
-using ScritchyScratchyCheater.Interfaces;
+﻿using ScritchyScratchyCheater.Interfaces;
 using ScritchyScratchyCheater.SaveFiles;
+using ScritchyScratchyCheater.Services;
+using ScritchyScratchyCheater.Utilities;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace ScritchyScratchyCheater.Views.Pages
 {
     /// <summary>
-    /// Interaction logic for SaveEditorV01.xaml
+    /// Interaction logic for EditorV01.xaml
     /// </summary>
-    public partial class SaveEditorV01 : Page
+    public partial class EditorV01 : UserControl
     {
         private bool _isUpdatingUi = false; // use for checkbox
 
-        public SaveEditorV01()
+        private ObservableCollection<AchievementEntry> _achievements = new();
+        private ICollectionView? _achievementsView;
+
+        private string _searchAchievement = string.Empty;
+
+        public EditorV01()
         {
             InitializeComponent();
+
             App.SaveFileService.SaveFileChanged += OnSaveFileChanged;
         }
 
-        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        private async void Editor_Loaded(object sender, RoutedEventArgs e)
         {
             await App.ResourceParser.LoadSpritesAsync();
 
@@ -54,6 +64,26 @@ namespace ScritchyScratchyCheater.Views.Pages
             InputTokens.Text = saveFile.Tokens.ToString();
             InputSouls.Text = saveFile.LayerOne.Souls.ToString();
 
+            var achievementsGotten = saveFile.AchievementsGotten ?? new List<string>();
+            var achievementsClaimed = saveFile.AchievementsClaimed ?? new List<string>();
+            _achievements.Clear();
+
+            foreach (var achievement in App.GameDataParser.GetAchievements())
+            {
+                var id = achievement.Id;
+                _achievements.Add(new AchievementEntry
+                {
+                    Achievement = achievement,
+                    IsUnlocked = achievementsGotten.Contains(id),
+                    IsClaimed = achievementsClaimed.Contains(id),
+                });
+            }
+
+            _achievementsView = CollectionViewSource.GetDefaultView(_achievements);
+            _achievementsView.Filter = FilterItems;
+
+            AchievementsList.ItemsSource = _achievementsView;
+
             _isUpdatingUi = false;
         }
 
@@ -79,7 +109,7 @@ namespace ScritchyScratchyCheater.Views.Pages
         {
             if (double.TryParse(InputMoney.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
             {
-                if (value < 0 || value > double.MaxValue)
+                if (value < double.MinValue || value > double.MaxValue)
                 {
                     InputMoney.BorderBrush = (SolidColorBrush)Application.Current.TryFindResource("ControlElement.Flat.Border.Invalid");
                 }
@@ -97,7 +127,7 @@ namespace ScritchyScratchyCheater.Views.Pages
         {
             if (int.TryParse(InputPrestige.Text, out int value))
             {
-                if (value < 0 || value > int.MaxValue)
+                if (value < int.MinValue || value > int.MaxValue)
                 {
                     InputPrestige.BorderBrush = (SolidColorBrush)Application.Current.TryFindResource("ControlElement.Flat.Border.Invalid");
                 }
@@ -115,7 +145,7 @@ namespace ScritchyScratchyCheater.Views.Pages
         {
             if (int.TryParse(InputTokens.Text, out int value))
             {
-                if (value < 0 || value > int.MaxValue)
+                if (value < int.MinValue || value > int.MaxValue)
                 {
                     InputTokens.BorderBrush = (SolidColorBrush)Application.Current.TryFindResource("ControlElement.Flat.Border.Invalid");
                 }
@@ -133,7 +163,7 @@ namespace ScritchyScratchyCheater.Views.Pages
         {
             if (int.TryParse(InputSouls.Text, out int value))
             {
-                if (value < 0 || value > int.MaxValue)
+                if (value < int.MinValue || value > int.MaxValue)
                 {
                     InputSouls.BorderBrush = (SolidColorBrush)Application.Current.TryFindResource("ControlElement.Flat.Border.Invalid");
                 }
@@ -149,6 +179,34 @@ namespace ScritchyScratchyCheater.Views.Pages
         }
         #endregion
 
+        #region tab achievement
+        private void UnlockAllAchievements_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var entry in _achievements)
+            {
+                entry.IsUnlocked = true;
+            }
+        }
+
+        private void ClaimAllAchievements_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var entry in _achievements)
+            {
+                entry.IsClaimed = true; 
+            }
+        }
+
+        private bool FilterItems(object obj)
+        {
+            if (obj is AchievementEntry achievement)
+            {
+                return string.IsNullOrWhiteSpace(_searchAchievement) || achievement.Achievement!.Name.Contains(_searchAchievement, StringComparison.OrdinalIgnoreCase);
+            }
+
+            return false;
+        }
+        #endregion
+
         private async void SaveCurrentChanges_Click(object sender, RoutedEventArgs e)
         {
             await SaveChanges();
@@ -156,7 +214,9 @@ namespace ScritchyScratchyCheater.Views.Pages
 
         private async Task SaveChanges()
         {
-            bool valid = UpdateSaveFilemFromUi();
+
+            // input fields that require separate validation
+            bool valid = ValidateInputFields();
 
             if (!valid)
             {
@@ -167,8 +227,24 @@ namespace ScritchyScratchyCheater.Views.Pages
                 return;
             }
 
-            bool result = await App.SaveFileService.Save();
 
+            if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 save) return;
+            var gottenSet = new HashSet<string>();
+            var claimedSet = new HashSet<string>();
+
+            foreach (var entry in _achievements)
+            {
+                var id = entry.Achievement?.Id;
+                if (string.IsNullOrWhiteSpace(id)) continue;
+
+                if (entry.IsUnlocked) gottenSet.Add(id);
+                if (entry.IsClaimed) claimedSet.Add(id);
+            }
+
+            save.AchievementsGotten = gottenSet.ToList();
+            save.AchievementsClaimed = claimedSet.ToList();
+
+            bool result = await App.SaveFileService.Save();
             if (result)
             {
                 ShowMessage.Info("File saved",
@@ -185,7 +261,7 @@ namespace ScritchyScratchyCheater.Views.Pages
             }
         }
 
-        private bool UpdateSaveFilemFromUi()
+        private bool ValidateInputFields()
         {
             if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 save) return false;
 
@@ -220,7 +296,7 @@ namespace ScritchyScratchyCheater.Views.Pages
 
         private async void ReloadSaveFile_Click(object sender, RoutedEventArgs e)
         {
-            var dialogResult = ShowMessage.Warning("Reloading Save File",
+            var dialogResult = ShowMessage.Warning("Reloading File",
                 "Are you sure you want to reload the save file? Any unsaved changes will be lost.",
                 App.Current.MainWindow,
                 Dialogs.MessageDialog.DialogOptions.YesNo);
@@ -240,9 +316,9 @@ namespace ScritchyScratchyCheater.Views.Pages
                         Dialogs.MessageDialog.DialogOptions.Ok);
 
                     App.SaveFileService.Reset();
-                    App.PageNavigator.Navigate(new StartPage());
+                    App.PageNavigator.Navigate(new StartingPage());
                 }
-                else if (result ==  true && version == oldVersion)
+                else if (result == true && version == oldVersion)
                 {
                     ShowMessage.Info("File reloaded",
                         "The save file was reloaded successfully.",
@@ -256,7 +332,7 @@ namespace ScritchyScratchyCheater.Views.Pages
         {
             if (App.SaveFileService.LoadedSaveFile != null)
             {
-                var result = ShowMessage.Warning("Save before Closing",
+                var result = ShowMessage.Warning("Closing File",
                     "Are you sure you want to close the save file? Any unsaved changes will be lost.",
                     App.Current.MainWindow,
                     Dialogs.MessageDialog.DialogOptions.YesNo);
@@ -264,7 +340,7 @@ namespace ScritchyScratchyCheater.Views.Pages
                 if (result == true)
                 {
                     App.SaveFileService.Reset();
-                    App.PageNavigator.Navigate(new StartPage());
+                    App.PageNavigator.Navigate(new StartingPage()); // cache it u dumb bitch!!!!!
                 }
                 else
                 {
@@ -288,5 +364,56 @@ namespace ScritchyScratchyCheater.Views.Pages
 
             Process.Start("explorer.exe", $"/select,\"{filePath}\"");
         }
+
+        private void SearchAchievement_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is TextBox tb)
+            {
+                _searchAchievement = tb.Text;
+                _achievementsView?.Refresh();
+            }
+        }
     }
+
+    #region data containers
+    public sealed class AchievementEntry : INotifyPropertyChanged
+    {
+        public Achievement? Achievement { get; set; }
+        private bool _isUnlocked;
+        private bool _isClaimed;
+
+        public bool IsUnlocked
+        {
+            get => _isUnlocked;
+            set
+            {
+                if (_isUnlocked != value)
+                {
+                    _isUnlocked = value;
+                    OnPropertyChanged(nameof(IsUnlocked));
+                }
+            }
+        }
+
+        public bool IsClaimed
+        {
+            get => _isClaimed;
+            set
+            {
+                if (_isClaimed != value)
+                {
+                    _isClaimed = value;
+                    OnPropertyChanged(nameof(IsClaimed));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+    }
+    #endregion
 }
+

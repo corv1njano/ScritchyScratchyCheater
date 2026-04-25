@@ -61,7 +61,7 @@ namespace ScritchyScratchyCheater.Controls
         // Background Color
         public static readonly DependencyProperty BackgroundColorProperty =
             DependencyProperty.Register(nameof(BackgroundColor), typeof(Brush), typeof(CustomButton),
-                new PropertyMetadata((SolidColorBrush) Application.Current.TryFindResource("ControlElement.Background")));
+                new PropertyMetadata((SolidColorBrush)Application.Current.TryFindResource("ControlElement.Background")));
         public Brush BackgroundColor
         {
             get => (Brush)GetValue(BackgroundColorProperty);

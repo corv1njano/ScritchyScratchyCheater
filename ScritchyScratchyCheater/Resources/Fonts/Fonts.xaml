@@ -5,7 +5,7 @@
         pack://application:,,,/Resources/Fonts/#Montserrat Medium
     </FontFamily>
 
-    <FontFamily x:Key="Montserrat.Bold">
+    <FontFamily x:Key="Montserrat">
         pack://application:,,,/Resources/Fonts/#Montserrat
     </FontFamily>
 

@@ -19,7 +19,7 @@ namespace ScritchyScratchyCheater.Views.Dialogs
             MessageTitle.Text = title;
             MessageBody.Text = body;
             Title = title;
-            
+
             if (options == DialogOptions.Ok)
             {
                 HideAllButons();

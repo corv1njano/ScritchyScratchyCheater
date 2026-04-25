@@ -5,7 +5,7 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    <Rectangle Margin="0" StrokeDashArray="1 2" Stroke="Transparent" SnapsToDevicePixels="true" StrokeThickness="0"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -59,7 +59,7 @@
     </Style>
     
     <Style TargetType="{x:Type TabControl}">
-        <Setter Property="Padding" Value="10,16,10,10"/>
+        <Setter Property="Padding" Value="10"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Background" Value="{StaticResource Window.Background}"/>

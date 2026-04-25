@@ -22,7 +22,7 @@ namespace ScritchyScratchyCheater
             App.SaveFileService.SaveFileChanged += OnSaveFileChanged;
             App.PageNavigator.CurrentPageChanged += OnCurrentPageChanged;
 
-            PageContainer.Navigate(new StartPage());
+            PageContainer.Content = new StartingPage();
         }
 
         private void OnFilePathChanged(string path)
@@ -44,9 +44,9 @@ namespace ScritchyScratchyCheater
 
         private void OnSaveFileChanged(ISaveFile? saveFile) { }
 
-        private void OnCurrentPageChanged(Page page)
+        private void OnCurrentPageChanged(UserControl page)
         {
-            PageContainer.Navigate(page);
+            PageContainer.Content = page;
         }
 
         private void Button_Minimize(object sender, RoutedEventArgs e)
@@ -69,14 +69,13 @@ namespace ScritchyScratchyCheater
             //        return;
             //    }
             //}
-
             _windowWrapper.CloseWindow();
         }
 
         private void Info_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(
-                "Version 1.1.0 (release April 2026)\n\n" +
+                "Version 1.2.0 (release April 2026)\n\n" +
                 "Made by corv1njano. Check out my GitHub:\n" +
                 "https://github.com/corv1njano",
                 "About this App",
