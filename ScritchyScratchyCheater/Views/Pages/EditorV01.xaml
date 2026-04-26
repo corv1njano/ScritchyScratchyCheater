@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="550"
              Background="{StaticResource Window.Background}"
-             Loaded="Editor_Loaded">
+             Loaded="EditorV01_Loaded">
 
     <UserControl.Resources>
         <converters:IconIdToImageConverter x:Key="IconIdToImageConverter"/>
@@ -27,11 +27,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <controls:IconButton Click="SaveCurrentChanges_Click" Margin="8" Text="Save" Icon="{StaticResource Icon.Save}" ToolTip="Save all Changes"/>
-                <controls:IconButton Click="ReloadSaveFile_Click" Margin="0,8,8,8" Text="Reload" Icon="{StaticResource Icon.Refresh}" ToolTip="Reload current Save File"/>
-                <controls:IconButton Click="CloseSaveFile_Click" Margin="0,8,8,8" Text="Close" Icon="{StaticResource Icon.Close}" ToolTip="Close current Save File"/>
+                <controls:IconButton Command="{Binding SaveChangesCommand}" Margin="8" Text="Save" Icon="{StaticResource Icon.Save}" ToolTip="Save all Changes"/>
+                <controls:IconButton Command="{Binding ReloadSaveFileCommand}" Margin="0,8,8,8" Text="Reload" Icon="{StaticResource Icon.Refresh}" ToolTip="Reload current Save File"/>
+                <controls:IconButton Command="{Binding CloseSaveFileCommand}" Margin="0,8,8,8" Text="Close" Icon="{StaticResource Icon.Close}" ToolTip="Close current Save File"/>
             </StackPanel>
-            <controls:IconButton Click="OpenFileExplorer_Click" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Text="Locate" Icon="{StaticResource Icon.Folder}" ToolTip="Open in File Explorer"/>
+            <controls:IconButton Command="{Binding OpenFileExplorerCommand}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Text="Locate" Icon="{StaticResource Icon.Folder}" ToolTip="Open in File Explorer"/>
         </Grid>
 
         <TabControl Grid.Row="1">
@@ -64,39 +64,35 @@
                             <Setter Property="Margin" Value="8,0,0,0"/>
                             <Setter Property="VerticalAlignment" Value="Center"/>
                         </Style>
-                        <Style TargetType="TextBox" BasedOn="{StaticResource TextBox.Default}">
-                            <Setter Property="Margin" Value="0,0,8,0"/>
-                            <Setter Property="MaxLength" Value="50"/>
-                        </Style>
                     </Grid.Resources>
 
-                    <Image Grid.Column="0" Grid.Row="0" x:Name="MoneyIcon"/>
-                    <Image Grid.Column="0" Grid.Row="2" x:Name="PrestigeIcon"/>
-                    <Image Grid.Column="0" Grid.Row="4" x:Name="TokenIcon"/>
-                    <Image Grid.Column="0" Grid.Row="6" x:Name="SoulIcon"/>
+                    <Image Grid.Column="0" Grid.Row="0" Source="{Binding MoneyIcon}"/>
+                    <Image Grid.Column="0" Grid.Row="2" Source="{Binding PrestigeIcon}"/>
+                    <Image Grid.Column="0" Grid.Row="4" Source="{Binding TokensIcon}"/>
+                    <Image Grid.Column="0" Grid.Row="6" Source="{Binding SoulsIcon}"/>
 
                     <TextBlock Style="{StaticResource def}" Grid.Column="1" Grid.Row="0" Text="Money:"/>
                     <TextBlock Style="{StaticResource def}" Grid.Column="1" Grid.Row="2" Text="Prestige:"/>
                     <TextBlock Style="{StaticResource def}" Grid.Column="1" Grid.Row="4" Text="Tokens:"/>
                     <TextBlock Style="{StaticResource def}" Grid.Column="1" Grid.Row="6" Text="Souls:"/>
 
-                    <TextBox Grid.Column="2" Grid.Row="0" x:Name="InputMoney"
-                         TextChanged="InputMoney_TextChanged"/>
-                    <TextBox Grid.Column="2" Grid.Row="2" x:Name="InputPrestige"
-                         TextChanged="InputPrestige_TextChanged"/>
-                    <TextBox Grid.Column="2" Grid.Row="4" x:Name="InputTokens"
-                         TextChanged="InputTokens_TextChanged"/>
-                    <TextBox Grid.Column="2" Grid.Row="6" x:Name="InputSouls"
-                         TextChanged="InputSouls_TextChanged"/>
+                    <controls:ValidatedTextBox Grid.Column="2" Grid.Row="0" Text="{Binding MoneyText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
+                                               IsValid="{Binding IsMoneyValid}"/>
+                    <controls:ValidatedTextBox Grid.Column="2" Grid.Row="2" Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
+                                               IsValid="{Binding IsPrestigeValid}"/>
+                    <controls:ValidatedTextBox Grid.Column="2" Grid.Row="4" Text="{Binding TokensText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
+                                               IsValid="{Binding IsTokensVlaid}"/>
+                    <controls:ValidatedTextBox Grid.Column="2" Grid.Row="6" Text="{Binding SoulsText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
+                                               IsValid="{Binding IsSoulsValid}"/>
 
                     <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover}" Grid.Column="3" Grid.Row="0" Content="Max."
-                                       Click="MaxMoney_Click"/>
+                                           Command="{Binding MaxMoneyCommand}"/>
                     <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover}" Grid.Column="3" Grid.Row="2" Content="Max."
-                                       Click="MaxPrestige_Click"/>
+                                           Command="{Binding MaxPrestigeCommand}"/>
                     <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover}" Grid.Column="3" Grid.Row="4" Content="Max."
-                                       Click="MaxTokens_Click"/>
+                                           Command="{Binding MaxTokensCommand}"/>
                     <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover}" Grid.Column="3" Grid.Row="6" Content="Max."
-                                       Click="MaxSouls_Click"/>
+                                           Command="{Binding MaxSoulsCommand}"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Upgrades">
@@ -106,9 +102,7 @@
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Prestige editing will be available soon!"/>
             </TabItem>
             <TabItem Header="Achievements">
-
                 <Border BorderBrush="{StaticResource ControlElement.Flat.Border}" BorderThickness="1" CornerRadius="4">
-
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="35"/>
@@ -119,17 +113,21 @@
                             <StackPanel Orientation="Horizontal" >
                                 <TextBlock Style="{StaticResource TextBlock.Base}" Text="Search: " Margin="5,0,0,0"/>
                                 <controls:TextBoxPlaceholder Style="{StaticResource TextBox.ListSearch}" PlaceholderText="Search for Achievement..." Width="200"
-                                                             TextChanged="SearchAchievement_TextChanged"  MaxLength="50"/>
+                                                             Text="{Binding SearchAchievement, UpdateSourceTrigger=PropertyChanged}" MaxLength="50"/>
                                 <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"
                                                        Content="Unlock All" Width="75" Margin="5,2,0,2"
-                                                       Click="UnlockAllAchievements_Click"/>
+                                                       Command="{Binding UnlockAllAchievementsCommand}"/>
                                 <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"
                                                        Content="Claim All" Width="75" Margin="5,2,0,2"
-                                                       Click="ClaimAllAchievements_Click"/>
+                                                       Command="{Binding ClaimAllAchievementsCommand}"/>
                             </StackPanel>
                         </Border>
-                        
-                        <ListBox Grid.Row="1" Style="{StaticResource ListBox.Default}" x:Name="AchievementsList" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False">
+
+                        <ListBox Grid.Row="1" Style="{StaticResource ListBox.Default}"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                 ScrollViewer.CanContentScroll="False"
+                                 ItemsSource="{Binding AchievementsView}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
@@ -153,7 +151,6 @@
                         </ListBox>
                     </Grid>
                 </Border>
-
             </TabItem>
             <TabItem Header="Cosmetics">
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Cosmetics editing will be available soon!"/>

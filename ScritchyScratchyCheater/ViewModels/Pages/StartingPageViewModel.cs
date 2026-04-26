@@ -40,7 +40,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         {
             CreateBackup(filePath);
 
-            // TODO: change, cause this sucks
             var (result, version) = await App.SaveFileService.Initialize(filePath);
 
             if (!result) //  || version == null
