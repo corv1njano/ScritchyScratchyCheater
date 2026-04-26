@@ -66,7 +66,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.StatusBar}" Text="v1.2.0"/>
+            <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.StatusBar}" Text="{x:Static local:App.APP_VERSION}"/>
             <TextBlock Text="{Binding SelectedSaveFilePath}" ToolTip="{Binding SaveFileTooltip}" Grid.Column="1" Style="{StaticResource TextBlock.StatusBar}" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>

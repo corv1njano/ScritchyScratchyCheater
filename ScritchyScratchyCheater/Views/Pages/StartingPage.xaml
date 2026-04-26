@@ -17,9 +17,9 @@
 
             <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,20,0,0">
                 <StackPanel Orientation="Vertical">
-                    <controls:IconButton Text="Load Save File" Icon="{StaticResource Icon.File}" Width="200" Click="LoadDefaultSaveFile_Click"/>
+                    <controls:IconButton Text="Load Save File" Icon="{StaticResource Icon.File}" Width="200" Command="{Binding LoadDefaultSaveFileCommand}"/>
                     <TextBlock Text="or" FontSize="14" Style="{StaticResource TextBlock.Base}" Margin="0,8" HorizontalAlignment="Center"/>
-                    <controls:IconButton Text="Browse for File" Icon="{StaticResource Icon.Folder}" Width="200" Click="BrowseSaveFile_Click"/>
+                    <controls:IconButton Text="Browse for File" Icon="{StaticResource Icon.Folder}" Width="200" Command="{Binding BrowseSaveFileCommand}"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
