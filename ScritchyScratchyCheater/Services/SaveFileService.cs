@@ -3,6 +3,7 @@ using ScritchyScratchyCheater.SaveFiles;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace ScritchyScratchyCheater.Services
 {
@@ -37,15 +38,28 @@ namespace ScritchyScratchyCheater.Services
             if (new FileInfo(filePath).Length == 0) return (false, null);
 
             var json = await File.ReadAllTextAsync(filePath);
-            SaveFileVersionInfo? versionInfo = JsonSerializer.Deserialize<SaveFileVersionInfo>(json, App.JsonOptions);
+            json = SanitizeJsonNumbers(json);
 
-            if (versionInfo?.SaveVersion == null) return (false, null);
+            SaveFileVersionInfo? versionInfo;
+            ISaveFile? loadedSave;
 
-            ISaveFile? loadedSave = versionInfo.SaveVersion switch
+            try
             {
-                "0.1" => JsonSerializer.Deserialize<SaveFileV01>(json, App.JsonOptions),
-                _ => null
-            };
+                versionInfo = JsonSerializer.Deserialize<SaveFileVersionInfo>(json, App.JsonOptions);
+
+                if (versionInfo?.SaveVersion == null) return (false, null);
+
+                loadedSave = versionInfo.SaveVersion switch
+                {
+                    "0.1" => JsonSerializer.Deserialize<SaveFileV01>(json, App.JsonOptions),
+                    _ => null
+                };
+            }
+            catch (JsonException ex)
+            {
+                Debug.WriteLine($"Save file deserialization failed: {ex}");
+                return (false, null);
+            }
 
             if (loadedSave == null) return (false, null);
 
@@ -88,6 +102,18 @@ namespace ScritchyScratchyCheater.Services
 
             SaveFileChanged?.Invoke(LoadedSaveFile);
             FilePathChanged?.Invoke(CurrentFilePath);
+        }
+
+        /// <summary>
+        /// Replaces invalid JSON number literals (<c>NaN</c>, <c>Infinity</c>, <c>-Infinity</c>)
+        /// with <c>0</c> so that the JSON can be deserialized without errors.
+        /// </summary>
+        private static string SanitizeJsonNumbers(string json)
+        {
+            // NaN and ±Infinity are not valid JSON literals; replace them with 0.
+            // The lookbehind/lookahead guards ensure only unquoted numeric values are replaced,
+            // not occurrences inside JSON string values.
+            return Regex.Replace(json, @"(?<![""a-zA-Z0-9_])-?(?:NaN|Infinity)(?![""a-zA-Z0-9_])", "0");
         }
     }
 }
