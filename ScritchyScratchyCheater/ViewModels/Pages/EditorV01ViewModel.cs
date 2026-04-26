@@ -154,7 +154,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             {
                 ShowMessage.Error("Saving prohibited",
                     "Some input fields are invalid. The save file cannot be updated.",
-                    App.Current.MainWindow,
                     DialogOptions.Ok);
                 return;
             }
@@ -188,14 +187,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             {
                 ShowMessage.Info("File saved",
                     "The save file was updated successfully.",
-                    App.Current.MainWindow,
                     DialogOptions.Ok);
             }
             else
             {
                 ShowMessage.Error("Saving failed",
                     "Unable to update the save file.",
-                    App.Current.MainWindow,
                     DialogOptions.Ok);
             }
         }
@@ -205,7 +202,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         {
             var dialogResult = ShowMessage.Warning("Reloading File",
                 "Are you sure you want to reload the save file? Any unsaved changes will be lost.",
-                App.Current.MainWindow,
                 DialogOptions.YesNo);
 
             if (dialogResult == true)
@@ -213,14 +209,11 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                 var oldPath = App.SaveFileService.CurrentFilePath;
                 var oldVersion = App.SaveFileService.CurrentSaveFileVersion;
 
-                // TODO: bool  as return type? is version needed here (or in general?)?
                 var (result, version) = await App.SaveFileService.Initialize(oldPath);
-
                 if (!result || version == null)
                 {
                     ShowMessage.Error("Reloading failed",
                         "Unable to reload the save file. The file will now be closed.",
-                        App.Current.MainWindow,
                         DialogOptions.Ok);
 
                     App.SaveFileService.Reset();
@@ -230,7 +223,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                 {
                     ShowMessage.Info("File reloaded",
                         "The save file was reloaded successfully.",
-                        App.Current.MainWindow,
                         DialogOptions.Ok);
                 }
             }
@@ -243,7 +235,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             {
                 var result = ShowMessage.Warning("Closing File",
                     "Are you sure you want to close the save file? Any unsaved changes will be lost.",
-                    App.Current.MainWindow,
                     DialogOptions.YesNo);
 
                 if (result == true)
@@ -263,7 +254,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             {
                 ShowMessage.Error("File not found",
                     "Unable to locate the save file. It may have been moved, renamed, or deleted.",
-                    App.Current.MainWindow,
                     DialogOptions.Ok);
                 return;
             }

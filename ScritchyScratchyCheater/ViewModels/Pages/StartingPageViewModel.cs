@@ -41,36 +41,20 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             CreateBackup(filePath);
 
             var (result, version) = await App.SaveFileService.Initialize(filePath);
-
-            if (!result) //  || version == null
-            {
-                ShowMessage.Error("File inavlid",
-                    "The selected save file cannot be opened. It may have an unsupported version or an invalid data structure.",
-                    App.Current.MainWindow,
-                    DialogOptions.Ok);
-                return;
-            }
-
             switch (version)
             {
                 case "0.1":
                     App.PageNavigator.Navigate(new EditorV01());
                     break;
                 default:
-                    // will never readed tho
-                    ShowMessage.Error("Inavlid Version",
-                        "The save version is not supported. Cannot open the save file.",
-                        App.Current.MainWindow,
-                        DialogOptions.Ok);
                     break;
             }
         }
 
         private void CreateBackup(string sourcePath)
         {
-            var result = ShowMessage.Neutral("Create Backup?",
+            var result = ShowMessage.Neutral("Create backup?",
                 "Do you want to create a backup of your save file before editing?",
-                App.Current.MainWindow,
                 DialogOptions.YesNo);
 
             if (result == false) return;
@@ -96,7 +80,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
 
                 ShowMessage.Info("Backup done",
                     "A backup of the save file has been created successfully.",
-                    App.Current.MainWindow,
                     DialogOptions.Ok);
             }
         }

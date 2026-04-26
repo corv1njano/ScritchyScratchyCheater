@@ -6,7 +6,7 @@ namespace ScritchyScratchyCheater.Utilities
 {
     public static class ShowMessage
     {
-        public static bool Neutral(string title, string body, Window owner, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.Info) // sound changed from DialogSound.None to Info
+        public static bool Neutral(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.None, Window? owner = null)
         {
             var d = new MessageDialog(title, body, options, sound, DialogColor.Neutral);
             d.Owner = owner ?? App.Current.MainWindow;
@@ -14,7 +14,7 @@ namespace ScritchyScratchyCheater.Utilities
             return d.ShowDialog() ?? false;
         }
 
-        public static bool Info(string title, string body, Window owner, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.Info)
+        public static bool Info(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.Info, Window? owner = null)
         {
             var d = new MessageDialog(title, body, options, sound, DialogColor.Info);
             d.Owner = owner ?? App.Current.MainWindow;
@@ -22,7 +22,7 @@ namespace ScritchyScratchyCheater.Utilities
             return d.ShowDialog() ?? false;
         }
 
-        public static bool Warning(string title, string body, Window owner, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.None)
+        public static bool Warning(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.None, Window? owner = null)
         {
             var d = new MessageDialog(title, body, options, sound, DialogColor.Warning);
             d.Owner = owner ?? App.Current.MainWindow;
@@ -30,7 +30,7 @@ namespace ScritchyScratchyCheater.Utilities
             return d.ShowDialog() ?? false;
         }
 
-        public static bool Error(string title, string body, Window owner, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.Error)
+        public static bool Error(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.Error, Window? owner = null)
         {
             var d = new MessageDialog(title, body, options, sound, DialogColor.Error);
             d.Owner = owner ?? App.Current.MainWindow;

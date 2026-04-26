@@ -1,8 +1,10 @@
 ﻿using ScritchyScratchyCheater.Interfaces;
 using ScritchyScratchyCheater.SaveFiles;
+using ScritchyScratchyCheater.Utilities;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
+using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
 namespace ScritchyScratchyCheater.Services
 {
@@ -33,13 +35,31 @@ namespace ScritchyScratchyCheater.Services
         {
             Reset();
 
-            if (!File.Exists(filePath)) return (false, null);
-            if (new FileInfo(filePath).Length == 0) return (false, null);
+            if (!File.Exists(filePath))
+            {
+                ShowMessage.Error("File not found",
+                    "Unable to find the selected file or the default file. It may have been renamed, removed or deleted.",
+                    DialogOptions.Ok);
+                return (false, null);
+            }
+            if (new FileInfo(filePath).Length == 0)
+            {
+                ShowMessage.Error("File empty",
+                    "The selected file does not contain any data. Cannot open the save file.",
+                    DialogOptions.Ok);
+                return (false, null);
+            }
 
             var json = await File.ReadAllTextAsync(filePath);
             SaveFileVersionInfo? versionInfo = JsonSerializer.Deserialize<SaveFileVersionInfo>(json, App.JsonOptions);
 
-            if (versionInfo?.SaveVersion == null) return (false, null);
+            if (versionInfo?.SaveVersion == null)
+            {
+                ShowMessage.Error("Invalid save version",
+                    "The save version is not supported. Cannot open the save file.",
+                    DialogOptions.Ok);
+                return (false, null);
+            }
 
             ISaveFile? loadedSave = versionInfo.SaveVersion switch
             {
@@ -47,7 +67,13 @@ namespace ScritchyScratchyCheater.Services
                 _ => null
             };
 
-            if (loadedSave == null) return (false, null);
+            if (loadedSave == null)
+            {
+                ShowMessage.Error("Invalid data structure",
+                    "The save file’s data structure is invalid. Cannot open the save file.",
+                    DialogOptions.Ok);
+                return (false, null);
+            }
 
             LoadedSaveFile = loadedSave;
             SaveFileChanged?.Invoke(loadedSave);
