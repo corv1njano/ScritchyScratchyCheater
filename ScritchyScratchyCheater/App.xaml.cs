@@ -15,6 +15,8 @@ namespace ScritchyScratchyCheater
             WriteIndented = true
         };
 
+        public const string APP_VERSION = "v1.2.1";
+
         public static PageNavigator PageNavigator { get; } = new();
         public static SaveFileService SaveFileService { get; } = new();
         public static ResourceParser ResourceParser { get; } = new();

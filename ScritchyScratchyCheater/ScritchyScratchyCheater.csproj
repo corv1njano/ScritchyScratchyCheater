@@ -55,4 +55,8 @@
     <Resource Include="Resources\Images\sprite_images.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+  </ItemGroup>
+
 </Project>
