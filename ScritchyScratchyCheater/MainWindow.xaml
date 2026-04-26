@@ -50,14 +50,14 @@
                         <Setter Property="Fill" Value="{DynamicResource Font.Secondary}"/>
                     </Style>
                 </StackPanel.Resources>
-                <Button Style="{StaticResource Button.WindowControl.Info}" ToolTip="About this App" Click="Info_Click"/>
+                <Button Style="{StaticResource Button.WindowControl.Info}" ToolTip="About this App" Command="{Binding OpenAboutAppCommand}"/>
                 <Button Style="{StaticResource Button.WindowControl.Minimize}" Click="Button_Minimize"/>
                 <Button Style="{StaticResource Button.WindowControl.Close}" Click="Button_Close"/>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1">
-            <ContentControl x:Name="PageContainer" IsTabStop="False"/>
+            <ContentControl Content="{Binding CurrentPage}" IsTabStop="False"/>
         </Grid>
 
         <!-- statusbar -->
@@ -67,7 +67,7 @@
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.StatusBar}" Text="v1.2.0"/>
-            <TextBlock x:Name="SelectedSaveFilePath" Grid.Column="1" Style="{StaticResource TextBlock.StatusBar}" HorizontalAlignment="Right" Text="No save file selected."/>
+            <TextBlock Text="{Binding SelectedSaveFilePath}" ToolTip="{Binding SaveFileTooltip}" Grid.Column="1" Style="{StaticResource TextBlock.StatusBar}" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Window>
