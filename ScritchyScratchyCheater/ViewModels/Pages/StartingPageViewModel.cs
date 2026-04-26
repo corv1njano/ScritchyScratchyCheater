@@ -38,9 +38,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
 
         private async Task LoadSaveFile(string filePath)
         {
-            CreateBackup(filePath);
-
             var (result, version) = await App.SaveFileService.Initialize(filePath);
+
+            if (result) CreateBackup(filePath);
+
             switch (version)
             {
                 case "0.1":
