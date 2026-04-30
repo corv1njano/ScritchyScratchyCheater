@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="550"
              Background="{StaticResource Window.Background}"
-             Loaded="EditorV01_Loaded">
+             Loaded="Editor_Loaded">
 
     <UserControl.Resources>
         <converters:IconIdToImageConverter x:Key="IconIdToImageConverter"/>
@@ -81,7 +81,7 @@
                     <controls:ValidatedTextBox Grid.Column="2" Grid.Row="2" Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
                                                IsValid="{Binding IsPrestigeValid}"/>
                     <controls:ValidatedTextBox Grid.Column="2" Grid.Row="4" Text="{Binding TokensText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
-                                               IsValid="{Binding IsTokensVlaid}"/>
+                                               IsValid="{Binding IsTokensValid}"/>
                     <controls:ValidatedTextBox Grid.Column="2" Grid.Row="6" Text="{Binding SoulsText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
                                                IsValid="{Binding IsSoulsValid}"/>
 

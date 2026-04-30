@@ -11,14 +11,11 @@ namespace ScritchyScratchyCheater.Utilities.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is not bool boolValue)
-                return Visibility.Collapsed;
+            if (value is not bool boolValue) return Visibility.Collapsed;
 
-            if (Invert)
-                boolValue = !boolValue;
+            if (Invert) boolValue = !boolValue;
 
-            if (boolValue)
-                return Visibility.Visible;
+            if (boolValue) return Visibility.Visible;
 
             return UseHidden ? Visibility.Hidden : Visibility.Collapsed;
         }

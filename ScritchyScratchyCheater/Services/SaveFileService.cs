@@ -18,6 +18,7 @@ namespace ScritchyScratchyCheater.Services
         public string CurrentFilePath { get; private set; } = string.Empty;
         public event Action<string>? FilePathChanged;
         public string CurrentSaveFileVersion { get; private set; } = string.Empty;
+        public event Action<string>? SaveFileVersionChanged;
 
         public SaveFileService()
         {
@@ -51,33 +52,60 @@ namespace ScritchyScratchyCheater.Services
             }
 
             var json = await File.ReadAllTextAsync(filePath);
-            SaveFileVersionInfo? versionInfo = JsonSerializer.Deserialize<SaveFileVersionInfo>(json, App.JsonOptions);
 
-            if (versionInfo?.SaveVersion == null)
+            SaveFileVersionInfo? versionInfo;
+            try
             {
-                ShowMessage.Error("Invalid save version",
-                    "The save version is not supported. Cannot open the save file.",
+                versionInfo = JsonSerializer.Deserialize<SaveFileVersionInfo>(json, App.JsonOptions);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+
+                ShowMessage.Error("Invalid save file",
+                    "Could not read the save file. The data structure is invalid.",
                     DialogOptions.Ok);
                 return (false, null);
             }
 
-            ISaveFile? loadedSave = versionInfo.SaveVersion switch
+            if (versionInfo?.SaveVersion == null || !App.SupportedVersions.Contains(versionInfo.SaveVersion))
             {
-                "0.1" => JsonSerializer.Deserialize<SaveFileV01>(json, App.JsonOptions),
-                _ => null
-            };
+                ShowMessage.Error("Invalid save version",
+                    "The save version is not supported. Cannot edit the save file.",
+                    DialogOptions.Ok);
+                return (false, null);
+            }
+
+            ISaveFile? loadedSave;
+            try
+            {
+                loadedSave = versionInfo.SaveVersion switch
+                {
+                    "0.1" => JsonSerializer.Deserialize<SaveFileV01>(json, App.JsonOptions),
+                    _ => null
+                };
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+
+                ShowMessage.Error("Invalid save file",
+                    "Could not read the save file. The data structure is invalid.",
+                    DialogOptions.Ok);
+                return (false, null);
+            }
 
             if (loadedSave == null)
             {
-                ShowMessage.Error("Invalid data structure",
-                    "The save file’s data structure is invalid. Cannot open the save file.",
+                ShowMessage.Error("Invalid save file",
+                    "The save file could not be parsed. It may have an unsupported version or an invalid data structure.",
                     DialogOptions.Ok);
                 return (false, null);
             }
 
             LoadedSaveFile = loadedSave;
             SaveFileChanged?.Invoke(loadedSave);
-            //Debug.WriteLine(LoadedSaveFile.ToJson());
+            Debug.WriteLine(LoadedSaveFile.ToJson());
 
             CurrentFilePath = filePath;
             FilePathChanged?.Invoke(CurrentFilePath);
@@ -86,6 +114,7 @@ namespace ScritchyScratchyCheater.Services
             return (true, versionInfo.SaveVersion);
         }
 
+        
         public async Task<bool> Save()
         {
             if (LoadedSaveFile == null) return false;
@@ -104,6 +133,9 @@ namespace ScritchyScratchyCheater.Services
             }
         }
 
+        /// <summary>
+        /// Resets the current save file state, clearing all loaded data and file information.
+        /// </summary>
         public void Reset()
         {
             if (LoadedSaveFile == null && string.IsNullOrEmpty(CurrentFilePath)) return;
@@ -114,6 +146,7 @@ namespace ScritchyScratchyCheater.Services
 
             SaveFileChanged?.Invoke(LoadedSaveFile);
             FilePathChanged?.Invoke(CurrentFilePath);
+            SaveFileVersionChanged?.Invoke(CurrentSaveFileVersion);
         }
     }
 }

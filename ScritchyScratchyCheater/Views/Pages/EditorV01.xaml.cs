@@ -17,7 +17,7 @@ namespace ScritchyScratchyCheater.Views.Pages
             DataContext = new EditorV01ViewModel();
         }
 
-        private async void EditorV01_Loaded(object sender, RoutedEventArgs e)
+        private async void Editor_Loaded(object sender, RoutedEventArgs e)
         {
             await ViewModel.LoadUiAsync();
         }
