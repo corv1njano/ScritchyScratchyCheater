@@ -34,7 +34,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         [NotifyPropertyChangedFor(nameof(IsSoulsValid))]
         private string _soulsText = string.Empty;
 
-        public bool IsMoneyValid => double.TryParse(MoneyText, NumberStyles.Any, CultureInfo.InvariantCulture, out _);
+        public bool IsMoneyValid =>
+            double.TryParse(MoneyText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
+            && !double.IsNaN(value)
+            && !double.IsInfinity(value);
         public bool IsPrestigeValid => int.TryParse(PrestigeText, out _);
         public bool IsTokensValid => int.TryParse(TokensText, out _);
         public bool IsSoulsValid => int.TryParse(SoulsText, out _);
@@ -84,7 +87,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         {
             if (App.SaveFileService.LoadedSaveFile is SaveFileV01 sf)
             {
-                MoneyText = sf.LayerOne!.Money.ToString(CultureInfo.InvariantCulture);
+                MoneyText = SaveFileHelper.SanitizeDouble(sf.LayerOne!.Money).ToString(CultureInfo.InvariantCulture);
                 PrestigeText = sf.PrestigeCurrency.ToString();
                 TokensText = sf.Tokens.ToString();
                 SoulsText = sf.LayerOne.Souls.ToString();
@@ -108,7 +111,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         [RelayCommand]
         private void MaxMoney()
         {
-            MoneyText = double.MaxValue.ToString(CultureInfo.InvariantCulture);
+            MoneyText = 1e300.ToString(CultureInfo.InvariantCulture);
         }
 
         [RelayCommand]
@@ -182,17 +185,17 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             sf.AchievementsGotten = gottenSet.ToList();
             sf.AchievementsClaimed = claimedSet.ToList();
 
-            bool result = await App.SaveFileService.Save();
-            if (result)
+            SaveResult result = await App.SaveFileService.Save();
+            if (result.Success)
             {
                 ShowMessage.Info("File saved",
-                    "The save file was updated successfully.",
+                    result.StatusMessage,
                     DialogOptions.Ok);
             }
-            else
+            else if (!result.Success)
             {
                 ShowMessage.Error("Saving failed",
-                    "Unable to update the save file.",
+                    result.StatusMessage,
                     DialogOptions.Ok);
             }
         }
@@ -204,28 +207,59 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                 "Are you sure you want to reload the save file? Any unsaved changes will be lost.",
                 DialogOptions.YesNo);
 
-            if (dialogResult == true)
+            if (dialogResult == false) return;
+
+            var oldPath = App.SaveFileService.CurrentFilePath;
+
+            if (string.IsNullOrWhiteSpace(oldPath))
             {
-                var oldPath = App.SaveFileService.CurrentFilePath;
-                var oldVersion = App.SaveFileService.CurrentSaveFileVersion;
+                ShowMessage.Error("Reloading failed",
+                    "The file location could not be determined.",
+                    DialogOptions.Ok);
+                return;
+            }
 
-                var (result, version) = await App.SaveFileService.Initialize(oldPath);
-                if (!result || version == null)
-                {
-                    ShowMessage.Error("Reloading failed",
-                        "Unable to reload the save file. The file will now be closed.",
-                        DialogOptions.Ok);
+            LoadResult loadResult = await App.SaveFileService.Load(oldPath);
 
-                    App.SaveFileService.Reset();
-                    App.PageNavigator.Navigate(new StartingPage());
-                }
-                else if (result == true && version == oldVersion)
+            if (!loadResult.Success)
+            {
+                ShowMessage.Error("Reloading failed",
+                    loadResult.StatusMessage,
+                    DialogOptions.Ok);
+
+                App.SaveFileService.Reset();
+                App.PageNavigator.Navigate(new StartingPage());
+                return;
+            }
+
+            var oldVersion = App.SaveFileService.CurrentSaveFileVersion;
+
+            if (loadResult.Version != oldVersion)
+            {
+                ShowMessage.Warning(
+                   "Version changed",
+                   $"The save file version changed from '{oldVersion}' to '{loadResult.Version}'. The editor will be reloaded.",
+                   DialogOptions.Ok);
+
+                switch (loadResult.Version)
                 {
-                    ShowMessage.Info("File reloaded",
-                        "The save file was reloaded successfully.",
-                        DialogOptions.Ok);
+                    case "0.1":
+                        App.PageNavigator.Navigate(new EditorV01());
+                        break;
+
+                    default:
+                        ShowMessage.Warning(
+                           "Reloading failed",
+                           $"The loaded save file version '{loadResult.Version}' is not supported. Returning to the start page.",
+                           DialogOptions.Ok);
+                        App.PageNavigator.Navigate(new StartingPage());
+                        break;
                 }
             }
+
+            ShowMessage.Info("File reloaded",
+                "Save file successfully reloaded.",
+                DialogOptions.Ok);
         }
 
         [RelayCommand]

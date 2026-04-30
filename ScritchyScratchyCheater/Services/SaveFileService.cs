@@ -1,18 +1,16 @@
 ﻿using ScritchyScratchyCheater.Interfaces;
 using ScritchyScratchyCheater.SaveFiles;
-using ScritchyScratchyCheater.Utilities;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
-using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
 namespace ScritchyScratchyCheater.Services
 {
     public class SaveFileService
     {
-        public string DefaultSaveFilePath { get; private set; }
+        public string DefaultSaveFilePath { get; init; }
 
-        public ISaveFile? LoadedSaveFile { get; private set; } = null;
+        public ISaveFile? LoadedSaveFile { get; private set; }
         public event Action<ISaveFile?>? SaveFileChanged;
 
         public string CurrentFilePath { get; private set; } = string.Empty;
@@ -32,23 +30,33 @@ namespace ScritchyScratchyCheater.Services
             );
         }
 
-        public async Task<(bool success, string? version)> Initialize(string filePath)
+        /// <summary>
+        /// Loads a save file from the specified path, validates its structure and version, and updates the current
+        /// application state accordingly.
+        /// </summary>
+        /// <param name="filePath">The path to the save file to load. Must refer to an existing, non-empty file containing a supported save
+        /// file format.</param>
+        /// <returns>A LoadResult indicating whether the operation succeeded, the detected save file version if successful, and a
+        /// status message describing the outcome.</returns>
+        public async Task<LoadResult> Load(string filePath)
         {
             Reset();
 
             if (!File.Exists(filePath))
             {
-                ShowMessage.Error("File not found",
-                    "Unable to find the selected file or the default file. It may have been renamed, removed or deleted.",
-                    DialogOptions.Ok);
-                return (false, null);
+                return new LoadResult()
+                {
+                    Success = false,
+                    StatusMessage = "Unable to find the selected file or the default file. It may have been renamed, removed or deleted."
+                };
             }
             if (new FileInfo(filePath).Length == 0)
             {
-                ShowMessage.Error("File empty",
-                    "The selected file does not contain any data. Cannot open the save file.",
-                    DialogOptions.Ok);
-                return (false, null);
+                return new LoadResult()
+                {
+                    Success = false,
+                    StatusMessage = "The selected file does not contain any data. Cannot open the save file."
+                };
             }
 
             var json = await File.ReadAllTextAsync(filePath);
@@ -60,26 +68,30 @@ namespace ScritchyScratchyCheater.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                Debug.WriteLine($"Loading failed: {ex}");
 
-                ShowMessage.Error("Invalid save file",
-                    "Could not read the save file. The data structure is invalid.",
-                    DialogOptions.Ok);
-                return (false, null);
+                return new LoadResult()
+                {
+                    Success = false,
+                    StatusMessage = "Could not read the save file. The data structure is invalid."
+                };
             }
 
-            if (versionInfo?.SaveVersion == null || !App.SupportedVersions.Contains(versionInfo.SaveVersion))
+            var version = versionInfo?.SaveVersion;
+            if (string.IsNullOrWhiteSpace(version) ||
+                !App.SupportedVersions.Contains(version))
             {
-                ShowMessage.Error("Invalid save version",
-                    "The save version is not supported. Cannot edit the save file.",
-                    DialogOptions.Ok);
-                return (false, null);
+                return new LoadResult()
+                {
+                    Success = false,
+                    StatusMessage = "The save version is not supported. Cannot edit the save file."
+                };
             }
 
             ISaveFile? loadedSave;
             try
             {
-                loadedSave = versionInfo.SaveVersion switch
+                loadedSave = version switch
                 {
                     "0.1" => JsonSerializer.Deserialize<SaveFileV01>(json, App.JsonOptions),
                     _ => null
@@ -87,20 +99,22 @@ namespace ScritchyScratchyCheater.Services
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex);
+                Debug.WriteLine($"Loading failed: {ex}");
 
-                ShowMessage.Error("Invalid save file",
-                    "Could not read the save file. The data structure is invalid.",
-                    DialogOptions.Ok);
-                return (false, null);
+                return new LoadResult()
+                {
+                    Success = false,
+                    StatusMessage = "Could not read the save file. The data structure is invalid."
+                };
             }
 
             if (loadedSave == null)
             {
-                ShowMessage.Error("Invalid save file",
-                    "The save file could not be parsed. It may have an unsupported version or an invalid data structure.",
-                    DialogOptions.Ok);
-                return (false, null);
+                return new LoadResult()
+                {
+                    Success = false,
+                    StatusMessage = "The save file could not be parsed. It may have an unsupported version or an invalid data structure."
+                };
             }
 
             LoadedSaveFile = loadedSave;
@@ -109,27 +123,55 @@ namespace ScritchyScratchyCheater.Services
 
             CurrentFilePath = filePath;
             FilePathChanged?.Invoke(CurrentFilePath);
-            CurrentSaveFileVersion = versionInfo.SaveVersion;
 
-            return (true, versionInfo.SaveVersion);
+            CurrentSaveFileVersion = version;
+            SaveFileVersionChanged?.Invoke(CurrentSaveFileVersion);
+
+            return new LoadResult()
+            {
+                Success = true,
+                Version = version,
+                StatusMessage = ""
+            };
         }
 
-        
-        public async Task<bool> Save()
+        /// <summary>
+        /// Saves the currently loaded save file to the current file path asynchronously.
+        /// </summary>
+        /// <returns>A task that represents the asynchronous save operation. The task completes when the save operation finishes.</returns>
+        public async Task<SaveResult> Save()
         {
-            if (LoadedSaveFile == null) return false;
-            if (string.IsNullOrWhiteSpace(CurrentFilePath)) return false;
+            if (LoadedSaveFile == null
+                || string.IsNullOrWhiteSpace(CurrentFilePath)
+                || string.IsNullOrWhiteSpace(CurrentSaveFileVersion))
+            {
+                return new SaveResult()
+                {
+                    Success = false,
+                    StatusMessage = "No save file loaded. Saving is not possible."
+                };
+            }
 
             try
             {
                 string json = LoadedSaveFile.ToJson();
                 await File.WriteAllTextAsync(CurrentFilePath, json);
-                return true;
+
+                return new SaveResult()
+                {
+                    Success = true,
+                    StatusMessage = "Save file successfully saved."
+                };
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Saveing failed: {ex}");
-                return false;
+
+                return new SaveResult()
+                {
+                    Success = false,
+                    StatusMessage = "Unable to update the save file."
+                };
             }
         }
 
@@ -138,7 +180,9 @@ namespace ScritchyScratchyCheater.Services
         /// </summary>
         public void Reset()
         {
-            if (LoadedSaveFile == null && string.IsNullOrEmpty(CurrentFilePath)) return;
+            if (LoadedSaveFile == null
+                && string.IsNullOrWhiteSpace(CurrentFilePath)
+                && string.IsNullOrWhiteSpace(CurrentSaveFileVersion)) return;
 
             LoadedSaveFile = null;
             CurrentFilePath = string.Empty;
@@ -149,4 +193,19 @@ namespace ScritchyScratchyCheater.Services
             SaveFileVersionChanged?.Invoke(CurrentSaveFileVersion);
         }
     }
+
+    #region result container
+    public sealed class LoadResult
+    {
+        public bool Success { get; init; }
+        public string? Version { get; init; }
+        public string StatusMessage { get; init; } = string.Empty;
+    }
+
+    public sealed class SaveResult
+    {
+        public bool Success { get; init; }
+        public string StatusMessage { get; init; } = string.Empty;
+    }
+    #endregion
 }

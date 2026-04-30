@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
+using ScritchyScratchyCheater.Services;
 using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.Views.Pages;
 using System.IO;
@@ -38,11 +39,19 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
 
         private async Task LoadSaveFile(string filePath)
         {
-            var (result, version) = await App.SaveFileService.Initialize(filePath);
+            LoadResult loadResult =  await App.SaveFileService.Load(filePath);
 
-            if (result) CreateBackup(filePath);
+            if (!loadResult.Success)
+            {
+                ShowMessage.Error("Loading failed",
+                    loadResult.StatusMessage,
+                    DialogOptions.Ok);
+                return;
+            }
 
-            switch (version)
+            CreateBackup(filePath);
+            
+            switch (loadResult.Version)
             {
                 case "0.1":
                     App.PageNavigator.Navigate(new EditorV01());

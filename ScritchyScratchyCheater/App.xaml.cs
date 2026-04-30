@@ -1,5 +1,6 @@
 ﻿using ScritchyScratchyCheater.Services;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows;
 
 namespace ScritchyScratchyCheater
@@ -12,8 +13,8 @@ namespace ScritchyScratchyCheater
         public static JsonSerializerOptions JsonOptions { get; } = new()
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            WriteIndented = true
-            //NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals
+            WriteIndented = true,
+            NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals
         };
 
         public const string APP_VERSION = "v1.2.1";
