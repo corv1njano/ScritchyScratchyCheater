@@ -21,7 +21,7 @@ namespace ScritchyScratchyCheater
 
         public static readonly HashSet<string> SupportedVersions = new()
         {
-            "0.1"
+            "0.1",
         };
 
         public static PageNavigator PageNavigator { get; } = new();

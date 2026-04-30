@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ScritchyScratchyCheater.Views.Dialogs;
 using ScritchyScratchyCheater.Views.Pages;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace ScritchyScratchyCheater.ViewModels
@@ -40,14 +40,20 @@ namespace ScritchyScratchyCheater.ViewModels
         [RelayCommand]
         private void OpenAboutApp()
         {
-            MessageBox.Show(
-                "Version 1.2.0 (release April 2026)\n\n" +
-                "Made by corv1njano. Check out my GitHub:\n" +
-                "https://github.com/corv1njano",
-                "About this App",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information
-            );
+            //MessageBox.Show(
+            //    "Version 1.2.0 (release April 2026)\n\n" +
+            //    "Made by corv1njano. Check out my GitHub:\n" +
+            //    "https://github.com/corv1njano",
+            //    "About this App",
+            //    MessageBoxButton.OK,
+            //    MessageBoxImage.Information
+            //);
+
+            var dialog = new AboutAppDialog()
+            {
+                Owner = App.Current.MainWindow
+            };
+            dialog.ShowDialog();
         }
     }
 }

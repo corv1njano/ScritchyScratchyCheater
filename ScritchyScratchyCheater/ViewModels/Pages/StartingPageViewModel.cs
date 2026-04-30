@@ -48,8 +48,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                     DialogOptions.Ok);
                 return;
             }
-
-            CreateBackup(filePath);
             
             switch (loadResult.Version)
             {
@@ -59,6 +57,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                 default:
                     break;
             }
+
+            CreateBackup(filePath);
         }
 
         private void CreateBackup(string sourcePath)

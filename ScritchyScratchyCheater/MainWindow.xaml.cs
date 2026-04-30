@@ -27,5 +27,10 @@ namespace ScritchyScratchyCheater
         {
             _windowWrapper.CloseWindow();
         }
+
+        private void Button_Maximize(object sender, RoutedEventArgs e)
+        {
+            _windowWrapper.MaximizeOrRestoreWindow();
+        }
     }
 }

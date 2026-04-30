@@ -30,6 +30,49 @@
     </DrawingGroup>
     <DrawingImage x:Key="WindowControl.Minimize" Drawing="{StaticResource minimizeDrawingGroup}" />
 
+    <Geometry x:Key="restoreGeometry">F0 M128,128z M0,0z M121.5,81.495L121.5,121.163 109.5,121.163 109.5,121.06 6.5,121.06 6.5,6.493 46.178,6.493 46.178,-33.071 161.178,-33.071 161.178,81.599 149.178,81.599 149.178,81.495 121.5,81.495z M109.5,33.472L18.5,33.472 18.5,109.06 109.5,109.06 109.5,33.472z M121.5,69.495L149.178,69.495 149.178,-6.093 58.178,-6.093 58.178,6.493 121.5,6.493 121.5,69.495z</Geometry>
+    <DrawingGroup x:Key="restoreDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+        <DrawingGroup.Transform>
+            <TranslateTransform X="0" Y="33.070999145507813" />
+        </DrawingGroup.Transform>
+        <DrawingGroup Opacity="1" Transform="0.827524,0,0,0.829906,-5.3789,27.4459">
+            <GeometryDrawing Brush="#000000" Geometry="{StaticResource restoreGeometry}" />
+        </DrawingGroup>
+    </DrawingGroup>
+    <DrawingImage x:Key="WindowControl.Restore" Drawing="{StaticResource restoreDrawingGroup}" />
+
+    <DrawingGroup x:Key="maximizeDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+        <DrawingGroup Opacity="1" Transform="1.21762,-1.74582E-16,1.27349E-16,1.00973,-16.1974,-38.2616">
+            <GeometryDrawing Brush="#000000">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="18.641,44.324,94.447,26.718" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Opacity="1" Transform="-1.50476E-17,-1.02244,0.449128,-7.94345E-17,-13.407,140.119">
+            <GeometryDrawing Brush="#000000">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="18.641,44.324,94.447,26.718" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Opacity="1" Transform="-1.50476E-17,-1.02244,0.449128,-7.94345E-17,89.593,140.222">
+            <GeometryDrawing Brush="#000000">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="18.641,44.324,94.447,26.718" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Opacity="1" Transform="-1.04821,1.85446E-16,-1.60706E-16,-0.449128,133.039,140.967">
+            <GeometryDrawing Brush="#000000">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="18.641,44.324,94.447,26.718" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+    </DrawingGroup>
+    <DrawingImage x:Key="WindowControl.Maximize" Drawing="{StaticResource maximizeDrawingGroup}" />
+
     <Geometry x:Key="infoGeometry">F1 M24,24z M0,0z M12.713,16.713Q13,16.425,13,16L13,12Q13,11.575 12.712,11.288 12.424,11.001 12,11 11.576,10.999 11.288,11.288 11,11.577 11,12L11,16Q11,16.425 11.288,16.713 11.576,17.001 12,17 12.424,16.999 12.713,16.712 M12.713,8.712Q13,8.425 13,8 13,7.575 12.712,7.288 12.424,7.001 12,7 11.576,6.999 11.288,7.288 11,7.577 11,8 11,8.423 11.288,8.713 11.576,9.003 12,9 12.424,8.997 12.713,8.712 M12,22Q9.925,22 8.1,21.212 6.275,20.424 4.925,19.075 3.575,17.726 2.788,15.9 2.001,14.074 2,12 1.999,9.926 2.788,8.1 3.577,6.274 4.925,4.925 6.273,3.576 8.1,2.788 9.927,2 12,2 14.073,2 15.9,2.788 17.727,3.576 19.075,4.925 20.423,6.274 21.213,8.1 22.003,9.926 22,12 21.997,14.074 21.212,15.9 20.427,17.726 19.075,19.075 17.723,20.424 15.9,21.213 14.077,22.002 12,22 M12,20Q15.35,20 17.675,17.675 20,15.35 20,12 20,8.65 17.675,6.325 15.35,4 12,4 8.65,4 6.325,6.325 4,8.65 4,12 4,15.35 6.325,17.675 8.65,20 12,20 M12,12</Geometry>
     <DrawingGroup x:Key="infoDrawingGroup" ClipGeometry="M0,0 V24 H24 V0 H0 Z">
         <GeometryDrawing Brush="#FF000000" Geometry="{StaticResource infoGeometry}" />
@@ -76,6 +119,14 @@
         <DrawingImage.Drawing>
             <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
                 <GeometryDrawing Brush="#FF000000" Geometry="F1 M24,24z M0,0z M18.3,5.71A0.996,0.996,0,0,0,16.89,5.71L12,10.59 7.11,5.7A0.996,0.996,0,1,0,5.7,7.11L10.59,12 5.7,16.89A0.996,0.996,0,1,0,7.11,18.3L12,13.41 16.89,18.3A0.996,0.996,0,1,0,18.3,16.89L13.41,12 18.3,7.11C18.68,6.73,18.68,6.09,18.3,5.71" />
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="Icon.Heart">
+        <DrawingImage.Drawing>
+            <DrawingGroup ClipGeometry="M0,0 V24 H24 V0 H0 Z">
+                <GeometryDrawing Brush="#FF000000" Geometry="F1 M24,24z M0,0z M12.1,18.55L12,18.65 11.89,18.55C7.14,14.24 4,11.39 4,8.5 4,6.5 5.5,5 7.5,5 9.04,5 10.54,6 11.07,7.36L12.93,7.36C13.46,6 14.96,5 16.5,5 18.5,5 20,6.5 20,8.5 20,11.39 16.86,14.24 12.1,18.55 M16.5,3C14.76,3 13.09,3.81 12,5.08 10.91,3.81 9.24,3 7.5,3 4.42,3 2,5.41 2,8.5 2,12.27 5.4,15.36 10.55,20.03L12,21.35 13.45,20.03C18.6,15.36 22,12.27 22,8.5 22,5.41 19.58,3 16.5,3" />
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>

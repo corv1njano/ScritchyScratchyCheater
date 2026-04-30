@@ -8,7 +8,7 @@ Download latest version [here](https://github.com/corv1njano/ScritchyScratchyChe
 
 # Features
 
-<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/Docs/img/app_1-2-0.gif" Alt="App UI" width="300">
+<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/Docs/Images/app_1-2-0.gif" Alt="App UI" width="300">
 
 - edit Money, Prestige Currency, Tokens, and Souls
 - edit achievements

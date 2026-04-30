@@ -5,8 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScritchyScratchyCheater.Views.Dialogs"
         mc:Ignorable="d"
-        Title="AboutAppDialog" Height="450" Width="800">
+        Title="AboutAppDialog" Height="450" Width="450"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="{StaticResource Window.Background}">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="32"
+                  UseAeroCaptionButtons="False"
+                  ResizeBorderThickness="8"/>
+    </WindowChrome.WindowChrome>
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- titlebar -->
+        <Grid Grid.Row="0" Background="{StaticResource Titlebar.Background}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Text="About this App"
+                           Style="{StaticResource TextBlock.Base}"
+                           Foreground="{StaticResource Font.Secondary}"
+                           FontSize="14"
+                           Margin="10,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel.Resources>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Height" Value="10"/>
+                        <Setter Property="Width" Value="10"/>
+                        <Setter Property="Fill" Value="{DynamicResource Font.Secondary}"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button Style="{StaticResource Button.WindowControl.Close}" Click="Button_Close"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            
+        </Grid>
     </Grid>
 </Window>

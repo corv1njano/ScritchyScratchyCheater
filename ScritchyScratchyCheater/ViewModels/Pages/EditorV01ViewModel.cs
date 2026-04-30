@@ -210,6 +210,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             if (dialogResult == false) return;
 
             var oldPath = App.SaveFileService.CurrentFilePath;
+            var oldVersion = App.SaveFileService.CurrentSaveFileVersion;
 
             if (string.IsNullOrWhiteSpace(oldPath))
             {
@@ -232,29 +233,35 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                 return;
             }
 
-            var oldVersion = App.SaveFileService.CurrentSaveFileVersion;
-
             if (loadResult.Version != oldVersion)
             {
-                ShowMessage.Warning(
-                   "Version changed",
-                   $"The save file version changed from '{oldVersion}' to '{loadResult.Version}'. The editor will be reloaded.",
-                   DialogOptions.Ok);
+                ShowMessage.Error("Reloading failed",
+                    $"The loaded save file version '{loadResult.Version}' does not match the previous version '{oldVersion}'. Return to the start page.",
+                    DialogOptions.Ok);
 
-                switch (loadResult.Version)
-                {
-                    case "0.1":
-                        App.PageNavigator.Navigate(new EditorV01());
-                        break;
+                App.SaveFileService.Reset();
+                App.PageNavigator.Navigate(new StartingPage());
+                return;
 
-                    default:
-                        ShowMessage.Warning(
-                           "Reloading failed",
-                           $"The loaded save file version '{loadResult.Version}' is not supported. Returning to the start page.",
-                           DialogOptions.Ok);
-                        App.PageNavigator.Navigate(new StartingPage());
-                        break;
-                }
+                //ShowMessage.Warning(
+                //   "Version changed",
+                //   $"The save file version changed from '{oldVersion}' to '{loadResult.Version}'. The editor will be reloaded.",
+                //   DialogOptions.Ok);
+
+                //switch (loadResult.Version)
+                //{
+                //    case "0.1":
+                //        App.PageNavigator.Navigate(new EditorV01());
+                //        break;
+
+                //    default:
+                //        ShowMessage.Warning(
+                //           "Reloading failed",
+                //           $"The loaded save file version '{loadResult.Version}' is not supported. Returning to the start page.",
+                //           DialogOptions.Ok);
+                //        App.PageNavigator.Navigate(new StartingPage());
+                //        break;
+                //}
             }
 
             ShowMessage.Info("File reloaded",

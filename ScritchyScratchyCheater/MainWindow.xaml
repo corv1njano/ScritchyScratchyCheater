@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:ScritchyScratchyCheater"
         xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
         mc:Ignorable="d"
-        Title="Scritchy Scratchy Cheater" Height="560" Width="580"
-        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        Title="Scritchy Scratchy Cheater" Height="600" Width="620"
+        MinHeight="600" MinWidth="620"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResize"
         Background="{StaticResource Window.Background}">
 
     <WindowChrome.WindowChrome>
@@ -50,8 +51,10 @@
                         <Setter Property="Fill" Value="{DynamicResource Font.Secondary}"/>
                     </Style>
                 </StackPanel.Resources>
+                <Button Style="{StaticResource Button.WindowControl.Heart}" ToolTip="Support me!" Command="{Binding OpenAboutAppCommand}"/>
                 <Button Style="{StaticResource Button.WindowControl.Info}" ToolTip="About this App" Command="{Binding OpenAboutAppCommand}"/>
                 <Button Style="{StaticResource Button.WindowControl.Minimize}" Click="Button_Minimize"/>
+                <Button Style="{StaticResource Button.WindowControl.Maximize}" Click="Button_Maximize"/>
                 <Button Style="{StaticResource Button.WindowControl.Close}" Click="Button_Close"/>
             </StackPanel>
         </Grid>
@@ -63,8 +66,8 @@
         <!-- statusbar -->
         <Grid Grid.Row="2" Background="{StaticResource Titlebar.Background}">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.StatusBar}" Text="{x:Static local:App.APP_VERSION}"/>
             <TextBlock Text="{Binding SelectedSaveFilePath}" ToolTip="{Binding SaveFileTooltip}" Grid.Column="1" Style="{StaticResource TextBlock.StatusBar}" HorizontalAlignment="Right"/>
