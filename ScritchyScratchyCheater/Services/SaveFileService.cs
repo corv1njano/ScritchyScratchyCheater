@@ -6,6 +6,9 @@ using System.Text.Json;
 
 namespace ScritchyScratchyCheater.Services
 {
+    /// <summary>
+    /// Provides functionality for loading, saving, and managing the application's save file.
+    /// </summary>
     public class SaveFileService
     {
         public string DefaultSaveFilePath { get; init; }
@@ -131,7 +134,7 @@ namespace ScritchyScratchyCheater.Services
             {
                 Success = true,
                 Version = version,
-                StatusMessage = ""
+                StatusMessage = "Save file successfully loaded."
             };
         }
 

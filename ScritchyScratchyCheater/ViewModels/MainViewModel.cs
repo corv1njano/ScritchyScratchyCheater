@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Views.Dialogs;
 using ScritchyScratchyCheater.Views.Pages;
+using System.Diagnostics;
 using System.Windows.Controls;
 
 namespace ScritchyScratchyCheater.ViewModels
@@ -54,6 +55,19 @@ namespace ScritchyScratchyCheater.ViewModels
                 Owner = App.Current.MainWindow
             };
             dialog.ShowDialog();
+        }
+
+        [RelayCommand]
+        private void OpenSupportMe()
+        {
+            string url = "https://github.com/sponsors/corv1njano";
+
+            var psi = new ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            };
+            Process.Start(psi);
         }
     }
 }

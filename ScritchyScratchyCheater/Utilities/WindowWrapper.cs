@@ -5,6 +5,14 @@ using System.Windows.Shell;
 
 namespace ScritchyScratchyCheater.Utilities
 {
+    /// <summary>
+    /// Provides a wrapper for a WPF Window, enabling common window operations such as minimizing, maximizing,
+    /// restoring, and closing, as well as layout calculations for custom window chrome scenarios.
+    /// </summary>
+    /// <remarks>This class is useful for managing custom window chrome and handling window state changes in
+    /// WPF applications. It exposes methods to control the window's state and to calculate layout values for custom
+    /// title bar implementations. Event handling and border adjustments are managed internally to ensure correct
+    /// appearance when the window state changes.</remarks>
     public class WindowWrapper
     {
         private readonly Window _targetWindow;

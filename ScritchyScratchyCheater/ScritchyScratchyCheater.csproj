@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>app_logo.ico</ApplicationIcon>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
 	  <Authors>corv1njano</Authors>
 	  <Company>corv1njano</Company>
 	  <Version>1.2.0</Version>
@@ -32,27 +32,23 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Data\game_data.json" />
-    <None Remove="Resources\Data\sprite_data.json" />
     <None Remove="Resources\Fonts\montserrat_bold.ttf" />
     <None Remove="Resources\Fonts\montserrat_medium_italic.ttf" />
-    <None Remove="Resources\Images\app_logo.png" />
-    <None Remove="Resources\Images\sprite_images.png" />
     <None Remove="Resources\montserrat_medium.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="app_logo.ico" />
+    <Content Include="AppIcon.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\Data\game_data.json" />
-    <Resource Include="Resources\Data\sprite_data.json" />
+    <Resource Include="Resources\Data\GameData.json" />
+    <Resource Include="Resources\Data\SpriteData.json" />
     <Resource Include="Resources\Fonts\montserrat_bold.ttf" />
     <Resource Include="Resources\Fonts\montserrat_medium_italic.ttf" />
-    <Resource Include="Resources\Images\app_logo.png" />
+    <Resource Include="Resources\Images\AppLogo.png" />
     <Resource Include="Resources\Fonts\montserrat_medium.ttf" />
-    <Resource Include="Resources\Images\sprite_images.png" />
+    <Resource Include="Resources\Images\SpriteImages.png" />
   </ItemGroup>
 
   <ItemGroup>

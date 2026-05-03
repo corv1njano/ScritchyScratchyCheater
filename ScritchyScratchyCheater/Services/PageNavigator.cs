@@ -3,6 +3,9 @@ using System.Windows.Controls;
 
 namespace ScritchyScratchyCheater.Services
 {
+    /// <summary>
+    /// Provides navigation functionality for switching between pages within a user interface.
+    /// </summary>
     public class PageNavigator
     {
         public UserControl CurrentPage { get; private set; }

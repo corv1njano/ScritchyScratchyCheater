@@ -4,9 +4,12 @@ using System.Windows;
 
 namespace ScritchyScratchyCheater.Services
 {
+    /// <summary>
+    /// Provides functionality for loading and accessing game data from the embedded JSON resource.
+    /// </summary>
     public class GameDataParser
     {
-        private const string GameDataResourcePath = "pack://application:,,,/Resources/Data/game_data.json";
+        private const string GameDataResourcePath = "pack://application:,,,/Resources/Data/GameData.json";
 
         private GameDataRoot? _gameDataRoot;
 

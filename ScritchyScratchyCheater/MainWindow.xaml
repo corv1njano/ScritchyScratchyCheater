@@ -31,9 +31,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Image Source="/Resources/Images/app_logo.png"
-                       Width="22"
-                       Height="22"
+                <Image Source="/Resources/Images/AppLogo.png"
+                       Width="20"
+                       Height="20"
                        Margin="10,0"
                        VerticalAlignment="Center"
                        RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -51,7 +51,7 @@
                         <Setter Property="Fill" Value="{DynamicResource Font.Secondary}"/>
                     </Style>
                 </StackPanel.Resources>
-                <Button Style="{StaticResource Button.WindowControl.Heart}" ToolTip="Support me!" Command="{Binding OpenAboutAppCommand}"/>
+                <Button Style="{StaticResource Button.WindowControl.Heart}" ToolTip="Support me!" Command="{Binding OpenSupportMeCommand}"/>
                 <Button Style="{StaticResource Button.WindowControl.Info}" ToolTip="About this App" Command="{Binding OpenAboutAppCommand}"/>
                 <Button Style="{StaticResource Button.WindowControl.Minimize}" Click="Button_Minimize"/>
                 <Button Style="{StaticResource Button.WindowControl.Maximize}" Click="Button_Maximize"/>

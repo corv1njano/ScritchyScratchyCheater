@@ -5,15 +5,30 @@ using System.Windows.Media.Imaging;
 
 namespace ScritchyScratchyCheater.Services
 {
+    /// <summary>
+    /// Provides functionality to load, access, and manage sprite images from embedded resources using sprite metadata
+    /// definitions.
+    /// </summary>
     public class ResourceParser
     {
         public IReadOnlyDictionary<string, BitmapSource> Sprites => _sprites;
 
         private readonly Dictionary<string, BitmapSource> _sprites = new();
 
-        private const string JsonResourcePath = "pack://application:,,,/Resources/Data/sprite_data.json";
-        private const string SpriteSheetResourcePath = "pack://application:,,,/Resources/Images/sprite_images.png";
+        private const string JsonResourcePath = "pack://application:,,,/Resources/Data/SpriteData.json";
+        private const string SpriteSheetResourcePath = "pack://application:,,,/Resources/Images/SpriteImages.png";
 
+        /// <summary>
+        /// Asynchronously loads all sprites defined in the sprite data file and returns a read-only dictionary mapping
+        /// sprite names to their corresponding bitmap images.
+        /// </summary>
+        /// <remarks>The returned dictionary uses case-sensitive string comparison for sprite names. Each
+        /// bitmap image is frozen for thread safety.</remarks>
+        /// <returns>A read-only dictionary containing sprite names as keys and their associated bitmap images as values. The
+        /// dictionary is empty if no sprites are loaded.</returns>
+        /// <exception cref="ArgumentNullException">Thrown if the sprite data file cannot be loaded or parsed.</exception>
+        /// <exception cref="InvalidOperationException">Thrown if the sprite data file does not contain any data sets, if the sprite size is less than or equal to
+        /// zero, or if duplicate sprite names are found.</exception>
         public async Task<IReadOnlyDictionary<string, BitmapSource>> LoadSpritesAsync()
         {
             var sprites = await Task.Run(() =>

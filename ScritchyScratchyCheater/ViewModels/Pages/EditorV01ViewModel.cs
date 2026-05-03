@@ -265,7 +265,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             }
 
             ShowMessage.Info("File reloaded",
-                "Save file successfully reloaded.",
+                loadResult.StatusMessage,
                 DialogOptions.Ok);
         }
 
