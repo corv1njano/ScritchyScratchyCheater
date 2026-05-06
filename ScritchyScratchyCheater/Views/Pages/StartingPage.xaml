@@ -20,6 +20,8 @@
                     <controls:IconButton Text="Load Save File" Icon="{StaticResource Icon.File}" Width="200" Command="{Binding LoadDefaultSaveFileCommand}"/>
                     <TextBlock Text="or" FontSize="14" Style="{StaticResource TextBlock.Base}" Margin="0,8" HorizontalAlignment="Center"/>
                     <controls:IconButton Text="Browse for File" Icon="{StaticResource Icon.Folder}" Width="200" Command="{Binding BrowseSaveFileCommand}"/>
+
+                    <controls:BetterButton Text="test" Icon="{StaticResource Icon.Folder}" Width="200" Height="30"/>
                 </StackPanel>
             </Grid>
         </StackPanel>

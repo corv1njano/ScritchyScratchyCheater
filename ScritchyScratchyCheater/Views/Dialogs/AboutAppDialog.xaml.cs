@@ -1,4 +1,5 @@
 ﻿using ScritchyScratchyCheater.Utilities;
+using ScritchyScratchyCheater.ViewModels.Dialogs;
 using System.Windows;
 
 namespace ScritchyScratchyCheater.Views.Dialogs
@@ -14,6 +15,7 @@ namespace ScritchyScratchyCheater.Views.Dialogs
         {
             InitializeComponent();
             _windowWrapper = new WindowWrapper(this);
+            DataContext = new AboutAppViewModel();
         }
 
         private void Button_Close(object sender, RoutedEventArgs e)

@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScritchyScratchyCheater.Views.Dialogs"
+        xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
         mc:Ignorable="d"
-        Title="AboutAppDialog" Height="450" Width="450"
+        Title="About this App" Height="430" Width="450"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
         Background="{StaticResource Window.Background}">
@@ -48,8 +49,43 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1">
-            
+        <Grid Grid.Row="1" Margin="8,0,8,8">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TabControl Grid.Row="0" Style="{StaticResource TabControl.Modern}">
+                <controls:IconTabItem Header="About" Icon="{StaticResource Icon.Info}">
+                    <Grid Margin="10,0">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Source="/Resources/Images/AppLogo.png" Width="50"/>
+                            <TextBlock Text="{Binding AppNameAndVersion}" Style="{StaticResource TextBlock.Base}" Margin="0,8,0,0" FontSize="18" FontFamily="{StaticResource Montserrat}" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+                            <TextBlock Style="{StaticResource TextBlock.AboutDialog}" Margin="0,37,0,0"
+                                       Text="Copright © 2026 corv1njano - All rights reserved."/>
+                            <TextBlock Style="{StaticResource TextBlock.AboutDialog}" Margin="0,20,0,0"
+                                       Text="This program is licensed under the GPL-3.0 license. See the official GitHub page for more licensing details."/>
+                            <TextBlock Style="{StaticResource TextBlock.AboutDialog}" Margin="0,20,0,0"
+                                       Text="This tool my contain errors. Always back up your save files to prevent data loss or file corruption."/>
+                           
+                        </StackPanel>
+                    </Grid>
+                </controls:IconTabItem>
+                <!--<controls:IconTabItem Header="License" Icon="{StaticResource Icon.License}">
+                    MaxHeight to make it scroll, grid height of * does not work
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" MaxHeight="350">
+                        <TextBlock Style="{StaticResource TextBlock.Base}"
+                                       TextWrapping="Wrap"
+                                       FontSize="11"
+                                       TextAlignment="Justify"
+                                       Text="{Binding LicenseText}">
+                        </TextBlock>
+                    </ScrollViewer>
+                </controls:IconTabItem>-->
+                <controls:IconTabItem Header="Patch Notes" Icon="{StaticResource Icon.License}"></controls:IconTabItem>
+            </TabControl>
         </Grid>
     </Grid>
 </Window>

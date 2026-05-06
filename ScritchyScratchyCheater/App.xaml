@@ -14,7 +14,7 @@
                 <ResourceDictionary Source="/Styles/Button.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBlock.xaml"/>
                 <ResourceDictionary Source="/Styles/ToolTip.xaml"/>
-                <ResourceDictionary Source="/Styles/TabNavigation.xaml"/>
+                <ResourceDictionary Source="/Styles/TabControl.xaml"/>
                 <ResourceDictionary Source="/Styles/GroupBox.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBox.xaml"/>
                 <ResourceDictionary Source="/Styles/ListBox.xaml"/>

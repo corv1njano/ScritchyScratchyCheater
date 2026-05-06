@@ -16,10 +16,11 @@
         <Setter Property="FontSize" Value="12"/>
     </Style>
 
-    <Style TargetType="TextBlock" x:Key="TextBlock.Header" BasedOn="{StaticResource TextBlock.Base}">
-        <Setter Property="FontSize" Value="15"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat.Bold}"/>
-        <Setter Property="FontWeight" Value="Bold"/>
+    <Style TargetType="TextBlock" x:Key="TextBlock.AboutDialog" BasedOn="{StaticResource TextBlock.Base}">
+        <Setter Property="TextTrimming" Value="None"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 
 </ResourceDictionary>

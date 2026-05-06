@@ -3,6 +3,9 @@ using System.Windows.Controls;
 
 namespace ScritchyScratchyCheater.Controls
 {
+    /// <summary>
+    /// Represents a TextBox control that displays placeholder text when the input is empty.
+    /// </summary>
     public class TextBoxPlaceholder : TextBox
     {
 

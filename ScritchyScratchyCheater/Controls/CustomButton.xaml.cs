@@ -24,7 +24,6 @@ namespace ScritchyScratchyCheater.Controls
             set => SetValue(TextHorizontalAlignmentProperty, value);
         }
 
-
         // Foreground Color
         public static readonly DependencyProperty ForegroundColorProperty =
             DependencyProperty.Register(nameof(ForegroundColor), typeof(Brush), typeof(CustomButton),
@@ -34,7 +33,6 @@ namespace ScritchyScratchyCheater.Controls
             get => (Brush)GetValue(ForegroundColorProperty);
             set => SetValue(ForegroundColorProperty, value);
         }
-
 
         // Foreground Hover Color
         public static readonly DependencyProperty ForegroundHoverColorProperty =
@@ -46,7 +44,6 @@ namespace ScritchyScratchyCheater.Controls
             set => SetValue(ForegroundHoverColorProperty, value);
         }
 
-
         // Disabled Foreground Color
         public static readonly DependencyProperty DisabledForegroundColorProperty =
             DependencyProperty.Register(nameof(DisabledForegroundColor), typeof(Brush), typeof(CustomButton),
@@ -56,7 +53,6 @@ namespace ScritchyScratchyCheater.Controls
             get => (Brush)GetValue(DisabledForegroundColorProperty);
             set => SetValue(DisabledForegroundColorProperty, value);
         }
-
 
         // Background Color
         public static readonly DependencyProperty BackgroundColorProperty =
@@ -68,7 +64,6 @@ namespace ScritchyScratchyCheater.Controls
             set => SetValue(BackgroundColorProperty, value);
         }
 
-
         // Background Hover Color
         public static readonly DependencyProperty BackgroundHoverColorProperty =
             DependencyProperty.Register(nameof(BackgroundHoverColor), typeof(Brush), typeof(CustomButton),
@@ -78,7 +73,6 @@ namespace ScritchyScratchyCheater.Controls
             get => (Brush)GetValue(BackgroundHoverColorProperty);
             set => SetValue(BackgroundHoverColorProperty, value);
         }
-
 
         // Disabled Background Color
         public static readonly DependencyProperty DisabledBackgroundColorProperty =
@@ -90,7 +84,6 @@ namespace ScritchyScratchyCheater.Controls
             set => SetValue(DisabledBackgroundColorProperty, value);
         }
 
-
         // Border Color
         public static readonly DependencyProperty BorderColorProperty =
             DependencyProperty.Register(nameof(BorderColor), typeof(Brush), typeof(CustomButton),
@@ -100,7 +93,6 @@ namespace ScritchyScratchyCheater.Controls
             get => (Brush)GetValue(BorderColorProperty);
             set => SetValue(BorderColorProperty, value);
         }
-
 
         // Border Hover Color
         public static readonly DependencyProperty BorderHoverColorProperty =
@@ -112,7 +104,6 @@ namespace ScritchyScratchyCheater.Controls
             set => SetValue(BorderHoverColorProperty, value);
         }
 
-
         // Border Thickness
         public static readonly DependencyProperty BorderSizeProperty =
             DependencyProperty.Register(nameof(BorderSize), typeof(Thickness), typeof(CustomButton),
@@ -122,7 +113,6 @@ namespace ScritchyScratchyCheater.Controls
             get => (Thickness)GetValue(BorderSizeProperty);
             set => SetValue(BorderSizeProperty, value);
         }
-
 
         // Corner Radius
         public static readonly DependencyProperty CornerRadiusProperty =

@@ -33,5 +33,8 @@
     <SolidColorBrush x:Key="Font.Primary" Color="#e8e8e8"/>
     <SolidColorBrush x:Key="Font.Secondary" Color="#939BAD"/>
     <SolidColorBrush x:Key="Font.Secondary.Hover" Color="#CED2E0"/>
+
+
+    <SolidColorBrush x:Key="Heart.Hover" Color="#F26D6D"/>
     
 </ResourceDictionary>

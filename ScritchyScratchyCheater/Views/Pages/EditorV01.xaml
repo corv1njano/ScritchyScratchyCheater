@@ -34,8 +34,8 @@
             <controls:IconButton Command="{Binding OpenFileExplorerCommand}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Text="Locate" Icon="{StaticResource Icon.Folder}" ToolTip="Open in File Explorer"/>
         </Grid>
 
-        <TabControl Grid.Row="1">
-            <TabItem Header="Progress">
+        <TabControl Grid.Row="1" Style="{StaticResource TabControl.Modern}" Margin="8,0,8,8">
+            <controls:IconTabItem Header="Progress" Icon="{StaticResource Icon.Progress}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -94,14 +94,14 @@
                     <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover}" Grid.Column="3" Grid.Row="6" Content="Max."
                                            Command="{Binding MaxSoulsCommand}"/>
                 </Grid>
-            </TabItem>
-            <TabItem Header="Upgrades">
+            </controls:IconTabItem>
+            <controls:IconTabItem Header="Upgrades" Icon="{StaticResource Icon.Upgrades}">
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Upgrade editing will be available soon!"/>
-            </TabItem>
-            <TabItem Header="Prestige">
+            </controls:IconTabItem>
+            <controls:IconTabItem Header="Prestige" Icon="{StaticResource Icon.Prestige}">
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Prestige editing will be available soon!"/>
-            </TabItem>
-            <TabItem Header="Achievements">
+            </controls:IconTabItem>
+            <controls:IconTabItem Header="Achievements" Icon="{StaticResource Icon.Achievements}">
                 <Border BorderBrush="{StaticResource ControlElement.Flat.Border}" BorderThickness="1" CornerRadius="4">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -151,13 +151,13 @@
                         </ListBox>
                     </Grid>
                 </Border>
-            </TabItem>
-            <TabItem Header="Cosmetics">
+            </controls:IconTabItem>
+            <controls:IconTabItem Header="Cosmetics" Icon="{StaticResource Icon.Cosmetics}">
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Cosmetics editing will be available soon!"/>
-            </TabItem>
-            <TabItem Header="Misc">
+            </controls:IconTabItem>
+            <controls:IconTabItem Header="Misc" Icon="{StaticResource Icon.Misc}">
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Other editing options will be available soon!"/>
-            </TabItem>
+            </controls:IconTabItem>
         </TabControl>
     </Grid>
 </UserControl>
