@@ -6,17 +6,19 @@
         xmlns:local="clr-namespace:ScritchyScratchyCheater"
         xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
         mc:Ignorable="d"
-        Title="Scritchy Scratchy Cheater" Height="600" Width="620"
+        Title="Scritchy Scratchy Cheater"
+        Height="600" Width="620"
         MinHeight="600" MinWidth="620"
-        WindowStartupLocation="CenterScreen" ResizeMode="CanResize"
-        Background="{StaticResource Window.Background}">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        Background="{StaticResource CJG.Window.Background}">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="32"
                       UseAeroCaptionButtons="False"
                       ResizeBorderThickness="8"/>
     </WindowChrome.WindowChrome>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -25,52 +27,98 @@
         </Grid.RowDefinitions>
 
         <!-- titlebar -->
-        <Grid Grid.Row="0" Background="{StaticResource Titlebar.Background}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Image Source="/Resources/Images/AppLogo.png"
-                       Width="20"
-                       Height="20"
-                       Margin="10,0"
-                       VerticalAlignment="Center"
-                       RenderOptions.BitmapScalingMode="HighQuality"/>
-                <TextBlock Text="Scritchy Scratchy Cheater"
-                           Style="{StaticResource TextBlock.Base}"
-                           Foreground="{StaticResource Font.Secondary}"
-                           FontSize="14"/>
-            </StackPanel>
+        <Border Grid.Row="0"
+                Background="{StaticResource CJG.TitleBar}"
+                BorderThickness="0,0,0,1"
+                BorderBrush="{StaticResource CJG.Block.Border}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Image Source="/Resources/Images/AppLogo.png"
+                           Width="20"
+                           Height="20"
+                           Margin="10,0"
+                           VerticalAlignment="Center"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <TextBlock Text="Scritchy Scratchy Cheater"
+                               Style="{StaticResource TextBlock.Base}"
+                               Foreground="{StaticResource CJG.Font.TitleBar}"
+                               FontSize="14"/>
+                </StackPanel>
 
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <StackPanel.Resources>
-                    <Style TargetType="Rectangle">
-                        <Setter Property="Height" Value="10"/>
-                        <Setter Property="Width" Value="10"/>
-                        <Setter Property="Fill" Value="{DynamicResource Font.Secondary}"/>
-                    </Style>
-                </StackPanel.Resources>
-                <Button Style="{StaticResource Button.WindowControl.Heart}" ToolTip="Support me!" Command="{Binding OpenSupportMeCommand}"/>
-                <Button Style="{StaticResource Button.WindowControl.Info}" ToolTip="About this App" Command="{Binding OpenAboutAppCommand}"/>
-                <Button Style="{StaticResource Button.WindowControl.Minimize}" Click="Button_Minimize"/>
-                <Button Style="{StaticResource Button.WindowControl.Maximize}" Click="Button_Maximize"/>
-                <Button Style="{StaticResource Button.WindowControl.Close}" Click="Button_Close"/>
-            </StackPanel>
-        </Grid>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <StackPanel.Resources>
+                        <Style TargetType="Rectangle">
+                            <Setter Property="Height" Value="10"/>
+                            <Setter Property="Width" Value="10"/>
+                            <Setter Property="Fill" Value="{DynamicResource CJG.Font.Normal}"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Style="{StaticResource Button.TitleBar}" ToolTip="Support me!" Command="{Binding OpenSupportMeCommand}" Cursor="Hand">
+                        <Rectangle Width="18" Height="18" Fill="{StaticResource CJG.Glyph.Heart}">
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="{StaticResource Icon.Heart}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <Button Style="{StaticResource Button.TitleBar}" ToolTip="About this App" Command="{Binding OpenAboutAppCommand}" Cursor="Hand">
+                        <Rectangle Width="18" Height="18">
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="{StaticResource Icon.Info}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <Button Style="{StaticResource Button.TitleBar}" Click="Button_Minimize">
+                        <Rectangle>
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="{StaticResource WindowControl.Minimize}" Stretch="Uniform"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <Button Style="{StaticResource Button.TitleBar}" Click="Button_Maximize">
+                        <Rectangle>
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="{StaticResource WindowControl.Maximize}" Stretch="Uniform"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                    <Button Style="{StaticResource Button.TitleBar.Close}" Click="Button_Close">
+                        <Rectangle>
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="{StaticResource WindowControl.Close}" Stretch="Uniform"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
 
         <Grid Grid.Row="1">
             <ContentControl Content="{Binding CurrentPage}" IsTabStop="False"/>
         </Grid>
 
         <!-- statusbar -->
-        <Grid Grid.Row="2" Background="{StaticResource Titlebar.Background}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.StatusBar}" Text="{x:Static local:App.APP_VERSION}"/>
-            <TextBlock Text="{Binding SelectedSaveFilePath}" ToolTip="{Binding SaveFileTooltip}" Grid.Column="1" Style="{StaticResource TextBlock.StatusBar}" HorizontalAlignment="Right"/>
-        </Grid>
+        <Border Grid.Row="2"
+                Background="{StaticResource CJG.StatusBar}"
+                BorderThickness="0,1,0,0"
+                BorderBrush="{StaticResource CJG.Block.Border}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Style="{StaticResource TextBlock.StatusBar}"
+                           Text="{x:Static local:App.APP_VERSION}"/>
+                <TextBlock Text="{Binding SelectedSaveFilePath}"
+                           ToolTip="{Binding SaveFileTooltip}"
+                           Grid.Column="1"
+                           Style="{StaticResource TextBlock.StatusBar}"
+                           HorizontalAlignment="Right"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

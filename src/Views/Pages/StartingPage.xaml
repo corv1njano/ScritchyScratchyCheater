@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="550"
-             Background="{StaticResource Window.Background}">
+             Background="{StaticResource CJG.Window.Background}">
     
     <Grid Margin="8">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
