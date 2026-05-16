@@ -1,0 +1,49 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="{x:Type Run}" x:Key="Document.Run">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
+        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <Style TargetType="{x:Type Paragraph}" x:Key="Document.Paragraph">
+        <Setter Property="Margin" Value="0,0,0,8"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+
+    <Style TargetType="{x:Type Paragraph}" x:Key="Document.ListParagraph">
+        <Setter Property="Margin" Value="12,0,0,8"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+    </Style>
+
+    <Style TargetType="{x:Type Hyperlink}" x:Key="Document.Hyperlink">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
+        <Setter Property="Foreground" Value="{StaticResource DocumentElement.Hyperlink}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="TextDecorations" Value="Underline"/>
+    </Style>
+
+    <Style TargetType="Section" x:Key="Document.Heading1Section">
+        <Setter Property="BorderBrush" Value="{StaticResource ControlElement.Flat.Border}"/>
+        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+        <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+
+    <Style TargetType="Paragraph" x:Key="Document.Heading1">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Margin" Value="0,0,0,3"/>
+    </Style>
+
+    <Style TargetType="Paragraph" x:Key="Document.Heading2">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="0,0,0,3"/>
+    </Style>
+
+</ResourceDictionary>

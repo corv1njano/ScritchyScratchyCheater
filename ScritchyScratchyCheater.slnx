@@ -4,5 +4,5 @@
     <BuildType Name="Release" />
     <BuildType Name="ReleaseNetIncluded" />
   </Configurations>
-  <Project Path="ScritchyScratchyCheater/ScritchyScratchyCheater.csproj" />
+  <Project Path="src/ScritchyScratchyCheater.csproj" />
 </Solution>

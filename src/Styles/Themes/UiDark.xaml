@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="CJG.Window.Background" Color="#151A24"/>
+    <SolidColorBrush x:Key="CJG.TitleBar" Color="#101622"/>
+    <SolidColorBrush x:Key="CJG.StatusBar" Color="#101622"/>
+    
+    <SolidColorBrush x:Key="CJG.Block.Background" Color="#1B222E"/>
+    <SolidColorBrush x:Key="CJG.Block.Border" Color="#272E3D"/>
+
+
+    <SolidColorBrush x:Key="CJG.Font.Normal" Color="#A3B1CB"/>
+
+
+    <SolidColorBrush x:Key="CJG.Input.Background" Color="#252C3B"/>
+    <SolidColorBrush x:Key="CJG.Input.Border" Color="#272E3D"/>
+
+
+    <SolidColorBrush x:Key="CJG.ScrollBar.Thumb" Color="#5F667A"/>
+    <SolidColorBrush x:Key="CJG.ScrollBar.Track" Color="#252A37"/>
+
+
+    <SolidColorBrush x:Key="CJG.Accent.Mint" Color="#6BE6A7"/>
+
+</ResourceDictionary>
