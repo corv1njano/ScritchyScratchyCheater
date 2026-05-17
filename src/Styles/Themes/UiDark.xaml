@@ -9,10 +9,21 @@
     <SolidColorBrush x:Key="CJG.StatusBar" Color="#101622"/>
     
     <SolidColorBrush x:Key="CJG.Block.Background" Color="#1B222E"/>
+    <SolidColorBrush x:Key="CJG.Block2.Background" Color="#1C2534"/>
+    <Color x:Key="CJG.Block2.Background.Color">#1C2534</Color>
+    <Color x:Key="CJG.Block2.Background.Hover.Color">#202B3B</Color>
     <SolidColorBrush x:Key="CJG.Block.Border" Color="#272E3D"/>
 
 
+    <SolidColorBrush x:Key="CJG.Button.Background" Color="#232F47"/>
+    <Color x:Key="CJG.Button.Background.Color">#232F47</Color>
+    <SolidColorBrush x:Key="CJG.Button.Border" Color="#2D394F"/>
+    <SolidColorBrush x:Key="CJG.Button.Foreground" Color="#E0E1E7"/>
+    <Color x:Key="CJG.Button.Foreground.Color">#E0E1E7</Color>
+
+
     <SolidColorBrush x:Key="CJG.Font.Normal" Color="#A3B1CB"/>
+    <Color x:Key="CJG.Font.Normal.Color">#A3B1CB</Color>
     <SolidColorBrush x:Key="CJG.Font.TitleBar" Color="#E0E1E7"/>
     <SolidColorBrush x:Key="CJG.Glyph.Heart" Color="#F26D6D"/>
 
@@ -25,6 +36,7 @@
     <SolidColorBrush x:Key="CJG.ScrollBar.Track" Color="#252A37"/>
 
 
-    <SolidColorBrush x:Key="CJG.Accent.Mint" Color="#6BE6A7"/>
+    <SolidColorBrush x:Key="CJG.Accent" Color="#6BE6A7"/>
+    <Color x:Key="CJG.Accent.Color">#6BE6A7</Color>
 
 </ResourceDictionary>
