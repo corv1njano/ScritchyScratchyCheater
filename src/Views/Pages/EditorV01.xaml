@@ -8,11 +8,31 @@
              xmlns:converters="clr-namespace:ScritchyScratchyCheater.Utilities.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="620"
-             Background="{StaticResource CJG.Window.Background}"
+             Background="{StaticResource CJG.Window}"
              Loaded="Editor_Loaded">
 
     <UserControl.Resources>
         <converters:IconIdToImageConverter x:Key="IconIdToImageConverter"/>
+
+        <Style TargetType="Image" x:Key="blockImg">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Margin" Value="8,0,0,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="blockTxt" BasedOn="{StaticResource TextBlock.Base}">
+            <Setter Property="Margin" Value="8,0,0,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Border" x:Key="blockBod" BasedOn="{StaticResource Border.Default}">
+            <Setter Property="BorderThickness" Value="0,1,0,0"/>
+            <Setter Property="Margin" Value="0,8"/>
+            <Setter Property="CornerRadius" Value="0"/>
+        </Style>
+        <Style TargetType="Button" x:Key="blockbtn" BasedOn="{StaticResource Button.Editor.Generic}">
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="Content" Value="Max"/>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -67,71 +87,70 @@
 
         <TabControl Grid.Row="1" Style="{StaticResource TabControl.Modern}" Margin="10,0,10,10">
             <controls:IconTabItem Header="Progress" Icon="{StaticResource Icon.Progress}">
-                <Grid>
+                <Grid MaxWidth="600">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="8"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="8"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="8"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="8"/>
-                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.Resources>
-                        <Style TargetType="Image">
-                            <Setter Property="Height" Value="25"/>
-                            <Setter Property="Width" Value="25"/>
-                            <Setter Property="VerticalAlignment" Value="Center"/>
-                        </Style>
-                        <Style TargetType="TextBlock" x:Key="def" BasedOn="{StaticResource TextBlock.Base}">
-                            <Setter Property="Margin" Value="8,0,0,0"/>
-                            <Setter Property="VerticalAlignment" Value="Center"/>
-                        </Style>
-                    </Grid.Resources>
+                    <Border Grid.Row="0" Style="{StaticResource Border.Default}">
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
 
-                    <Image Grid.Column="0" Grid.Row="0" Source="{Binding MoneyIcon}"/>
-                    <Image Grid.Column="0" Grid.Row="2" Source="{Binding PrestigeIcon}"/>
-                    <Image Grid.Column="0" Grid.Row="4" Source="{Binding TokensIcon}"/>
-                    <Image Grid.Column="0" Grid.Row="6" Source="{Binding SoulsIcon}"/>
+                            <Image Grid.Row="0" Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding MoneyIcon}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource blockTxt}" Text="Money:"/>
+                            <controls:ValidatedTextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0" Text="{Binding MoneyText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsMoneyValid}"/>
+                            <Button Grid.Row="0" Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxMoneyCommand}"/>
 
-                    <TextBlock Style="{StaticResource def}" Grid.Column="1" Grid.Row="0" Text="Money:"/>
-                    <TextBlock Style="{StaticResource def}" Grid.Column="1" Grid.Row="2" Text="Prestige:"/>
-                    <TextBlock Style="{StaticResource def}" Grid.Column="1" Grid.Row="4" Text="Tokens:"/>
-                    <TextBlock Style="{StaticResource def}" Grid.Column="1" Grid.Row="6" Text="Souls:"/>
+                            <Border Grid.Row="1" Grid.ColumnSpan="4" Style="{StaticResource blockBod}"/>
 
-                    <controls:ValidatedTextBox Grid.Column="2" Grid.Row="0" Text="{Binding MoneyText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
-                                               IsValid="{Binding IsMoneyValid}"/>
-                    <controls:ValidatedTextBox Grid.Column="2" Grid.Row="2" Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
-                                               IsValid="{Binding IsPrestigeValid}"/>
-                    <controls:ValidatedTextBox Grid.Column="2" Grid.Row="4" Text="{Binding TokensText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
-                                               IsValid="{Binding IsTokensValid}"/>
-                    <controls:ValidatedTextBox Grid.Column="2" Grid.Row="6" Text="{Binding SoulsText, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0"
-                                               IsValid="{Binding IsSoulsValid}"/>
-
-                    <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover}" Grid.Column="3" Grid.Row="0" Content="Max."
-                                           Command="{Binding MaxMoneyCommand}"/>
-                    <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover}" Grid.Column="3" Grid.Row="2" Content="Max."
-                                           Command="{Binding MaxPrestigeCommand}"/>
-                    <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover}" Grid.Column="3" Grid.Row="4" Content="Max."
-                                           Command="{Binding MaxTokensCommand}"/>
-                    <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover}" Grid.Column="3" Grid.Row="6" Content="Max."
-                                           Command="{Binding MaxSoulsCommand}"/>
+                            <Image Grid.Row="2" Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding SoulsIcon}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource blockTxt}" Text="Souls:"/>
+                            <controls:ValidatedTextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0" Text="{Binding SoulsText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsSoulsValid}"/>
+                            <Button Grid.Row="2" Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxSoulsCommand}"/>
+                        </Grid>
+                    </Border>
                 </Grid>
             </controls:IconTabItem>
+            
             <controls:IconTabItem Header="Upgrades" Icon="{StaticResource Icon.Upgrades}">
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Upgrade editing will be available soon!"/>
             </controls:IconTabItem>
+            
             <controls:IconTabItem Header="Prestige" Icon="{StaticResource Icon.Prestige}">
-                <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Prestige editing will be available soon!"/>
+                <Grid MaxWidth="600">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Border Grid.Row="0" Style="{StaticResource Border.Default}">
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding PrestigeIcon}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource blockTxt}" Text="Prestige:"/>
+                            <controls:ValidatedTextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0" Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeValid}"/>
+                            <Button Grid.Row="0" Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeCommand}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
             </controls:IconTabItem>
+            
             <controls:IconTabItem Header="Achievements" Icon="{StaticResource Icon.Achievements}">
                 <Border BorderBrush="{StaticResource ControlElement.Flat.Border}" BorderThickness="1" CornerRadius="4">
                     <Grid>
@@ -145,12 +164,12 @@
                                 <TextBlock Style="{StaticResource TextBlock.Base}" Text="Search: " Margin="5,0,0,0"/>
                                 <controls:TextBoxPlaceholder Style="{StaticResource TextBox.ListSearch}" PlaceholderText="Search for Achievement..." Width="200"
                                                              Text="{Binding SearchAchievement, UpdateSourceTrigger=PropertyChanged}" MaxLength="50"/>
-                                <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"
+                                <!-- <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"
                                                        Content="Unlock All" Width="75" Margin="5,2,0,2"
                                                        Command="{Binding UnlockAllAchievementsCommand}"/>
                                 <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"
                                                        Content="Claim All" Width="75" Margin="5,2,0,2"
-                                                       Command="{Binding ClaimAllAchievementsCommand}"/>
+                                                       Command="{Binding ClaimAllAchievementsCommand}"/>-->
                             </StackPanel>
                         </Border>
 
@@ -183,9 +202,33 @@
                     </Grid>
                 </Border>
             </controls:IconTabItem>
+            
             <controls:IconTabItem Header="Cosmetics" Icon="{StaticResource Icon.Cosmetics}">
-                <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Cosmetics editing will be available soon!"/>
+                <Grid MaxWidth="600">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" Style="{StaticResource Border.Default}">
+                        <Grid Margin="0,8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding TokensIcon}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource blockTxt}" Text="Tokens:"/>
+                            <controls:ValidatedTextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0" Text="{Binding TokensText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTokensValid}"/>
+                            <Button Grid.Row="0" Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxTokensCommand}"/>
+                        </Grid>
+                    </Border>
+                </Grid>
             </controls:IconTabItem>
+            
             <controls:IconTabItem Header="Misc" Icon="{StaticResource Icon.Misc}">
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Other editing options will be available soon!"/>
             </controls:IconTabItem>

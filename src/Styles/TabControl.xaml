@@ -15,7 +15,7 @@
     <Style TargetType="{x:Type local:IconTabItem}" x:Key="TabItem.Modern">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
-        <Setter Property="Background" Value="{StaticResource CJG.Window.Background}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.Window}"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="FontSize" Value="13"/>
@@ -94,7 +94,7 @@
     <Style TargetType="{x:Type TabControl}" x:Key="TabControl.Modern">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource CJG.Window.Background}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.Window}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource TabItem.Modern}"/>
         <Setter Property="Template">

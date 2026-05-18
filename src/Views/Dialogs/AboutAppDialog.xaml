@@ -10,7 +10,7 @@
         Height="450" Width="550"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
-        Background="{StaticResource CJG.Window.Background}">
+        Background="{StaticResource CJG.Window}">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="32"

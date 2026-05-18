@@ -60,7 +60,7 @@ namespace ScritchyScratchyCheater.Controls
 
         // CornerRadius
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ButtonWithIcon), new PropertyMetadata(new CornerRadius(3)));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ButtonWithIcon), new PropertyMetadata(new CornerRadius(4)));
         public CornerRadius CornerRadius
         {
             get => (CornerRadius)GetValue(CornerRadiusProperty);

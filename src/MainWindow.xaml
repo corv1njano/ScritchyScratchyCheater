@@ -11,7 +11,7 @@
         MinHeight="600" MinWidth="620"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize"
-        Background="{StaticResource CJG.Window.Background}">
+        Background="{StaticResource CJG.Window}">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="32"

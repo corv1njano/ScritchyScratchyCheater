@@ -11,7 +11,8 @@
                 <ResourceDictionary Source="/Styles/Themes/UiDark.xaml"/>
                 
                 
-                <ResourceDictionary Source="/Styles/UiColors.xaml"/>
+                <ResourceDictionary Source="/Styles/UiColors.xaml"/> <!--outdated-->
+                <ResourceDictionary Source="/Styles/Border.xaml"/>
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
                 <ResourceDictionary Source="/Resources/Fonts/Fonts.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBlock.xaml"/>
