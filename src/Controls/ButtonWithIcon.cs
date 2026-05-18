@@ -4,17 +4,18 @@ using System.Windows.Media;
 
 namespace ScritchyScratchyCheater.Controls
 {
-    public partial class IconButton : Button
+    public class ButtonWithIcon : Button
     {
-        public IconButton()
+        static ButtonWithIcon()
         {
-            InitializeComponent();
+            DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(ButtonWithIcon),
+                new FrameworkPropertyMetadata(typeof(ButtonWithIcon)));
         }
 
         // Icon
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(IconButton));
-
+            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(ButtonWithIcon));
         public ImageSource Icon
         {
             get => (ImageSource)GetValue(IconProperty);
@@ -23,8 +24,7 @@ namespace ScritchyScratchyCheater.Controls
 
         // Text
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register(nameof(Text), typeof(string), typeof(IconButton));
-
+            DependencyProperty.Register(nameof(Text), typeof(string), typeof(ButtonWithIcon));
         public string Text
         {
             get => (string)GetValue(TextProperty);
@@ -32,19 +32,17 @@ namespace ScritchyScratchyCheater.Controls
         }
 
         // FontSize (optional für Text)
-        public static readonly DependencyProperty IconButtonFontSizeProperty =
-            DependencyProperty.Register(nameof(IconButtonFontSize), typeof(double), typeof(IconButton), new PropertyMetadata(14.0));
-
-        public double IconButtonFontSize
+        public static readonly DependencyProperty ButtonWithIconFontSizeProperty =
+            DependencyProperty.Register(nameof(ButtonWithIconFontSize), typeof(double), typeof(ButtonWithIcon), new PropertyMetadata(14.0));
+        public double ButtonWithIconFontSize
         {
-            get => (double)GetValue(IconButtonFontSizeProperty);
-            set => SetValue(IconButtonFontSizeProperty, value);
+            get => (double)GetValue(ButtonWithIconFontSizeProperty);
+            set => SetValue(ButtonWithIconFontSizeProperty, value);
         }
 
         // IconHeight
         public static readonly DependencyProperty IconHeightProperty =
-            DependencyProperty.Register(nameof(IconHeight), typeof(double), typeof(IconButton), new PropertyMetadata(20.0));
-
+            DependencyProperty.Register(nameof(IconHeight), typeof(double), typeof(ButtonWithIcon), new PropertyMetadata(20.0));
         public double IconHeight
         {
             get => (double)GetValue(IconHeightProperty);
@@ -53,8 +51,7 @@ namespace ScritchyScratchyCheater.Controls
 
         // IconWidth
         public static readonly DependencyProperty IconWidthProperty =
-            DependencyProperty.Register(nameof(IconWidth), typeof(double), typeof(IconButton), new PropertyMetadata(20.0));
-
+            DependencyProperty.Register(nameof(IconWidth), typeof(double), typeof(ButtonWithIcon), new PropertyMetadata(20.0));
         public double IconWidth
         {
             get => (double)GetValue(IconWidthProperty);
@@ -63,8 +60,7 @@ namespace ScritchyScratchyCheater.Controls
 
         // CornerRadius
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(IconButton), new PropertyMetadata(new CornerRadius(4)));
-
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ButtonWithIcon), new PropertyMetadata(new CornerRadius(4)));
         public CornerRadius CornerRadius
         {
             get => (CornerRadius)GetValue(CornerRadiusProperty);

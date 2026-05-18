@@ -6,26 +6,227 @@
              xmlns:local="clr-namespace:ScritchyScratchyCheater.Views.Pages"
              xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="550"
-             Background="{StaticResource Window.Background}">
-    
-    <Grid Margin="8">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+             d:DesignHeight="600" d:DesignWidth="620"
+             Background="{StaticResource CJG.Window}">
 
-            <TextBlock Grid.Row="0" Text="Automatically load the save file from the default location, or browse manually for a save file."
-            FontSize="14" Style="{StaticResource TextBlock.Base}" Margin="10" TextWrapping="Wrap" TextAlignment="Center"/>
+    <UserControl.Resources>
+        <Style TargetType="Rectangle" x:Key="rect">
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Fill" Value="{StaticResource CJG.Accent}"/>
+        </Style>
+    </UserControl.Resources>
 
-            <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,20,0,0">
-                <StackPanel Orientation="Vertical">
-                    <controls:IconButton Text="Load Save File" Icon="{StaticResource Icon.File}" Width="200" Command="{Binding LoadDefaultSaveFileCommand}"/>
-                    <TextBlock Text="or" FontSize="14" Style="{StaticResource TextBlock.Base}" Margin="0,8" HorizontalAlignment="Center"/>
-                    <controls:IconButton Text="Browse for File" Icon="{StaticResource Icon.Folder}" Width="200" Command="{Binding BrowseSaveFileCommand}"/>
+    <Grid Margin="10,-20,10,10" MaxWidth="600">
+        <Grid VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Row="0" Orientation="Vertical">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlock.Base}">
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="Welcome to" Margin="0,0,0,3"/>
+                <TextBlock Text="Scritchy Scratchy Cheater" FontSize="24" FontWeight="Bold" FontFamily="{StaticResource Montserrat}"/>
+                <TextBlock Text="The compact save file editor for the game Scritchy Scratchy." Margin="0,15,0,0"/>
+            </StackPanel>
 
-                    <controls:BetterButton Text="test" Icon="{StaticResource Icon.Folder}" Width="200" Height="30"/>
-                </StackPanel>
-            </Grid>
-        </StackPanel>
+            <Border Grid.Row="1"
+                    Margin="0,30,0,0"
+                    Style="{StaticResource Border.Default}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Style="{StaticResource TextBlock.Base}"
+                               Text="GET STARTED"
+                               FontFamily="{StaticResource Montserrat}"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource CJG.Accent}"
+                               FontSize="16"
+                               Padding="10"/>
+                    <Grid Grid.Row="1" Margin="20,12,20,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Style="{StaticResource rect}">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="{StaticResource Icon.File}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Grid.Row="0" Style="{StaticResource TextBlock.Base}" Margin="10,0,0,0" Text="Load Save File"/>
+                            </StackPanel>
+                            <TextBlock Grid.Row="0" Style="{StaticResource TextBlock.Base}"
+                                       Margin="0,10"
+                                       FontSize="12"
+                                       Opacity="0.6"
+                                       TextWrapping="Wrap"
+                                       Text="Automatically load the save from the default location."/>
+                            <Button Style="{StaticResource Button.StartingPage.Select}"
+                                    Content="Load Save File"
+                                    Command="{Binding LoadDefaultSaveFileCommand}"/>
+                        </StackPanel>
 
-        <TextBlock VerticalAlignment="Bottom" Text="Made with ♥️ by corv1njano" HorizontalAlignment="Center" Style="{StaticResource TextBlock.Base}" TextWrapping="Wrap" TextAlignment="Center"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Width="1" Margin="0,0,0,4" HorizontalAlignment="Center" Background="{StaticResource CJG.Block.Border}"/>
+                            <Border Grid.Row="1"
+                                    Width="42"
+                                    Height="42"
+                                    CornerRadius="21"
+                                    Background="{StaticResource CJG.Window}"
+                                    BorderBrush="{StaticResource CJG.Block.Border}"
+                                    BorderThickness="1"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                <TextBlock Style="{StaticResource TextBlock.Base}"
+                                           Text="OR"
+                                           FontSize="12"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+                            <Border Grid.Row="2" Width="1" Margin="0,4,0,0" HorizontalAlignment="Center" Background="{StaticResource CJG.Block.Border}"/>
+                        </Grid>
+
+                        <StackPanel Grid.Column="2" Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Rectangle Style="{StaticResource rect}">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="{StaticResource Icon.Folder}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock Grid.Row="0" Style="{StaticResource TextBlock.Base}"
+                                           Margin="10,0,0,0"
+                                           Text="Browse for File"/>
+                            </StackPanel>
+                            <TextBlock Grid.Row="0" Style="{StaticResource TextBlock.Base}"
+                                       Margin="0,10"
+                                       Opacity="0.6"
+                                       FontSize="12"
+                                       TextWrapping="Wrap"
+                                       Text="Manually browse and select a save file in JSON format."/>
+                            <Button Style="{StaticResource Button.StartingPage.Select}"
+                                    Content="Browse for File"
+                                    Command="{Binding BrowseSaveFileCommand}"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="2"
+                    Margin="0,10,0,0"
+                    Style="{StaticResource Border.Default}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Style="{StaticResource TextBlock.Base}"
+                               Text="QUICK LINKS"
+                               FontFamily="{StaticResource Montserrat}"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource CJG.Accent}"
+                               FontSize="16"
+                               Padding="10"/>
+                    <Grid Grid.Row="1" Margin="20,12,20,20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.Resources>
+                            <Style TargetType="TextBlock" x:Key="txtDesc" BasedOn="{StaticResource TextBlock.Base}">
+                                <Setter Property="FontSize" Value="12"/>
+                                <Setter Property="Opacity" Value="0.6"/>
+                                <Setter Property="TextWrapping" Value="Wrap"/>
+                                <Setter Property="Margin" Value="0,5,0,0"/>
+                            </Style>
+                        </Grid.Resources>
+
+                        <Button Style="{StaticResource Button.StartingPage.Link}" Grid.Column="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Style="{StaticResource rect}" Height="22" Width="22" Margin="3,0">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="{StaticResource Icon.GitHub}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="8,0,5,0">
+                                    <TextBlock Style="{StaticResource TextBlock.Base}" Text="GitHub"/>
+                                    <TextBlock Style="{StaticResource txtDesc}" Text="View source code on GitHub."/>
+                                </StackPanel>
+                            </Grid>
+                        </Button>
+
+                        <Button Style="{StaticResource Button.StartingPage.Link}" Grid.Column="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Style="{StaticResource rect}">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="{StaticResource Icon.Heart}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="8,0,5,0">
+                                    <TextBlock Style="{StaticResource TextBlock.Base}" Text="Sponsor"/>
+                                    <TextBlock Style="{StaticResource txtDesc}" Text="Support me and the project."/>
+                                </StackPanel>
+                            </Grid>
+                        </Button>
+
+                        <Button Style="{StaticResource Button.StartingPage.Link}" Grid.Column="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0" Style="{StaticResource rect}">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="{StaticResource Icon.Files}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="8,0,5,0">
+                                    <TextBlock Style="{StaticResource TextBlock.Base}" Text="Samples"/>
+                                    <TextBlock Style="{StaticResource txtDesc}" Text="Discover example save files."/>
+                                </StackPanel>
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <TextBlock Style="{StaticResource TextBlock.Base}"
+                   Grid.Row="3"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom">
+            <Run Text="Made with"/>
+            <Run Text="♥️" Foreground="{StaticResource CJG.Accent}"/>
+            <Run Text="by corv1njano"/>
+        </TextBlock>
     </Grid>
 </UserControl>

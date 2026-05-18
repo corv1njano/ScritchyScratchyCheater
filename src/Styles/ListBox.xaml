@@ -6,9 +6,9 @@
         <Setter Property="Padding" Value="5,3"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ControlElement.Flat.Border}"/>
-        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.ListBoxItem.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.ListBoxItem.Border}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Margin" Value="0,2"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -17,12 +17,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                     <Border x:Name="Bd"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        Padding="{TemplateBinding Padding}"
-                        CornerRadius="4"
-                        SnapsToDevicePixels="true">
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="4"
+                            SnapsToDevicePixels="true">
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -30,9 +30,9 @@
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ControlElement.Flat.Border.Hover}"/>
-                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource ControlElement.Flat.Background}"/>
-                            <Setter Property="Foreground" Value="{StaticResource Font.Secondary.Hover}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource CJG.ListBoxItem.Background.Hover}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Focused}"/>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -41,9 +41,9 @@
     </Style>
 
     <Style x:Key="ListBox.Default" TargetType="{x:Type ListBox}">
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.ListBox.Background}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.ListBox.Background}"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
@@ -58,7 +58,8 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            Padding="5,3"
+                            Padding="8,4,8,4"
+                            CornerRadius="0,0,4,4"
                             SnapsToDevicePixels="true">
                         <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
@@ -73,16 +74,6 @@
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="FocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle Margin="0" StrokeDashArray="1 2" Stroke="Transparent" SnapsToDevicePixels="true" StrokeThickness="0"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="CheckBox.Default" TargetType="{x:Type CheckBox}">
-        <Setter Property="Background" Value="{StaticResource ControlElement.Flat.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ControlElement.Flat.Border}"/>
-        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.CheckBox.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.CheckBox.Border}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
         <Setter Property="BorderThickness" Value="1"/>
@@ -32,8 +32,12 @@
                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                 CornerRadius="4">
                             <Grid x:Name="markGrid" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Fill="{StaticResource Font.Secondary}" Margin="1" Opacity="0" Stretch="None"/>
-                                <Rectangle x:Name="indeterminateMark" Fill="{StaticResource Font.Primary}" Opacity="0"/>
+                                <Rectangle x:Name="optionMark" Height="16" Width="16" Opacity="0" Fill="{StaticResource CJG.Accent}">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="{StaticResource CheckBox.Check}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <Rectangle x:Name="indeterminateMark" Fill="{StaticResource CJG.Accent}" Opacity="0"/>
                             </Grid>
                         </Border>
                         <ContentPresenter x:Name="contentPresenter"
@@ -50,15 +54,14 @@
                             <Setter Property="Padding" Value="4,-1,0,0"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource ControlElement.Flat.Background.Hover}"/>
-                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource Font.Secondary.Hover}"/>
-                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource ControlElement.Background}"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource CJG.CheckBox.Background.Hover}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource CJG.Accent}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
-                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource ControlElement.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource ControlElement.Background}"/>
-                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource Font.Secondary.Hover}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource CJG.Accent}"/>
                             <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="{x:Null}">

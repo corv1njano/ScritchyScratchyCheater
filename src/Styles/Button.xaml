@@ -8,8 +8,8 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
-        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
+        <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
         <Setter Property="Cursor" Value="Hand"/>
     </Style>
@@ -37,47 +37,48 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type controls:BetterButton}" x:Key="Button.Modern" BasedOn="{StaticResource Button.Base}">
+    <Style TargetType="Button" x:Key="Button.StartingPage.Select" BasedOn="{StaticResource Button.Base}">
+        <Setter Property="Background" Value="{StaticResource CJG.Button.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.Button.Border}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Button.Foreground}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="10"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:BetterButton}">
+                <ControlTemplate TargetType="Button">
                     <Border x:Name="ButtonBorder"
                             Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            CornerRadius="{TemplateBinding CornerRadius}">
-                        <Border.Resources>
-                            <controls:BindingProxy x:Key="proxy" Data="{Binding Icon, RelativeSource={RelativeSource AncestorType=controls:BetterButton}}"/>
-                        </Border.Resources>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="8,4">
-                            <Rectangle x:Name="Rect"
-                                       Height="{TemplateBinding IconHeight}"
-                                       Width="{TemplateBinding IconWidth}"
-                                       VerticalAlignment="Center"
-                                       Fill="{TemplateBinding ForegroundColor}">
-                                <Rectangle.OpacityMask>
-                                    <ImageBrush ImageSource="{Binding Data, Source={StaticResource proxy}}"/>
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                            <TextBlock x:Name="Text"
-                                       FontSize="{TemplateBinding BetterButtonFontSize}"
-                                       Style="{StaticResource TextBlock.Base}"
-                                       Foreground="{TemplateBinding ForegroundColor}"
-                                       HorizontalAlignment="{TemplateBinding TextHorizontalAlignment}"
-                                       Margin="5,0,0,0"
-                                       Text="{TemplateBinding Text}"/>
-                        </StackPanel>
+                            CornerRadius="4">
+                        <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" TargetName="Text" Value="{TemplateBinding ForegroundHoverColor}"/>
-                            <Setter Property="Fill" TargetName="Rect" Value="{TemplateBinding ForegroundHoverColor}"/>
-                            <Setter Property="BorderBrush" Value="{TemplateBinding BorderHoverColor}"/>
-                            <Setter Property="Background" Value="{TemplateBinding BackgroundHoverColor}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{TemplateBinding DisabledForegroundColor}"/>
-                            <Setter Property="Background" Value="{TemplateBinding DisabledBackgroundColor}"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                                        To="{StaticResource CJG.Accent.Color}"
+                                                        Duration="0:0:0.1"/>
+                                        <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                        To="Black"
+                                                        Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                                        To="{StaticResource CJG.Button.Background.Color}"
+                                                        Duration="0:0:0.1"/>
+                                        <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                        To="{StaticResource CJG.Button.Foreground.Color}"
+                                                        Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -85,163 +86,77 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Button" x:Key="Button.WindowControl.Minimize" BasedOn="{StaticResource Button.Base}">
+    <Style TargetType="Button" x:Key="Button.StartingPage.Link" BasedOn="{StaticResource Button.Base}">
+        <Setter Property="Background" Value="{StaticResource CJG.Block2.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.Block.Border}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Button.Foreground}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="4">
+                        <Grid Margin="5,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter Grid.Column="0"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                            <Rectangle x:Name="rect" Grid.Column="1" Height="30" Width="15" Fill="{StaticResource CJG.Font.Normal}" Opacity="0.6">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{StaticResource Icon.ArrowRight}" Stretch="Uniform"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" TargetName="rect" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                                    To="{StaticResource CJG.Block2.Background.Hover.Color}"
+                                                    Duration="0:0:0.1"/>
+                                        <ColorAnimation Storyboard.TargetName="rect"
+                                                        Storyboard.TargetProperty="(Fill).(SolidColorBrush.Color)"
+                                                        To="{StaticResource CJG.Accent.Color}"
+                                                        Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                                    To="{StaticResource CJG.Block2.Background.Color}"
+                                                    Duration="0:0:0.1"/>
+                                        <ColorAnimation Storyboard.TargetName="rect"
+                                                        Storyboard.TargetProperty="(Fill).(SolidColorBrush.Color)"
+                                                        To="{StaticResource CJG.Font.Normal.Color}"
+                                                        Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="Button.TitleBar" BasedOn="{StaticResource Button.Base}">
         <Setter Property="Cursor" Value="Arrow"/>
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
-        <Setter Property="Background" Value="{DynamicResource Titlebar.Background}"/>
-        <Setter Property="Height" Value="40"/>
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="ButtonBorder"
-                        Background="{TemplateBinding Background}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        BorderBrush="{TemplateBinding BorderBrush}">
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Rectangle x:Name="Rect" Fill="{StaticResource Font.Secondary}" Height="10" Width="10">
-                                <Rectangle.OpacityMask>
-                                    <ImageBrush ImageSource="{StaticResource WindowControl.Minimize}" Stretch="Uniform"/>
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Rect" Property="Fill" Value="#e8e8e8"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource Color.Titlebar.Button.Hover}"
-                                        Duration="0:0:0.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource Color.Titlebar.Background}"
-                                        Duration="0:0:0.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="Button" x:Key="Button.WindowControl.Maximize" BasedOn="{StaticResource Button.Base}">
-        <Setter Property="Cursor" Value="Arrow"/>
-        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
-        <Setter Property="Background" Value="{DynamicResource Titlebar.Background}"/>
-        <Setter Property="Height" Value="40"/>
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="ButtonBorder"
-                    Background="{TemplateBinding Background}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    BorderBrush="{TemplateBinding BorderBrush}">
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Rectangle x:Name="Rect" Fill="{StaticResource Font.Secondary}" Height="10" Width="10">
-                                <Rectangle.OpacityMask>
-                                    <ImageBrush ImageSource="{StaticResource WindowControl.Maximize}" Stretch="Uniform"/>
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Rect" Property="Fill" Value="#e8e8e8"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                    To="{StaticResource Color.Titlebar.Button.Hover}"
-                                    Duration="0:0:0.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                    To="{StaticResource Color.Titlebar.Background}"
-                                    Duration="0:0:0.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="Button" x:Key="Button.WindowControl.Info" BasedOn="{StaticResource Button.Base}">
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
-        <Setter Property="Background" Value="{DynamicResource Titlebar.Background}"/>
-        <Setter Property="Height" Value="40"/>
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="ButtonBorder"
-                    Background="{TemplateBinding Background}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    BorderBrush="{TemplateBinding BorderBrush}">
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Rectangle x:Name="Rect" Fill="{StaticResource Font.Secondary}" Height="18" Width="18">
-                                <Rectangle.OpacityMask>
-                                    <ImageBrush ImageSource="{StaticResource Icon.Info}"/>
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Rect" Property="Fill" Value="#e8e8e8"/>
-                        </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                    To="{StaticResource Color.Titlebar.Button.Hover}"
-                                    Duration="0:0:0.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                    To="{StaticResource Color.Titlebar.Background}"
-                                    Duration="0:0:0.1"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="Button" x:Key="Button.WindowControl.Heart" BasedOn="{StaticResource Button.Base}">
-        <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
-        <Setter Property="Background" Value="{DynamicResource Titlebar.Background}"/>
+        <Setter Property="Background" Value="{DynamicResource CJG.TitleBar}"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="40"/>
         <Setter Property="Template">
@@ -251,25 +166,16 @@
                             Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{TemplateBinding BorderBrush}">
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Rectangle x:Name="Rect" Fill="{StaticResource Font.Secondary}" Height="18" Width="18">
-                                <Rectangle.OpacityMask>
-                                    <ImageBrush ImageSource="{StaticResource Icon.Heart}"/>
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                        </Grid>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Rect" Property="Fill" Value="{StaticResource Heart.Hover}"/>
-                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                To="{StaticResource Color.Titlebar.Button.Hover}"
-                                Duration="0:0:0.1"/>
+                                                        To="{StaticResource CJG.Color.TitleBar.Hover}"
+                                                        Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -277,8 +183,8 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                To="{StaticResource Color.Titlebar.Background}"
-                                Duration="0:0:0.1"/>
+                                                        To="{StaticResource CJG.Color.TitleBar}"
+                                                        Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
@@ -289,10 +195,10 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Button" x:Key="Button.WindowControl.Close" BasedOn="{StaticResource Button.Base}">
+    <Style TargetType="Button" x:Key="Button.TitleBar.Close" BasedOn="{StaticResource Button.Base}">
         <Setter Property="Cursor" Value="Arrow"/>
         <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
-        <Setter Property="Background" Value="{DynamicResource Titlebar.Background}"/>
+        <Setter Property="Background" Value="{DynamicResource CJG.TitleBar}"/>
         <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="40"/>
         <Setter Property="Template">
@@ -302,26 +208,16 @@
                         Background="{TemplateBinding Background}"
                         BorderThickness="{TemplateBinding BorderThickness}"
                         BorderBrush="{TemplateBinding BorderBrush}">
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Rectangle x:Name="Rect" Fill="{StaticResource Font.Secondary}" Height="10" Width="10">
-                                <Rectangle.OpacityMask>
-                                    <ImageBrush ImageSource="{StaticResource WindowControl.Close}"/>
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                        </Grid>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Rect" Property="Fill" Value="#e8e8e8"/>
-                        </Trigger>
-
                         <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource Color.Titlebar.CloseButton.Hover}"
-                                        Duration="0:0:0.1"/>
+                                                    To="{StaticResource CJG.Color.TitleBar.Close}"
+                                                    Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -329,8 +225,115 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
-                                        To="{StaticResource Color.Titlebar.Background}"
-                                        Duration="0:0:0.1"/>
+                                                    To="{StaticResource CJG.Color.TitleBar}"
+                                                    Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type controls:ButtonWithIcon}" x:Key="Button.ControlBar" BasedOn="{StaticResource Button.Base}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.Button.Border}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.ControlBar}"/>
+        <Setter Property="Padding" Value="5,0,8,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ButtonWithIcon}">
+                    <Border x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}}">
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle x:Name="Rect"
+                                       Grid.Column="0"
+                                       Height="{Binding IconHeight, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Width="{Binding IconWidth, RelativeSource={RelativeSource TemplatedParent}}"
+                                       VerticalAlignment="Center"
+                                       Fill="{StaticResource CJG.Font.Normal}">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <TextBlock x:Name="Text"
+                                       Grid.Column="1"
+                                       FontSize="{Binding ButtonWithIconFontSize, RelativeSource={RelativeSource TemplatedParent}}"
+                                       Style="{StaticResource TextBlock.Base}"
+                                       Margin="5,0,0,0"
+                                       Text="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                                To="{StaticResource CJG.Button.ControlBar.Background.Hover.Color}"
+                                                Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                                To="{StaticResource CJG.Button.ControlBar.Background.Color}"
+                                                Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="Button.Editor.Generic" BasedOn="{StaticResource Button.Base}">
+        <Setter Property="Background" Value="{StaticResource CJG.Block.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.Button.Border}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="4">
+                        <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                                        To="{StaticResource CJG.Button.ControlBar.Background.Hover.Color}"
+                                                        Duration="0:0:0.1"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                                        To="{StaticResource CJG.Block.Background.Color}"
+                                                        Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>

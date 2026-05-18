@@ -4,20 +4,20 @@
     <Style x:Key="ScrollBarThumbVertical" TargetType="{x:Type Thumb}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
-        <Setter Property="Margin" Value="0,3"/>
+        <Setter Property="Margin" Value="0,0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border x:Name="border"
                             CornerRadius="4"
-                            Background="{StaticResource ControlElement.Flat.BackgroundDark}"
+                            Background="{StaticResource CJG.ScrollBar.Thumb}"
                             SnapsToDevicePixels="True"/>            
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource ControlElement.Background}"/>
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource CJG.ScrollBar.Thumb.Hover}"/>
                         </Trigger>
                         <Trigger Property="IsDragging" Value="true">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource ControlElement.Background.Hover}"/>
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource CJG.ScrollBar.Thumb.Hover}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -28,20 +28,20 @@
     <Style x:Key="ScrollBarThumbHorizontal" TargetType="{x:Type Thumb}">
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="IsTabStop" Value="false"/>
-        <Setter Property="Margin" Value="3,0"/>
+        <Setter Property="Margin" Value="0,0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Border x:Name="border"
                             CornerRadius="4"
-                            Background="{StaticResource ControlElement.Flat.BackgroundDark}"
+                            Background="{StaticResource CJG.ScrollBar.Thumb}"
                             SnapsToDevicePixels="True"/>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource ControlElement.Background}"/>
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource CJG.ScrollBar.Thumb.Hover}"/>
                         </Trigger>
                         <Trigger Property="IsDragging" Value="true">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource ControlElement.Background.Hover}"/>
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource CJG.ScrollBar.Thumb.Hover}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -52,11 +52,11 @@
     <Style TargetType="{x:Type ScrollBar}">
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="Background" Value="{StaticResource CJG.ScrollBar.Track}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Margin" Value="5,0,0,0"/>
-        <Setter Property="Width" Value="8"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="MinWidth" Value="6"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollBar}">
@@ -67,14 +67,13 @@
                         <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="3"
-                                MinHeight="40"
+                                CornerRadius="4"
                                 Grid.Row="0"/>
                         <Track x:Name="PART_Track"
                                IsDirectionReversed="true"
                                IsEnabled="{TemplateBinding IsMouseOver}"
                                VerticalAlignment="Stretch"
-                               Width="8">
+                               Width="6">
                             <Track.Thumb>
                                 <Thumb Style="{StaticResource ScrollBarThumbVertical}"/>
                             </Track.Thumb>
@@ -85,9 +84,9 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
-                <Setter Property="Width" Value="Auto"/>
-                <Setter Property="MinWidth" Value="0"/>
-                <Setter Property="Height" Value="0"/>
+                <Setter Property="Height" Value="Auto"/>
+                <Setter Property="MinHeight" Value="6"/>
+                <Setter Property="Margin" Value="0,5,0,0"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Template">
                     <Setter.Value>
@@ -99,11 +98,11 @@
                                 <Border Background="{TemplateBinding Background}"
                                         BorderBrush="{TemplateBinding BorderBrush}"
                                         BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="3"
+                                        CornerRadius="4"
                                         Grid.Column="0"/>
                                 <Track x:Name="PART_Track"
                                        IsEnabled="{TemplateBinding IsMouseOver}"
-                                       Height="8">
+                                       Height="6">
                                     <Track.Thumb>
                                         <Thumb Style="{StaticResource ScrollBarThumbHorizontal}"/>
                                     </Track.Thumb>

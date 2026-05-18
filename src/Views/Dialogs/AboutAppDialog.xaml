@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:ScritchyScratchyCheater.Views.Dialogs"
         xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
         mc:Ignorable="d"
-        Title="About this App" Height="450" Width="550"
+        Title="About this App"
+        Height="450" Width="550"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
-        Background="{StaticResource Window.Background}">
+        Background="{StaticResource CJG.Window}">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="32"
@@ -24,30 +25,33 @@
         </Grid.RowDefinitions>
 
         <!-- titlebar -->
-        <Grid Grid.Row="0" Background="{StaticResource Titlebar.Background}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <TextBlock Text="About this App"
-                           Style="{StaticResource TextBlock.Base}"
-                           Foreground="{StaticResource Font.Secondary}"
-                           FontSize="14"
-                           Margin="10,0"/>
-            </StackPanel>
-
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <StackPanel.Resources>
-                    <Style TargetType="Rectangle">
-                        <Setter Property="Height" Value="10"/>
-                        <Setter Property="Width" Value="10"/>
-                        <Setter Property="Fill" Value="{DynamicResource Font.Secondary}"/>
-                    </Style>
-                </StackPanel.Resources>
-                <Button Style="{StaticResource Button.WindowControl.Close}" Click="Button_Close"/>
-            </StackPanel>
-        </Grid>
+        <Border Grid.Row="0"
+                Background="{StaticResource CJG.TitleBar}"
+                BorderThickness="0,0,0,1"
+                BorderBrush="{StaticResource CJG.Block.Border}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <TextBlock Text="About this App"
+               Style="{StaticResource TextBlock.Base}"
+               Foreground="{StaticResource CJG.Font.TitleBar}"
+               FontSize="14"
+               Margin="10,0"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Style="{StaticResource Button.TitleBar.Close}" Click="Button_Close">
+                        <Rectangle Height="10" Width="10" Fill="{StaticResource CJG.Font.TitleBar}">
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="{StaticResource WindowControl.Close}" Stretch="Uniform"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
 
         <Grid Grid.Row="1" Margin="8,0,8,8">
             <Grid.RowDefinitions>

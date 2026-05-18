@@ -3,48 +3,6 @@
                     xmlns:local="clr-namespace:ScritchyScratchyCheater.Controls"
                     xmlns:converters="clr-namespace:ScritchyScratchyCheater.Utilities.Converters">
 
-    <Style TargetType="TextBox" x:Key="TextBox.Default">
-        <Setter Property="Background" Value="{DynamicResource ControlElement.Flat.Background}"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
-        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Padding" Value="6,3"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ControlElement.Flat.Border}"/>
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="MaxLength" Value="50"/>
-        <Setter Property="IsTabStop" Value="False"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TextBox">
-                    <Border x:Name="TextBoxBorder"
-                            Background="{TemplateBinding Background}" 
-                            CornerRadius="4"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            BorderBrush="{TemplateBinding BorderBrush}">
-                        <ScrollViewer x:Name="PART_ContentHost"
-                                      Focusable="false"
-                                      VerticalAlignment="Center"
-                                      HorizontalScrollBarVisibility="Hidden"
-                                      VerticalScrollBarVisibility="Hidden"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.Border.Hover}"/>
-                            <Setter Property="Foreground" Value="{StaticResource Font.Secondary.Hover}"/>
-                        </Trigger>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Background" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.Background.Hover}"/>
-                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.Border.Hover}"/>
-                            <Setter Property="Foreground" Value="{StaticResource Font.Secondary.Hover}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style x:Key="TextBox.ListSearch" TargetType="{x:Type local:TextBoxPlaceholder}">
         <Setter Property="Background" Value="{DynamicResource ControlElement.Flat.BackgroundDark}"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
@@ -89,7 +47,6 @@
                             </TextBlock>
                         </Grid>
                     </Border>
-
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"/>
@@ -106,13 +63,14 @@
     </Style>
 
     <Style TargetType="{x:Type local:ValidatedTextBox}" x:Key="TextBox.Validated">
-        <Setter Property="Background" Value="{DynamicResource ControlElement.Flat.Background}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.Input.Background}"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
-        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Padding" Value="6,3"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ControlElement.Flat.Border}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource CJG.Accent}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.Input.Border}"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="MaxLength" Value="50"/>
@@ -121,10 +79,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ValidatedTextBox}">
                     <Border x:Name="TextBoxBorder"
-                        Background="{TemplateBinding Background}" 
-                        CornerRadius="4"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        BorderBrush="{TemplateBinding BorderBrush}">
+                            Background="{TemplateBinding Background}" 
+                            CornerRadius="4"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
                         <ScrollViewer x:Name="PART_ContentHost"
                                   Focusable="false"
                                   VerticalAlignment="Center"
@@ -132,18 +90,17 @@
                                   VerticalScrollBarVisibility="Hidden"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.Border.Hover}"/>
-                            <Setter Property="Foreground" Value="{StaticResource Font.Secondary.Hover}"/>
+                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Focused}"/>
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Background" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.Background.Hover}"/>
-                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.Border.Hover}"/>
-                            <Setter Property="Foreground" Value="{StaticResource Font.Secondary.Hover}"/>
+                            <Setter Property="Background" TargetName="TextBoxBorder" Value="{StaticResource CJG.Input.Background.Focused}"/>
+                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Focused}"/>
                         </Trigger>
                         <Trigger Property="IsValid" Value="False">
-                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.Border.Invalid}"/>
+                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource CJG.Input.Border.Invalid}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

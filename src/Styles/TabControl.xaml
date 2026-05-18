@@ -14,20 +14,21 @@
 
     <Style TargetType="{x:Type local:IconTabItem}" x:Key="TabItem.Modern">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
-        <Setter Property="Background" Value="{StaticResource Window.Background}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.Window}"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Padding" Value="8,0"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
                         <Border x:Name="mainBorder" Background="{TemplateBinding Background}">
-                            <Rectangle Fill="{StaticResource ControlElement.Background}" 
+                            <Rectangle Fill="{StaticResource CJG.Accent}" 
                                        Height="2" 
                                        HorizontalAlignment="Stretch" 
                                        VerticalAlignment="Bottom"
@@ -37,19 +38,16 @@
                                        x:Name="SelectedIndicator"/>
                         </Border>
                         <Grid Margin="{TemplateBinding Padding}">
-                            <!--<Grid.Resources>
-                                <local:BindingProxy x:Key="proxy" Data="{Binding Icon, RelativeSource={RelativeSource AncestorType=local:IconTabItem}}"/>
-                            </Grid.Resources>-->
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Rectangle x:Name="Rect"
+                            <Rectangle x:Name="iconRect"
                                        Grid.Column="0"
                                        Height="15"
                                        Width="15"
                                        VerticalAlignment="Center"
-                                       Fill="{StaticResource Font.Secondary}">
+                                       Fill="{StaticResource CJG.Font.Normal}">
                                 <Rectangle.OpacityMask>
                                     <ImageBrush ImageSource="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}"/>
                                 </Rectangle.OpacityMask>
@@ -69,8 +67,8 @@
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=Self}}" Value="true"/>
                             </MultiDataTrigger.Conditions>
-                            <Setter Property="Foreground" Value="{StaticResource Font.Secondary.Hover}"/>
-                            <Setter Property="Fill" TargetName="Rect" Value="{StaticResource Font.Secondary.Hover}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Fill" TargetName="iconRect" Value="{StaticResource CJG.Accent}"/>
                         </MultiDataTrigger>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
@@ -83,8 +81,9 @@
                                 <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource Mode=Self}}" Value="true"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="SelectedIndicator" Value="Visible"/>
-                            <Setter Property="Foreground" Value="{StaticResource ControlElement.Background}"/>
-                            <Setter Property="Fill" TargetName="Rect" Value="{StaticResource ControlElement.Background}"/>
+                            <Setter Property="Cursor" Value="Arrow"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Fill" TargetName="iconRect" Value="{StaticResource CJG.Accent}"/>
                         </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -95,7 +94,7 @@
     <Style TargetType="{x:Type TabControl}" x:Key="TabControl.Modern">
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{StaticResource Window.Background}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.Window}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource TabItem.Modern}"/>
         <Setter Property="Template">
@@ -113,7 +112,7 @@
                         </Grid.RowDefinitions>
                         <TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="0,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
                         <Border Grid.Row="1"
-                                BorderBrush="{StaticResource ControlElement.Flat.Border}"
+                                BorderBrush="{StaticResource CJG.Block.Border}"
                                 BorderThickness="0,1,0,0"/>
                         <Border x:Name="contentPanel"
                                 Background="{TemplateBinding Background}"
@@ -126,7 +125,7 @@
                                 KeyboardNavigation.TabNavigation="Local">
                             <ContentPresenter x:Name="PART_SelectedContentHost"
                                               ContentSource="SelectedContent"
-                                              Margin="10"
+                                              Margin="0,10,0,0"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                     </Grid>
@@ -140,9 +139,6 @@
                             <Setter Property="Width" TargetName="ColumnDefinition1" Value="*"/>
                             <Setter Property="Height" TargetName="RowDefinition0" Value="*"/>
                             <Setter Property="Height" TargetName="RowDefinition1" Value="0"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="false">
-                            <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
