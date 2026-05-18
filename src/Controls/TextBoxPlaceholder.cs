@@ -8,7 +8,6 @@ namespace ScritchyScratchyCheater.Controls
     /// </summary>
     public class TextBoxPlaceholder : TextBox
     {
-
         public TextBoxPlaceholder()
         {
             TextChanged += (_, __) => UpdateHasText();

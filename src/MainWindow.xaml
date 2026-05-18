@@ -54,7 +54,7 @@
                         <Style TargetType="Rectangle">
                             <Setter Property="Height" Value="10"/>
                             <Setter Property="Width" Value="10"/>
-                            <Setter Property="Fill" Value="{DynamicResource CJG.Font.Normal}"/>
+                            <Setter Property="Fill" Value="{DynamicResource CJG.Font.TitleBar}"/>
                         </Style>
                     </StackPanel.Resources>
                     <Button Style="{StaticResource Button.TitleBar}" ToolTip="Support me!" Command="{Binding OpenSupportMeCommand}" Cursor="Hand">

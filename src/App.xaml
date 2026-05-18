@@ -14,9 +14,9 @@
                 <ResourceDictionary Source="/Styles/UiColors.xaml"/>
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
                 <ResourceDictionary Source="/Resources/Fonts/Fonts.xaml"/>
+                <ResourceDictionary Source="/Styles/TextBlock.xaml"/>
                 <ResourceDictionary Source="/Styles/ScrollBar.xaml"/>
                 <ResourceDictionary Source="/Styles/Button.xaml"/>
-                <ResourceDictionary Source="/Styles/TextBlock.xaml"/>
                 <ResourceDictionary Source="/Styles/ToolTip.xaml"/>
                 <ResourceDictionary Source="/Styles/TabControl.xaml"/>
                 <ResourceDictionary Source="/Styles/GroupBox.xaml"/>

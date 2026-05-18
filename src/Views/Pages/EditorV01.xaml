@@ -7,8 +7,8 @@
              xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
              xmlns:converters="clr-namespace:ScritchyScratchyCheater.Utilities.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600"
-             Background="{StaticResource Window.Background}"
+             d:DesignHeight="600" d:DesignWidth="620"
+             Background="{StaticResource CJG.Window.Background}"
              Loaded="Editor_Loaded">
 
     <UserControl.Resources>
@@ -17,24 +17,55 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="{StaticResource ControlElement.Flat.Background}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <controls:IconButton Command="{Binding SaveChangesCommand}" Margin="8" Text="Save" Icon="{StaticResource Icon.Save}" ToolTip="Save all Changes"/>
-                <controls:IconButton Command="{Binding ReloadSaveFileCommand}" Margin="0,8,8,8" Text="Reload" Icon="{StaticResource Icon.Refresh}" ToolTip="Reload current Save File"/>
-                <controls:IconButton Command="{Binding CloseSaveFileCommand}" Margin="0,8,8,8" Text="Close" Icon="{StaticResource Icon.Close}" ToolTip="Close current Save File"/>
-            </StackPanel>
-            <controls:IconButton Command="{Binding OpenFileExplorerCommand}" Grid.Column="1" HorizontalAlignment="Right" Margin="0,8,8,8" Text="Locate" Icon="{StaticResource Icon.Folder}" ToolTip="Open in File Explorer"/>
-        </Grid>
+        <Border Grid.Row="0"
+                BorderThickness="0,0,0,1"
+                Background="{StaticResource CJG.ControlBar}"
+                BorderBrush="{StaticResource CJG.Block.Border}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <controls:ButtonWithIcon Command="{Binding SaveChangesCommand}"
+                                             Style="{StaticResource Button.ControlBar}"
+                                             Margin="8"
+                                             Text="Save"
+                                             Icon="{StaticResource Icon.Save}"
+                                             ToolTip="Save all Changes"/>
+                    <controls:ButtonWithIcon Command="{Binding ReloadSaveFileCommand}" 
+                                             Style="{StaticResource Button.ControlBar}"
+                                             Margin="0,8,8,8" 
+                                             Text="Reload" 
+                                             Icon="{StaticResource Icon.Refresh}" 
+                                             ToolTip="Reload current Save File"/>
+                    <controls:ButtonWithIcon Command="{Binding CloseSaveFileCommand}" 
+                                             Style="{StaticResource Button.ControlBar}"
+                                             Margin="0,8,0,8" 
+                                             Text="Close" 
+                                             Icon="{StaticResource Icon.Close}"
+                                             IconHeight="22"
+                                             IconWidth="22"
+                                             ToolTip="Close current Save File"/>
+                </StackPanel>
+                <controls:ButtonWithIcon Command="{Binding OpenFileExplorerCommand}" 
+                                         Style="{StaticResource Button.ControlBar}"
+                                         Grid.Column="1" 
+                                         HorizontalAlignment="Right" 
+                                         Margin="0,8,8,8"
+                                         Text="Locate Save" 
+                                         Icon="{StaticResource Icon.Folder}" 
+                                         IconHeight="18"
+                                         IconWidth="18"
+                                         ToolTip="Open in File Explorer"/>
+            </Grid>
+        </Border>
 
-        <TabControl Grid.Row="1" Style="{StaticResource TabControl.Modern}" Margin="8,0,8,8">
+        <TabControl Grid.Row="1" Style="{StaticResource TabControl.Modern}" Margin="10,0,10,10">
             <controls:IconTabItem Header="Progress" Icon="{StaticResource Icon.Progress}">
                 <Grid>
                     <Grid.RowDefinitions>

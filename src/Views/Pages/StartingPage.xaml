@@ -24,6 +24,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            
             <StackPanel Grid.Row="0" Orientation="Vertical">
                 <StackPanel.Resources>
                     <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlock.Base}">
@@ -36,7 +37,7 @@
             </StackPanel>
 
             <Border Grid.Row="1"
-                    Margin="0,35,0,0"
+                    Margin="0,30,0,0"
                     BorderThickness="1"
                     BorderBrush="{StaticResource CJG.Block.Border}"
                     Background="{StaticResource CJG.Block.Background}"
@@ -215,7 +216,7 @@
                                     </Rectangle.OpacityMask>
                                 </Rectangle>
                                 <StackPanel Grid.Column="1" Orientation="Vertical" Margin="8,0,5,0">
-                                    <TextBlock Style="{StaticResource TextBlock.Base}" Text="Saves"/>
+                                    <TextBlock Style="{StaticResource TextBlock.Base}" Text="Samples"/>
                                     <TextBlock Style="{StaticResource txtDesc}" Text="Discover example save files."/>
                                 </StackPanel>
                             </Grid>

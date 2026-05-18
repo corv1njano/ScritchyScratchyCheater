@@ -3,6 +3,7 @@
 
     <SolidColorBrush x:Key="CJG.Window.Background" Color="#151A24"/>
     <SolidColorBrush x:Key="CJG.TitleBar" Color="#101622"/>
+    <SolidColorBrush x:Key="CJG.ControlBar" Color="#1A212E"/>
     <Color x:Key="CJG.Color.TitleBar">#101622</Color>
     <Color x:Key="CJG.Color.TitleBar.Hover">#1B243B</Color>
     <Color x:Key="CJG.Color.TitleBar.Close">#CF4848</Color>
@@ -20,6 +21,8 @@
     <SolidColorBrush x:Key="CJG.Button.Border" Color="#2D394F"/>
     <SolidColorBrush x:Key="CJG.Button.Foreground" Color="#E0E1E7"/>
     <Color x:Key="CJG.Button.Foreground.Color">#E0E1E7</Color>
+    <Color x:Key="CJG.Button.ControlBar.Background.Hover.Color">#151A24</Color>
+    <Color x:Key="CJG.Button.ControlBar.Background.Color">#1A212E</Color>
 
 
     <SolidColorBrush x:Key="CJG.Font.Normal" Color="#A3B1CB"/>
