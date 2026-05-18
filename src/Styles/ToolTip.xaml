@@ -3,12 +3,12 @@
 
     <Style TargetType="ToolTip">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="Background" Value="{StaticResource Window.Background}"/>
-        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
+        <Setter Property="Background" Value="{StaticResource CJG.Window}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Padding" Value="7,3"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ControlElement.Flat.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.Block.Border}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Margin" Value="5"/>
         <Setter Property="Template">

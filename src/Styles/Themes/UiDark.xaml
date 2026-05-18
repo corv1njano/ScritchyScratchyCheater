@@ -39,8 +39,20 @@
     <SolidColorBrush x:Key="CJG.Input.Border.Invalid" Color="#F26D6D"/>
 
 
+    <SolidColorBrush x:Key="CJG.ListBox.Background" Color="#1B222E"/>
+    <SolidColorBrush x:Key="CJG.ListBoxItem.Background" Color="#191F2A"/>
+    <SolidColorBrush x:Key="CJG.ListBoxItem.Background.Hover" Color="#151A24"/>
+    <SolidColorBrush x:Key="CJG.ListBoxItem.Border" Color="#2D394F"/>
+
+
+    <SolidColorBrush x:Key="CJG.CheckBox.Background" Color="#252C3B"/>
+    <SolidColorBrush x:Key="CJG.CheckBox.Background.Hover" Color="#151A24"/>
+    <SolidColorBrush x:Key="CJG.CheckBox.Border" Color="#2D394F"/>
+
+
     <SolidColorBrush x:Key="CJG.ScrollBar.Thumb" Color="#5F667A"/>
-    <SolidColorBrush x:Key="CJG.ScrollBar.Track" Color="#252A37"/>
+    <SolidColorBrush x:Key="CJG.ScrollBar.Thumb.Hover" Color="#7A83A1"/>
+    <SolidColorBrush x:Key="CJG.ScrollBar.Track" Color="#272E3D"/>
 
 
     <SolidColorBrush x:Key="CJG.Accent" Color="#6BE6A7"/>

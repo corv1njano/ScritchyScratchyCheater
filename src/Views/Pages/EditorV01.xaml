@@ -152,28 +152,34 @@
             </controls:IconTabItem>
             
             <controls:IconTabItem Header="Achievements" Icon="{StaticResource Icon.Achievements}">
-                <Border BorderBrush="{StaticResource ControlElement.Flat.Border}" BorderThickness="1" CornerRadius="4">
+                <Border Style="{StaticResource Border.Default}" Width="600">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-
-                        <Border CornerRadius="4,4,0,0" BorderThickness="0,0,0,1" BorderBrush="{StaticResource ControlElement.Flat.Border}" Grid.Row="0" Background="{StaticResource ControlElement.Flat.Background}">
-                            <StackPanel Orientation="Horizontal" >
-                                <TextBlock Style="{StaticResource TextBlock.Base}" Text="Search: " Margin="5,0,0,0"/>
-                                <controls:TextBoxPlaceholder Style="{StaticResource TextBox.ListSearch}" PlaceholderText="Search for Achievement..." Width="200"
-                                                             Text="{Binding SearchAchievement, UpdateSourceTrigger=PropertyChanged}" MaxLength="50"/>
-                                <!-- <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"
-                                                       Content="Unlock All" Width="75" Margin="5,2,0,2"
-                                                       Command="{Binding UnlockAllAchievementsCommand}"/>
-                                <controls:CustomButton BackgroundColor="{StaticResource ControlElement.Flat.BackgroundDark}" BackgroundHoverColor="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"
-                                                       Content="Claim All" Width="75" Margin="5,2,0,2"
-                                                       Command="{Binding ClaimAllAchievementsCommand}"/>-->
-                            </StackPanel>
+                        <Border Grid.Row="0"
+                                CornerRadius="4,4,0,0"
+                                BorderThickness="0,0,0,1"
+                                BorderBrush="{StaticResource CJG.Block.Border}"
+                                Background="{StaticResource CJG.Block.Background}">
+                            <Grid Margin="0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <controls:TextBoxPlaceholder Grid.Column="0"
+                                                             Style="{StaticResource TextBox.ListSearch}"
+                                                             PlaceholderText="Search for Achievement..."
+                                                             Text="{Binding SearchAchievement, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Button Grid.Column="1" Content="Unlock All" Style="{StaticResource blockbtn}" Command="{Binding UnlockAllAchievementsCommand}"/>
+                                <Button Grid.Column="2" Content="Claim All" Style="{StaticResource blockbtn}" Command="{Binding ClaimAllAchievementsCommand}"/>
+                            </Grid>
                         </Border>
-
-                        <ListBox Grid.Row="1" Style="{StaticResource ListBox.Default}"
+                        
+                        <ListBox Grid.Row="1"
+                                 Style="{StaticResource ListBox.Default}"
                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                  ScrollViewer.CanContentScroll="False"
