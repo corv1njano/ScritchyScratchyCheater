@@ -19,17 +19,20 @@
 
     <SolidColorBrush x:Key="CJG.Button.Background" Color="#232F47"/>
     <Color x:Key="CJG.Button.Background.Color">#232F47</Color>
+    <SolidColorBrush x:Key="CJG.Button.Background.Transparent" Color="#151A24"/>
+    <Color x:Key="CJG.Button.Background.Transparent.Color">#151A24</Color>
     <SolidColorBrush x:Key="CJG.Button.Border" Color="#2D394F"/>
     <SolidColorBrush x:Key="CJG.Button.Foreground" Color="#E0E1E7"/>
     <Color x:Key="CJG.Button.Foreground.Color">#E0E1E7</Color>
-    <Color x:Key="CJG.Button.ControlBar.Background.Hover.Color">#151A24</Color>
-    <Color x:Key="CJG.Button.ControlBar.Background.Color">#1A212E</Color>
+    <Color x:Key="CJG.Button.WithIcon.Background.Hover.Color">#151A24</Color>
+    <Color x:Key="CJG.Button.WithIcon.Background.Color">#1A212E</Color>
 
 
     <SolidColorBrush x:Key="CJG.Font.Normal" Color="#A3B1CB"/>
     <Color x:Key="CJG.Font.Normal.Color">#A3B1CB</Color>
     <SolidColorBrush x:Key="CJG.Font.TitleBar" Color="#E0E1E7"/>
     <SolidColorBrush x:Key="CJG.Font.Focused" Color="#E0E1E7"/>
+    <Color x:Key="CJG.Font.Focused.Color">#E0E1E7</Color>
     <SolidColorBrush x:Key="CJG.Glyph.Heart" Color="#F26D6D"/>
 
 

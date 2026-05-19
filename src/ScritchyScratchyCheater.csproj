@@ -55,6 +55,7 @@
 
   <ItemGroup>
     <Folder Include="Models\GameData\" />
+    <Folder Include="Models\Results\" />
   </ItemGroup>
 
 </Project>

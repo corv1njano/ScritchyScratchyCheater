@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ScritchyScratchyCheater.Utilities;
+using ScritchyScratchyCheater.ViewModels.Dialogs;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ScritchyScratchyCheater.Views.Dialogs
 {
@@ -19,9 +9,30 @@ namespace ScritchyScratchyCheater.Views.Dialogs
     /// </summary>
     public partial class CreateBackupDialog : Window
     {
+        private WindowWrapper _windowWrapper;
+
         public CreateBackupDialog()
         {
             InitializeComponent();
+            _windowWrapper = new WindowWrapper(this);
+            DataContext = new CreateBackupViewModel();
+
+            ContentRendered += CreateBackupDialog_ContentRendered;
+        }
+
+        private void CreateBackupDialog_ContentRendered(object? sender, EventArgs e)
+        {
+            if (Owner != null)
+            {
+                Left = Owner.Left + (Owner.Width - ActualWidth) / 2;
+                Top = Owner.Top + (Owner.Height - ActualHeight) / 2;
+            }
+            ContentRendered -= CreateBackupDialog_ContentRendered;
+        }
+
+        private void Button_Close(object sender, RoutedEventArgs e)
+        {
+            _windowWrapper.CloseWindow();
         }
     }
 }

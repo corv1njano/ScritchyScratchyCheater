@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ScritchyScratchyCheater.Views.Pages.EditorV01"
+﻿<UserControl x:Class="ScritchyScratchyCheater.Views.Pages.EditorV01Page"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -20,7 +20,6 @@
         </Style>
         <Style TargetType="TextBlock" x:Key="blockTxt" BasedOn="{StaticResource TextBlock.Base}">
             <Setter Property="Margin" Value="8,0,0,0"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <Style TargetType="Border" x:Key="blockBod" BasedOn="{StaticResource Border.Default}">
             <Setter Property="BorderThickness" Value="0,1,0,0"/>
@@ -54,19 +53,19 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
                     <controls:ButtonWithIcon Command="{Binding SaveChangesCommand}"
-                                             Style="{StaticResource Button.ControlBar}"
+                                             Style="{StaticResource Button.WithIcon}"
                                              Margin="8"
                                              Text="Save"
                                              Icon="{StaticResource Icon.Save}"
                                              ToolTip="Save all Changes"/>
                     <controls:ButtonWithIcon Command="{Binding ReloadSaveFileCommand}" 
-                                             Style="{StaticResource Button.ControlBar}"
+                                             Style="{StaticResource Button.WithIcon}"
                                              Margin="0,8,8,8" 
                                              Text="Reload" 
                                              Icon="{StaticResource Icon.Refresh}" 
                                              ToolTip="Reload current Save File"/>
                     <controls:ButtonWithIcon Command="{Binding CloseSaveFileCommand}" 
-                                             Style="{StaticResource Button.ControlBar}"
+                                             Style="{StaticResource Button.WithIcon}"
                                              Margin="0,8,0,8" 
                                              Text="Close" 
                                              Icon="{StaticResource Icon.Close}"
@@ -75,7 +74,7 @@
                                              ToolTip="Close current Save File"/>
                 </StackPanel>
                 <controls:ButtonWithIcon Command="{Binding OpenFileExplorerCommand}" 
-                                         Style="{StaticResource Button.ControlBar}"
+                                         Style="{StaticResource Button.WithIcon}"
                                          Grid.Column="1" 
                                          HorizontalAlignment="Right" 
                                          Margin="0,8,8,8"
@@ -83,7 +82,7 @@
                                          Icon="{StaticResource Icon.Folder}" 
                                          IconHeight="18"
                                          IconWidth="18"
-                                         ToolTip="Open in File Explorer"/>
+                                         ToolTip="Open current Save File in File Explorer"/>
             </Grid>
         </Border>
 
@@ -202,10 +201,10 @@
                                                 <TextBlock Text="{Binding Achievement.Name}" Margin="5,0,0,0" VerticalAlignment="Center"/>
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsUnlocked, Mode=TwoWay}" Margin="5,0,0,0"/>
+                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsUnlocked, Mode=TwoWay}" Margin="8,0,0,0"/>
                                                 <TextBlock Text="Unlocked" VerticalAlignment="Center"/>
-                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsClaimed, Mode=TwoWay}" Margin="15,0,0,0"/>
-                                                <TextBlock Text="Claimed" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsClaimed, Mode=TwoWay}" Margin="16,0,0,0"/>
+                                                <TextBlock Text="Claimed" Margin="0,0,8,0" VerticalAlignment="Center"/>
                                             </StackPanel>
                                         </Grid>
                                     </DataTemplate>

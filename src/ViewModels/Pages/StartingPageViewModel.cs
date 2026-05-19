@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using ScritchyScratchyCheater.Services;
 using ScritchyScratchyCheater.Utilities;
+using ScritchyScratchyCheater.Views.Dialogs;
 using ScritchyScratchyCheater.Views.Pages;
 using System.IO;
 using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
@@ -52,17 +53,27 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             switch (loadResult.Version)
             {
                 case "0.1":
-                    App.PageNavigator.Navigate(new EditorV01());
+                    App.PageNavigator.Navigate(new EditorV01Page());
                     break;
                 default:
                     break;
             }
 
-            CreateBackup(filePath);
+            CreateBackup();
         }
 
-        private void CreateBackup(string sourcePath)
+        private void CreateBackup()
         {
+            var dialog = new CreateBackupDialog()
+            {
+                Owner = App.Current.MainWindow
+            };
+            dialog.ShowDialog();
+            return;
+
+
+
+
             var result = ShowMessage.Neutral("Create backup?",
                 "Do you want to create a backup of your save file before editing?",
                 DialogOptions.YesNo);
@@ -83,6 +94,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                     Directory.CreateDirectory(dir);
                 }
 
+                string sourcePath = App.SaveFileService.CurrentFilePath;
                 string fileName = $"save_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.json.backup";
                 string destinationPath = Path.Combine(dir, fileName);
 
