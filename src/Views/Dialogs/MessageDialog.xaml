@@ -9,58 +9,70 @@
         ShowInTaskbar="False"
         Topmost="True"
         WindowStartupLocation="CenterOwner"
-        Title="Message" Height="190" Width="310"
-        Background="{StaticResource Window.Background}">
+        Title="Message" Height="200" Width="320"
+        Background="{StaticResource CJG.Window}">
 
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="0"
                       CaptionHeight="0"
                       UseAeroCaptionButtons="False"/>
     </WindowChrome.WindowChrome>
-    
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="1" CornerRadius="0" Background="{StaticResource Window.Background}">
+        <StackPanel Orientation="Vertical" Grid.Row="0" VerticalAlignment="Center" Margin="10">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                <StackPanel.Resources>
+                    <Style TargetType="Rectangle">
+                        <Setter Property="Height" Value="30"/>
+                        <Setter Property="Width" Value="30"/>
+                        <Setter Property="Margin" Value="0,0,8,0"/>
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                    </Style>
+                </StackPanel.Resources>
+                
+                <Rectangle x:Name="NoticeInfo" Fill="{StaticResource CJG.Accent}">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush ImageSource="{StaticResource Icon.Info}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <Rectangle x:Name="NoticeWarning" Fill="{StaticResource CJG.DialogType.Warning}">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush ImageSource="{StaticResource Icon.Warning}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <Rectangle x:Name="NoticeError" Fill="{StaticResource CJG.DialogType.Error}">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush ImageSource="{StaticResource Icon.Close}"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+
+                <TextBlock x:Name="MessageTitle" Text="Title" Style="{StaticResource TextBlock.Base}" FontFamily="{StaticResource Montserrat}" FontWeight="Bold" Foreground="{StaticResource CJG.Font.TitleBar}" FontSize="16"/>
+            </StackPanel>
+            <TextBlock x:Name="MessageBody" Text="Message could not be displayed." Style="{StaticResource TextBlock.Base}" TextWrapping="Wrap"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" BorderThickness="0,1,0,0" BorderBrush="{StaticResource CJG.Block.Border}" Background="{StaticResource CJG.Block.Background}">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <StackPanel Orientation="Vertical" Grid.Row="0" VerticalAlignment="Center" Margin="8,0,8,8">
-                    <TextBlock x:Name="MessageTitle" Text="Title"
-                               Style="{StaticResource TextBlock.Base}"
-                               Margin="0,0,0,16" FontFamily="{StaticResource Montserrat}" FontWeight="Bold"/>
-                    <TextBlock x:Name="MessageBody" Text="Message could not be displayed."
-                               Style="{StaticResource TextBlock.Base}"
-                               TextWrapping="Wrap"/>
+                <Grid.Resources>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                    </Style>
+                </Grid.Resources>
+                <StackPanel Margin="8" x:Name="ButtonOk" Visibility="Collapsed">
+                    <Button Style="{StaticResource Button.Dialog.Preffered}" Content="OK" Click="ButtonYes_Click"/>
                 </StackPanel>
-
-                <Grid Grid.Row="1" Background="{StaticResource ControlElement.Flat.Background}">
-                    <Grid.Resources>
-                        <Style TargetType="Button" x:Key="btn" BasedOn="{StaticResource Button.Dialog}">
-                            <Setter Property="Height" Value="26"/>
-                            <Setter Property="Width" Value="60"/>
-                        </Style>
-                        <Style TargetType="StackPanel">
-                            <Setter Property="HorizontalAlignment" Value="Right"/>
-                        </Style>
-                    </Grid.Resources>
-
-                    <StackPanel Margin="8" x:Name="ButtonOk" Visibility="Visible">
-                        <Button Style="{StaticResource btn}" Content="OK" Click="ButtonYes_Click"/>
-                    </StackPanel>
-                    <StackPanel Margin="8" Orientation="Horizontal" x:Name="ButtonYesNo" Visibility="Hidden">
-                        <Button Style="{StaticResource btn}" Content="Yes" Margin="0,0,8,0" Click="ButtonYes_Click"/>
-                        <Button Style="{StaticResource btn}" Content="No" Click="ButtonNo_Click"/>
-                    </StackPanel>
-                </Grid>
-
+                <StackPanel Margin="8" Orientation="Horizontal" x:Name="ButtonYesNo" Visibility="Collapsed">
+                    <Button Style="{StaticResource Button.Dialog.Preffered}" Content="Yes" Margin="0,0,8,0" Click="ButtonYes_Click"/>
+                    <Button Style="{StaticResource Button.Dialog}" Content="No" Click="ButtonNo_Click"/>
+                </StackPanel>
             </Grid>
         </Border>
+
+        <Button Style="{StaticResource Button.Window.Close}" Click="Button_Close" Margin="10"/>
     </Grid>
 </Window>

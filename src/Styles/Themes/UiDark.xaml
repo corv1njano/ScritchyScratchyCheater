@@ -59,6 +59,10 @@
     <SolidColorBrush x:Key="CJG.ScrollBar.Track" Color="#272E3D"/>
 
 
+    <SolidColorBrush x:Key="CJG.DialogType.Warning" Color="#E0C355"/>
+    <SolidColorBrush x:Key="CJG.DialogType.Error" Color="#F26D6D"/>
+
+
     <SolidColorBrush x:Key="CJG.Accent" Color="#6BE6A7"/>
     <Color x:Key="CJG.Accent.Color">#6BE6A7</Color>
 

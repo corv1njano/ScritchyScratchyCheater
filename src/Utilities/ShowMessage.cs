@@ -20,7 +20,7 @@ namespace ScritchyScratchyCheater.Utilities
         /// <returns>true if the user selects an affirmative option (such as OK); otherwise, false.</returns>
         public static bool Neutral(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.None, Window? owner = null)
         {
-            var d = new MessageDialog(title, body, options, sound, DialogColor.Neutral);
+            var d = new MessageDialog(title, body, options, sound, DialogType.Neutral);
             d.Owner = owner ?? App.Current.MainWindow;
 
             return d.ShowDialog() ?? false;
@@ -37,7 +37,7 @@ namespace ScritchyScratchyCheater.Utilities
         /// <returns>true if the user selects an affirmative option (such as OK); otherwise, false.</returns>
         public static bool Info(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.Info, Window? owner = null)
         {
-            var d = new MessageDialog(title, body, options, sound, DialogColor.Info);
+            var d = new MessageDialog(title, body, options, sound, DialogType.Info);
             d.Owner = owner ?? App.Current.MainWindow;
 
             return d.ShowDialog() ?? false;
@@ -54,7 +54,7 @@ namespace ScritchyScratchyCheater.Utilities
         /// <returns>true if the user selects an affirmative option (such as OK); otherwise, false.</returns>
         public static bool Warning(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.None, Window? owner = null)
         {
-            var d = new MessageDialog(title, body, options, sound, DialogColor.Warning);
+            var d = new MessageDialog(title, body, options, sound, DialogType.Warning);
             d.Owner = owner ?? App.Current.MainWindow;
 
             return d.ShowDialog() ?? false;
@@ -71,7 +71,7 @@ namespace ScritchyScratchyCheater.Utilities
         /// <returns>true if the user selects an affirmative option (such as OK); otherwise, false.</returns>
         public static bool Error(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.Error, Window? owner = null)
         {
-            var d = new MessageDialog(title, body, options, sound, DialogColor.Error);
+            var d = new MessageDialog(title, body, options, sound, DialogType.Error);
             d.Owner = owner ?? App.Current.MainWindow;
 
             return d.ShowDialog() ?? false;

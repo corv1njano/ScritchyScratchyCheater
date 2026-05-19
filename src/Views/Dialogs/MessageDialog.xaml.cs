@@ -9,10 +9,7 @@ namespace ScritchyScratchyCheater.Views.Dialogs
     /// </summary>
     public partial class MessageDialog : Window
     {
-        public MessageDialog(string title, string body,
-            DialogOptions options = DialogOptions.Ok,
-            DialogSound sound = DialogSound.None,
-            DialogColor color = DialogColor.Neutral)
+        public MessageDialog(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.None, DialogType type = DialogType.Neutral)
         {
             InitializeComponent();
 
@@ -20,25 +17,33 @@ namespace ScritchyScratchyCheater.Views.Dialogs
             MessageBody.Text = body;
             Title = title;
 
-            if (options == DialogOptions.Ok)
+            switch (options)
             {
-                HideAllButons();
-                ButtonOk.Visibility = Visibility.Visible;
-            }
-            else if (options == DialogOptions.YesNo)
-            {
-                HideAllButons();
-                ButtonYesNo.Visibility = Visibility.Visible;
+                case DialogOptions.Ok:
+                    ButtonOk.Visibility = Visibility.Visible;
+                    break;
+                case DialogOptions.YesNo:
+                    ButtonYesNo.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    ButtonOk.Visibility = Visibility.Visible;
+                    break;
             }
 
-            Background = color switch
+            switch (type)
             {
-                DialogColor.Neutral => (SolidColorBrush)FindResource("Dialog.TypeColor.Neutral"),
-                DialogColor.Info => (SolidColorBrush)FindResource("Dialog.TypeColor.Info"),
-                DialogColor.Warning => (SolidColorBrush)FindResource("Dialog.TypeColor.Warning"),
-                DialogColor.Error => (SolidColorBrush)FindResource("Dialog.TypeColor.Error"),
-                _ => (SolidColorBrush)FindResource("Dialog.TypeColor.Neutral")
-            };
+                case DialogType.Neutral: break;
+                case DialogType.Info:
+                    NoticeInfo.Visibility = Visibility.Visible;
+                    break;
+                case DialogType.Warning:
+                    NoticeWarning.Visibility = Visibility.Visible;
+                    break;
+                case DialogType.Error:
+                    NoticeError.Visibility = Visibility.Visible;
+                    break;
+                default: break;
+            }
 
             switch (sound)
             {
@@ -49,12 +54,6 @@ namespace ScritchyScratchyCheater.Views.Dialogs
                     SystemSounds.Hand.Play(); break;
                 default: break;
             }
-        }
-
-        private void HideAllButons()
-        {
-            ButtonOk.Visibility = Visibility.Hidden;
-            ButtonYesNo.Visibility = Visibility.Hidden;
         }
 
         private void ButtonYes_Click(object sender, RoutedEventArgs e)
@@ -69,13 +68,19 @@ namespace ScritchyScratchyCheater.Views.Dialogs
             Close();
         }
 
+        private void Button_Close(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
+        }
+
         public enum DialogOptions
         {
             Ok,
             YesNo
         }
 
-        public enum DialogColor
+        public enum DialogType
         {
             Neutral,
             Info,

@@ -5,7 +5,6 @@ using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.Views.Dialogs;
 using ScritchyScratchyCheater.Views.Pages;
-using System.IO;
 using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
 namespace ScritchyScratchyCheater.ViewModels.Pages
@@ -85,19 +84,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                 Owner = App.Current.MainWindow
             };
             dialog.ShowDialog();
-
-
-            /*
-             
-             
-             
-             ShowMessage.Info("Backup done",
-                    "A backup of the save file has been created successfully.",
-                    DialogOptions.Ok);
-             
-             
-             
-             */
         }
     }
 }

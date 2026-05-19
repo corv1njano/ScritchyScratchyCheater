@@ -70,9 +70,17 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
             {
                 Debug.WriteLine($"Error when creating backup: {ex}");
 
-                //error message
+                ShowMessage.Error("Backup failed",
+                        "Unable to backup the save file. Please try again.",
+                        DialogOptions.Ok);
                 return;
             }
+
+            ShowMessage.Info("Backup done",
+                "A backup of the save file has been created successfully.",
+                DialogOptions.Ok);
+
+            App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault()?.Close();
 
             if (OpenFolder)
             {
@@ -85,10 +93,6 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
                 }
                 Process.Start("explorer.exe", $"/select,\"{destinationPath}\"");
             }
-
-            App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault()?.Close();
-
-            //success message
         }
     }
 }

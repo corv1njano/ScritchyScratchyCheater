@@ -10,8 +10,6 @@
                 <!-- test color schema -->
                 <ResourceDictionary Source="/Styles/Themes/UiDark.xaml"/>
 
-                <ResourceDictionary Source="/Styles/UiColors.xaml"/> <!--outdated-->
-
                 <ResourceDictionary Source="/Styles/FocusVisual.xaml"/>
                 <ResourceDictionary Source="/Styles/Border.xaml"/>
                 <ResourceDictionary Source="/Resources/Icons.xaml"/>
