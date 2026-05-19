@@ -1,17 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ScritchyScratchyCheater.Controls">
-
-    <Style x:Key="FocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle Margin="0" StrokeDashArray="1 2" Stroke="Transparent" SnapsToDevicePixels="true" StrokeThickness="0"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
+    
     <Style TargetType="{x:Type local:IconTabItem}" x:Key="TabItem.Modern">
         <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
         <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>

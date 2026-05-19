@@ -38,6 +38,22 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             }
         }
 
+        [RelayCommand]
+        private void OpenGitHub()
+        {
+            Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater");
+        }
+        [RelayCommand]
+        private void OpenSponsor()
+        {
+            Utils.OpenUrl("https://github.com/sponsors/corv1njano");
+        }
+        [RelayCommand]
+        private void OpenSamples()
+        {
+            Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater/tree/master/samples");
+        }
+
         private async Task LoadSaveFile(string filePath)
         {
             LoadResult loadResult =  await App.SaveFileService.Load(filePath);

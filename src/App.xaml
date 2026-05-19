@@ -9,9 +9,10 @@
 
                 <!-- test color schema -->
                 <ResourceDictionary Source="/Styles/Themes/UiDark.xaml"/>
-                
-                
+
                 <ResourceDictionary Source="/Styles/UiColors.xaml"/> <!--outdated-->
+
+                <ResourceDictionary Source="/Styles/FocusVisual.xaml"/>
                 <ResourceDictionary Source="/Styles/Border.xaml"/>
                 <ResourceDictionary Source="/Resources/Icons.xaml"/>
                 <ResourceDictionary Source="/Resources/Fonts/Fonts.xaml"/>
@@ -25,7 +26,6 @@
                 <ResourceDictionary Source="/Styles/TextBox.xaml"/>
                 <ResourceDictionary Source="/Styles/ListBox.xaml"/>
                 <ResourceDictionary Source="/Styles/CheckBox.xaml"/>
-                <ResourceDictionary Source="/Styles/FlowDocument.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
