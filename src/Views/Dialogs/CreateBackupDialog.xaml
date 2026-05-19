@@ -53,6 +53,7 @@
                     <controls:ValidatedTextBox Grid.Column="1"
                                                Style="{StaticResource TextBox.Validated}"
                                                Text="{Binding TargetPath, UpdateSourceTrigger=PropertyChanged}"
+                                               MaxLength="250"
                                                IsValid="{Binding IsTargetPathValid}"/>
                     <controls:ButtonWithIcon Style="{StaticResource Button.WithIcon}"
                                              Margin="8,0"

@@ -46,19 +46,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="TextBox.ListSearch" TargetType="{x:Type local:TextBoxPlaceholder}">
-        <Setter Property="Background" Value="{DynamicResource CJG.Input.Background}"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
-        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Padding" Value="6,3"/>
-        <Setter Property="MaxLength" Value="50"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource CJG.Input.Border}"/>
-        <Setter Property="SelectionBrush" Value="{StaticResource CJG.Accent}"/>
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="IsTabStop" Value="False"/>
+    <Style x:Key="TextBox.ListSearch" TargetType="{x:Type local:TextBoxPlaceholder}" BasedOn="{StaticResource TextBox.Default}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:TextBoxPlaceholder}">
@@ -141,19 +129,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type local:ValidatedTextBox}" x:Key="TextBox.Validated">
-        <Setter Property="Background" Value="{StaticResource CJG.Input.Background}"/>
-        <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
-        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
-        <Setter Property="Height" Value="30"/>
-        <Setter Property="Padding" Value="6,3"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="SelectionBrush" Value="{StaticResource CJG.Accent}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource CJG.Input.Border}"/>
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="MaxLength" Value="50"/>
-        <Setter Property="IsTabStop" Value="False"/>
+    <Style TargetType="{x:Type local:ValidatedTextBox}" x:Key="TextBox.Validated" BasedOn="{StaticResource TextBox.Default}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ValidatedTextBox}">
