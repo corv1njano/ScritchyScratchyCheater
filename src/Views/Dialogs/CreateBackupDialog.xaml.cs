@@ -17,7 +17,7 @@ namespace ScritchyScratchyCheater.Views.Dialogs
             _windowWrapper = new WindowWrapper(this);
             DataContext = new CreateBackupViewModel();
 
-            ContentRendered += CreateBackupDialog_ContentRendered;
+            //ContentRendered += CreateBackupDialog_ContentRendered;
         }
 
         private void CreateBackupDialog_ContentRendered(object? sender, EventArgs e)

@@ -59,6 +59,7 @@
                                              Margin="8,0"
                                              Grid.Column="2"
                                              Text="Browse"
+                                             ToolTip="Browse for Destination Folder"
                                              Icon="{StaticResource Icon.Folder}"
                                              IconHeight="18" IconWidth="18"
                                              Command="{Binding OpenTargetSelectionCommand}">
@@ -82,7 +83,11 @@
         </Border>
 
         <StackPanel Orientation="Horizontal" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,10,0,0">
-            <Button Style="{StaticResource Button.Dialog.Preffered}" Content="Export" Command="{Binding CreateBackupCommand}"/>
+            <Grid>
+                <Button Style="{StaticResource Button.Dialog.Preffered}" Content="Export" Command="{Binding CreateBackupCommand}" IsEnabled="{Binding CanExport}"/>
+                <Rectangle Fill="Transparent" Cursor="No"
+                           Visibility="{Binding CanExport, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+            </Grid>
             <Button Style="{StaticResource Button.Dialog}" Content="Cancel" Margin="8,0,0,0" Click="Button_Close"/>
         </StackPanel>
         

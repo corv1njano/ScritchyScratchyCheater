@@ -13,11 +13,13 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
     {
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsTargetPathValid))]
+        [NotifyPropertyChangedFor(nameof(CanExport))]
         private string _targetPath = string.Empty;
 
         public bool IsTargetPathValid => !string.IsNullOrWhiteSpace(TargetPath)
             && Directory.Exists(TargetPath);
 
+        public bool CanExport => IsTargetPathValid;
 
         [ObservableProperty]
         private bool _includeTimetamp = true;
@@ -34,7 +36,7 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
         {
             var folderPicker = new OpenFolderDialog
             {
-                Title = "Select a directory to save the backup...",
+                Title = "Select a Directory to save the Backup...",
                 InitialDirectory = Directory.Exists(TargetPath)
                     ? TargetPath
                     : Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)

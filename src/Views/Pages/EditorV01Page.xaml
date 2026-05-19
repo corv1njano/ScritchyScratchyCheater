@@ -52,12 +52,16 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
-                    <controls:ButtonWithIcon Command="{Binding SaveChangesCommand}"
-                                             Style="{StaticResource Button.WithIcon}"
-                                             Margin="8"
-                                             Text="Save"
-                                             Icon="{StaticResource Icon.Save}"
-                                             ToolTip="Save all Changes"/>
+                    <Grid Margin="8">
+                        <controls:ButtonWithIcon Command="{Binding SaveChangesCommand}"
+                                                 IsEnabled="{Binding CanSave}"
+                                                 Style="{StaticResource Button.WithIcon}"
+                                                 Text="Save"
+                                                 Icon="{StaticResource Icon.Save}"
+                                                 ToolTip="Save all Changes"/>
+                        <Rectangle Fill="Transparent" Cursor="No"
+                                   Visibility="{Binding CanSave, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                    </Grid>
                     <controls:ButtonWithIcon Command="{Binding ReloadSaveFileCommand}" 
                                              Style="{StaticResource Button.WithIcon}"
                                              Margin="0,8,8,8" 
@@ -188,7 +192,8 @@
                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
                                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                      ScrollViewer.CanContentScroll="False"
-                                     ItemsSource="{Binding AchievementsView}">
+                                     ItemsSource="{Binding AchievementsView}"
+                                     Visibility="{Binding HasEntries, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -210,6 +215,10 @@
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
+
+                            <TextBlock Text="No achievements found with that name."
+                                       HorizontalAlignment="Center" Style="{StaticResource TextBlock.Base}" Grid.Row="1"
+                                       Visibility="{Binding HasEntries, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                         </Grid>
                     </Border>
                 </Grid>

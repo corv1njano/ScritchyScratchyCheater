@@ -3,6 +3,7 @@
                     xmlns:local="clr-namespace:ScritchyScratchyCheater.Utilities.Converters">
 
     <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    <local:BoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter" Invert="True"/>
     <local:IconIdToImageConverter x:Key="IconIdToImageConverter"/>
 
 </ResourceDictionary>
