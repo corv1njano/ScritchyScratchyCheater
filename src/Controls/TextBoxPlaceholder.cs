@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ScritchyScratchyCheater.Controls
@@ -28,6 +29,13 @@ namespace ScritchyScratchyCheater.Controls
                 typeof(TextBoxPlaceholder),
                 new PropertyMetadata(false));
 
+        public static readonly DependencyProperty IsClearableProperty =
+            DependencyProperty.Register(
+                nameof(IsClearable),
+                typeof(bool),
+                typeof(TextBoxPlaceholder),
+                new PropertyMetadata(false));
+
         public string PlaceholderText
         {
             get => (string)GetValue(PlaceholderTextProperty);
@@ -40,9 +48,29 @@ namespace ScritchyScratchyCheater.Controls
             private set => SetValue(HasTextProperty, value);
         }
 
+        public bool IsClearable
+        {
+            get => (bool)GetValue(IsClearableProperty);
+            set => SetValue(IsClearableProperty, value);
+        }
+
         private void UpdateHasText()
         {
             HasText = !string.IsNullOrEmpty(Text);
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            if (GetTemplateChild("PART_ClearButton") is Button btn)
+            {
+                btn.Click += (_, _) =>
+                {
+                    Text = string.Empty;
+                    Focus();
+                };
+            }
         }
     }
 }

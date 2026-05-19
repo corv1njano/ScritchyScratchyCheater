@@ -3,6 +3,9 @@ using System.Windows.Data;
 
 namespace ScritchyScratchyCheater.Utilities.Converters
 {
+    /// <summary>
+    /// Never used.
+    /// </summary>
     internal class AchievementUnlockedConverter : IValueConverter
     {
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)

@@ -12,8 +12,6 @@
              Loaded="Editor_Loaded">
 
     <UserControl.Resources>
-        <converters:IconIdToImageConverter x:Key="IconIdToImageConverter"/>
-
         <Style TargetType="Image" x:Key="blockImg">
             <Setter Property="Height" Value="25"/>
             <Setter Property="Width" Value="25"/>
@@ -32,6 +30,10 @@
         <Style TargetType="Button" x:Key="blockbtn" BasedOn="{StaticResource Button.Editor.Generic}">
             <Setter Property="Margin" Value="0,0,8,0"/>
             <Setter Property="Content" Value="Max"/>
+            <Setter Property="ToolTip" Value="Set max. Value for this Field"/>
+        </Style>
+        <Style TargetType="Grid" x:Key="contentGrid">
+            <Setter Property="MaxWidth" Value="800"/>
         </Style>
     </UserControl.Resources>
 
@@ -87,7 +89,7 @@
 
         <TabControl Grid.Row="1" Style="{StaticResource TabControl.Modern}" Margin="10,0,10,10">
             <controls:IconTabItem Header="Progress" Icon="{StaticResource Icon.Progress}">
-                <Grid MaxWidth="600">
+                <Grid Style="{StaticResource contentGrid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
@@ -120,17 +122,17 @@
                     </Border>
                 </Grid>
             </controls:IconTabItem>
-            
+
             <controls:IconTabItem Header="Upgrades" Icon="{StaticResource Icon.Upgrades}">
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Upgrade editing will be available soon!"/>
             </controls:IconTabItem>
-            
+
             <controls:IconTabItem Header="Prestige" Icon="{StaticResource Icon.Prestige}">
-                <Grid MaxWidth="600">
+                <Grid Style="{StaticResource contentGrid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Border Grid.Row="0" Style="{StaticResource Border.Default}">
                         <Grid Margin="0,8">
                             <Grid.ColumnDefinitions>
@@ -150,67 +152,72 @@
                     </Border>
                 </Grid>
             </controls:IconTabItem>
-            
+
             <controls:IconTabItem Header="Achievements" Icon="{StaticResource Icon.Achievements}">
-                <Border Style="{StaticResource Border.Default}" Width="600">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Border Grid.Row="0"
-                                CornerRadius="4,4,0,0"
-                                BorderThickness="0,0,0,1"
-                                BorderBrush="{StaticResource CJG.Block.Border}"
-                                Background="{StaticResource CJG.Block.Background}">
-                            <Grid Margin="0,8">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="100"/>
-                                </Grid.ColumnDefinitions>
-                                <controls:TextBoxPlaceholder Grid.Column="0"
-                                                             Style="{StaticResource TextBox.ListSearch}"
-                                                             PlaceholderText="Search for Achievement..."
-                                                             Text="{Binding SearchAchievement, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Button Grid.Column="1" Content="Unlock All" Style="{StaticResource blockbtn}" Command="{Binding UnlockAllAchievementsCommand}"/>
-                                <Button Grid.Column="2" Content="Claim All" Style="{StaticResource blockbtn}" Command="{Binding ClaimAllAchievementsCommand}"/>
-                            </Grid>
-                        </Border>
-                        
-                        <ListBox Grid.Row="1"
-                                 Style="{StaticResource ListBox.Default}"
-                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                 ScrollViewer.CanContentScroll="False"
-                                 ItemsSource="{Binding AchievementsView}">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
-                                            <Image Height="30" Width="30" Source="{Binding Achievement.IconId, Converter={StaticResource IconIdToImageConverter}}"/>
-                                            <TextBlock Text="{Binding Achievement.Name}" Margin="5,0,0,0" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                            <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsUnlocked, Mode=TwoWay}" Margin="5,0,0,0"/>
-                                            <TextBlock Text="Unlocked" VerticalAlignment="Center"/>
-                                            <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsClaimed, Mode=TwoWay}" Margin="15,0,0,0"/>
-                                            <TextBlock Text="Claimed" Margin="0,0,5,0" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Grid>
-                </Border>
+                <Grid Style="{StaticResource contentGrid}">
+                    <Border Style="{StaticResource Border.Default}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0"
+                                    CornerRadius="4,4,0,0"
+                                    BorderThickness="0,0,0,1"
+                                    BorderBrush="{StaticResource CJG.Block.Border}"
+                                    Background="{StaticResource CJG.Block.Background}">
+                                <Grid Margin="0,8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <controls:TextBoxPlaceholder Grid.Column="0"
+                                             Margin="8,0"
+                                             Style="{StaticResource TextBox.ListSearch}"
+                                             PlaceholderText="Search achievement..."
+                                             IsClearable="True"
+                                             Text="{Binding SearchAchievement, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <Button Grid.Column="1" Content="Unlock All" Style="{StaticResource blockbtn}" Command="{Binding UnlockAllAchievementsCommand}" ToolTip="Unlock all Achievements"/>
+                                    <Button Grid.Column="2" Content="Claim All" Style="{StaticResource blockbtn}" Command="{Binding ClaimAllAchievementsCommand}" ToolTip="Claim all Achievements"/>
+                                </Grid>
+                            </Border>
+
+                            <ListBox Grid.Row="1"
+                                     Style="{StaticResource ListBox.Default}"
+                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                     ScrollViewer.CanContentScroll="False"
+                                     ItemsSource="{Binding AchievementsView}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <Image Height="30" Width="30" Source="{Binding Achievement.IconId, Converter={StaticResource IconIdToImageConverter}}"/>
+                                                <TextBlock Text="{Binding Achievement.Name}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsUnlocked, Mode=TwoWay}" Margin="5,0,0,0"/>
+                                                <TextBlock Text="Unlocked" VerticalAlignment="Center"/>
+                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsClaimed, Mode=TwoWay}" Margin="15,0,0,0"/>
+                                                <TextBlock Text="Claimed" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
+                    </Border>
+                </Grid>
             </controls:IconTabItem>
-            
+
             <controls:IconTabItem Header="Cosmetics" Icon="{StaticResource Icon.Cosmetics}">
-                <Grid MaxWidth="600">
+                <Grid Style="{StaticResource contentGrid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
@@ -234,7 +241,7 @@
                     </Border>
                 </Grid>
             </controls:IconTabItem>
-            
+
             <controls:IconTabItem Header="Misc" Icon="{StaticResource Icon.Misc}">
                 <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Other editing options will be available soon!"/>
             </controls:IconTabItem>
