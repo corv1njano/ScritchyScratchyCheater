@@ -30,7 +30,6 @@
         <TextBlock Grid.Row="0"
                    Text="Create backup"
                    Style="{StaticResource TextBlock.Base}"
-                   FontSize="14"
                    Foreground="{StaticResource CJG.Font.TitleBar}"/>
         <TextBlock Grid.Row="1"
                    Text="Do you want to create a backup of your save file before editing?"
@@ -62,8 +61,7 @@
                                              ToolTip="Browse for Destination Folder"
                                              Icon="{StaticResource Icon.Folder}"
                                              IconHeight="18" IconWidth="18"
-                                             Command="{Binding OpenTargetSelectionCommand}">
-                    </controls:ButtonWithIcon>
+                                             Command="{Binding OpenTargetSelectionCommand}"/>
                 </Grid>
             </Border>
         </Grid>

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using ScritchyScratchyCheater.Models.GameData;
+using System.IO;
 using System.Text.Json;
 using System.Windows;
 
@@ -74,13 +75,6 @@ namespace ScritchyScratchyCheater.Services
     {
         public string Type { get; set; } = string.Empty;
         public JsonElement Data { get; set; }
-    }
-
-    public sealed class Achievement
-    {
-        public string Id { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
-        public string IconId { get; set; } = string.Empty;
     }
     #endregion
 }

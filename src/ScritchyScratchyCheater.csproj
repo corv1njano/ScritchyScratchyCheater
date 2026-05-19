@@ -53,9 +53,4 @@
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\GameData\" />
-    <Folder Include="Models\Results\" />
-  </ItemGroup>
-
 </Project>

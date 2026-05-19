@@ -1,8 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Interfaces;
+using ScritchyScratchyCheater.Models.GameData;
+using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
-using ScritchyScratchyCheater.Services;
 using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.Views.Pages;
 using System.Collections.ObjectModel;

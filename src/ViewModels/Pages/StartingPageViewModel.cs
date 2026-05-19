@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
-using ScritchyScratchyCheater.Services;
+using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.Views.Dialogs;
 using ScritchyScratchyCheater.Views.Pages;
@@ -85,41 +85,19 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                 Owner = App.Current.MainWindow
             };
             dialog.ShowDialog();
-            return;
 
 
-
-
-            var result = ShowMessage.Neutral("Create backup?",
-                "Do you want to create a backup of your save file before editing?",
-                DialogOptions.YesNo);
-
-            if (result == false) return;
-
-            var folderPicker = new OpenFolderDialog
-            {
-                Title = "Select a directory to save the backup copy of your file...",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-            };
-
-            if (folderPicker.ShowDialog() == true)
-            {
-                var dir = folderPicker.FolderName;
-                if (!Directory.Exists(dir))
-                {
-                    Directory.CreateDirectory(dir);
-                }
-
-                string sourcePath = App.SaveFileService.CurrentFilePath;
-                string fileName = $"save_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.json.backup";
-                string destinationPath = Path.Combine(dir, fileName);
-
-                File.Copy(sourcePath, destinationPath, true);
-
-                ShowMessage.Info("Backup done",
+            /*
+             
+             
+             
+             ShowMessage.Info("Backup done",
                     "A backup of the save file has been created successfully.",
                     DialogOptions.Ok);
-            }
+             
+             
+             
+             */
         }
     }
 }

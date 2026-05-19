@@ -18,5 +18,15 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
         {
             Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater");
         }
+        [RelayCommand]
+        private void OpenLicense()
+        {
+            Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater/blob/master/LICENSE.txt");
+        }
+        [RelayCommand]
+        private void OpenSponsor()
+        {
+            Utils.OpenUrl("https://github.com/sponsors/corv1njano/");
+        }
     }
 }
