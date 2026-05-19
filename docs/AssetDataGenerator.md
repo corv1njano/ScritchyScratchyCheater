@@ -1,6 +1,6 @@
 # Asset data generator
 
-[This Python script](https://github.com/corv1njano/ScritchyScratchyCheater/blob/master/GameAssets/AssetDataGenerator.py) bundles all game assets into one sprite sheet and automatically creates the data file used to map each sprite icon to its icon ID.
+[This Python script](https://github.com/corv1njano/ScritchyScratchyCheater/blob/master/assets/AssetDataGenerator.py) bundles all game assets into one sprite sheet and automatically creates the data file used to map each sprite icon to its icon ID.
 
 ## Disclaimer
 
