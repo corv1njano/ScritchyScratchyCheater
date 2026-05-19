@@ -33,7 +33,6 @@
 
   <ItemGroup>
     <None Remove="Resources\Fonts\montserrat_bold.ttf" />
-    <None Remove="Resources\Fonts\montserrat_medium_italic.ttf" />
     <None Remove="Resources\montserrat_medium.ttf" />
   </ItemGroup>
 
@@ -45,7 +44,6 @@
     <Resource Include="Resources\Data\GameData.json" />
     <Resource Include="Resources\Data\SpriteData.json" />
     <Resource Include="Resources\Fonts\montserrat_bold.ttf" />
-    <Resource Include="Resources\Fonts\montserrat_medium_italic.ttf" />
     <Resource Include="Resources\Images\AppLogo.png" />
     <Resource Include="Resources\Fonts\montserrat_medium.ttf" />
     <Resource Include="Resources\Images\SpriteImages.png" />
@@ -53,6 +51,10 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
   </ItemGroup>
 
 </Project>

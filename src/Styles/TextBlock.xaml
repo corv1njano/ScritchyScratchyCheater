@@ -11,6 +11,11 @@
         <Setter Property="FontSize" Value="14"/>
     </Style>
 
+    <Style TargetType="TextBlock" x:Key="TextBlock.Base.Bold" BasedOn="{StaticResource TextBlock.Base}">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
     <Style TargetType="TextBlock" x:Key="TextBlock.StatusBar" BasedOn="{StaticResource TextBlock.Base}">
         <Setter Property="Padding" Value="7,4"/>
         <Setter Property="FontSize" Value="12"/>

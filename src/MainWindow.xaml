@@ -45,8 +45,7 @@
                            RenderOptions.BitmapScalingMode="HighQuality"/>
                     <TextBlock Text="Scritchy Scratchy Cheater"
                                Style="{StaticResource TextBlock.Base}"
-                               Foreground="{StaticResource CJG.Font.TitleBar}"
-                               FontSize="14"/>
+                               Foreground="{StaticResource CJG.Font.TitleBar}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">

@@ -4,9 +4,19 @@ using System.Windows.Data;
 
 namespace ScritchyScratchyCheater.Utilities.Converters
 {
+    /// <summary>
+    /// Provides a value converter that maps Boolean values to WPF Visibility values.
+    /// </summary>
     internal class BoolToVisibilityConverter : IValueConverter
     {
+        /// <summary>
+        /// Inverts the conversion.
+        /// </summary>
         public bool Invert { get; set; } = false;
+
+        /// <summary>
+        /// Uses <see cref="Visibility.Hidden"/> instead of <see cref="Visibility.Collapsed"/>.
+        /// </summary>
         public bool UseHidden { get; set; } = false;
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

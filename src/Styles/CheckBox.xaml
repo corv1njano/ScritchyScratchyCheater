@@ -41,7 +41,7 @@
                             </Grid>
                         </Border>
                         <ContentPresenter x:Name="contentPresenter"
-                                          Margin="5,0,0,0"
+                                          Margin="8,0,0,0"
                                           Grid.Column="1"
                                           Focusable="False"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -57,6 +57,7 @@
                             <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource CJG.CheckBox.Background.Hover}"/>
                             <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource CJG.Accent}"/>
                             <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Focused}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter Property="Opacity" TargetName="optionMark" Value="1"/>

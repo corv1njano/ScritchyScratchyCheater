@@ -3,6 +3,9 @@ using System.Windows.Data;
 
 namespace ScritchyScratchyCheater.Utilities.Converters
 {
+    /// <summary>
+    /// Converts an icon ID from parsed game data to its corresponding image as a BitmapSource.
+    /// </summary>
     internal class IconIdToImageConverter : IValueConverter
     {
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)

@@ -1,4 +1,5 @@
 ﻿using ScritchyScratchyCheater.Interfaces;
+using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
 using System.Diagnostics;
 using System.IO;
@@ -196,19 +197,4 @@ namespace ScritchyScratchyCheater.Services
             SaveFileVersionChanged?.Invoke(CurrentSaveFileVersion);
         }
     }
-
-    #region result container
-    public sealed class LoadResult
-    {
-        public bool Success { get; init; }
-        public string? Version { get; init; }
-        public string StatusMessage { get; init; } = string.Empty;
-    }
-
-    public sealed class SaveResult
-    {
-        public bool Success { get; init; }
-        public string StatusMessage { get; init; } = string.Empty;
-    }
-    #endregion
 }

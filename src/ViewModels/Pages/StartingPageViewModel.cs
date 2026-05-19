@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
-using ScritchyScratchyCheater.Services;
+using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Utilities;
+using ScritchyScratchyCheater.Views.Dialogs;
 using ScritchyScratchyCheater.Views.Pages;
-using System.IO;
 using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
 namespace ScritchyScratchyCheater.ViewModels.Pages
@@ -37,6 +37,22 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             }
         }
 
+        [RelayCommand]
+        private void OpenGitHub()
+        {
+            Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater");
+        }
+        [RelayCommand]
+        private void OpenSponsor()
+        {
+            Utils.OpenUrl("https://github.com/sponsors/corv1njano");
+        }
+        [RelayCommand]
+        private void OpenSamples()
+        {
+            Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater/tree/master/samples");
+        }
+
         private async Task LoadSaveFile(string filePath)
         {
             LoadResult loadResult =  await App.SaveFileService.Load(filePath);
@@ -52,46 +68,22 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             switch (loadResult.Version)
             {
                 case "0.1":
-                    App.PageNavigator.Navigate(new EditorV01());
+                    App.PageNavigator.Navigate(new EditorV01Page());
                     break;
                 default:
                     break;
             }
 
-            CreateBackup(filePath);
+            CreateBackup();
         }
 
-        private void CreateBackup(string sourcePath)
+        private void CreateBackup()
         {
-            var result = ShowMessage.Neutral("Create backup?",
-                "Do you want to create a backup of your save file before editing?",
-                DialogOptions.YesNo);
-
-            if (result == false) return;
-
-            var folderPicker = new OpenFolderDialog
+            var dialog = new CreateBackupDialog()
             {
-                Title = "Select a directory to save the backup copy of your file...",
-                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+                Owner = App.Current.MainWindow
             };
-
-            if (folderPicker.ShowDialog() == true)
-            {
-                var dir = folderPicker.FolderName;
-                if (!Directory.Exists(dir))
-                {
-                    Directory.CreateDirectory(dir);
-                }
-
-                string fileName = $"save_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.json.backup";
-                string destinationPath = Path.Combine(dir, fileName);
-
-                File.Copy(sourcePath, destinationPath, true);
-
-                ShowMessage.Info("Backup done",
-                    "A backup of the save file has been created successfully.",
-                    DialogOptions.Ok);
-            }
+            dialog.ShowDialog();
         }
     }
 }

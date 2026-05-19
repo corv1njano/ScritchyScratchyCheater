@@ -7,7 +7,7 @@
         xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
         mc:Ignorable="d"
         Title="About this App"
-        Height="450" Width="550"
+        Height="320" Width="420"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
         Background="{StaticResource CJG.Window}">
@@ -24,7 +24,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- titlebar -->
         <Border Grid.Row="0"
                 Background="{StaticResource CJG.TitleBar}"
                 BorderThickness="0,0,0,1"
@@ -34,167 +33,44 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Orientation="Horizontal">
-                    <TextBlock Text="About this App"
-               Style="{StaticResource TextBlock.Base}"
-               Foreground="{StaticResource CJG.Font.TitleBar}"
-               FontSize="14"
-               Margin="10,0"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Style="{StaticResource Button.TitleBar.Close}" Click="Button_Close">
-                        <Rectangle Height="10" Width="10" Fill="{StaticResource CJG.Font.TitleBar}">
-                            <Rectangle.OpacityMask>
-                                <ImageBrush ImageSource="{StaticResource WindowControl.Close}" Stretch="Uniform"/>
-                            </Rectangle.OpacityMask>
-                        </Rectangle>
-                    </Button>
-                </StackPanel>
+                <TextBlock Grid.Column="0"
+                               Text="About this App"
+                               Style="{StaticResource TextBlock.Base}"
+                               Foreground="{StaticResource CJG.Font.TitleBar}"
+                               Margin="10,0"/>
+                <Button Grid.Column="1" HorizontalAlignment="Right" Style="{StaticResource Button.TitleBar.Close}" Click="Button_Close">
+                    <Rectangle Height="10" Width="10" Fill="{StaticResource CJG.Font.TitleBar}">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush ImageSource="{StaticResource WindowControl.Close}" Stretch="Uniform"/>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                </Button>
             </Grid>
         </Border>
 
-        <Grid Grid.Row="1" Margin="8,0,8,8">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Margin="10" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="{Binding AppNameAndVersion}" Style="{StaticResource TextBlock.Base}" FontSize="18" FontFamily="{StaticResource Montserrat}" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock Style="{StaticResource TextBlock.AboutDialog}" Margin="0,32,0,0" Text="Copright © 2026 corv1njano"/>
+                <TextBlock Style="{StaticResource TextBlock.AboutDialog}" Margin="0,16,0,0" Text="This program is licensed under the GPL-3.0 license."/><!--  See the official GitHub page for more licensing details.-->
+                <TextBlock Style="{StaticResource TextBlock.AboutDialog}" Margin="0,16,0,0" Text="This tool my contain errors. Always back up your save files to prevent data loss or file corruption."/>
 
-            <TabControl Grid.Row="0" Style="{StaticResource TabControl.Modern}">
-                <controls:IconTabItem Header="About" Icon="{StaticResource Icon.Info}">
-                    <Grid Width="400">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                            <Image Source="/Resources/Images/AppLogo.png" Width="50"/>
-                            <TextBlock Text="{Binding AppNameAndVersion}" Style="{StaticResource TextBlock.Base}" Margin="0,8,0,0" FontSize="18" FontFamily="{StaticResource Montserrat}" FontWeight="Bold" HorizontalAlignment="Center"/>
-
-                            <TextBlock Style="{StaticResource TextBlock.AboutDialog}" Margin="0,37,0,0"
-                                       Text="Copright © 2026 corv1njano - All rights reserved."/>
-                            <TextBlock Style="{StaticResource TextBlock.AboutDialog}" Margin="0,20,0,0"
-                                       Text="This program is licensed under the GPL-3.0 license. See the official GitHub page for more licensing details."/>
-                            <TextBlock Style="{StaticResource TextBlock.AboutDialog}" Margin="0,20,0,0"
-                                       Text="This tool my contain errors. Always back up your save files to prevent data loss or file corruption."/>
-                            <Button Style="{StaticResource Button.Base}" Background="{StaticResource ControlElement.Flat.Border.Hover}"
-                                    Command="{Binding OpenGitHubCommand}"
-                                    Content="GitHub"
-                                    Foreground="{StaticResource Font.Secondary.Hover}"
-                                    Width="120"
-                                    FontSize="20"
-                                    Margin="0,40,0,0"/>
-                        </StackPanel>
-                    </Grid>
-                </controls:IconTabItem>
-                <!--<controls:IconTabItem Header="License" Icon="{StaticResource Icon.License}">
-                    MaxHeight to make it scroll, grid height of * does not work
-                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" MaxHeight="350">
-                        <TextBlock Style="{StaticResource TextBlock.Base}"
-                                       TextWrapping="Wrap"
-                                       FontSize="11"
-                                       TextAlignment="Justify"
-                                       Text="{Binding LicenseText}">
-                        </TextBlock>
-                    </ScrollViewer>
-                </controls:IconTabItem>
-                <controls:IconTabItem Header="Patch Notes" Icon="{StaticResource Icon.License}">
-                    <FlowDocumentScrollViewer VerticalScrollBarVisibility="Auto"
-    IsToolBarVisible="False"
-    BorderThickness="0"
-    Background="Transparent">
-                        <FlowDocument xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-
-                            <Section Style="{StaticResource Document.Heading1Section}">
-                                <Paragraph Style="{StaticResource Document.Heading1}">
-                                    <Run Text="Scritchy Scratchy Cheater v1.1.0"/>
-                                </Paragraph>
-                            </Section>
-
-                            <Paragraph Style="{StaticResource Document.Heading2}">
-                                <Run Text="Additions:"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="edit Souls"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="option to reload and close a save file"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="option to locate the file on the system"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="added new tabs for more save editing (will be added in future updates)"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.Heading2}">
-                                <Run Text="Changes:"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="UI improvements and dark mode"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="visual input validation"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="maximum input values have been corrected"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="other small changes and improvements"/>
-                            </Paragraph>
-
-                            <Section Style="{StaticResource Document.Heading1Section}">
-                                <Paragraph Style="{StaticResource Document.Heading1}">
-                                    <Run Text="Scritchy Scratchy Cheater v1.0.0"/>
-                                </Paragraph>
-                            </Section>
-
-                            <Paragraph Style="{StaticResource Document.Heading2}">
-                                <Run Text="Features:"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="edit Money"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="edit Prestige Currency"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="edit Tokens"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="load file automatically from default path"/>
-                            </Paragraph>
-
-                            <Paragraph Style="{StaticResource Document.ListParagraph}">
-                                <Run Style="{StaticResource Document.Run}" Text="- "/>
-                                <Run Style="{StaticResource Document.Run}" Text="set maximum for fields"/>
-                            </Paragraph>
-
-                        </FlowDocument>
-                    </FlowDocumentScrollViewer>
-                    
-                </controls:IconTabItem>-->
-            </TabControl>
+                <Grid Margin="00,40,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <controls:ButtonWithIcon Grid.Column="0" Style="{StaticResource Button.WithIcon}" Height="30" Text="GitHub" Icon="{StaticResource Icon.GitHub}" IconHeight="17" IconWidth="17"
+                                             Command="{Binding OpenGitHubCommand}"/>
+                    <controls:ButtonWithIcon Grid.Column="2" Style="{StaticResource Button.WithIcon}" Height="30" Text="License" Icon="{StaticResource Icon.License}"
+                                             Command="{Binding OpenLicenseCommand}"/>
+                    <controls:ButtonWithIcon Grid.Column="4" Style="{StaticResource Button.WithIcon}" Height="30" Text="Sponsor" Icon="{StaticResource Icon.Heart}"
+                                             Command="{Binding OpenSponsorCommand}"/>
+                </Grid>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

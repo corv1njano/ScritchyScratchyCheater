@@ -1,8 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Interfaces;
+using ScritchyScratchyCheater.Models.GameData;
+using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
-using ScritchyScratchyCheater.Services;
 using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.Views.Pages;
 using System.Collections.ObjectModel;
@@ -20,18 +21,22 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
     {
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsMoneyValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _moneyText = string.Empty;
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsPrestigeValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _prestigeText = string.Empty;
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsTokensValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _tokensText = string.Empty;
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsSoulsValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _soulsText = string.Empty;
 
         public bool IsMoneyValid =>
@@ -46,6 +51,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         private string _searchAchievement = string.Empty;
         public ObservableCollection<AchievementEntry> Achievements { get; } = new();
         public ICollectionView AchievementsView { get; }
+        public bool HasEntries => !AchievementsView.IsEmpty;
 
         [ObservableProperty]
         private ImageSource? _moneyIcon;
@@ -55,6 +61,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         private ImageSource? _tokensIcon;
         [ObservableProperty]
         private ImageSource? _soulsIcon;
+
+        public bool CanSave => IsMoneyValid && IsPrestigeValid && IsTokensValid && IsSoulsValid;
 
         public EditorV01ViewModel()
         {
@@ -154,14 +162,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         [RelayCommand]
         private async Task SaveChanges()
         {
-            if (!IsMoneyValid || !IsPrestigeValid || !IsTokensValid || !IsSoulsValid)
-            {
-                ShowMessage.Error("Saving prohibited",
-                    "Some input fields are invalid. The save file cannot be updated.",
-                    DialogOptions.Ok);
-                return;
-            }
-
+            if (!CanSave) return;
             if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 sf) return;
 
             // currencies
@@ -306,6 +307,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         partial void OnSearchAchievementChanged(string value)
         {
             AchievementsView.Refresh();
+            OnPropertyChanged(nameof(HasEntries));
         }
 
         private void HandleSaveFileChanged(ISaveFile? saveFile)

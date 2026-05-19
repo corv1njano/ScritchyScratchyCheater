@@ -3,14 +3,59 @@
                     xmlns:local="clr-namespace:ScritchyScratchyCheater.Controls"
                     xmlns:converters="clr-namespace:ScritchyScratchyCheater.Utilities.Converters">
 
-    <Style x:Key="TextBox.ListSearch" TargetType="{x:Type local:TextBoxPlaceholder}">
-        <Setter Property="Background" Value="{DynamicResource ControlElement.Flat.BackgroundDark}"/>
+    <Style TargetType="TextBox" x:Key="TextBox.Default">
+        <Setter Property="Background" Value="{StaticResource CJG.Input.Background}"/>
         <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
-        <Setter Property="Foreground" Value="{StaticResource Font.Secondary}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Padding" Value="6,3"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource CJG.Accent}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.Input.Border}"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="MaxLength" Value="50"/>
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="TextBoxBorder"
+                        Background="{TemplateBinding Background}" 
+                        CornerRadius="4"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        BorderBrush="{TemplateBinding BorderBrush}">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                              Focusable="false"
+                              VerticalAlignment="Center"
+                              HorizontalScrollBarVisibility="Hidden"
+                              VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Focused}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" TargetName="TextBoxBorder" Value="{StaticResource CJG.Input.Background.Focused}"/>
+                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Focused}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TextBox.ListSearch" TargetType="{x:Type local:TextBoxPlaceholder}">
+        <Setter Property="Background" Value="{DynamicResource CJG.Input.Background}"/>
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat.Medium}"/>
+        <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="Padding" Value="6,3"/>
         <Setter Property="MaxLength" Value="50"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource CJG.Input.Border}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource CJG.Accent}"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="IsTabStop" Value="False"/>
@@ -19,21 +64,40 @@
                 <ControlTemplate TargetType="{x:Type local:TextBoxPlaceholder}">
                     <Border x:Name="TextBoxBorder"
                             Background="{TemplateBinding Background}"
-                            CornerRadius="4"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            BorderBrush="{TemplateBinding BorderBrush}">
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            CornerRadius="4">
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
                             <ScrollViewer x:Name="PART_ContentHost"
+                                          Grid.Column="1"
                                           Focusable="false"
                                           VerticalAlignment="Center"
                                           HorizontalScrollBarVisibility="Hidden"
                                           VerticalScrollBarVisibility="Hidden"/>
 
-                            <TextBlock Text="{TemplateBinding PlaceholderText}"
-                                       Foreground="{StaticResource Font.Secondary}"
+                            <Rectangle Grid.Column="0"
+                                       x:Name="searchIcon"
+                                       Fill="{StaticResource CJG.Font.Normal}"
+                                       Height="17"
+                                       Width="17"
+                                       Margin="8,0,0,0"
+                                       VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Rectangle.OpacityMask>
+                                    <ImageBrush ImageSource="{StaticResource Icon.Search}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            
+                            <TextBlock Grid.Column="1"
+                                       Text="{TemplateBinding PlaceholderText}"
+                                       Foreground="{StaticResource CJG.Font.Normal}"
+                                       FontFamily="{StaticResource Montserrat.Medium}"
                                        Opacity="0.5"
-                                       FontFamily="{StaticResource Montserrat}"
-                                       FontStyle="Italic"
                                        Margin="8,0,0,0"
                                        VerticalAlignment="Center"
                                        IsHitTestVisible="False">
@@ -45,16 +109,31 @@
                                     </Binding>
                                 </TextBlock.Visibility>
                             </TextBlock>
+
+                            <Button Grid.Column="2"
+                                    Style="{StaticResource Button.SearchBox.Clear}"
+                                    x:Name="PART_ClearButton">
+                                <Button.Visibility>
+                                    <Binding Path="HasText" RelativeSource="{RelativeSource TemplatedParent}">
+                                        <Binding.Converter>
+                                            <converters:BoolToVisibilityConverter/>
+                                        </Binding.Converter>
+                                    </Binding>
+                                </Button.Visibility>
+                            </Button>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"/>
+                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource CJG.Accent}"/>
                             <Setter Property="Foreground" Value="{StaticResource Font.Secondary.Hover}"/>
+                            <Setter Property="Fill" TargetName="searchIcon" Value="{StaticResource Font.Secondary.Hover}"/>
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="True">
-                            <Setter Property="Background" TargetName="TextBoxBorder" Value="{StaticResource ControlElement.Flat.BackgroundDark.Hover2}"/>
-                            <Setter Property="Foreground" Value="{StaticResource Font.Secondary.Hover}"/>
+                            <Setter Property="Background" TargetName="TextBoxBorder" Value="{StaticResource CJG.Input.Background.Focused}"/>
+                            <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource CJG.Accent}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Focused}"/>
+                            <Setter Property="Fill" TargetName="searchIcon" Value="{StaticResource Font.Secondary.Hover}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
