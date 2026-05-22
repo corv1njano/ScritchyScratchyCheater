@@ -1,6 +1,6 @@
 {
   "saveVersion": "0.1",
-  "gameVersion": "1.0.30d",
+  "gameVersion": "1.1.19d",
   "gameData": [
     {
       "type": "achievements",
@@ -174,6 +174,143 @@
           "id": "Workaholic",
           "name": "Workaholic",
           "iconId": "aWorkaholic"
+        }
+      ]
+    },
+    {
+      "type": "cosmetics",
+      "data": [
+        {
+          "id": "Astronomy_Table",
+          "name": "Astronomy table",
+          "iconId": "astronomyTable",
+          "category": "Table"
+        },
+        {
+          "id": "Cream_Phone",
+          "name": "Cream phone",
+          "iconId": "creamPhone",
+          "category": "Phone"
+        },
+        {
+          "id": "Blue_Phone",
+          "name": "Blue phone",
+          "iconId": "bluePhone",
+          "category": "Phone"
+        },
+        {
+          "id": "Pink_Trash Can",
+          "name": "Pink trash can",
+          "iconId": "pinkTrashCan",
+          "category": "TrashCan"
+        },
+        {
+          "id": "Rusty_Trash Can",
+          "name": "Rusty trash can",
+          "iconId": "rustyTrashCan",
+          "category": "TrashCan"
+        },
+        {
+          "id": "Picnic_Table",
+          "name": "Picnic table",
+          "iconId": "picnicTable",
+          "category": "Table"
+        },
+        {
+          "id": "Mahogany_Table",
+          "name": "Mahogany table",
+          "iconId": "mahoganyTable",
+          "category": "Table"
+        },
+        {
+          "id": "Galaxy_Trash Can",
+          "name": "Galaxy trash can",
+          "iconId": "galaxyTrashCan",
+          "category": "TrashCan"
+        },
+        {
+          "id": "Dirty_Table",
+          "name": "Dirty table",
+          "iconId": "dirtyTable",
+          "category": "Table"
+        },
+        {
+          "id": "Fancy_Table",
+          "name": "Fancy table",
+          "iconId": "fancyTable",
+          "category": "Table"
+        },
+        {
+          "id": "Love_Fan",
+          "name": "Love fan",
+          "iconId": "loveFan",
+          "category": "Fan"
+        },
+        {
+          "id": "Night_Fan",
+          "name": "Night fan",
+          "iconId": "nightFan",
+          "category": "Fan"
+        },
+        {
+          "id": "White_Mundo",
+          "name": "White Mundo",
+          "iconId": "whiteMundo",
+          "category": "Mundo"
+        },
+        {
+          "id": "Tortoiseshell_Mundo",
+          "name": "Tortoiseshell Mundo",
+          "iconId": "tortoiseshellMundo",
+          "category": "Mundo"
+        },
+        {
+          "id": "Grey_Mundo",
+          "name": "Grey Mundo",
+          "iconId": "greyMundo",
+          "category": "Mundo"
+        },
+        {
+          "id": "Orange_Mundo",
+          "name": "Orange Mundo",
+          "iconId": "orangeMundo",
+          "category": "Mundo"
+        },
+        {
+          "id": "Smart_Egg Timer",
+          "name": "Smart egg timer",
+          "iconId": "smartEggTimer",
+          "category": "EggTimer"
+        },
+        {
+          "id": "Faberge_Egg Timer",
+          "name": "Faberge egg timer",
+          "iconId": "fabergeEggTimer",
+          "category": "EggTimer"
+        },
+        {
+          "id": "Golden_Scratch Bot",
+          "name": "Golden scratch bot",
+          "iconId": "goldenScratchBot",
+          "category": "ScratchBot"
+        },
+        {
+          "id": "Golden_Trash Can",
+          "name": "Golden trash can",
+          "iconId": "goldenTrashCan",
+          "category": "TrashCan"
+        },
+        {
+          "id": "Golden_Phone",
+          "name": "Golden phone",
+          "iconId": "goldenPhone",
+          "category": "Phone"
+        },
+        {
+          "id": "Golden_Fan",
+          "name": "Golden fan",
+          "iconId": "goldenFan",
+          "category": "Fan"
         }
       ]
     }

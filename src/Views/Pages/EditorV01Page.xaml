@@ -20,6 +20,7 @@
         </Style>
         <Style TargetType="TextBlock" x:Key="blockTxt" BasedOn="{StaticResource TextBlock.Base}">
             <Setter Property="Margin" Value="8,0,0,0"/>
+            <Setter Property="Width" Value="120"/>
         </Style>
         <Style TargetType="Border" x:Key="blockBod" BasedOn="{StaticResource Border.Default}">
             <Setter Property="BorderThickness" Value="0,1,0,0"/>
@@ -100,8 +101,8 @@
                         <Grid Margin="0,8">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -140,8 +141,8 @@
                         <Grid Margin="0,8">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -226,28 +227,102 @@
 
             <controls:IconTabItem Header="Cosmetics" Icon="{StaticResource Icon.Cosmetics}">
                 <Grid Style="{StaticResource contentGrid}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
 
-                    <Border Grid.Row="0" Style="{StaticResource Border.Default}">
-                        <Grid Margin="0,8">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Image Grid.Row="0" Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding TokensIcon}"/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource blockTxt}" Text="Tokens:"/>
-                            <controls:ValidatedTextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0" Text="{Binding TokensText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTokensValid}"/>
-                            <Button Grid.Row="0" Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxTokensCommand}"/>
+                        <Border Grid.Row="0" Style="{StaticResource Border.Default}">
+                            <Grid Margin="0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding TokensIcon}"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource blockTxt}" Text="Tokens:"/>
+                                <controls:ValidatedTextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource TextBox.Validated}" Margin="0,0,8,0" Text="{Binding TokensText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTokensValid}"/>
+                                <Button Grid.Row="0" Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxTokensCommand}"/>
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Row="1" Style="{StaticResource Border.Default}" Margin="0,8,0,0">
+                            <Grid Margin="8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="110"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Category:"/>
+                                        <ComboBox Grid.Column="1" Style="{StaticResource ComboBox.Default}"
+                                                  ItemsSource="{Binding CosmeticCategories}"
+                                                  SelectedValue="{Binding SelectedCosmeticCategory}"
+                                                  DisplayMemberPath="Name"/>
+                                    <Button Grid.Column="2" Content="Unlock All" ToolTip="Unlock all Cosmetics in this Category" Margin="8,0" Style="{StaticResource blockbtn}"
+                                            Command="{Binding UnlockAllCosmeticsCommand}"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1" Margin="0,8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Item:"/>
+                                    <ComboBox Grid.Column="1" Margin="0,0,8,0" Style="{StaticResource ComboBox.Default}"
+                                              ItemsSource="{Binding FilteredCosmetics}"
+                                              SelectedItem="{Binding SelectedCosmetic}">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image Margin="0,0,5,0"  Height="20" Width="20" Source="{Binding Cosmetic.IconId, Converter={StaticResource IconIdToImageConverter}}">
+                                                        <Image.Style>
+                                                            <Style TargetType="Image">
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding Cosmetic}" Value="{x:Null}">
+                                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Image.Style>
+                                                    </Image>
+                                                    <TextBlock Text="{Binding DisplayName}" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>    
+                                    </ComboBox>
+                                </Grid>
+                                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                                        <Rectangle Fill="Transparent" Width="100"/>
+                                    <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding SelectedCosmetic.IsPurchased, Mode=TwoWay}" Content="Purchased"
+                                                  IsEnabled="{Binding NoneCosmeticNotSelected}"/>
+                                    <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsCosmeticEquipped, Mode=TwoWay}" Margin="16,0,0,0" Content="Currently Equipped"/>
+                                    </StackPanel>
+                                </Grid>
+                            <Border Grid.Column="1" Style="{StaticResource Border.Preview}" Grid.RowSpan="3">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Current" Margin="4,4,4,6" Style="{StaticResource TextBlock.Base}" Opacity="0.5" FontSize="10" HorizontalAlignment="Center"/>
+                                    <Image HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Width="70"
+                                           Source="{Binding CurrentCosmeticItem}"/>
+                                </StackPanel>
+                            </Border>
                         </Grid>
-                    </Border>
-                </Grid>
+                        </Border>
+                    </Grid>
             </controls:IconTabItem>
 
             <controls:IconTabItem Header="Misc" Icon="{StaticResource Icon.Misc}">

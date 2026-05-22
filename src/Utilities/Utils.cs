@@ -13,7 +13,7 @@ namespace ScritchyScratchyCheater.Utilities
         /// <param name="url">URL to open.</param>
         public static void OpenUrl(string url)
         {
-            if (string.IsNullOrEmpty(url)) return;
+            if (string.IsNullOrWhiteSpace(url)) return;
 
             var psi = new ProcessStartInfo
             {

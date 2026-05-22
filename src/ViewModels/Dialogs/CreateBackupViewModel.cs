@@ -22,7 +22,7 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
         public bool CanExport => IsTargetPathValid;
 
         [ObservableProperty]
-        private bool _includeTimetamp = true;
+        private bool _includeTimestamp = true;
         [ObservableProperty]
         private bool _openFolder;
 
@@ -56,7 +56,7 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
         {
             string sourcePath = App.SaveFileService.CurrentFilePath;
 
-            string fileName = IncludeTimetamp
+            string fileName = IncludeTimestamp
                 ? $"save_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.json.backup"
                 : "save.json.backup";
 
@@ -72,13 +72,17 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
 
                 ShowMessage.Error("Backup failed",
                         "Unable to backup the save file. Please try again.",
-                        DialogOptions.Ok);
+                        DialogOptions.Ok,
+                        DialogSound.Error,
+                        App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault());
                 return;
             }
 
             ShowMessage.Info("Backup done",
                 "A backup of the save file has been created successfully.",
-                DialogOptions.Ok);
+                DialogOptions.Ok,
+                DialogSound.Info,
+                App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault());
 
             App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault()?.Close();
 
@@ -88,7 +92,9 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
                 {
                     ShowMessage.Error("File not found",
                         "Unable to locate the save file. It may have been moved, renamed, or deleted.",
-                        DialogOptions.Ok);
+                        DialogOptions.Ok,
+                        DialogSound.Error,
+                        App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault());
                     return;
                 }
                 Process.Start("explorer.exe", $"/select,\"{destinationPath}\"");

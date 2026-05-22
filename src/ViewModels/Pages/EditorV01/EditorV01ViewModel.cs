@@ -6,62 +6,16 @@ using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
 using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.Views.Pages;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Windows.Data;
-using System.Windows.Media;
 using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
-namespace ScritchyScratchyCheater.ViewModels.Pages
+namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 {
     internal partial class EditorV01ViewModel : ObservableObject
     {
-        [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsMoneyValid))]
-        [NotifyPropertyChangedFor(nameof(CanSave))]
-        private string _moneyText = string.Empty;
-
-        [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsPrestigeValid))]
-        [NotifyPropertyChangedFor(nameof(CanSave))]
-        private string _prestigeText = string.Empty;
-
-        [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsTokensValid))]
-        [NotifyPropertyChangedFor(nameof(CanSave))]
-        private string _tokensText = string.Empty;
-
-        [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsSoulsValid))]
-        [NotifyPropertyChangedFor(nameof(CanSave))]
-        private string _soulsText = string.Empty;
-
-        public bool IsMoneyValid =>
-            double.TryParse(MoneyText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
-            && !double.IsNaN(value)
-            && !double.IsInfinity(value);
-        public bool IsPrestigeValid => int.TryParse(PrestigeText, out _);
-        public bool IsTokensValid => int.TryParse(TokensText, out _);
-        public bool IsSoulsValid => int.TryParse(SoulsText, out _);
-
-        [ObservableProperty]
-        private string _searchAchievement = string.Empty;
-        public ObservableCollection<AchievementEntry> Achievements { get; } = new();
-        public ICollectionView AchievementsView { get; }
-        public bool HasEntries => !AchievementsView.IsEmpty;
-
-        [ObservableProperty]
-        private ImageSource? _moneyIcon;
-        [ObservableProperty]
-        private ImageSource? _prestigeIcon;
-        [ObservableProperty]
-        private ImageSource? _tokensIcon;
-        [ObservableProperty]
-        private ImageSource? _soulsIcon;
-
         public bool CanSave => IsMoneyValid && IsPrestigeValid && IsTokensValid && IsSoulsValid;
 
         public EditorV01ViewModel()
@@ -70,11 +24,15 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
 
             AchievementsView = CollectionViewSource.GetDefaultView(Achievements);
             AchievementsView.Filter = item =>
-                item is AchievementEntry entry
+                item is AchievementItem entry
                 && (string.IsNullOrWhiteSpace(SearchAchievement)
                 || entry.Achievement!.Name.Contains(SearchAchievement, StringComparison.OrdinalIgnoreCase));
 
-            LoadSaveFileDataToUi();
+            LoadDataToUi();
+
+            SelectedCosmeticCategory = CosmeticCategories[0];
+            SelectedCosmetic = FilteredCosmetics.FirstOrDefault();
+            UpdateCurrentCosmeticImage();
         }
 
         /// <summary>
@@ -91,71 +49,41 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             SoulsIcon = App.ResourceParser.GetSprite("soul");
         }
 
-        private void LoadSaveFileDataToUi()
+        private void LoadDataToUi()
         {
-            if (App.SaveFileService.LoadedSaveFile is SaveFileV01 sf)
+            if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 sf) return;
+
+            MoneyText = SaveFileHelper.SanitizeDouble(sf.LayerOne!.Money).ToString(CultureInfo.InvariantCulture);
+            PrestigeText = sf.PrestigeCurrency.ToString();
+            TokensText = sf.Tokens.ToString();
+            SoulsText = sf.LayerOne.Souls.ToString();
+
+            var achievementsGotten = sf.AchievementsGotten ?? new List<string>();
+            var achievementsClaimed = sf.AchievementsClaimed ?? new List<string>();
+
+            Achievements.Clear();
+            foreach (var achievement in App.GameDataParser.GetAchievements())
             {
-                MoneyText = SaveFileHelper.SanitizeDouble(sf.LayerOne!.Money).ToString(CultureInfo.InvariantCulture);
-                PrestigeText = sf.PrestigeCurrency.ToString();
-                TokensText = sf.Tokens.ToString();
-                SoulsText = sf.LayerOne.Souls.ToString();
-
-                var gotten = sf.AchievementsGotten ?? new List<string>();
-                var claimed = sf.AchievementsClaimed ?? new List<string>();
-
-                Achievements.Clear();
-                foreach (var achievement in App.GameDataParser.GetAchievements())
+                Achievements.Add(new AchievementItem
                 {
-                    Achievements.Add(new AchievementEntry
-                    {
-                        Achievement = achievement,
-                        // maybe change to hash set later
-                        IsUnlocked = gotten.Contains(achievement.Id),
-                        IsClaimed = claimed.Contains(achievement.Id),
-                    });
-                }
+                    Achievement = achievement,
+                    IsUnlocked = achievementsGotten.Contains(achievement.Id),
+                    IsClaimed = achievementsClaimed.Contains(achievement.Id),
+                });
             }
-        }
 
-        [RelayCommand]
-        private void MaxMoney()
-        {
-            MoneyText = 1e300.ToString(CultureInfo.InvariantCulture);
-        }
+            var cosmeticsPurchased = sf.BoughtCosmetics ?? new List<string>();
+            var cosmeticsEquipped = sf.EquippedCosmetics ?? new List<string>();
 
-        [RelayCommand]
-        private void MaxPrestige()
-        {
-            PrestigeText = int.MaxValue.ToString();
-        }
-
-        [RelayCommand]
-        private void MaxTokens()
-        {
-            TokensText = int.MaxValue.ToString();
-        }
-
-        [RelayCommand]
-        private void MaxSouls()
-        {
-            SoulsText = int.MaxValue.ToString();
-        }
-
-        [RelayCommand]
-        private void UnlockAllAchievements()
-        {
-            foreach (var entry in Achievements)
+            Cosmetics.Clear();
+            foreach (var cosmetic in App.GameDataParser.GetCosmetics())
             {
-                entry.IsUnlocked = true;
-            }
-        }
-
-        [RelayCommand]
-        private void ClaimAllAchievements()
-        {
-            foreach (var entry in Achievements)
-            {
-                entry.IsClaimed = true;
+                Cosmetics.Add(new CosmeticItem
+                {
+                    Cosmetic = cosmetic,
+                    IsPurchased = cosmeticsPurchased.Contains(cosmetic.Id),
+                    IsEquipped = cosmeticsEquipped.Contains(cosmetic.Id),
+                });
             }
         }
 
@@ -168,24 +96,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             // currencies
             sf.LayerOne!.Money = double.Parse(MoneyText);
             sf.PrestigeCurrency = int.Parse(PrestigeText);
-            sf.Tokens = int.Parse(TokensText);
             sf.LayerOne!.Souls = int.Parse(SoulsText);
 
-            // achievements
-            var gottenSet = new HashSet<string>();
-            var claimedSet = new HashSet<string>();
-
-            foreach (var entry in Achievements)
-            {
-                var id = entry.Achievement?.Id;
-                if (string.IsNullOrWhiteSpace(id)) continue;
-
-                if (entry.IsUnlocked) gottenSet.Add(id);
-                if (entry.IsClaimed) claimedSet.Add(id);
-            }
-
-            sf.AchievementsGotten = gottenSet.ToList();
-            sf.AchievementsClaimed = claimedSet.ToList();
+            SaveAchievements(sf);
+            SaveCosmetics(sf);
 
             SaveResult result = await App.SaveFileService.Save();
             if (result.Success)
@@ -201,6 +115,45 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                     DialogOptions.Ok);
             }
         }
+
+        #region save methods
+        private void SaveAchievements(SaveFileV01 sf)
+        {
+            var gottenAchievements = new HashSet<string>();
+            var claimedAchievements = new HashSet<string>();
+
+            foreach (var entry in Achievements)
+            {
+                var id = entry.Achievement?.Id;
+                if (string.IsNullOrWhiteSpace(id)) continue;
+
+                if (entry.IsUnlocked) gottenAchievements.Add(id);
+                if (entry.IsClaimed) claimedAchievements.Add(id);
+            }
+
+            sf.AchievementsGotten = gottenAchievements.ToList();
+            sf.AchievementsClaimed = claimedAchievements.ToList();
+        }
+
+        private void SaveCosmetics(SaveFileV01 sf)
+        {
+            var purchasedCosmetics = new HashSet<string>();
+            var equippedCosmetics = new HashSet<string>();
+
+            foreach (var entry in Cosmetics)
+            {
+                var id = entry.Cosmetic?.Id;
+                if (entry.Cosmetic == null || string.IsNullOrWhiteSpace(id)) continue;
+
+                if (entry.IsPurchased) purchasedCosmetics.Add(id);
+                if (entry.IsEquipped) equippedCosmetics.Add(id);
+            }
+
+            sf.Tokens = int.Parse(TokensText);
+            sf.BoughtCosmetics = purchasedCosmetics.ToList();
+            sf.EquippedCosmetics = equippedCosmetics.ToList();
+        }
+        #endregion
 
         [RelayCommand]
         private async Task ReloadSaveFile()
@@ -244,26 +197,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
                 App.SaveFileService.Reset();
                 App.PageNavigator.Navigate(new StartingPage());
                 return;
-
-                //ShowMessage.Warning(
-                //   "Version changed",
-                //   $"The save file version changed from '{oldVersion}' to '{loadResult.Version}'. The editor will be reloaded.",
-                //   DialogOptions.Ok);
-
-                //switch (loadResult.Version)
-                //{
-                //    case "0.1":
-                //        App.PageNavigator.Navigate(new EditorV01());
-                //        break;
-
-                //    default:
-                //        ShowMessage.Warning(
-                //           "Reloading failed",
-                //           $"The loaded save file version '{loadResult.Version}' is not supported. Returning to the start page.",
-                //           DialogOptions.Ok);
-                //        App.PageNavigator.Navigate(new StartingPage());
-                //        break;
-                //}
             }
 
             ShowMessage.Info("File reloaded",
@@ -304,29 +237,36 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             Process.Start("explorer.exe", $"/select,\"{filePath}\"");
         }
 
-        partial void OnSearchAchievementChanged(string value)
-        {
-            AchievementsView.Refresh();
-            OnPropertyChanged(nameof(HasEntries));
-        }
-
         private void HandleSaveFileChanged(ISaveFile? saveFile)
         {
             if (saveFile == null) return;
-            LoadSaveFileDataToUi();
+            LoadDataToUi();
         }
     }
 
     #region data containers
-    public sealed partial class AchievementEntry : ObservableObject
+    public sealed partial class AchievementItem : ObservableObject
     {
-        public Achievement? Achievement { get; set; }
+        public Achievement? Achievement { get; init; }
 
         [ObservableProperty]
         private bool _isUnlocked;
 
         [ObservableProperty]
         private bool _isClaimed;
+    }
+
+    public sealed partial class CosmeticItem : ObservableObject
+    {
+        public Cosmetic? Cosmetic { get; init; }
+
+        [ObservableProperty]
+        private bool _isPurchased;
+
+        [ObservableProperty]
+        private bool _isEquipped;
+
+        public string DisplayName => Cosmetic?.Name ?? "None";
     }
     #endregion
 }

@@ -50,6 +50,21 @@
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
+                        
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="False"/>
+                                <Condition Property="IsChecked" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" Value="{StaticResource CJG.CheckBox.Background.Disabled}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource CJG.Button.Border}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
+                            <Setter Property="Opacity" TargetName="markGrid" Value="0.5"/>
+                            <Setter Property="Opacity" TargetName="markGrid" Value="0.5"/>
+                            <Setter Property="Opacity" TargetName="contentPresenter" Value="0.5"/>
+                            <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource CJG.Font.Normal}"/>
+                            <Setter Property="Opacity" TargetName="contentPresenter" Value="0.5"/>
+                        </MultiTrigger>
                         <Trigger Property="HasContent" Value="true">
                             <Setter Property="Padding" Value="4,-1,0,0"/>
                         </Trigger>
@@ -68,6 +83,14 @@
                         <Trigger Property="IsChecked" Value="{x:Null}">
                             <Setter Property="Opacity" TargetName="optionMark" Value="0"/>
                             <Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource CJG.CheckBox.Background.Disabled}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource CJG.CheckBox.Border}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource CJG.Font.Normal}"/>
+                            <Setter Property="Opacity" TargetName="markGrid" Value="0.5"/>
+                            <Setter Property="Opacity" TargetName="contentPresenter" Value="0.5"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

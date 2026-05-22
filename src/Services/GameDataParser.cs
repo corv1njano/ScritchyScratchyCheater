@@ -58,8 +58,49 @@ namespace ScritchyScratchyCheater.Services
 
             return achievements!
                 .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList() 
+                .ToList()
                 ?? new();
+        }
+
+        /// <summary>
+        /// Retrieves a list of cosmetic items from the current game data.
+        /// </summary>
+        /// <remarks>This method returns an empty list if the game data root is null, if no cosmetic
+        /// dataset is present, or if the cosmetic data is undefined or null.</remarks>
+        /// <returns>A list of <see cref="Cosmetic"/> objects representing the comsetic item associated with the game data.</returns>
+        public List<Cosmetic> GetCosmetics()
+        {
+            if (_gameDataRoot == null) return new();
+
+            GameDataset? dataset = _gameDataRoot.GameData?
+                .FirstOrDefault(x => string.Equals(x.Type, "cosmetics", StringComparison.OrdinalIgnoreCase));
+
+            if (dataset == null) return new();
+            if (dataset.Data.ValueKind is JsonValueKind.Undefined or JsonValueKind.Null) return new();
+
+            List<Cosmetic>? cosmetics = dataset.Data.Deserialize<List<Cosmetic>>(App.JsonOptions);
+
+            if (cosmetics == null) return new();
+
+            foreach (Cosmetic cosmetic in cosmetics)
+            {
+                cosmetic.Category = cosmetic.Category switch
+                {
+                    CosmeticCategory.Phone => CosmeticCategory.Phone,
+                    CosmeticCategory.Table => CosmeticCategory.Table,
+                    CosmeticCategory.TrashCan => CosmeticCategory.TrashCan,
+                    CosmeticCategory.Fan => CosmeticCategory.Fan,
+                    CosmeticCategory.Mundo => CosmeticCategory.Mundo,
+                    CosmeticCategory.EggTimer => CosmeticCategory.EggTimer,
+                    CosmeticCategory.ScratchBot => CosmeticCategory.ScratchBot,
+                    _ => CosmeticCategory.Other
+                };
+            }
+
+            return cosmetics
+                .OrderBy(x => x.Category)
+                .ThenBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList();
         }
     }
 

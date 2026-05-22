@@ -75,7 +75,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base.Bold}" Text="Export Settings"/>
                 <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,8,0,0">
-                    <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IncludeTimetamp, Mode=TwoWay}" Content="Include Timestamp in File Name"/>
+                    <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IncludeTimestamp, Mode=TwoWay}" Content="Include Timestamp in File Name"/>
                     <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding OpenFolder, Mode=TwoWay}" Content="Open Destination Folder after Export"/>
                 </StackPanel>
             </Grid>

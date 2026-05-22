@@ -14,10 +14,11 @@ namespace ScritchyScratchyCheater
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
             WriteIndented = true,
-            NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals
+            NumberHandling = JsonNumberHandling.AllowNamedFloatingPointLiterals,
+            Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) }
         };
 
-        public const string APP_VERSION = "v1.2.1";
+        public const string APP_VERSION = "v1.3.0";
 
         public static readonly HashSet<string> SupportedVersions = new()
         {

@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.Views.Dialogs;
 using ScritchyScratchyCheater.Views.Pages;
-using System.Diagnostics;
 using System.Windows.Controls;
 
 namespace ScritchyScratchyCheater.ViewModels

@@ -50,8 +50,13 @@
 
 
     <SolidColorBrush x:Key="CJG.CheckBox.Background" Color="#252C3B"/>
+    <SolidColorBrush x:Key="CJG.CheckBox.Background.Disabled" Color="#1D2633"/>
     <SolidColorBrush x:Key="CJG.CheckBox.Background.Hover" Color="#151A24"/>
     <SolidColorBrush x:Key="CJG.CheckBox.Border" Color="#2D394F"/>
+
+    <SolidColorBrush x:Key="CJG.ComboBox.Background" Color="#252C3B"/>
+    <SolidColorBrush x:Key="CJG.ComboBox.Background.Hover" Color="#151A24"/>
+    <SolidColorBrush x:Key="CJG.ComboBox.Border" Color="#2D394F"/>
 
 
     <SolidColorBrush x:Key="CJG.ScrollBar.Thumb" Color="#5F667A"/>

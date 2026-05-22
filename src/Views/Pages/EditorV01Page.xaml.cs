@@ -1,4 +1,4 @@
-﻿using ScritchyScratchyCheater.ViewModels.Pages;
+﻿using ScritchyScratchyCheater.ViewModels.Pages.EditorV01;
 using System.Windows;
 using System.Windows.Controls;
 

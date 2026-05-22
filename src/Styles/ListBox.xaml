@@ -61,7 +61,7 @@
                             Padding="8,4,8,4"
                             CornerRadius="0,0,4,4"
                             SnapsToDevicePixels="true">
-                        <ScrollViewer Focusable="false" Padding="{TemplateBinding Padding}">
+                        <ScrollViewer Focusable="false">
                             <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </ScrollViewer>
                     </Border>

@@ -10,7 +10,7 @@
              Background="{StaticResource CJG.Window}">
 
     <UserControl.Resources>
-        <Style TargetType="Rectangle" x:Key="rect">
+        <Style TargetType="Rectangle" x:Key="Rect">
             <Setter Property="Height" Value="25"/>
             <Setter Property="Width" Value="25"/>
             <Setter Property="Fill" Value="{StaticResource CJG.Accent}"/>
@@ -33,12 +33,10 @@
                 </StackPanel.Resources>
                 <TextBlock Text="Welcome to" Margin="0,0,0,3"/>
                 <TextBlock Text="Scritchy Scratchy Cheater" FontSize="24" FontWeight="Bold" FontFamily="{StaticResource Montserrat}"/>
-                <TextBlock Text="The compact save file editor for the game Scritchy Scratchy." Margin="0,15,0,0"/>
+                <TextBlock Text="The compact save file editor for the game Scritchy Scratchy." Margin="0,15,0,30"/>
             </StackPanel>
 
-            <Border Grid.Row="1"
-                    Margin="0,30,0,0"
-                    Style="{StaticResource Border.Default}">
+            <Border Grid.Row="1" Style="{StaticResource Border.Default}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -60,7 +58,7 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
-                                <Rectangle Style="{StaticResource rect}">
+                                <Rectangle Style="{StaticResource Rect}">
                                     <Rectangle.OpacityMask>
                                         <ImageBrush ImageSource="{StaticResource Icon.File}"/>
                                     </Rectangle.OpacityMask>
@@ -105,7 +103,7 @@
 
                         <StackPanel Grid.Column="2" Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
-                                <Rectangle Style="{StaticResource rect}">
+                                <Rectangle Style="{StaticResource Rect}">
                                     <Rectangle.OpacityMask>
                                         <ImageBrush ImageSource="{StaticResource Icon.Folder}"/>
                                     </Rectangle.OpacityMask>
@@ -169,7 +167,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Rectangle Grid.Column="0" Style="{StaticResource rect}" Height="22" Width="22" Margin="3,0">
+                                <Rectangle Grid.Column="0" Style="{StaticResource Rect}" Height="22" Width="22" Margin="3,0">
                                     <Rectangle.OpacityMask>
                                         <ImageBrush ImageSource="{StaticResource Icon.GitHub}"/>
                                     </Rectangle.OpacityMask>
@@ -188,7 +186,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Rectangle Grid.Column="0" Style="{StaticResource rect}">
+                                <Rectangle Grid.Column="0" Style="{StaticResource Rect}">
                                     <Rectangle.OpacityMask>
                                         <ImageBrush ImageSource="{StaticResource Icon.Heart}"/>
                                     </Rectangle.OpacityMask>
@@ -207,7 +205,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Rectangle Grid.Column="0" Style="{StaticResource rect}">
+                                <Rectangle Grid.Column="0" Style="{StaticResource Rect}">
                                     <Rectangle.OpacityMask>
                                         <ImageBrush ImageSource="{StaticResource Icon.Files}"/>
                                     </Rectangle.OpacityMask>

@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
-	  <Authors>corv1njano</Authors>
-	  <Company>corv1njano</Company>
-	  <Version>1.2.0</Version>
-	  <Configurations>Debug;Release;ReleaseNetIncluded</Configurations>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net9.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+		<ApplicationIcon>AppIcon.ico</ApplicationIcon>
+		<Authors>corv1njano</Authors>
+		<Company>corv1njano</Company>
+		<Version>1.2.0</Version>
+		<Configurations>Debug;Release;ReleaseNetIncluded</Configurations>
+	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
 		<PublishSingleFile>true</PublishSingleFile>
@@ -23,38 +23,34 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='ReleaseNetIncluded'">
-	  <PublishSingleFile>true</PublishSingleFile>
-	  <SelfContained>true</SelfContained>
-	  <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-	  <DebugSymbols>false</DebugSymbols>
-	  <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
-	  <DebugType>none</DebugType>
+		<PublishSingleFile>true</PublishSingleFile>
+		<SelfContained>true</SelfContained>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<DebugSymbols>false</DebugSymbols>
+		<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+		<DebugType>none</DebugType>
 	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Resources\Fonts\montserrat_bold.ttf" />
-    <None Remove="Resources\montserrat_medium.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Resources\Fonts\montserrat_bold.ttf" />
+		<None Remove="Resources\montserrat_medium.ttf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="AppIcon.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="AppIcon.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Resources\Data\GameData.json" />
-    <Resource Include="Resources\Data\SpriteData.json" />
-    <Resource Include="Resources\Fonts\montserrat_bold.ttf" />
-    <Resource Include="Resources\Images\AppLogo.png" />
-    <Resource Include="Resources\Fonts\montserrat_medium.ttf" />
-    <Resource Include="Resources\Images\SpriteImages.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\Data\GameData.json" />
+		<Resource Include="Resources\Data\SpriteData.json" />
+		<Resource Include="Resources\Fonts\montserrat_bold.ttf" />
+		<Resource Include="Resources\Images\AppLogo.png" />
+		<Resource Include="Resources\Fonts\montserrat_medium.ttf" />
+		<Resource Include="Resources\Images\SpriteImages.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Include="App.xaml" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+	</ItemGroup>
 
 </Project>
