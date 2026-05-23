@@ -1,6 +1,6 @@
 ﻿namespace ScritchyScratchyCheater.Models.GameData
 {
-    public sealed class Achievement
+    public sealed class Ticket
     {
         public string Id { get; init; } = string.Empty;
         public string Name { get; init; } = string.Empty;

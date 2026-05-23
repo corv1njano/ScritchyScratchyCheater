@@ -16,11 +16,21 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 {
     internal partial class EditorV01ViewModel : ObservableObject
     {
-        public bool CanSave => IsMoneyValid && IsPrestigeValid && IsTokensValid && IsSoulsValid;
+        private bool _isSaving = false;
+        public bool CanSave => !_isSaving
+            && IsMoneyValid && IsPrestigeValid && IsTokensValid && IsSoulsValid && IsTicketLevelValid && IsMachineTierValid;
 
         public EditorV01ViewModel()
         {
             App.SaveFileService.SaveFileChanged += HandleSaveFileChanged;
+
+            LoadDataToUi();
+
+            TicketsView = CollectionViewSource.GetDefaultView(Tickets);
+            TicketsView.Filter = item =>
+                item is TicketItem entry
+                && (string.IsNullOrWhiteSpace(SearchTicket)
+                || entry.Ticket!.Name.Contains(SearchTicket, StringComparison.OrdinalIgnoreCase));
 
             AchievementsView = CollectionViewSource.GetDefaultView(Achievements);
             AchievementsView.Filter = item =>
@@ -28,11 +38,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && (string.IsNullOrWhiteSpace(SearchAchievement)
                 || entry.Achievement!.Name.Contains(SearchAchievement, StringComparison.OrdinalIgnoreCase));
 
-            LoadDataToUi();
-
             SelectedCosmeticCategory = CosmeticCategories[0];
-            SelectedCosmetic = FilteredCosmetics.FirstOrDefault();
-            UpdateCurrentCosmeticImage();
         }
 
         /// <summary>
@@ -47,6 +53,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             PrestigeIcon = App.ResourceParser.GetSprite("prestige");
             TokensIcon = App.ResourceParser.GetSprite("token");
             SoulsIcon = App.ResourceParser.GetSprite("soul");
+            StarIcon = App.ResourceParser.GetSprite("star");
+            CyanStarIcon = App.ResourceParser.GetSprite("cyanStar");
+            TheMachine = App.ResourceParser.GetSprite("theMachine");
+
+            TicketsView.Refresh();
+            AchievementsView.Refresh();
+            UpdateCurrentCosmeticImage();
         }
 
         private void LoadDataToUi()
@@ -57,6 +70,28 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             PrestigeText = sf.PrestigeCurrency.ToString();
             TokensText = sf.Tokens.ToString();
             SoulsText = sf.LayerOne.Souls.ToString();
+            MachineTierText = sf.LayerOne.MachineTier.ToString();
+
+            var ticketsGottenJackpot = sf.LayerOne.JackpotsGotten ?? new List<string>();
+            var ticketsGottenSuperJackpot = sf.LayerOne.SuperJackpotsGotten ?? new List<string>();
+            var ticketDic = sf.LayerOne.TicketProgressionDict ?? new Dictionary<string, TicketDataV01>();
+
+            Tickets.Clear();
+            foreach (var ticket in App.GameDataParser.GetTickets())
+            {
+                var id = ticket.Id;
+                var progression = ticketDic.TryGetValue(id, out var progress) ? progress : null;
+                var level = progression?.Level ?? 0;
+
+                Tickets.Add(new TicketItem
+                {
+                    Ticket = ticket,
+                    Xp = progression!.Xp,
+                    Level = level is < 0 or > MAX_TICKET_LEVEL ? 0 : level,
+                    GottenJackpot = ticketsGottenJackpot.Contains(id),
+                    GottenSuperJackpot = ticketsGottenSuperJackpot.Contains(id)
+                });
+            }
 
             var achievementsGotten = sf.AchievementsGotten ?? new List<string>();
             var achievementsClaimed = sf.AchievementsClaimed ?? new List<string>();
@@ -64,11 +99,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             Achievements.Clear();
             foreach (var achievement in App.GameDataParser.GetAchievements())
             {
+                var id = achievement.Id;
                 Achievements.Add(new AchievementItem
                 {
                     Achievement = achievement,
-                    IsUnlocked = achievementsGotten.Contains(achievement.Id),
-                    IsClaimed = achievementsClaimed.Contains(achievement.Id),
+                    IsUnlocked = achievementsGotten.Contains(id),
+                    IsClaimed = achievementsClaimed.Contains(id),
                 });
             }
 
@@ -78,11 +114,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             Cosmetics.Clear();
             foreach (var cosmetic in App.GameDataParser.GetCosmetics())
             {
+                var id = cosmetic.Id;
                 Cosmetics.Add(new CosmeticItem
                 {
                     Cosmetic = cosmetic,
-                    IsPurchased = cosmeticsPurchased.Contains(cosmetic.Id),
-                    IsEquipped = cosmeticsEquipped.Contains(cosmetic.Id),
+                    IsPurchased = cosmeticsPurchased.Contains(id),
+                    IsEquipped = cosmeticsEquipped.Contains(id),
                 });
             }
         }
@@ -91,13 +128,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private async Task SaveChanges()
         {
             if (!CanSave) return;
+            _isSaving = true;
+
             if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 sf) return;
 
             // currencies
-            sf.LayerOne!.Money = double.Parse(MoneyText);
             sf.PrestigeCurrency = int.Parse(PrestigeText);
-            sf.LayerOne!.Souls = int.Parse(SoulsText);
 
+            SaveProgress(sf);
             SaveAchievements(sf);
             SaveCosmetics(sf);
 
@@ -114,18 +152,56 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                     result.StatusMessage,
                     DialogOptions.Ok);
             }
+
+            _isSaving = false;
         }
 
         #region save methods
+        private void SaveProgress(SaveFileV01 sf)
+        {
+            if (sf == null || sf.LayerOne == null) return;
+
+            var ticketsGottenJackpot = new HashSet<string>();
+            var ticketsGottenSuperJackpot = new HashSet<string>();
+            var layer = sf.LayerOne;
+
+            foreach (var entry in Tickets)
+            {
+                var id = entry.Ticket?.Id;
+                if (entry.Ticket == null || string.IsNullOrWhiteSpace(id)) continue;
+
+                if (entry.GottenJackpot) ticketsGottenJackpot.Add(id);
+                if (entry.GottenSuperJackpot) ticketsGottenSuperJackpot.Add(id);
+
+                if (layer.TicketProgressionDict!.ContainsKey(id) == true)
+                {
+                    layer.TicketProgressionDict[id] = new TicketDataV01
+                    {
+                        Id = id,
+                        Xp = entry.Xp,
+                        Level = entry.Level
+                    };
+                }
+            }
+
+            layer.Money = double.Parse(MoneyText);
+            layer.Souls = int.Parse(SoulsText);
+            layer.MachineTier = int.Parse(MachineTierText);
+            layer.JackpotsGotten = ticketsGottenJackpot.ToList();
+            layer.SuperJackpotsGotten = ticketsGottenSuperJackpot.ToList();
+        }
+
         private void SaveAchievements(SaveFileV01 sf)
         {
+            if (sf == null) return;
+
             var gottenAchievements = new HashSet<string>();
             var claimedAchievements = new HashSet<string>();
 
             foreach (var entry in Achievements)
             {
                 var id = entry.Achievement?.Id;
-                if (string.IsNullOrWhiteSpace(id)) continue;
+                if (entry.Achievement == null || string.IsNullOrWhiteSpace(id)) continue;
 
                 if (entry.IsUnlocked) gottenAchievements.Add(id);
                 if (entry.IsClaimed) claimedAchievements.Add(id);
@@ -137,6 +213,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         private void SaveCosmetics(SaveFileV01 sf)
         {
+            if (sf == null) return;
+
             var purchasedCosmetics = new HashSet<string>();
             var equippedCosmetics = new HashSet<string>();
 
@@ -245,6 +323,23 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
     }
 
     #region data containers
+    public sealed partial class TicketItem : ObservableObject
+    {
+        public Ticket? Ticket { get; init; }
+
+        [ObservableProperty]
+        private bool _gottenJackpot;
+
+        [ObservableProperty]
+        private bool _gottenSuperJackpot;
+
+        [ObservableProperty]
+        private int _level; // check if int
+
+        [ObservableProperty]
+        private int _xp; // check if int
+    }
+
     public sealed partial class AchievementItem : ObservableObject
     {
         public Achievement? Achievement { get; init; }

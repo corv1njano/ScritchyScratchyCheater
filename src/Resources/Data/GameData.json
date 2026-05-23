@@ -313,6 +313,140 @@
           "category": "Fan"
         }
       ]
+    },
+    {
+      "type": "catalogs",
+      "data": [
+        {
+          "id": "Act 1 Catalog",
+          "name": "Scritchy Scratchy Catalog #1",
+          "iconId": "catalog1"
+        },
+        {
+          "id": "Act 2 Catalog",
+          "name": "Scritchy Scratchy Catalog #2",
+          "iconId": "catalog2"
+        },
+        {
+          "id": "Act 3 Catalog",
+          "name": "Scritchy Scratchy Catalog #3",
+          "iconId": "catalog3"
+        },
+        {
+          "id": "Act 4 Catalog",
+          "name": "Scritchy Scratchy Catalog #4",
+          "iconId": "catalog4"
+        },
+        {
+          "id": "Upgrade Catalog",
+          "name": "Upgrades",
+          "iconId": "upgrades"
+        }
+      ]
+    },
+    {
+      "type": "tickets",
+      "data": [
+        {
+          "id": "Day Job",
+          "name": "Day Job",
+          "iconId": "dayJob"
+        },
+        {
+          "id": "Two Win",
+          "name": "Two Win",
+          "iconId": "twoWin"
+        },
+        {
+          "id": "Mini Scratch",
+          "name": "Mini Scratch",
+          "iconId": "miniScratch"
+        },
+        {
+          "id": "Apple Tree",
+          "name": "Apple Tree",
+          "iconId": "appleTree"
+        },
+        {
+          "id": "Quick Cash",
+          "name": "Quick Cash",
+          "iconId": "quickCash"
+        },
+        {
+          "id": "Lucky Cat",
+          "name": "Lucky Cat",
+          "iconId": "luckyCat"
+        },
+        {
+          "id": "Sand Dollars",
+          "name": "Sand Dollars",
+          "iconId": "sandDollars"
+        },
+        {
+          "id": "Scratch My Back",
+          "name": "Scratch My Back",
+          "iconId": "scratchMyBack"
+        },
+        {
+          "id": "Snake Eyes",
+          "name": "Snake Eyes",
+          "iconId": "snakeEyes"
+        },
+        {
+          "id": "The Bomb",
+          "name": "The Bomb",
+          "iconId": "theBomb"
+        },
+        {
+          "id": "Bank Break",
+          "name": "Bank Break",
+          "iconId": "bankBreak"
+        },
+        {
+          "id": "Xmas Countdown",
+          "name": "Xmas Countdown",
+          "iconId": "xmasCountdown"
+        },
+        {
+          "id": "Thrift Store",
+          "name": "Thrift Store",
+          "iconId": "thriftStore"
+        },
+        {
+          "id": "Berry Picking",
+          "name": "Berry Picking",
+          "iconId": "berryPicking"
+        },
+        {
+          "id": "Trick or Treat",
+          "name": "Trick or Treat",
+          "iconId": "trickOrTreat"
+        },
+        {
+          "id": "Slot Machine",
+          "name": "Slot Machine",
+          "iconId": "slotMachine"
+        },
+        {
+          "id": "To the Moon",
+          "name": "To the Moon",
+          "iconId": "toTheMoon"
+        },
+        {
+          "id": "Booster Pack",
+          "name": "Booster Pack",
+          "iconId": "boosterPack"
+        }
+      ]
+    },
+    {
+      "type": "dlcs",
+      "data": [
+        {
+          "id": 4428640,
+          "name": "Supporter Pack"
+        }
+      ]
     }
   ]
 }

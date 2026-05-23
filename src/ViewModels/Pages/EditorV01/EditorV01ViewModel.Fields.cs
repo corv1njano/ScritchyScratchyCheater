@@ -18,17 +18,47 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [NotifyPropertyChangedFor(nameof(IsSoulsValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _soulsText = string.Empty;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsTicketLevelValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
+        private string _ticketLevelText = "0";
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsMachineTierValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
+        private string _machineTierText = string.Empty;
 
         [ObservableProperty]
         private ImageSource? _moneyIcon;
         [ObservableProperty]
         private ImageSource? _soulsIcon;
+        [ObservableProperty]
+        private ImageSource? _starIcon;
+        [ObservableProperty]
+        private ImageSource? _cyanStarIcon;
+        [ObservableProperty]
+        private ImageSource? _theMachine;
+
+        private const int MAX_TICKET_LEVEL = int.MaxValue;
+        private const int MAX_MACHINE_TIER = 26;
 
         public bool IsMoneyValid =>
             double.TryParse(MoneyText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
             && !double.IsNaN(value)
             && !double.IsInfinity(value);
         public bool IsSoulsValid => int.TryParse(SoulsText, out _);
+        public bool IsTicketLevelValid => int.TryParse(TicketLevelText, out var value)
+            && value <= MAX_TICKET_LEVEL;
+        public bool IsMachineTierValid => int.TryParse(MachineTierText, out var value)
+            && value <= MAX_MACHINE_TIER;
+
+        [ObservableProperty]
+        private string _searchTicket = string.Empty;
+        public ObservableCollection<TicketItem> Tickets { get; } = new();
+        public ICollectionView TicketsView { get; }
+        public bool HasTickets => !TicketsView.IsEmpty;
+
+        [ObservableProperty]
+        private TicketItem? _selectedTicket;
         #endregion
 
         #region Tab Prestige
@@ -48,7 +78,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private string _searchAchievement = string.Empty;
         public ObservableCollection<AchievementItem> Achievements { get; } = new();
         public ICollectionView AchievementsView { get; }
-        public bool HasEntries => !AchievementsView.IsEmpty;
+        public bool HasAchievements => !AchievementsView.IsEmpty;
         #endregion
 
         #region Tab Cosmetics
@@ -61,6 +91,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private ImageSource? _tokensIcon;
 
         public bool IsTokensValid => int.TryParse(TokensText, out _);
+        public bool NoneCosmeticNotSelected => SelectedCosmetic?.Cosmetic != null;
 
         public IReadOnlyList<CosmeticCategoryItem> CosmeticCategories { get; } = new List<CosmeticCategoryItem>
         {

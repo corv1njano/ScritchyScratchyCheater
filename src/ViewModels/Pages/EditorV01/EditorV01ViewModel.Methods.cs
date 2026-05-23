@@ -21,6 +21,53 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             SoulsText = int.MaxValue.ToString();
         }
+
+        [RelayCommand]
+        private void MaxMachineTier()
+        {
+            MachineTierText = MAX_MACHINE_TIER.ToString();
+        }
+
+        [RelayCommand]
+        private void JackpotAllTickets()
+        {
+            foreach (var entry in Tickets) entry.GottenJackpot = true;
+        }
+
+        [RelayCommand]
+        private void SuperJackpotAllTickets()
+        {
+            foreach (var entry in Tickets) entry.GottenSuperJackpot = true;
+        }
+
+        [RelayCommand]
+        private void MaxTicketLevel()
+        {
+            if (SelectedTicket == null) return;
+
+            SelectedTicket.Level = MAX_TICKET_LEVEL;
+            if (SelectedTicket != null) TicketLevelText = MAX_TICKET_LEVEL.ToString();
+        }
+
+        [RelayCommand]
+        private void MaxTicketLevelAll()
+        {
+            foreach (var entry in Tickets) entry.Level = MAX_TICKET_LEVEL;
+            if (SelectedTicket != null) TicketLevelText = MAX_TICKET_LEVEL.ToString();
+        }
+
+        partial void OnSearchTicketChanged(string value)
+        {
+            TicketsView.Refresh();
+            OnPropertyChanged(nameof(HasTickets));
+        }
+
+        partial void OnSelectedTicketChanged(TicketItem? oldValue, TicketItem? newValue)
+        {
+            if (oldValue != null) if (!int.TryParse(TicketLevelText, out var level) || level > MAX_TICKET_LEVEL) oldValue.Level = 0;
+
+            TicketLevelText = newValue?.Level.ToString() ?? "0";
+        }
         #endregion
 
         #region Tab Prestige
@@ -32,12 +79,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         #endregion
 
         #region Tab Achievements
-        partial void OnSearchAchievementChanged(string value)
-        {
-            AchievementsView.Refresh();
-            OnPropertyChanged(nameof(HasEntries));
-        }
-
         [RelayCommand]
         private void UnlockAllAchievements()
         {
@@ -48,6 +89,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private void ClaimAllAchievements()
         {
             foreach (var entry in Achievements) entry.IsClaimed = true;
+        }
+
+        partial void OnSearchAchievementChanged(string value)
+        {
+            AchievementsView.Refresh();
+            OnPropertyChanged(nameof(HasAchievements));
         }
         #endregion
 
@@ -67,8 +114,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 entry.IsPurchased = true;
             }
         }
-
-        public bool NoneCosmeticNotSelected => SelectedCosmetic?.Cosmetic != null;
 
         partial void OnSelectedCosmeticCategoryChanged(CosmeticCategoryItem? value)
         {

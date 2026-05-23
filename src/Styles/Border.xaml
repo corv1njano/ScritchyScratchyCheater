@@ -8,11 +8,7 @@
         <Setter Property="CornerRadius" Value="4"/>
     </Style>
 
-    <Style TargetType="Border" x:Key="Border.DropFile">
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource CJG.Block.Border}"/>
-        <Setter Property="Background" Value="{StaticResource CJG.Block.Background}"/>
-        <Setter Property="CornerRadius" Value="4"/>
+    <Style TargetType="Border" x:Key="Border.DropFile" BasedOn="{StaticResource Border.Default}">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Height" Value="250"/>
         <Setter Property="Width" Value="250"/>
@@ -21,18 +17,16 @@
             <Setter.Value>
                 <DropShadowEffect
                     Color="Black"
-                    Opacity="0.4"
-                    BlurRadius="12"
+                    Opacity="0.8"
+                    BlurRadius="20"
                     ShadowDepth="0"/>
             </Setter.Value>
         </Setter>
     </Style>
 
     <Style TargetType="Border" x:Key="Border.Preview" BasedOn="{StaticResource Border.Default}">
-        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{StaticResource CJG.Input.Border}"/>
         <Setter Property="Background" Value="{StaticResource CJG.Input.Background}"/>
-        <Setter Property="CornerRadius" Value="4"/>
     </Style>
 
 </ResourceDictionary>

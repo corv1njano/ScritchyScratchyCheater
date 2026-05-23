@@ -193,19 +193,20 @@
                 { "name": "catalog4", "x": 0, "y": 10 },
                 { "name": "dayJob", "x": 1, "y": 10 },
                 { "name": "finalChance", "x": 2, "y": 10 },
-                { "name": "luckyCat", "x": 3, "y": 10 },
-                { "name": "miniScratch", "x": 4, "y": 10 },
-                { "name": "quickCash", "x": 5, "y": 10 },
-                { "name": "sandDollars", "x": 6, "y": 10 },
-                { "name": "scratchMyBack", "x": 7, "y": 10 },
-                { "name": "slotMachine", "x": 8, "y": 10 },
-                { "name": "snakeEyes", "x": 9, "y": 10 },
-                { "name": "theBomb", "x": 10, "y": 10 },
-                { "name": "thriftStore", "x": 11, "y": 10 },
-                { "name": "toTheMoon", "x": 12, "y": 10 },
-                { "name": "trickOrTreat", "x": 13, "y": 10 },
-                { "name": "twoWin", "x": 14, "y": 10 },
-                { "name": "xmasCountdown", "x": 15, "y": 10 }
+                { "name": "loan", "x": 3, "y": 10 },
+                { "name": "luckyCat", "x": 4, "y": 10 },
+                { "name": "miniScratch", "x": 5, "y": 10 },
+                { "name": "quickCash", "x": 6, "y": 10 },
+                { "name": "sandDollars", "x": 7, "y": 10 },
+                { "name": "scratchMyBack", "x": 8, "y": 10 },
+                { "name": "slotMachine", "x": 9, "y": 10 },
+                { "name": "snakeEyes", "x": 10, "y": 10 },
+                { "name": "theBomb", "x": 11, "y": 10 },
+                { "name": "thriftStore", "x": 12, "y": 10 },
+                { "name": "toTheMoon", "x": 13, "y": 10 },
+                { "name": "trickOrTreat", "x": 14, "y": 10 },
+                { "name": "twoWin", "x": 15, "y": 10 },
+                { "name": "xmasCountdown", "x": 0, "y": 11 }
             ]
         }
     ]

@@ -45,7 +45,7 @@
 
     <SolidColorBrush x:Key="CJG.ListBox.Background" Color="#1B222E"/>
     <SolidColorBrush x:Key="CJG.ListBoxItem.Background" Color="#191F2A"/>
-    <SolidColorBrush x:Key="CJG.ListBoxItem.Background.Hover" Color="#151A24"/>
+    <SolidColorBrush x:Key="CJG.ListBoxItem.Background.Selected" Color="#151A24"/>
     <SolidColorBrush x:Key="CJG.ListBoxItem.Border" Color="#2D394F"/>
 
 

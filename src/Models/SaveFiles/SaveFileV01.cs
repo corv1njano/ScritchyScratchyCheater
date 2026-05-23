@@ -66,8 +66,8 @@ namespace ScritchyScratchyCheater.Models.SaveFiles
         public List<object>? TableItems { get; set; }
         public List<object>? TableItemSaves { get; set; }
 
-        public List<object>? JackpotsGotten { get; set; }
-        public List<object>? SuperJackpotsGotten { get; set; }
+        public List<string>? JackpotsGotten { get; set; }
+        public List<string>? SuperJackpotsGotten { get; set; }
 
         public double LastUnlockedProgressionGoal { get; set; }
         public double TotalMoneyEarnedThisProgressionGoal { get; set; }

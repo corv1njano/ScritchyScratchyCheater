@@ -154,8 +154,8 @@
                         <Setter.Value>
                             <ControlTemplate TargetType="ComboBoxItem">
                                 <Border x:Name="Border"
-                                        Background="{StaticResource CJG.ListBoxItem.Background.Hover}"
-                                        BorderBrush="{StaticResource CJG.ListBoxItem.Background.Hover}"
+                                        Background="{StaticResource CJG.ListBoxItem.Background.Selected}"
+                                        BorderBrush="{StaticResource CJG.ListBoxItem.Background.Selected}"
                                         BorderThickness="1"
                                         Padding="3"
                                         CornerRadius="4">

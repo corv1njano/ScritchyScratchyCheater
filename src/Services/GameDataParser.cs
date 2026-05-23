@@ -39,6 +39,30 @@ namespace ScritchyScratchyCheater.Services
         }
 
         /// <summary>
+        /// Retrieves a list of tickets from the current game data.
+        /// </summary>
+        /// <remarks>This method returns an empty list if the game data root is null, if no ticket
+        /// dataset is present, or if the ticket data is undefined or null.</remarks>
+        /// <returns>A list of <see cref="Ticket"/> objects representing the tickets associated with the game data.</returns>
+        public List<Ticket> GetTickets()
+        {
+            if (_gameDataRoot == null) return new();
+
+            GameDataset? dataset = _gameDataRoot.GameData?
+                .FirstOrDefault(x => string.Equals(x.Type, "tickets", StringComparison.OrdinalIgnoreCase));
+
+            if (dataset == null) return new();
+            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
+
+            List<Ticket>? tickets = dataset.Data.Deserialize<List<Ticket>>(App.JsonOptions);
+
+            return tickets!
+                .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList()
+                ?? new();
+        }
+
+        /// <summary>
         /// Retrieves a list of achievements from the current game data.
         /// </summary>
         /// <remarks>This method returns an empty list if the game data root is null, if no achievement
@@ -104,7 +128,7 @@ namespace ScritchyScratchyCheater.Services
         }
     }
 
-    #region game data
+    #region game data container
     public sealed class GameDataRoot
     {
         public string SaveVersion { get; set; } = string.Empty;
