@@ -1,18 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.Views.Dialogs;
 using ScritchyScratchyCheater.Views.Pages;
 using System.Windows.Controls;
-using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
 namespace ScritchyScratchyCheater.ViewModels
 {
     internal partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
-        private bool _isDragging;
+        private bool _isDragging = false;
 
         [ObservableProperty]
         private UserControl? _currentPage = new StartingPage();

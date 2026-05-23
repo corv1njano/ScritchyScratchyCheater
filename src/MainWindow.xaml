@@ -128,8 +128,9 @@
         <!-- drag overlay -->
         <Border Grid.RowSpan="3"
                 Panel.ZIndex="999"
-                Visibility="{Binding IsDragging, Converter={StaticResource BoolToVisibilityConverter}}"
-                Background="#90000000">
+                Opacity="0"
+                IsHitTestVisible="{Binding IsDragging}"
+                Background="#80000000">
             <Border.Style>
                 <Style TargetType="Border">
                     <Style.Triggers>
@@ -139,7 +140,7 @@
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Opacity"
                                                          To="1"
-                                                         Duration="0:0:0.2"/>
+                                                         Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.EnterActions>
@@ -148,7 +149,7 @@
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Opacity"
                                                          To="0"
-                                                         Duration="0:0:0.2"/>
+                                                         Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.ExitActions>
@@ -156,7 +157,19 @@
                     </Style.Triggers>
                 </Style>
             </Border.Style>
-            <TextBlock Style="{StaticResource TextBlock.Base}" FontSize="22" HorizontalAlignment="Center" Foreground="{StaticResource CJG.Font.Focused}" Text="Drop File here"/>
+            <Border Style="{StaticResource Border.DropFile}">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <Rectangle Height="50" Width="50" Fill="{StaticResource CJG.Accent}" Margin="0,-10,0,20">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush ImageSource="{StaticResource Icon.File}"/>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Style="{StaticResource TextBlock.Base}"
+                               FontSize="20"
+                               HorizontalAlignment="Center"
+                               Text="Drop File here"/>
+                </StackPanel>
+            </Border>
         </Border>
     </Grid>
 </Window>

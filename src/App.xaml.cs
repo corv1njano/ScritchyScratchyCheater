@@ -1,4 +1,5 @@
 ﻿using ScritchyScratchyCheater.Services;
+using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Windows;
@@ -18,7 +19,10 @@ namespace ScritchyScratchyCheater
             Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) }
         };
 
-        public const string APP_VERSION = "v1.3.0";
+        public static readonly string APP_VERSION =
+            Assembly.GetExecutingAssembly().GetName().Version is { } v
+                ? $"v{v.Major}.{v.Minor}.{v.Build}"
+                : string.Empty;
 
         public static readonly HashSet<string> SupportedVersions = new()
         {
