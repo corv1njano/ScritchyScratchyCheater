@@ -266,7 +266,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [ObservableProperty]
         private bool _isEquipped;
 
-        public string DisplayName => Cosmetic?.Name ?? "None";
+        public string DisplayName => Cosmetic?.Name ?? "None (default)";
     }
     #endregion
 }

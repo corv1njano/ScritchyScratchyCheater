@@ -1,5 +1,8 @@
 ﻿using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.ViewModels;
+using ScritchyScratchyCheater.Views.Pages;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 
 namespace ScritchyScratchyCheater
@@ -10,6 +13,7 @@ namespace ScritchyScratchyCheater
     public partial class MainWindow : Window
     {
         private readonly WindowWrapper _windowWrapper;
+        private MainViewModel _viewModel => (MainViewModel)DataContext;
 
         public MainWindow()
         {
@@ -32,5 +36,48 @@ namespace ScritchyScratchyCheater
         {
             _windowWrapper.MaximizeOrRestoreWindow();
         }
+
+        #region drag events
+        private void Window_DragEnter(object sender, DragEventArgs e)
+        {
+            if (IsDragValid(e)) _viewModel.IsDragging = true;
+        }
+
+        private void Window_DragLeave(object sender, DragEventArgs e)
+        {
+            _viewModel.IsDragging = false;
+        }
+
+        private void Window_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effects = IsDragValid(e) ? DragDropEffects.Copy : DragDropEffects.None;
+            e.Handled = true;
+        }
+
+        private void Window_Drop(object sender, DragEventArgs e)
+        {
+            _viewModel.IsDragging = false;
+
+            if (!IsDragValid(e)) return;
+
+            var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            var filePath = files.FirstOrDefault();
+
+            _viewModel.LoadDraggedFileCommand.Execute(filePath);
+        }
+
+        private bool IsDragValid(DragEventArgs e)
+        {
+            if (_viewModel.CurrentPage is not StartingPage) return false;
+            if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return false;
+
+            var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            var filePath = files.FirstOrDefault();
+
+            return filePath != null
+                && (Path.GetExtension(filePath).Equals(".json", StringComparison.OrdinalIgnoreCase)
+                || Path.GetExtension(filePath).Equals(".backup", StringComparison.OrdinalIgnoreCase));
+        }
+        #endregion
     }
 }

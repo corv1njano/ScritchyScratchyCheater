@@ -148,6 +148,7 @@
             <Setter.Value>
                 <Style TargetType="ComboBoxItem">
                     <Setter Property="OverridesDefaultStyle" Value="True"/>
+                    <Setter Property="Height" Value="30"/>
                     <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
                     <Setter Property="Template">
                         <Setter.Value>

@@ -17,7 +17,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         private async Task LoadDefaultSaveFile()
         {
             string defaultPath = App.SaveFileService.DefaultSaveFilePath;
-            await LoadSaveFile(defaultPath);
+            await SaveFileHelper.LoadSaveFile(defaultPath, true);
         }
 
         [RelayCommand]
@@ -33,7 +33,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
 
             if (filePicker.ShowDialog() == true)
             {
-                await LoadSaveFile(filePicker.FileName);
+                await SaveFileHelper.LoadSaveFile(filePicker.FileName);
             }
         }
 
@@ -51,39 +51,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         private void OpenSamples()
         {
             Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater/tree/master/samples");
-        }
-
-        private async Task LoadSaveFile(string filePath)
-        {
-            LoadResult loadResult =  await App.SaveFileService.Load(filePath);
-
-            if (!loadResult.Success)
-            {
-                ShowMessage.Error("Loading failed",
-                    loadResult.StatusMessage,
-                    DialogOptions.Ok);
-                return;
-            }
-            
-            switch (loadResult.Version)
-            {
-                case "0.1":
-                    App.PageNavigator.Navigate(new EditorV01Page());
-                    break;
-                default:
-                    break;
-            }
-
-            CreateBackup();
-        }
-
-        private void CreateBackup()
-        {
-            var dialog = new CreateBackupDialog()
-            {
-                Owner = App.Current.MainWindow
-            };
-            dialog.ShowDialog();
         }
     }
 }

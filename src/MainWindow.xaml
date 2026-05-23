@@ -11,7 +11,12 @@
         MinHeight="600" MinWidth="620"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize"
-        Background="{StaticResource CJG.Window}">
+        Background="{StaticResource CJG.Window}"
+        AllowDrop="True"
+        DragEnter="Window_DragEnter"
+        DragLeave="Window_DragLeave"
+        DragOver="Window_DragOver"
+        Drop="Window_Drop">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="32"
@@ -118,6 +123,40 @@
                            Style="{StaticResource TextBlock.StatusBar}"
                            HorizontalAlignment="Right"/>
             </Grid>
+        </Border>
+
+        <!-- drag overlay -->
+        <Border Grid.RowSpan="3"
+                Panel.ZIndex="999"
+                Visibility="{Binding IsDragging, Converter={StaticResource BoolToVisibilityConverter}}"
+                Background="#90000000">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsDragging}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <TextBlock Style="{StaticResource TextBlock.Base}" FontSize="22" HorizontalAlignment="Center" Foreground="{StaticResource CJG.Font.Focused}" Text="Drop File here"/>
         </Border>
     </Grid>
 </Window>

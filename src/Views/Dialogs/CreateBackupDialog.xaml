@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
-                   Text="Create backup"
+                   Text="Create Backup"
                    Style="{StaticResource TextBlock.Base}"
                    Foreground="{StaticResource CJG.Font.TitleBar}"/>
         <TextBlock Grid.Row="1"
@@ -84,6 +84,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,10,0,0">
             <Grid>
                 <Button Style="{StaticResource Button.Dialog.Preffered}" Content="Export" Command="{Binding CreateBackupCommand}" IsEnabled="{Binding CanExport}"/>
+                <!-- rectangle needs to follow AFTER the element to overlay! -->
                 <Rectangle Fill="Transparent" Cursor="No"
                            Visibility="{Binding CanExport, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
             </Grid>

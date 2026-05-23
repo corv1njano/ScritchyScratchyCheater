@@ -40,14 +40,24 @@ namespace ScritchyScratchyCheater.Services
         /// </summary>
         /// <param name="filePath">The path to the save file to load. Must refer to an existing, non-empty file containing a supported save
         /// file format.</param>
+        /// <param name="loadFromDefaultPath"><c>true</c> if save file loaded from default location, <c>false</c> if otherwise.</param>
         /// <returns>A LoadResult indicating whether the operation succeeded, the detected save file version if successful, and a
         /// status message describing the outcome.</returns>
-        public async Task<LoadResult> Load(string filePath)
+        public async Task<LoadResult> Load(string filePath, bool loadFromDefaultPath = false)
         {
             Reset();
 
             if (!File.Exists(filePath))
             {
+                if (loadFromDefaultPath)
+                {
+                    return new LoadResult()
+                    {
+                        Success = false,
+                        StatusMessage = "No save file was found in the default location."
+                    };
+                }
+
                 return new LoadResult()
                 {
                     Success = false,

@@ -9,7 +9,7 @@ namespace ScritchyScratchyCheater.Views.Pages
     /// </summary>
     public partial class EditorV01Page : UserControl
     {
-        private EditorV01ViewModel ViewModel => (EditorV01ViewModel)DataContext;
+        private EditorV01ViewModel _viewModel => (EditorV01ViewModel)DataContext;
 
         public EditorV01Page()
         {
@@ -19,7 +19,7 @@ namespace ScritchyScratchyCheater.Views.Pages
 
         private async void Editor_Loaded(object sender, RoutedEventArgs e)
         {
-            await ViewModel.LoadUiAsync();
+            await _viewModel.LoadUiAsync();
         }
     }
 }

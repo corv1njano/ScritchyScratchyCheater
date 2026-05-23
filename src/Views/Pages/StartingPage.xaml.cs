@@ -1,4 +1,5 @@
 ﻿using ScritchyScratchyCheater.ViewModels.Pages;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ScritchyScratchyCheater.Views.Pages
@@ -12,6 +13,6 @@ namespace ScritchyScratchyCheater.Views.Pages
         {
             InitializeComponent();
             DataContext = new StartingPageViewModel();
-        }        
+        }
     }
 }

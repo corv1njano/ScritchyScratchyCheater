@@ -23,17 +23,19 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         }
         #endregion
 
+        #region Tab Prestige
+        [RelayCommand]
+        private void MaxPrestige()
+        {
+            PrestigeText = int.MaxValue.ToString();
+        }
+        #endregion
+
         #region Tab Achievements
         partial void OnSearchAchievementChanged(string value)
         {
             AchievementsView.Refresh();
             OnPropertyChanged(nameof(HasEntries));
-        }
-
-        [RelayCommand]
-        private void MaxTokens()
-        {
-            TokensText = int.MaxValue.ToString();
         }
 
         [RelayCommand]
@@ -51,9 +53,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         #region Tab Cosmetics
         [RelayCommand]
-        private void MaxPrestige()
+        private void MaxTokens()
         {
-            PrestigeText = int.MaxValue.ToString();
+            TokensText = int.MaxValue.ToString();
         }
 
         [RelayCommand]
