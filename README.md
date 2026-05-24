@@ -1,23 +1,43 @@
 # Scritchy Scratchy Cheater
 
-Small save editing tool for the game Scritchy Scratchy.
+A save file editor for the idle game **Scritchy Scratchy**.
 
-Download latest version [here](https://github.com/corv1njano/ScritchyScratchyCheater/releases/latest).
-
-
-
-# Features
-
-<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/docs/images/app_1-3-0.gif" Alt="App UI" width="300">
-
-- edit Money, Prestige Currency, Tokens, and Souls
-- edit achievements
-- load save file directly from path or any other location
-- reload current save file during session
-- locate current save file in file explorer
+> 📥 [Download the latest version](https://github.com/corv1njano/ScritchyScratchyCheater/releases/latest)
 
 
 
-# Documentation
+## Preview
 
-Read more about the project [here](https://github.com/corv1njano/ScritchyScratchyCheater/tree/master/Docs). More documentation will follow in the future.
+<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/docs/Images/app_1-3-0.gif" alt="App UI" width="300"/>
+
+
+
+## Features
+
+- 💰 `Edit currencies`: Money, Prestige Currency, Tokens, Souls and more
+- 🏆 `Edit achievements`: unlock and claim any achievement
+- 🎟️ `Edit tickets`: set jackpot and super jackpot states and adjust ticket levels
+- 🎨 `Edit cosmetics`: browse by category and equip or purchase any cosmetic item
+- 📂 `Load save files`: load from the default path, any custom location or via drag & drop
+- 🔄 `Quick reload`: reload the current save file at any time during a session
+- 🔍 `Locate`: open the current save file location directly in File Explorer
+
+
+## Build Info
+
+Two release configurations are available:
+
+| Configuration | Single File | Self-Contained | .NET Required |
+|---|---|---|---|
+| `Release` | Yes | No | Yes |
+| `ReleaseNetIncluded` | Yes | Yes | No |
+
+Both configurations target `win-x64`.
+
+When building from source, use the included `build.bat` to produce both release builds exactly as they are distributed here on GitHub.
+
+
+
+## Documentation
+
+Further documentation is available [here](https://github.com/corv1njano/ScritchyScratchyCheater/tree/master/docs). More will be added in future updates (or not).
