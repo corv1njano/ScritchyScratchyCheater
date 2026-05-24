@@ -56,6 +56,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             if (SelectedTicket != null) TicketLevelText = MAX_TICKET_LEVEL.ToString();
         }
 
+        [RelayCommand]
+        private void ClaimAllCatalogs()
+        {
+            foreach (var entry in Catalogs) entry.IsClaimed = true;
+        }
+
         partial void OnSearchTicketChanged(string value)
         {
             TicketsView.Refresh();
