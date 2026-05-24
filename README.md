@@ -8,7 +8,7 @@ A save file editor for the idle game **Scritchy Scratchy**.
 
 ## Preview
 
-<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/docs/Images/app_1-3-0.gif" alt="App UI" width="300"/>
+<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/docs/resources/app_1-3-0.gif" alt="App UI" width="300"/>
 
 
 
