@@ -21,6 +21,7 @@ A save file editor for the idle game **Scritchy Scratchy**.
 - 📂 `Load save files`: load from the default path, any custom location or via drag & drop
 - 🔄 `Quick reload`: reload the current save file at any time during a session
 - 🔍 `Locate`: open the current save file location directly in File Explorer
+- 💾 `Create backups`: create backups on the spot to prevent data loss or corruption
 
 
 ## Build Info
