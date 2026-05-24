@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
              xmlns:converters="clr-namespace:ScritchyScratchyCheater.Utilities.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="620"
+             d:DesignHeight="650" d:DesignWidth="670"
              Background="{StaticResource CJG.Window}"
              Loaded="Editor_Loaded">
 
@@ -102,7 +102,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Border Grid.Row="0" Style="{StaticResource Border.Default}">
                         <Grid Margin="8">
                             <Grid.RowDefinitions>
@@ -370,6 +370,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <Border Grid.Row="0" Style="{StaticResource Border.Default}">
@@ -387,7 +388,7 @@
                         </Grid>
                     </Border>
 
-                    <Border Grid.Row="1" Style="{StaticResource Border.Default}" Margin="0,8,0,0">
+                    <Border Grid.Row="1" Style="{StaticResource Border.Default}" Margin="0,8">
                         <Grid Margin="8">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -460,6 +461,69 @@
                                            Source="{Binding CurrentCosmeticItem}"/>
                                 </StackPanel>
                             </Border>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="2" Style="{StaticResource Border.Default}">
+                        <Grid Margin="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="190"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding ElectricFanIcon}"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Margin="8,0" Text="Electric Fan Charge Left:"/>
+                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding ElectricFanChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEelectricFanChargeValid}"/>
+                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxElectricFanChargeCommand}"/>
+                                <CheckBox Margin="8,0,0,0" Content="Fan Paused" Grid.Column="4" Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsElectricFanPaused}"/>
+                            </Grid>
+
+                            <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
+
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="190"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding EggTimerIcon}"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Egg Timer Charge Left:"/>
+                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding EggTimerChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEggTimerChargeValid}"/>
+                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxEggTimerChargeCommand}"/>
+                            </Grid>
+
+                            <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
+
+                            <StackPanel Grid.Row="4" Orientation="Horizontal">
+                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsMundoDead}" Margin="0,0,16,0">
+                                    <CheckBox.Content>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Style="{StaticResource blockImg}" Source="{Binding MundoIcon}" Margin="0,0,4,0"/>
+                                            <TextBlock Style="{StaticResource TextBlock.Base}" Text="Mundo dead" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=CheckBox}}"/>
+                                        </StackPanel>
+                                    </CheckBox.Content>
+                                </CheckBox>
+                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsTrashCanDead}" >
+                                    <CheckBox.Content>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Style="{StaticResource blockImg}" Source="{Binding TrashCanIcon}" Margin="0,0,4,0"/>
+                                            <TextBlock Style="{StaticResource TextBlock.Base}" Text="Trash Can dead" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=CheckBox}}"/>
+                                        </StackPanel>
+                                    </CheckBox.Content>
+                                </CheckBox>
+                            </StackPanel>
                         </Grid>
                     </Border>
                 </Grid>

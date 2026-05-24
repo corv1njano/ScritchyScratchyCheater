@@ -137,7 +137,7 @@ namespace ScritchyScratchyCheater.Services
                     CosmeticCategory.Phone => CosmeticCategory.Phone,
                     CosmeticCategory.Table => CosmeticCategory.Table,
                     CosmeticCategory.TrashCan => CosmeticCategory.TrashCan,
-                    CosmeticCategory.Fan => CosmeticCategory.Fan,
+                    CosmeticCategory.ElectricFan => CosmeticCategory.ElectricFan,
                     CosmeticCategory.Mundo => CosmeticCategory.Mundo,
                     CosmeticCategory.EggTimer => CosmeticCategory.EggTimer,
                     CosmeticCategory.ScratchBot => CosmeticCategory.ScratchBot,

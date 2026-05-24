@@ -26,7 +26,7 @@ namespace ScritchyScratchyCheater.Models.GameData
         Phone,
         Table,
         TrashCan,
-        Fan,
+        ElectricFan,
         Mundo,
         EggTimer,
         ScratchBot

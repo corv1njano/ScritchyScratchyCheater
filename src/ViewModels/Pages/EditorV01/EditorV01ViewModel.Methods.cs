@@ -131,6 +131,18 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             }
         }
 
+        [RelayCommand]
+        private void MaxElectricFanCharge()
+        {
+            ElectricFanChargeText = 1e300.ToString(CultureInfo.InvariantCulture);
+        }
+
+        [RelayCommand]
+        private void MaxEggTimerCharge()
+        {
+            EggTimerChargeText = 1e300.ToString(CultureInfo.InvariantCulture);
+        }
+
         partial void OnSelectedCosmeticCategoryChanged(CosmeticCategoryItem? value)
         {
             var filtered = Cosmetics

@@ -95,19 +95,43 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [NotifyPropertyChangedFor(nameof(IsTokensValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _tokensText = string.Empty;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsTokensValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
+        private string _electricFanChargeText = string.Empty;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsTokensValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
+        private string _eggTimerChargeText = string.Empty;
 
         [ObservableProperty]
         private ImageSource? _tokensIcon;
+        [ObservableProperty]
+        private ImageSource? _electricFanIcon;
+        [ObservableProperty]
+        private ImageSource? _eggTimerIcon;
+        [ObservableProperty]
+        private ImageSource? _mundoIcon;
+        [ObservableProperty]
+        private ImageSource? _trashCanIcon;
 
         public bool IsTokensValid => int.TryParse(TokensText, out _);
         public bool NoneCosmeticNotSelected => SelectedCosmetic?.Cosmetic != null;
+        public bool IsElectricFIsEelectricFanChargeValid =>
+            double.TryParse(ElectricFanChargeText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
+            && !double.IsNaN(value)
+            && !double.IsInfinity(value);
+        public bool IsEggTimerChargeValid =>
+            double.TryParse(EggTimerChargeText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
+            && !double.IsNaN(value)
+            && !double.IsInfinity(value);
 
         public IReadOnlyList<CosmeticCategoryItem> CosmeticCategories { get; } = new List<CosmeticCategoryItem>
         {
             new() { Category = CosmeticCategory.Phone, Name = "Phones" },
             new() { Category = CosmeticCategory.Table, Name = "Tables" },
             new() { Category = CosmeticCategory.TrashCan, Name = "Trash Cans" },
-            new() { Category = CosmeticCategory.Fan, Name = "Fans" },
+            new() { Category = CosmeticCategory.ElectricFan, Name = "Electric Fans" },
             new() { Category = CosmeticCategory.Mundo, Name = "Mundos" },
             new() { Category = CosmeticCategory.EggTimer, Name = "Egg Timers" },
             new() { Category = CosmeticCategory.ScratchBot, Name = "Scratch Bots" },
@@ -129,6 +153,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         [ObservableProperty]
         private ImageSource? _currentCosmeticItem;
+
+        [ObservableProperty]
+        private bool _isElectricFanPaused;
+        [ObservableProperty]
+        private bool _isMundoDead;
+        [ObservableProperty]
+        private bool _isTrashCanDead;
         #endregion
     }
 }

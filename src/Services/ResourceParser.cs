@@ -97,7 +97,7 @@ namespace ScritchyScratchyCheater.Services
             return !string.IsNullOrWhiteSpace(spriteName) && _sprites.ContainsKey(spriteName);
         }
 
-        private static SpriteRoot? LoadSpriteData(string uriSource)
+        private SpriteRoot? LoadSpriteData(string uriSource)
         {
             var uri = new Uri(uriSource, UriKind.Absolute);
             var resourceInfo = Application.GetResourceStream(uri);
@@ -110,7 +110,7 @@ namespace ScritchyScratchyCheater.Services
             return JsonSerializer.Deserialize<SpriteRoot>(json, App.JsonOptions);
         }
 
-        private static BitmapImage LoadSpriteSheet(string uriSource)
+        private BitmapImage LoadSpriteSheet(string uriSource)
         {
             var bitmap = new BitmapImage();
 

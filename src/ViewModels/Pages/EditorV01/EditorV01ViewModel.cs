@@ -54,6 +54,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             StarIcon = App.ResourceParser.GetSprite("star");
             CyanStarIcon = App.ResourceParser.GetSprite("cyanStar");
             TheMachine = App.ResourceParser.GetSprite("theMachine");
+            ElectricFanIcon = App.ResourceParser.GetSprite("fan");
+            EggTimerIcon = App.ResourceParser.GetSprite("eggTimer");
+            MundoIcon = App.ResourceParser.GetSprite("mundo");
+            TrashCanIcon = App.ResourceParser.GetSprite("trashCan");
 
             TicketsView.Refresh();
             AchievementsView.Refresh();
@@ -137,6 +141,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                     IsEquipped = cosmeticsEquipped.Contains(id),
                 });
             }
+
+            ElectricFanChargeText = SaveFileHelper.SanitizeDouble(sf.LayerOne.ElectricFanChargeLeft).ToString(CultureInfo.InvariantCulture);
+            EggTimerChargeText = SaveFileHelper.SanitizeDouble(sf.LayerOne.EggTimerChargeLeft).ToString(CultureInfo.InvariantCulture);
+            IsElectricFanPaused = sf.LayerOne.FanPaused;
+            IsMundoDead = sf.LayerOne.MundoDead;
+            IsTrashCanDead = sf.LayerOne.TrashCanDead;
         }
 
         [RelayCommand]
@@ -256,6 +266,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             sf.Tokens = int.Parse(TokensText);
             sf.BoughtCosmetics = purchasedCosmetics.ToList();
             sf.EquippedCosmetics = equippedCosmetics.ToList();
+
+            sf.LayerOne!.ElectricFanChargeLeft = double.Parse(ElectricFanChargeText);
+            sf.LayerOne.EggTimerChargeLeft = double.Parse(EggTimerChargeText);
+            sf.LayerOne.FanPaused = IsElectricFanPaused;
+            sf.LayerOne.MundoDead = IsMundoDead;
+            sf.LayerOne.TrashCanDead = IsTrashCanDead;
         }
         #endregion
 

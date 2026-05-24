@@ -244,13 +244,13 @@
           "id": "Love_Fan",
           "name": "Love fan",
           "iconId": "loveFan",
-          "category": "Fan"
+          "category": "ElectricFan"
         },
         {
           "id": "Night_Fan",
           "name": "Night fan",
           "iconId": "nightFan",
-          "category": "Fan"
+          "category": "ElectricFan"
         },
         {
           "id": "White_Mundo",
@@ -310,7 +310,7 @@
           "id": "Golden_Fan",
           "name": "Golden fan",
           "iconId": "goldenFan",
-          "category": "Fan"
+          "category": "ElectricFan"
         }
       ]
     },
