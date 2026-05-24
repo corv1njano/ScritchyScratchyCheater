@@ -96,11 +96,11 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _tokensText = string.Empty;
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsTokensValid))]
+        [NotifyPropertyChangedFor(nameof(IsEelectricFanChargeValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _electricFanChargeText = string.Empty;
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsTokensValid))]
+        [NotifyPropertyChangedFor(nameof(IsEggTimerChargeValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _eggTimerChargeText = string.Empty;
 
@@ -117,7 +117,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         public bool IsTokensValid => int.TryParse(TokensText, out _);
         public bool NoneCosmeticNotSelected => SelectedCosmetic?.Cosmetic != null;
-        public bool IsElectricFIsEelectricFanChargeValid =>
+        public bool IsEelectricFanChargeValid =>
             double.TryParse(ElectricFanChargeText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
             && !double.IsNaN(value)
             && !double.IsInfinity(value);

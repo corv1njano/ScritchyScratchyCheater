@@ -18,7 +18,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
     {
         private bool _isSaving = false;
         public bool CanSave => !_isSaving
-            && IsMoneyValid && IsPrestigeValid && IsTokensValid && IsSoulsValid && IsTicketLevelValid && IsMachineTierValid;
+            && IsMoneyValid && IsPrestigeValid && IsTokensValid && IsSoulsValid && IsTicketLevelValid
+            && IsMachineTierValid && IsEelectricFanChargeValid && IsEggTimerChargeValid;
 
         public EditorV01ViewModel()
         {
