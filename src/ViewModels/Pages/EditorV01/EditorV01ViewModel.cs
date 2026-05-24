@@ -37,8 +37,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 item is AchievementItem entry
                 && (string.IsNullOrWhiteSpace(SearchAchievement)
                 || entry.Achievement!.Name.Contains(SearchAchievement, StringComparison.OrdinalIgnoreCase));
-
-            SelectedCosmeticCategory = CosmeticCategories[0];
         }
 
         /// <summary>
@@ -60,6 +58,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             TicketsView.Refresh();
             AchievementsView.Refresh();
 
+            SelectedCatalog = Catalogs[0];
+            SelectedCosmeticCategory = CosmeticCategories[0];
+
             UpdateCurrentCosmeticImage();
         }
 
@@ -72,6 +73,19 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             TokensText = sf.Tokens.ToString();
             SoulsText = sf.LayerOne.Souls.ToString();
             MachineTierText = sf.LayerOne.MachineTier.ToString();
+
+            var claiemdCatalogs = sf.LayerOne.ClaimedCustomTableItems ?? new List<string>();
+
+            Catalogs.Clear();
+            foreach (var catalog in App.GameDataParser.GetCatalogs())
+            {
+                var id = catalog.Id;
+                Catalogs.Add(new CatalogItem
+                {
+                    Catalog = catalog,
+                    IsClaimed = claiemdCatalogs.Contains(id)
+                });
+            }
 
             var ticketsGottenJackpot = sf.LayerOne.JackpotsGotten ?? new List<string>();
             var ticketsGottenSuperJackpot = sf.LayerOne.SuperJackpotsGotten ?? new List<string>();
@@ -162,25 +176,35 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (sf == null || sf.LayerOne == null) return;
 
+            var catalogsClaimed = new HashSet<string>();
+
+            foreach (var catalog in Catalogs)
+            {
+                var id = catalog.Catalog?.Id;
+                if (catalog.Catalog == null || string.IsNullOrWhiteSpace(id)) continue;
+
+                if (catalog.IsClaimed) catalogsClaimed.Add(id);
+            }
+
             var ticketsGottenJackpot = new HashSet<string>();
             var ticketsGottenSuperJackpot = new HashSet<string>();
             var layer = sf.LayerOne;
 
-            foreach (var entry in Tickets)
+            foreach (var ticket in Tickets)
             {
-                var id = entry.Ticket?.Id;
-                if (entry.Ticket == null || string.IsNullOrWhiteSpace(id)) continue;
+                var id = ticket.Ticket?.Id;
+                if (ticket.Ticket == null || string.IsNullOrWhiteSpace(id)) continue;
 
-                if (entry.GottenJackpot) ticketsGottenJackpot.Add(id);
-                if (entry.GottenSuperJackpot) ticketsGottenSuperJackpot.Add(id);
+                if (ticket.GottenJackpot) ticketsGottenJackpot.Add(id);
+                if (ticket.GottenSuperJackpot) ticketsGottenSuperJackpot.Add(id);
 
                 if (layer.TicketProgressionDict!.ContainsKey(id) == true)
                 {
                     layer.TicketProgressionDict[id] = new TicketDataV01
                     {
                         Id = id,
-                        Xp = entry.Xp,
-                        Level = entry.Level
+                        Xp = ticket.Xp,
+                        Level = ticket.Level
                     };
                 }
             }
@@ -188,6 +212,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             layer.Money = double.Parse(MoneyText);
             layer.Souls = int.Parse(SoulsText);
             layer.MachineTier = int.Parse(MachineTierText);
+            layer.ClaimedCustomTableItems = catalogsClaimed.ToList();
             layer.JackpotsGotten = ticketsGottenJackpot.ToList();
             layer.SuperJackpotsGotten = ticketsGottenSuperJackpot.ToList();
         }
@@ -199,13 +224,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             var gottenAchievements = new HashSet<string>();
             var claimedAchievements = new HashSet<string>();
 
-            foreach (var entry in Achievements)
+            foreach (var achievement in Achievements)
             {
-                var id = entry.Achievement?.Id;
-                if (entry.Achievement == null || string.IsNullOrWhiteSpace(id)) continue;
+                var id = achievement.Achievement?.Id;
+                if (achievement.Achievement == null || string.IsNullOrWhiteSpace(id)) continue;
 
-                if (entry.IsUnlocked) gottenAchievements.Add(id);
-                if (entry.IsClaimed) claimedAchievements.Add(id);
+                if (achievement.IsUnlocked) gottenAchievements.Add(id);
+                if (achievement.IsClaimed) claimedAchievements.Add(id);
             }
 
             sf.AchievementsGotten = gottenAchievements.ToList();
@@ -219,13 +244,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             var purchasedCosmetics = new HashSet<string>();
             var equippedCosmetics = new HashSet<string>();
 
-            foreach (var entry in Cosmetics)
+            foreach (var cosmetic in Cosmetics)
             {
-                var id = entry.Cosmetic?.Id;
-                if (entry.Cosmetic == null || string.IsNullOrWhiteSpace(id)) continue;
+                var id = cosmetic.Cosmetic?.Id;
+                if (cosmetic.Cosmetic == null || string.IsNullOrWhiteSpace(id)) continue;
 
-                if (entry.IsPurchased) purchasedCosmetics.Add(id);
-                if (entry.IsEquipped) equippedCosmetics.Add(id);
+                if (cosmetic.IsPurchased) purchasedCosmetics.Add(id);
+                if (cosmetic.IsEquipped) equippedCosmetics.Add(id);
             }
 
             sf.Tokens = int.Parse(TokensText);
@@ -330,6 +355,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
     }
 
     #region data containers
+    public sealed partial class CatalogItem : ObservableObject
+    {
+        public Catalog? Catalog { get; init; }
+
+        [ObservableProperty]
+        private bool _isClaimed;
+    }
+
     public sealed partial class TicketItem : ObservableObject
     {
         public Ticket? Ticket { get; init; }

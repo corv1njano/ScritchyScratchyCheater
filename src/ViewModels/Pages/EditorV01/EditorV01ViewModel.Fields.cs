@@ -64,6 +64,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         [ObservableProperty]
         private TicketItem? _selectedTicket;
+
+        public ObservableCollection<CatalogItem> Catalogs { get; } = new();
+        [ObservableProperty]
+        private CatalogItem? _selectedCatalog;
         #endregion
 
         #region Tab Prestige

@@ -72,7 +72,7 @@ namespace ScritchyScratchyCheater.Models.SaveFiles
         public double LastUnlockedProgressionGoal { get; set; }
         public double TotalMoneyEarnedThisProgressionGoal { get; set; }
 
-        public List<object>? ClaimedCustomTableItems { get; set; }
+        public List<string>? ClaimedCustomTableItems { get; set; }
 
         public bool FirstTicketOpened { get; set; }
 
