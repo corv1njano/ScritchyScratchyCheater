@@ -53,39 +53,44 @@
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
                     <Grid Margin="8">
                         <controls:ButtonWithIcon Command="{Binding SaveChangesCommand}"
-                                                 IsEnabled="{Binding CanSave}"
-                                                 Style="{StaticResource Button.WithIcon}"
-                                                 Text="Save"
-                                                 Icon="{StaticResource Icon.Save}"
-                                                 ToolTip="Save all Changes"/>
-                        <Rectangle Fill="Transparent" Cursor="No"
-                                   Visibility="{Binding CanSave, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                            IsEnabled="{Binding CanSave}"
+                            Style="{StaticResource Button.WithIcon}"
+                            Text="Save"
+                            Icon="{StaticResource Icon.Save}"
+                            ToolTip="Save all Changes"/>
+                        <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding CanSave, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                     </Grid>
                     <controls:ButtonWithIcon Command="{Binding ReloadSaveFileCommand}" 
-                                             Style="{StaticResource Button.WithIcon}"
-                                             Margin="0,8,8,8" 
-                                             Text="Reload" 
-                                             Icon="{StaticResource Icon.Refresh}" 
-                                             ToolTip="Reload current Save File"/>
+                        Style="{StaticResource Button.WithIcon}"
+                        Margin="0,8,8,8" 
+                        Text="Reload" 
+                        Icon="{StaticResource Icon.Refresh}" 
+                        ToolTip="Reload current Save File"/>
                     <controls:ButtonWithIcon Command="{Binding CloseSaveFileCommand}" 
-                                             Style="{StaticResource Button.WithIcon}"
-                                             Margin="0,8,0,8" 
-                                             Text="Close" 
-                                             Icon="{StaticResource Icon.Close}"
-                                             IconHeight="22"
-                                             IconWidth="22"
-                                             ToolTip="Close current Save File"/>
+                        Style="{StaticResource Button.WithIcon}"
+                        Margin="0,8,0,8" 
+                        Text="Close" 
+                        Icon="{StaticResource Icon.Close}"
+                        IconHeight="22"
+                        IconWidth="22"
+                        ToolTip="Close current Save File"/>
                 </StackPanel>
-                <controls:ButtonWithIcon Command="{Binding OpenFileExplorerCommand}" 
-                                         Style="{StaticResource Button.WithIcon}"
-                                         Grid.Column="1" 
-                                         HorizontalAlignment="Right" 
-                                         Margin="0,8,8,8"
-                                         Text="Locate Save" 
-                                         Icon="{StaticResource Icon.Folder}" 
-                                         IconHeight="18"
-                                         IconWidth="18"
-                                         ToolTip="Open current Save File in File Explorer"/>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <controls:ButtonWithIcon Command="{Binding CreateBackupCommand}" 
+                         Style="{StaticResource Button.WithIcon}"
+                         Text="Backup"
+                         Margin="0,8"
+                         Icon="{StaticResource Icon.Files}"
+                         ToolTip="Create a Backup of current Save File"/>
+                    <controls:ButtonWithIcon Command="{Binding OpenFileExplorerCommand}" 
+                         Style="{StaticResource Button.WithIcon}"
+                         Margin="8"
+                         Text="Locate Save" 
+                         Icon="{StaticResource Icon.Folder}" 
+                         IconHeight="19"
+                         IconWidth="19"
+                         ToolTip="Open current Save File in File Explorer"/>
+                </StackPanel>
             </Grid>
         </Border>
 
@@ -221,14 +226,19 @@
                             <Grid Grid.Row="6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Ticket Level:" Margin="0,0,8,0"/>
-                                <controls:ValidatedTextBox Grid.Column="1" Style="{StaticResource TextBox.Validated}" Text="{Binding TicketLevelText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTicketLevelValid}"/>
-                                <Button Grid.Column="2" Style="{StaticResource blockbtn}" Command="{Binding MaxTicketLevelCommand}"/>
-                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxTicketLevelAllCommand}" Content="Max All Tickets" Margin="8,0,0,0" ToolTip="Set maximum Level for all Tickets"/>
+                                <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding CurrentTicketImage}"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Ticket Level:"/>
+                                <Grid Grid.Column="2">
+                                    <controls:ValidatedTextBox Style="{StaticResource TextBox.Validated}" Text="{Binding TicketLevelText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTicketLevelValid}" IsEnabled="{Binding IsTicketSelected}"/>
+                                    <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding IsTicketSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                                </Grid>
+                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxTicketLevelCommand}"/>
+                                <Button Grid.Column="4" Style="{StaticResource blockbtn}" Command="{Binding MaxTicketLevelAllCommand}" Content="Max All Tickets" Margin="8,0,0,0" ToolTip="Set maximum Level for all Tickets"/>
                             </Grid>
                         </Grid>
                     </Border>

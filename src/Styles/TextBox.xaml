@@ -157,6 +157,12 @@
                         <Trigger Property="IsValid" Value="False">
                             <Setter Property="BorderBrush" TargetName="TextBoxBorder" Value="{StaticResource CJG.Input.Border.Invalid}"/>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource CJG.Button.Background.Disabled}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource CJG.Input.Border}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
+                            <Setter Property="Opacity" TargetName="PART_ContentHost" Value="0.5"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

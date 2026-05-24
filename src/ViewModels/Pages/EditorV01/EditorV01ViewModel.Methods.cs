@@ -67,6 +67,16 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             if (oldValue != null) if (!int.TryParse(TicketLevelText, out var level) || level > MAX_TICKET_LEVEL) oldValue.Level = 0;
 
             TicketLevelText = newValue?.Level.ToString() ?? "0";
+
+            UpdateCurrentTicketImage();
+            OnPropertyChanged(nameof(IsTicketSelected));
+        }
+
+        private void UpdateCurrentTicketImage()
+        {
+            CurrentTicketImage = SelectedTicket?.Ticket!= null
+                ? App.ResourceParser.GetSprite(SelectedTicket.Ticket.IconId)
+                : Application.Current.TryFindResource("Generic.None") as ImageSource;
         }
         #endregion
 
@@ -162,7 +172,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             CurrentCosmeticItem = SelectedCosmetic?.Cosmetic != null
                 ? App.ResourceParser.GetSprite(SelectedCosmetic.Cosmetic.IconId)
-                : Application.Current.TryFindResource("Cosmetic.None") as ImageSource;
+                : Application.Current.TryFindResource("Generic.None") as ImageSource;
         }
         #endregion
     }

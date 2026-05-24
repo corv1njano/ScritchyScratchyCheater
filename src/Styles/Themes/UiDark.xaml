@@ -38,6 +38,7 @@
 
 
     <SolidColorBrush x:Key="CJG.Input.Background" Color="#252C3B"/>
+    <SolidColorBrush x:Key="CJG.Input.Background.Disabled" Color="#1D2633"/>
     <SolidColorBrush x:Key="CJG.Input.Background.Focused" Color="#151A24"/>
     <SolidColorBrush x:Key="CJG.Input.Border" Color="#2D394F"/>
     <SolidColorBrush x:Key="CJG.Input.Border.Invalid" Color="#F26D6D"/>

@@ -59,6 +59,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             TicketsView.Refresh();
             AchievementsView.Refresh();
+
             UpdateCurrentCosmeticImage();
         }
 
@@ -297,6 +298,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                     App.PageNavigator.Navigate(new StartingPage());
                 }
             }
+        }
+
+        [RelayCommand]
+        private void CreateBackup()
+        {
+            SaveFileHelper.CreateBackup();
         }
 
         [RelayCommand]

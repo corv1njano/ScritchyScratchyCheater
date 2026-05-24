@@ -3,6 +3,7 @@ using ScritchyScratchyCheater.Models.GameData;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Media;
 
 namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
@@ -37,6 +38,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private ImageSource? _cyanStarIcon;
         [ObservableProperty]
         private ImageSource? _theMachine;
+        [ObservableProperty]
+        private ImageSource? _currentTicketImage = (ImageSource)Application.Current.TryFindResource("Generic.None");
 
         private const int MAX_TICKET_LEVEL = int.MaxValue;
         private const int MAX_MACHINE_TIER = 26;
@@ -50,6 +53,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             && value <= MAX_TICKET_LEVEL;
         public bool IsMachineTierValid => int.TryParse(MachineTierText, out var value)
             && value <= MAX_MACHINE_TIER;
+
+        public bool IsTicketSelected => SelectedTicket != null;
 
         [ObservableProperty]
         private string _searchTicket = string.Empty;

@@ -210,7 +210,7 @@
         </DrawingImage.Drawing>
     </DrawingImage>
 
-    <DrawingImage x:Key="Cosmetic.None">
+    <DrawingImage x:Key="Generic.None">
         <DrawingImage.Drawing>
             <DrawingGroup ClipGeometry="M0,0 V62 H62 V0 H0 Z" Opacity="0.6">
                 <GeometryDrawing>
