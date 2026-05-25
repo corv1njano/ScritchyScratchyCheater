@@ -66,6 +66,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             SelectedCatalog = Catalogs[0];
             SelectedCosmeticCategory = CosmeticCategories[0];
 
+            UpdateCurrentCatalogImage();
             UpdateCurrentCosmeticImage();
         }
 
@@ -91,6 +92,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                     IsClaimed = claiemdCatalogs.Contains(id)
                 });
             }
+            SelectedCatalog = Catalogs.Count > 0 ? Catalogs[0] : null;
 
             var ticketsGottenJackpot = sf.LayerOne.JackpotsGotten ?? new List<string>();
             var ticketsGottenSuperJackpot = sf.LayerOne.SuperJackpotsGotten ?? new List<string>();
@@ -298,10 +300,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             LoadResult loadResult = await App.SaveFileService.Load(oldPath);
 
-            if (!loadResult.Success)
+            if (loadResult.Version != oldVersion)
             {
                 ShowMessage.Error("Reloading failed",
-                    loadResult.StatusMessage,
+                    $"The loaded save file version '{loadResult.Version}' does not match the previous version '{oldVersion}'. Return to the start page.",
                     DialogOptions.Ok);
 
                 App.SaveFileService.Reset();
@@ -309,10 +311,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 return;
             }
 
-            if (loadResult.Version != oldVersion)
+            if (!loadResult.Success)
             {
                 ShowMessage.Error("Reloading failed",
-                    $"The loaded save file version '{loadResult.Version}' does not match the previous version '{oldVersion}'. Return to the start page.",
+                    loadResult.StatusMessage,
                     DialogOptions.Ok);
 
                 App.SaveFileService.Reset();

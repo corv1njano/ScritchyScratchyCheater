@@ -70,7 +70,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private CatalogItem? _selectedCatalog;
         #endregion
 
-        #region Tab Prestige
+        #region Tab Upgrades
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsPrestigeValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]

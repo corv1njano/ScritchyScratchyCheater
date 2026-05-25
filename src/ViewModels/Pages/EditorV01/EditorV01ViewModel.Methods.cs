@@ -84,9 +84,16 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 ? App.ResourceParser.GetSprite(SelectedTicket.Ticket.IconId)
                 : Application.Current.TryFindResource("Generic.None") as ImageSource;
         }
+
+        private void UpdateCurrentCatalogImage()
+        {
+            var temp = SelectedCatalog;
+            SelectedCatalog = null;
+            SelectedCatalog = temp;
+        }
         #endregion
 
-        #region Tab Prestige
+        #region Tab Upgrades
         [RelayCommand]
         private void MaxPrestige()
         {

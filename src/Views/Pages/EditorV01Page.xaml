@@ -280,10 +280,6 @@
             </controls:IconTabItem>
 
             <controls:IconTabItem Header="Upgrades" Icon="{StaticResource Icon.Upgrades}">
-                <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Upgrade editing will be available soon!"/>
-            </controls:IconTabItem>
-
-            <controls:IconTabItem Header="Prestige" Icon="{StaticResource Icon.Prestige}">
                 <Grid Style="{StaticResource contentGrid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
