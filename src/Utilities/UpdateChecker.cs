@@ -45,7 +45,6 @@ namespace ScritchyScratchyCheater.Utilities
         public static bool IsNewerVersion(string latestVersion)
         {
             var current = Assembly.GetExecutingAssembly().GetName().Version;
-            //var current = new Version("1.2.0.0"); // test
             var latestClean = latestVersion.Replace("rel-v", string.Empty);
 
             return current != null 

@@ -40,7 +40,7 @@ namespace ScritchyScratchyCheater.ViewModels
                 var latestFormatted = latest.Replace("rel-", string.Empty);
 
                 bool result = ShowMessage.Info("Update available",
-                    $"Version {latestFormatted} is now available. You are currently running {App.APP_VERSION}.\n\nWould you like to visit the GitHub page to download the latest update?",
+                    $"Update {latestFormatted} is now available. You are currently running {App.APP_VERSION}.\n\nWould you like to visit the GitHub page to download the latest update?",
                     DialogOptions.YesNo,
                     App.Current.MainWindow,
                     DialogSound.Info,
