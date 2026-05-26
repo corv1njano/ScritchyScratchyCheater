@@ -5,6 +5,9 @@ using System.Text.Json;
 
 namespace ScritchyScratchyCheater.Utilities
 {
+    /// <summary>
+    /// Provides helper methods for fetching latest GitHub release and compare it with the latest installed version.
+    /// </summary>
     public static class UpdateChecker
     {
         private const string GTIHUB_API_URL = "https://api.github.com/repos/corv1njano/ScritchyScratchyCheater/releases/latest";

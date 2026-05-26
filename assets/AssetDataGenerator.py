@@ -62,7 +62,7 @@ def fit_image_into_square(
 def write_pretty_json(file_path: Path, data: dict) -> None:
     with open(file_path, "w", encoding="utf-8") as f:
         f.write("{\n")
-        f.write(f'    "latestGameVersion": "{data["latestGameVersion"]}",\n')
+        f.write(f'    "latestGameVersion": "{data["gameVersion"]}",\n')
         f.write(f'    "spriteSize": {data["spriteSize"]},\n')
         f.write('    "spriteDatasets": [\n')
 
@@ -105,7 +105,7 @@ def main() -> None:
 
     if excluded:
         print(f"Excluded folders: {', '.join(excluded)}")
-    print(f"Found {len(subfolders)} folder(s) to process: {', '.join(f.name for f in subfolders)}")
+    print(f"\nFound {len(subfolders)} folder(s) to process: {', '.join(f.name for f in subfolders)}")
 
     collected_sprites = []
     skipped = 0
@@ -175,7 +175,7 @@ def main() -> None:
         })
 
     json_data = {
-        "latestGameVersion": GAME_VERSION,
+        "gameVersion": GAME_VERSION,
         "spriteSize": SPRITE_SIZE,
         "spriteDatasets": [
             {"type": dataset_type, "data": sprite_datasets[dataset_type]}
@@ -188,11 +188,14 @@ def main() -> None:
 
     print(f"\nSaving sprite sheet to: {output_image_path.name}")
     final_sheet.save(output_image_path)
+
     print(f"Saving JSON data to:    {output_json_path.name}")
     write_pretty_json(output_json_path, json_data)
 
     print(f"\nDone! {total_sprites} sprites across {len(sprite_datasets)} type(s): {', '.join(sorted(sprite_datasets.keys()))}")
+    print("\n========================================================================\n")
 
 
 if __name__ == "__main__":
     main()
+    input("Press Enter to exit...")

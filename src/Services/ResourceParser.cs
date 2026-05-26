@@ -128,7 +128,7 @@ namespace ScritchyScratchyCheater.Services
     #region sprite data
     public sealed class SpriteRoot
     {
-        public string LatestGameVersion { get; set; } = string.Empty;
+        public string GameVersion { get; set; } = string.Empty;
         public int SpriteSize { get; set; }
         public List<SpriteDataset>? SpriteDatasets { get; set; }
     }
