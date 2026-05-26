@@ -125,7 +125,7 @@
             </Grid>
         </Border>
 
-        <!-- drag overlay -->
+        <!-- drag valid overlay -->
         <Border Grid.RowSpan="3"
                 Panel.ZIndex="999"
                 Opacity="0"

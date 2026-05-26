@@ -4,6 +4,7 @@ using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.Views.Dialogs;
 using ScritchyScratchyCheater.Views.Pages;
 using System.Windows.Controls;
+using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
 namespace ScritchyScratchyCheater.ViewModels
 {
@@ -27,6 +28,29 @@ namespace ScritchyScratchyCheater.ViewModels
         {
             App.PageNavigator.CurrentPageChanged += HandleCurrentPageChanged;
             App.SaveFileService.FilePathChanged += HandleFilePathChanged;
+        }
+
+        public async Task CheckForUpdateAsync()
+        {
+            var latest = await UpdateChecker.GetLatestVersionAsync();
+            if (latest == null) return;
+
+            if (UpdateChecker.IsNewerVersion(latest))
+            {
+                var latestFormatted = latest.Replace("rel-", string.Empty);
+
+                bool result = ShowMessage.Info("Update available",
+                    $"Version {latestFormatted} is now available. You are currently running {App.APP_VERSION}.\n\nWould you like to visit the GitHub page to download the latest update?",
+                    DialogOptions.YesNo,
+                    App.Current.MainWindow,
+                    DialogSound.Info,
+                    DialogSize.Medium);
+
+                if (result == true)
+                {
+                    Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater/releases/latest");
+                }
+            }
         }
 
         private void HandleCurrentPageChanged(UserControl page)

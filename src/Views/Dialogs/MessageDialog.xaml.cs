@@ -9,7 +9,12 @@ namespace ScritchyScratchyCheater.Views.Dialogs
     /// </summary>
     public partial class MessageDialog : Window
     {
-        public MessageDialog(string title, string body, DialogOptions options = DialogOptions.Ok, DialogSound sound = DialogSound.None, DialogType type = DialogType.Neutral)
+        public MessageDialog(string title,
+            string body,
+            DialogOptions options = DialogOptions.Ok,
+            DialogSize size = DialogSize.Small,
+            DialogSound sound = DialogSound.None,
+            DialogType type = DialogType.Neutral)
         {
             InitializeComponent();
 
@@ -27,6 +32,22 @@ namespace ScritchyScratchyCheater.Views.Dialogs
                     break;
                 default:
                     ButtonOk.Visibility = Visibility.Visible;
+                    break;
+            }
+
+            switch (size)
+            {
+                case DialogSize.Small:
+                    Height = 200;
+                    Width = 320;
+                    break;
+                case DialogSize.Medium:
+                    Height = 230;
+                    Width = 340;
+                    break;
+                default:
+                    Height = 200;
+                    Width = 320;
                     break;
             }
 
@@ -93,6 +114,12 @@ namespace ScritchyScratchyCheater.Views.Dialogs
             None,
             Info,
             Error
+        }
+
+        public enum DialogSize
+        {
+            Small,
+            Medium
         }
     }
 }

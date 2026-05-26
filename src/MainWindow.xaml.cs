@@ -20,6 +20,8 @@ namespace ScritchyScratchyCheater
             InitializeComponent();
             _windowWrapper = new(this);
             DataContext = new MainViewModel();
+
+            Loaded += async (_, _) => await _viewModel.CheckForUpdateAsync();
         }
 
         private void Button_Minimize(object sender, RoutedEventArgs e)
@@ -41,6 +43,7 @@ namespace ScritchyScratchyCheater
         private void Window_DragEnter(object sender, DragEventArgs e)
         {
             if (IsDragValid(e)) _viewModel.IsDragging = true;
+            //_viewModel.IsDragging = true;
         }
 
         private void Window_DragLeave(object sender, DragEventArgs e)

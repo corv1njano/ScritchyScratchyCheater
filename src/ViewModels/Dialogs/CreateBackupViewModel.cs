@@ -73,7 +73,6 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
                 ShowMessage.Error("Backup failed",
                         "Unable to backup the save file. Please try again.",
                         DialogOptions.Ok,
-                        DialogSound.Error,
                         App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault());
                 return;
             }
@@ -81,7 +80,6 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
             ShowMessage.Info("Backup done",
                 "A backup of the save file has been created successfully.",
                 DialogOptions.Ok,
-                DialogSound.Info,
                 App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault());
 
             App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault()?.Close();
@@ -93,7 +91,6 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
                     ShowMessage.Error("File not found",
                         "Unable to locate the save file. It may have been moved, renamed, or deleted.",
                         DialogOptions.Ok,
-                        DialogSound.Error,
                         App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault());
                     return;
                 }
