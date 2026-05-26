@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
@@ -65,9 +66,25 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [ObservableProperty]
         private TicketItem? _selectedTicket;
 
+        public string? SelectedTicketToolTip => SelectedTicket == null
+            ? null
+            : $"Ticket: '{SelectedTicket.Ticket!.Name}'";
+
         public ObservableCollection<CatalogItem> Catalogs { get; } = new();
         [ObservableProperty]
         private CatalogItem? _selectedCatalog;
+
+        public IReadOnlyList<Act> Acts { get; } = new List<Act>
+        {
+            new() { Name = "Act 1", ActId = 1 },
+            new() { Name = "Act 2", ActId = 2 },
+            new() { Name = "Act 3", ActId = 3 },
+            new() { Name = "Act 4", ActId = 4 },
+            new() { Name = "Act 5", ActId = 5 }
+        }.OrderBy(c => c.Name).ToList();
+
+        [ObservableProperty]
+        private Act? _selectedAct;
         #endregion
 
         #region Tab Upgrades

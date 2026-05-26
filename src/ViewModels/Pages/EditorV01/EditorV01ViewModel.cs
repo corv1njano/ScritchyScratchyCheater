@@ -63,6 +63,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             TicketsView.Refresh();
             AchievementsView.Refresh();
 
+            // lists, that are independent from loaded save file data, thus they need to bet set to index 0
             SelectedCatalog = Catalogs[0];
             SelectedCosmeticCategory = CosmeticCategories[0];
 
@@ -79,6 +80,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             TokensText = sf.Tokens.ToString();
             SoulsText = sf.LayerOne.Souls.ToString();
             MachineTierText = sf.LayerOne.MachineTier.ToString();
+            SelectedAct = Acts.FirstOrDefault(a => a.ActId == sf.CurrentAct) ?? Acts.First(a => a.ActId == 1);
 
             var claiemdCatalogs = sf.LayerOne.ClaimedCustomTableItems ?? new List<string>();
 
@@ -160,7 +162,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 sf) return;
 
-            // currencies
+            // currencies, todo: move to upgrades save method
             sf.PrestigeCurrency = int.Parse(PrestigeText);
 
             SaveProgress(sf);
@@ -225,6 +227,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             layer.Money = double.Parse(MoneyText);
             layer.Souls = int.Parse(SoulsText);
             layer.MachineTier = int.Parse(MachineTierText);
+            sf.CurrentAct = SelectedAct == null ? 1 : SelectedAct.ActId;
             layer.ClaimedCustomTableItems = catalogsClaimed.ToList();
             layer.JackpotsGotten = ticketsGottenJackpot.ToList();
             layer.SuperJackpotsGotten = ticketsGottenSuperJackpot.ToList();

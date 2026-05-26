@@ -76,6 +76,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             UpdateCurrentTicketImage();
             OnPropertyChanged(nameof(IsTicketSelected));
+            OnPropertyChanged(nameof(SelectedTicketToolTip));
         }
 
         private void UpdateCurrentTicketImage()
@@ -183,6 +184,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         partial void OnIsCosmeticEquippedChanged(bool value)
         {
             if (SelectedCosmetic == null) return;
+
+            // one item and only one item must always be selected, the last one cannot be deselected
+            if (!value && !FilteredCosmetics.Any(c => c != SelectedCosmetic && c.IsEquipped))
+            {
+                IsCosmeticEquipped = true;
+                return;
+            }
 
             if (value)
             {

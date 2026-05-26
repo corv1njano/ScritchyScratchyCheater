@@ -130,7 +130,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="70"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -157,10 +157,14 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Style="{StaticResource blockTxt}" Text="Catalog:" Margin="0,0,8,0"/>
-                                <ComboBox Grid.Column="1" Style="{StaticResource ComboBox.Default}"
+                                <TextBlock Grid.Column="0" Style="{StaticResource blockTxt}" Text="Act:" Margin="0,0,8,0"/>
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding Acts}" SelectedItem="{Binding SelectedAct}" Margin="0,0,16,0" Style="{StaticResource ComboBox.Default}"/>
+                                <TextBlock Grid.Column="2" Style="{StaticResource blockTxt}" Text="Catalog:" Margin="0,0,8,0"/>
+                                <ComboBox Grid.Column="3" Style="{StaticResource ComboBox.Default}"
                                           ItemsSource="{Binding Catalogs}"
                                           SelectedValue="{Binding SelectedCatalog}">
                                     <ComboBox.ItemTemplate>
@@ -172,8 +176,8 @@
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-                                <CheckBox Grid.Column="2" Style="{StaticResource CheckBox.Default}" IsChecked="{Binding SelectedCatalog.IsClaimed}" Content="Claimed" Margin="8,0,0,0"/>
-                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Content="Claim All" ToolTip="Claim all Catalogs" Command="{Binding ClaimAllCatalogsCommand}"/>
+                                <CheckBox Grid.Column="4" Style="{StaticResource CheckBox.Default}" IsChecked="{Binding SelectedCatalog.IsClaimed}" Content="Claimed" Margin="8,0,0,0"/>
+                                <Button Grid.Column="5" Style="{StaticResource blockbtn}" Content="Claim All" ToolTip="Claim all Catalogs" Command="{Binding ClaimAllCatalogsCommand}"/>
                             </Grid>
                         </Grid>
                     </Border>
@@ -265,7 +269,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding CurrentTicketImage}"/>
+                                <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding CurrentTicketImage}" ToolTip="{Binding SelectedTicketToolTip}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Ticket Level:"/>
                                 <Grid Grid.Column="2">
                                     <controls:ValidatedTextBox Style="{StaticResource TextBox.Validated}" Text="{Binding TicketLevelText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTicketLevelValid}" IsEnabled="{Binding IsTicketSelected}"/>

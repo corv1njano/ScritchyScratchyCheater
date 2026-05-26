@@ -18,10 +18,10 @@ namespace ScritchyScratchyCheater.ViewModels
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(SaveFileTooltip))]
         private string _selectedSaveFilePath = "No save file selected.";
-        public ToolTip? SaveFileTooltip => string.IsNullOrWhiteSpace(SelectedSaveFilePath)
+        public string? SaveFileTooltip => string.IsNullOrWhiteSpace(SelectedSaveFilePath)
             || SelectedSaveFilePath == "No save file selected."
             ? null
-            : new ToolTip { Content = $"Full Path: '{SelectedSaveFilePath}'" };
+            : $"Full Path: '{SelectedSaveFilePath}'";
 
         public MainViewModel()
         {
