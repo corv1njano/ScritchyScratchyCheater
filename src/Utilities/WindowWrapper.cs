@@ -13,7 +13,7 @@ namespace ScritchyScratchyCheater.Utilities
     /// WPF applications. It exposes methods to control the window's state and to calculate layout values for custom
     /// title bar implementations. Event handling and border adjustments are managed internally to ensure correct
     /// appearance when the window state changes.</remarks>
-    public class WindowWrapper
+    public sealed class WindowWrapper
     {
         private readonly Window _targetWindow;
         private readonly Thickness _baseBorder;

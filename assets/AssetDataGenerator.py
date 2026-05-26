@@ -62,7 +62,7 @@ def fit_image_into_square(
 def write_pretty_json(file_path: Path, data: dict) -> None:
     with open(file_path, "w", encoding="utf-8") as f:
         f.write("{\n")
-        f.write(f'    "latestGameVersion": "{data["gameVersion"]}",\n')
+        f.write(f'    "gameVersion": "{data["gameVersion"]}",\n')
         f.write(f'    "spriteSize": {data["spriteSize"]},\n')
         f.write('    "spriteDatasets": [\n')
 

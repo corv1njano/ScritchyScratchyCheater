@@ -120,7 +120,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding MoneyIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Money:"/>
-                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding MoneyText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsMoneyValid}"/>
+                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" MaxLength="500" Text="{Binding MoneyText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsMoneyValid}"/>
                                 <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxMoneyCommand}"/>
                             </Grid>
 
@@ -477,14 +477,14 @@
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="190"/>
+                                    <ColumnDefinition Width="150"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding ElectricFanIcon}"/>
-                                <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Margin="8,0" Text="Electric Fan Charge Left:"/>
-                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding ElectricFanChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEelectricFanChargeValid}"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Margin="8,0" Text="Fan Charge Left:"/>
+                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" MaxLength="500" Text="{Binding ElectricFanChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEelectricFanChargeValid}"/>
                                 <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxElectricFanChargeCommand}"/>
                                 <CheckBox Margin="8,0,0,0" Content="Fan Paused" Grid.Column="4" Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsElectricFanPaused}"/>
                             </Grid>
@@ -494,13 +494,13 @@
                             <Grid Grid.Row="2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="190"/>
+                                    <ColumnDefinition Width="150"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding EggTimerIcon}"/>
-                                <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Egg Timer Charge Left:"/>
-                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding EggTimerChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEggTimerChargeValid}"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Timer Charge Left:"/>
+                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" MaxLength="500" Text="{Binding EggTimerChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEggTimerChargeValid}"/>
                                 <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxEggTimerChargeCommand}"/>
                             </Grid>
 

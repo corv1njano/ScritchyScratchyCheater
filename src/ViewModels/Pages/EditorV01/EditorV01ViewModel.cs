@@ -54,11 +54,11 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             SoulsIcon = App.ResourceParser.GetSprite("soul");
             StarIcon = App.ResourceParser.GetSprite("star");
             CyanStarIcon = App.ResourceParser.GetSprite("cyanStar");
-            TheMachine = App.ResourceParser.GetSprite("theMachine");
-            ElectricFanIcon = App.ResourceParser.GetSprite("fan");
-            EggTimerIcon = App.ResourceParser.GetSprite("eggTimer");
-            MundoIcon = App.ResourceParser.GetSprite("mundo");
-            TrashCanIcon = App.ResourceParser.GetSprite("trashCan");
+            TheMachine = App.ResourceParser.GetSprite("gTheMachine");
+            ElectricFanIcon = App.ResourceParser.GetSprite("gFan");
+            EggTimerIcon = App.ResourceParser.GetSprite("gEggTimer");
+            MundoIcon = App.ResourceParser.GetSprite("gMundo");
+            TrashCanIcon = App.ResourceParser.GetSprite("gTrashCan");
 
             TicketsView.Refresh();
             AchievementsView.Refresh();

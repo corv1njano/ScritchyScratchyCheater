@@ -183,134 +183,134 @@
         {
           "id": "Astronomy_Table",
           "name": "Astronomy table",
-          "iconId": "astronomyTable",
+          "iconId": "cAstronomyTable",
           "category": "Table"
-        },
-        {
-          "id": "Cream_Phone",
-          "name": "Cream phone",
-          "iconId": "creamPhone",
-          "category": "Phone"
         },
         {
           "id": "Blue_Phone",
           "name": "Blue phone",
-          "iconId": "bluePhone",
+          "iconId": "cBluePhone",
           "category": "Phone"
         },
         {
-          "id": "Pink_Trash Can",
-          "name": "Pink trash can",
-          "iconId": "pinkTrashCan",
-          "category": "TrashCan"
+          "id": "Cream_Phone",
+          "name": "Cream phone",
+          "iconId": "cCreamPhone",
+          "category": "Phone"
         },
         {
-          "id": "Rusty_Trash Can",
-          "name": "Rusty trash can",
-          "iconId": "rustyTrashCan",
-          "category": "TrashCan"
-        },
-        {
-          "id": "Picnic_Table",
-          "name": "Picnic table",
-          "iconId": "picnicTable",
+          "id": "Dirty_Table",
+          "name": "Dirty table",
+          "iconId": "cDirtyTable",
           "category": "Table"
         },
         {
-          "id": "Mahogany_Table",
-          "name": "Mahogany table",
-          "iconId": "mahoganyTable",
+          "id": "Faberge_Egg Timer",
+          "name": "Faberge egg timer",
+          "iconId": "cFabergeEggTimer",
+          "category": "EggTimer"
+        },
+        {
+          "id": "Fancy_Table",
+          "name": "Fancy table",
+          "iconId": "cFancyTable",
           "category": "Table"
         },
         {
           "id": "Galaxy_Trash Can",
           "name": "Galaxy trash can",
-          "iconId": "galaxyTrashCan",
+          "iconId": "cGalaxyTrashCan",
           "category": "TrashCan"
         },
         {
-          "id": "Dirty_Table",
-          "name": "Dirty table",
-          "iconId": "dirtyTable",
-          "category": "Table"
-        },
-        {
-          "id": "Fancy_Table",
-          "name": "Fancy table",
-          "iconId": "fancyTable",
-          "category": "Table"
-        },
-        {
-          "id": "Love_Fan",
-          "name": "Love fan",
-          "iconId": "loveFan",
+          "id": "Golden_Fan",
+          "name": "Golden fan",
+          "iconId": "cGoldenFan",
           "category": "ElectricFan"
         },
         {
-          "id": "Night_Fan",
-          "name": "Night fan",
-          "iconId": "nightFan",
-          "category": "ElectricFan"
-        },
-        {
-          "id": "White_Mundo",
-          "name": "White Mundo",
-          "iconId": "whiteMundo",
-          "category": "Mundo"
-        },
-        {
-          "id": "Tortoiseshell_Mundo",
-          "name": "Tortoiseshell Mundo",
-          "iconId": "tortoiseshellMundo",
-          "category": "Mundo"
-        },
-        {
-          "id": "Grey_Mundo",
-          "name": "Grey Mundo",
-          "iconId": "greyMundo",
-          "category": "Mundo"
-        },
-        {
-          "id": "Orange_Mundo",
-          "name": "Orange Mundo",
-          "iconId": "orangeMundo",
-          "category": "Mundo"
-        },
-        {
-          "id": "Smart_Egg Timer",
-          "name": "Smart egg timer",
-          "iconId": "smartEggTimer",
-          "category": "EggTimer"
-        },
-        {
-          "id": "Faberge_Egg Timer",
-          "name": "Faberge egg timer",
-          "iconId": "fabergeEggTimer",
-          "category": "EggTimer"
+          "id": "Golden_Phone",
+          "name": "Golden phone",
+          "iconId": "cGoldenPhone",
+          "category": "Phone"
         },
         {
           "id": "Golden_Scratch Bot",
           "name": "Golden scratch bot",
-          "iconId": "goldenScratchBot",
+          "iconId": "cGoldenScratchBot",
           "category": "ScratchBot"
         },
         {
           "id": "Golden_Trash Can",
           "name": "Golden trash can",
-          "iconId": "goldenTrashCan",
+          "iconId": "cGoldenTrashCan",
           "category": "TrashCan"
         },
         {
-          "id": "Golden_Phone",
-          "name": "Golden phone",
-          "iconId": "goldenPhone",
-          "category": "Phone"
+          "id": "Grey_Mundo",
+          "name": "Grey Mundo",
+          "iconId": "cGreyMundo",
+          "category": "Mundo"
         },
         {
-          "id": "Golden_Fan",
-          "name": "Golden fan",
-          "iconId": "goldenFan",
+          "id": "Love_Fan",
+          "name": "Love fan",
+          "iconId": "cLoveFan",
           "category": "ElectricFan"
+        },
+        {
+          "id": "Mahogany_Table",
+          "name": "Mahogany table",
+          "iconId": "cMahoganyTable",
+          "category": "Table"
+        },
+        {
+          "id": "Night_Fan",
+          "name": "Night fan",
+          "iconId": "cNightFan",
+          "category": "ElectricFan"
+        },
+        {
+          "id": "Orange_Mundo",
+          "name": "Orange Mundo",
+          "iconId": "cOrangeMundo",
+          "category": "Mundo"
+        },
+        {
+          "id": "Picnic_Table",
+          "name": "Picnic table",
+          "iconId": "cPicnicTable",
+          "category": "Table"
+        },
+        {
+          "id": "Pink_Trash Can",
+          "name": "Pink trash can",
+          "iconId": "cPinkTrashCan",
+          "category": "TrashCan"
+        },
+        {
+          "id": "Rusty_Trash Can",
+          "name": "Rusty trash can",
+          "iconId": "cRustyTrashCan",
+          "category": "TrashCan"
+        },
+        {
+          "id": "Smart_Egg Timer",
+          "name": "Smart egg timer",
+          "iconId": "cSmartEggTimer",
+          "category": "EggTimer"
+        },
+        {
+          "id": "Tortoiseshell_Mundo",
+          "name": "Tortoiseshell Mundo",
+          "iconId": "cTortoiseshellMundo",
+          "category": "Mundo"
+        },
+        {
+          "id": "White_Mundo",
+          "name": "White Mundo",
+          "iconId": "cWhiteMundo",
+          "category": "Mundo"
         }
       ]
     },
@@ -320,27 +320,27 @@
         {
           "id": "Act 1 Catalog",
           "name": "Scritchy Scratchy Catalog #1",
-          "iconId": "catalog1"
+          "iconId": "tCatalog1"
         },
         {
           "id": "Act 2 Catalog",
           "name": "Scritchy Scratchy Catalog #2",
-          "iconId": "catalog2"
+          "iconId": "tCatalog2"
         },
         {
           "id": "Act 3 Catalog",
           "name": "Scritchy Scratchy Catalog #3",
-          "iconId": "catalog3"
+          "iconId": "tCatalog3"
         },
         {
           "id": "Act 4 Catalog",
           "name": "Scritchy Scratchy Catalog #4",
-          "iconId": "catalog4"
+          "iconId": "tCatalog4"
         },
         {
           "id": "Upgrade Catalog",
           "name": "Upgrades",
-          "iconId": "upgrades"
+          "iconId": "tUpgrades"
         }
       ]
     },
@@ -348,94 +348,94 @@
       "type": "tickets",
       "data": [
         {
-          "id": "Day Job",
-          "name": "Day Job",
-          "iconId": "dayJob"
-        },
-        {
-          "id": "Two Win",
-          "name": "Two Win",
-          "iconId": "twoWin"
-        },
-        {
-          "id": "Mini Scratch",
-          "name": "Mini Scratch",
-          "iconId": "miniScratch"
-        },
-        {
           "id": "Apple Tree",
           "name": "Apple Tree",
-          "iconId": "appleTree"
-        },
-        {
-          "id": "Quick Cash",
-          "name": "Quick Cash",
-          "iconId": "quickCash"
-        },
-        {
-          "id": "Lucky Cat",
-          "name": "Lucky Cat",
-          "iconId": "luckyCat"
-        },
-        {
-          "id": "Sand Dollars",
-          "name": "Sand Dollars",
-          "iconId": "sandDollars"
-        },
-        {
-          "id": "Scratch My Back",
-          "name": "Scratch My Back",
-          "iconId": "scratchMyBack"
-        },
-        {
-          "id": "Snake Eyes",
-          "name": "Snake Eyes",
-          "iconId": "snakeEyes"
-        },
-        {
-          "id": "The Bomb",
-          "name": "The Bomb",
-          "iconId": "theBomb"
+          "iconId": "tAppleTree"
         },
         {
           "id": "Bank Break",
           "name": "Bank Break",
-          "iconId": "bankBreak"
-        },
-        {
-          "id": "Xmas Countdown",
-          "name": "Xmas Countdown",
-          "iconId": "xmasCountdown"
-        },
-        {
-          "id": "Thrift Store",
-          "name": "Thrift Store",
-          "iconId": "thriftStore"
+          "iconId": "tBankBreak"
         },
         {
           "id": "Berry Picking",
           "name": "Berry Picking",
-          "iconId": "berryPicking"
-        },
-        {
-          "id": "Trick or Treat",
-          "name": "Trick or Treat",
-          "iconId": "trickOrTreat"
-        },
-        {
-          "id": "Slot Machine",
-          "name": "Slot Machine",
-          "iconId": "slotMachine"
-        },
-        {
-          "id": "To the Moon",
-          "name": "To the Moon",
-          "iconId": "toTheMoon"
+          "iconId": "tBerryPicking"
         },
         {
           "id": "Booster Pack",
           "name": "Booster Pack",
-          "iconId": "boosterPack"
+          "iconId": "tBoosterPack"
+        },
+        {
+          "id": "Day Job",
+          "name": "Day Job",
+          "iconId": "tDayJob"
+        },
+        {
+          "id": "Lucky Cat",
+          "name": "Lucky Cat",
+          "iconId": "tLuckyCat"
+        },
+        {
+          "id": "Mini Scratch",
+          "name": "Mini Scratch",
+          "iconId": "tMiniScratch"
+        },
+        {
+          "id": "Quick Cash",
+          "name": "Quick Cash",
+          "iconId": "tQuickCash"
+        },
+        {
+          "id": "Sand Dollars",
+          "name": "Sand Dollars",
+          "iconId": "tSandDollars"
+        },
+        {
+          "id": "Scratch My Back",
+          "name": "Scratch My Back",
+          "iconId": "tScratchMyBack"
+        },
+        {
+          "id": "Slot Machine",
+          "name": "Slot Machine",
+          "iconId": "tSlotMachine"
+        },
+        {
+          "id": "Snake Eyes",
+          "name": "Snake Eyes",
+          "iconId": "tSnakeEyes"
+        },
+        {
+          "id": "The Bomb",
+          "name": "The Bomb",
+          "iconId": "tTheBomb"
+        },
+        {
+          "id": "Thrift Store",
+          "name": "Thrift Store",
+          "iconId": "tThriftStore"
+        },
+        {
+          "id": "To the Moon",
+          "name": "To the Moon",
+          "iconId": "tToTheMoon"
+        },
+        {
+          "id": "Trick or Treat",
+          "name": "Trick or Treat",
+          "iconId": "tTrickOrTreat"
+        },
+        {
+          "id": "Two Win",
+          "name": "Two Win",
+          "iconId": "tTwoWin"
+        },
+        {
+          "id": "Xmas Countdown",
+          "name": "Xmas Countdown",
+          "iconId": "tXmasCountdown"
         }
       ]
     },
@@ -445,6 +445,125 @@
         {
           "id": 4428640,
           "name": "Supporter Pack"
+        }
+      ]
+    },
+    {
+      "type": "gadgets",
+      "data": [
+        {
+          "id": "Badge Collection",
+          "name": "Badge Collection",
+          "iconId": "gBadgeCollection",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Buying Speed",
+          "name": "Buying Speed",
+          "iconId": "gBuyingSpeed",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Egg Timer",
+          "name": "Egg Timer",
+          "iconId": "gEggTimer",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Fan",
+          "name": "Fan",
+          "iconId": "gFan",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Fan Battery",
+          "name": "Fan Battery",
+          "iconId": "gFanBattery",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Fan Speed",
+          "name": "Fan Speed",
+          "iconId": "gFanSpeed",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Mundo",
+          "name": "Mundo",
+          "iconId": "gMundo",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Bot",
+          "name": "Scratch Bot",
+          "iconId": "gScratchBot",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Bot Capacity",
+          "name": "Scratch Bot Capacity",
+          "iconId": "gScratchBotCapacity",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Scratch Bot Speed",
+          "name": "Scratch Bot Speed",
+          "iconId": "gScratchBotSpeed",
+          "maxBuyCount": 30
+        },
+        {
+          "id": "Scratch Bot Strength",
+          "name": "Scratch Bot Strength",
+          "iconId": "gScratchBotStrength",
+          "maxBuyCount": 20
+        },
+        {
+          "id": "Spell Book",
+          "name": "Spell Book",
+          "iconId": "gSpellBook",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Spell Charge Speed",
+          "name": "Spell Charge Speed",
+          "iconId": "gSpellChargeSpeed",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Sticky Mat",
+          "name": "Sticky Mat",
+          "iconId": "gStickyMat",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Subscription Bot",
+          "name": "Subscription Bot",
+          "iconId": "gSubscriptionBot",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Timer Capacity",
+          "name": "Timer Capacity",
+          "iconId": "gTimerCapacity",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Timer Charge",
+          "name": "Timer Charge",
+          "iconId": "gTimerCharge",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Trash Can",
+          "name": "Trash Can",
+          "iconId": "gTrashCan",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Warp Speed",
+          "name": "Warp Speed",
+          "iconId": "gWarpSpeed",
+          "maxBuyCount": 3
         }
       ]
     }

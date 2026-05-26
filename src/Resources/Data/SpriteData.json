@@ -1,213 +1,921 @@
 {
-    "latestGameVersion": "1.1.19d",
-    "spriteSize": 100,
-    "spriteDatasets": [
+  "gameVersion": "1.1.19d",
+  "spriteSize": 100,
+  "spriteDatasets": [
+    {
+      "type": "achievements",
+      "data": [
         {
-            "type": "achievements",
-            "data": [
-                { "name": "aAchievementHunter", "x": 0, "y": 0 },
-                { "name": "aAchievementHunterU", "x": 1, "y": 0 },
-                { "name": "aBadKitty", "x": 2, "y": 0 },
-                { "name": "aBadKittyU", "x": 3, "y": 0 },
-                { "name": "aBigWin", "x": 4, "y": 0 },
-                { "name": "aBigWinU", "x": 5, "y": 0 },
-                { "name": "aBrokenPlates", "x": 6, "y": 0 },
-                { "name": "aBrokenPlatesU", "x": 7, "y": 0 },
-                { "name": "aClickerMinigame", "x": 8, "y": 0 },
-                { "name": "aClickerMinigameU", "x": 9, "y": 0 },
-                { "name": "aDeath1", "x": 10, "y": 0 },
-                { "name": "aDeath1U", "x": 11, "y": 0 },
-                { "name": "aDeath2", "x": 12, "y": 0 },
-                { "name": "aDeath2U", "x": 13, "y": 0 },
-                { "name": "aDeath3", "x": 14, "y": 0 },
-                { "name": "aDeath3U", "x": 15, "y": 0 },
-                { "name": "aDeath4", "x": 0, "y": 1 },
-                { "name": "aDeath4U", "x": 1, "y": 1 },
-                { "name": "aFaithfulServant", "x": 2, "y": 1 },
-                { "name": "aFaithfulServantU", "x": 3, "y": 1 },
-                { "name": "aHighLevelGambling", "x": 4, "y": 1 },
-                { "name": "aHighLevelGamblingU", "x": 5, "y": 1 },
-                { "name": "aHonestWork", "x": 6, "y": 1 },
-                { "name": "aHonestWorkU", "x": 7, "y": 1 },
-                { "name": "aIdleGame", "x": 8, "y": 1 },
-                { "name": "aIdleGameU", "x": 9, "y": 1 },
-                { "name": "aJackpotOnFirstTicket", "x": 10, "y": 1 },
-                { "name": "aJackpotOnFirstTicketU", "x": 11, "y": 1 },
-                { "name": "aLuckyCat", "x": 12, "y": 1 },
-                { "name": "aLuckyCatU", "x": 13, "y": 1 },
-                { "name": "aLuckyTicket", "x": 14, "y": 1 },
-                { "name": "aLuckyTicketU", "x": 15, "y": 1 },
-                { "name": "aMaxOutSkillTree", "x": 0, "y": 2 },
-                { "name": "aMaxOutSkillTreeU", "x": 1, "y": 2 },
-                { "name": "aNapTime", "x": 2, "y": 2 },
-                { "name": "aNapTimeU", "x": 3, "y": 2 },
-                { "name": "aOneOfEachPlease", "x": 4, "y": 2 },
-                { "name": "aOneOfEachPleaseU", "x": 5, "y": 2 },
-                { "name": "aScratchFinalChanceWithoutDying", "x": 6, "y": 2 },
-                { "name": "aScratchFinalChanceWithoutDyingU", "x": 7, "y": 2 },
-                { "name": "aSkipACatalogue", "x": 8, "y": 2 },
-                { "name": "aSkipACatalogueU", "x": 9, "y": 2 },
-                { "name": "aSoulSiphon", "x": 10, "y": 2 },
-                { "name": "aSoulSiphonU", "x": 11, "y": 2 },
-                { "name": "aSpeedrun", "x": 12, "y": 2 },
-                { "name": "aSpeedrunU", "x": 13, "y": 2 },
-                { "name": "aSpendAllTheWorldsMoney", "x": 14, "y": 2 },
-                { "name": "aSpendAllTheWorldsMoneyU", "x": 15, "y": 2 },
-                { "name": "aSuperJackpot", "x": 0, "y": 3 },
-                { "name": "aSuperJackpotU", "x": 1, "y": 3 },
-                { "name": "aTakeLoan", "x": 2, "y": 3 },
-                { "name": "aTakeLoanU", "x": 3, "y": 3 },
-                { "name": "aTimeMachine", "x": 4, "y": 3 },
-                { "name": "aTimeMachineU", "x": 5, "y": 3 },
-                { "name": "aTrashJackpot", "x": 6, "y": 3 },
-                { "name": "aTrashJackpotU", "x": 7, "y": 3 },
-                { "name": "aVisitTheNightMarket", "x": 8, "y": 3 },
-                { "name": "aVisitTheNightMarketU", "x": 9, "y": 3 },
-                { "name": "aWalkInCloset", "x": 10, "y": 3 },
-                { "name": "aWalkInClosetU", "x": 11, "y": 3 },
-                { "name": "aWinYourJob", "x": 12, "y": 3 },
-                { "name": "aWinYourJobU", "x": 13, "y": 3 },
-                { "name": "aWinningStreak", "x": 14, "y": 3 },
-                { "name": "aWinningStreakU", "x": 15, "y": 3 },
-                { "name": "aWizard", "x": 0, "y": 4 },
-                { "name": "aWizardU", "x": 1, "y": 4 },
-                { "name": "aWorkaholic", "x": 2, "y": 4 },
-                { "name": "aWorkaholicU", "x": 3, "y": 4 }
-            ]
+          "name": "aAchievementHunter",
+          "x": 0,
+          "y": 0
         },
         {
-            "type": "cosmetics",
-            "data": [
-                { "name": "astronomyTable", "x": 4, "y": 4 },
-                { "name": "bluePhone", "x": 5, "y": 4 },
-                { "name": "creamPhone", "x": 6, "y": 4 },
-                { "name": "dirtyTable", "x": 7, "y": 4 },
-                { "name": "fabergeEggTimer", "x": 8, "y": 4 },
-                { "name": "fancyTable", "x": 9, "y": 4 },
-                { "name": "galaxyTrashCan", "x": 10, "y": 4 },
-                { "name": "goldenFan", "x": 11, "y": 4 },
-                { "name": "goldenPhone", "x": 12, "y": 4 },
-                { "name": "goldenScratchBot", "x": 13, "y": 4 },
-                { "name": "goldenTrashCan", "x": 14, "y": 4 },
-                { "name": "greyMundo", "x": 15, "y": 4 },
-                { "name": "loveFan", "x": 0, "y": 5 },
-                { "name": "mahoganyTable", "x": 1, "y": 5 },
-                { "name": "nightFan", "x": 2, "y": 5 },
-                { "name": "orangeMundo", "x": 3, "y": 5 },
-                { "name": "picnicTable", "x": 4, "y": 5 },
-                { "name": "pinkTrashCan", "x": 5, "y": 5 },
-                { "name": "rustyTrashCan", "x": 6, "y": 5 },
-                { "name": "smartEggTimer", "x": 7, "y": 5 },
-                { "name": "tortoiseshellMundo", "x": 8, "y": 5 },
-                { "name": "whiteMundo", "x": 9, "y": 5 }
-            ]
+          "name": "aAchievementHunterU",
+          "x": 1,
+          "y": 0
         },
         {
-            "type": "gadgets",
-            "data": [
-                { "name": "badgeCollection", "x": 10, "y": 5 },
-                { "name": "buyingSpeed", "x": 11, "y": 5 },
-                { "name": "eggTimer", "x": 12, "y": 5 },
-                { "name": "fan", "x": 13, "y": 5 },
-                { "name": "fanBattery", "x": 14, "y": 5 },
-                { "name": "fanSpeed", "x": 15, "y": 5 },
-                { "name": "mundo", "x": 0, "y": 6 },
-                { "name": "mundoSpeed", "x": 1, "y": 6 },
-                { "name": "scratchBot", "x": 2, "y": 6 },
-                { "name": "scratchBotCapacity", "x": 3, "y": 6 },
-                { "name": "scratchBotSpeed", "x": 4, "y": 6 },
-                { "name": "scratchBotStrength", "x": 5, "y": 6 },
-                { "name": "spellBook", "x": 6, "y": 6 },
-                { "name": "spellChargeSpeed", "x": 7, "y": 6 },
-                { "name": "stickyMat", "x": 8, "y": 6 },
-                { "name": "subscriptionBot", "x": 9, "y": 6 },
-                { "name": "theMachine", "x": 10, "y": 6 },
-                { "name": "timerCapacity", "x": 11, "y": 6 },
-                { "name": "timerCharge", "x": 12, "y": 6 },
-                { "name": "trashCan", "x": 13, "y": 6 },
-                { "name": "warpSpeed", "x": 14, "y": 6 }
-            ]
+          "name": "aBadKitty",
+          "x": 2,
+          "y": 0
         },
         {
-            "type": "misc",
-            "data": [
-                { "name": "cyanStar", "x": 15, "y": 6 },
-                { "name": "money", "x": 0, "y": 7 },
-                { "name": "prestige", "x": 1, "y": 7 },
-                { "name": "soul", "x": 2, "y": 7 },
-                { "name": "star", "x": 3, "y": 7 },
-                { "name": "token", "x": 4, "y": 7 },
-                { "name": "upgrades", "x": 5, "y": 7 }
-            ]
+          "name": "aBadKittyU",
+          "x": 3,
+          "y": 0
         },
         {
-            "type": "prestige",
-            "data": [
-                { "name": "pAirCondition", "x": 6, "y": 7 },
-                { "name": "pAllowance", "x": 7, "y": 7 },
-                { "name": "pBigWinner", "x": 8, "y": 7 },
-                { "name": "pBoosterKit", "x": 9, "y": 7 },
-                { "name": "pBuiltDifferent", "x": 10, "y": 7 },
-                { "name": "pCleanFreak", "x": 11, "y": 7 },
-                { "name": "pCollector", "x": 12, "y": 7 },
-                { "name": "pCompletionist", "x": 13, "y": 7 },
-                { "name": "pDishwasher", "x": 14, "y": 7 },
-                { "name": "pElectricFan", "x": 15, "y": 7 },
-                { "name": "pExperienced", "x": 0, "y": 8 },
-                { "name": "pFineDining", "x": 1, "y": 8 },
-                { "name": "pFullyAutomated", "x": 2, "y": 8 },
-                { "name": "pHotkeys", "x": 3, "y": 8 },
-                { "name": "pIgnoranceIsBliss", "x": 4, "y": 8 },
-                { "name": "pJackpotPower", "x": 5, "y": 8 },
-                { "name": "pLearnByDoing", "x": 6, "y": 8 },
-                { "name": "pLessIsMore", "x": 7, "y": 8 },
-                { "name": "pLoanShark", "x": 8, "y": 8 },
-                { "name": "pMagic", "x": 9, "y": 8 },
-                { "name": "pMuscleMemory", "x": 10, "y": 8 },
-                { "name": "pNightMarket", "x": 11, "y": 8 },
-                { "name": "pPetLover", "x": 12, "y": 8 },
-                { "name": "pPickyEater", "x": 13, "y": 8 },
-                { "name": "pPlatemaster5000", "x": 14, "y": 8 },
-                { "name": "pRecycling", "x": 15, "y": 8 },
-                { "name": "pRefund", "x": 0, "y": 9 },
-                { "name": "pSelfMadeMillionaire", "x": 1, "y": 9 },
-                { "name": "pShoppingSpree", "x": 2, "y": 9 },
-                { "name": "pSmartInvestment", "x": 3, "y": 9 },
-                { "name": "pSoftHands", "x": 4, "y": 9 },
-                { "name": "pStarterKit", "x": 5, "y": 9 },
-                { "name": "pSuperLucky", "x": 6, "y": 9 },
-                { "name": "pTimeTravel", "x": 7, "y": 9 },
-                { "name": "pToolBelt", "x": 8, "y": 9 }
-            ]
+          "name": "aBigWin",
+          "x": 4,
+          "y": 0
         },
         {
-            "type": "tickets",
-            "data": [
-                { "name": "appleTree", "x": 9, "y": 9 },
-                { "name": "bankBreak", "x": 10, "y": 9 },
-                { "name": "berryPicking", "x": 11, "y": 9 },
-                { "name": "boosterPack", "x": 12, "y": 9 },
-                { "name": "catalog1", "x": 13, "y": 9 },
-                { "name": "catalog2", "x": 14, "y": 9 },
-                { "name": "catalog3", "x": 15, "y": 9 },
-                { "name": "catalog4", "x": 0, "y": 10 },
-                { "name": "dayJob", "x": 1, "y": 10 },
-                { "name": "finalChance", "x": 2, "y": 10 },
-                { "name": "loan", "x": 3, "y": 10 },
-                { "name": "luckyCat", "x": 4, "y": 10 },
-                { "name": "miniScratch", "x": 5, "y": 10 },
-                { "name": "quickCash", "x": 6, "y": 10 },
-                { "name": "sandDollars", "x": 7, "y": 10 },
-                { "name": "scratchMyBack", "x": 8, "y": 10 },
-                { "name": "slotMachine", "x": 9, "y": 10 },
-                { "name": "snakeEyes", "x": 10, "y": 10 },
-                { "name": "theBomb", "x": 11, "y": 10 },
-                { "name": "thriftStore", "x": 12, "y": 10 },
-                { "name": "toTheMoon", "x": 13, "y": 10 },
-                { "name": "trickOrTreat", "x": 14, "y": 10 },
-                { "name": "twoWin", "x": 15, "y": 10 },
-                { "name": "xmasCountdown", "x": 0, "y": 11 }
-            ]
+          "name": "aBigWinU",
+          "x": 5,
+          "y": 0
+        },
+        {
+          "name": "aBrokenPlates",
+          "x": 6,
+          "y": 0
+        },
+        {
+          "name": "aBrokenPlatesU",
+          "x": 7,
+          "y": 0
+        },
+        {
+          "name": "aClickerMinigame",
+          "x": 8,
+          "y": 0
+        },
+        {
+          "name": "aClickerMinigameU",
+          "x": 9,
+          "y": 0
+        },
+        {
+          "name": "aDeath1",
+          "x": 10,
+          "y": 0
+        },
+        {
+          "name": "aDeath1U",
+          "x": 11,
+          "y": 0
+        },
+        {
+          "name": "aDeath2",
+          "x": 12,
+          "y": 0
+        },
+        {
+          "name": "aDeath2U",
+          "x": 13,
+          "y": 0
+        },
+        {
+          "name": "aDeath3",
+          "x": 14,
+          "y": 0
+        },
+        {
+          "name": "aDeath3U",
+          "x": 15,
+          "y": 0
+        },
+        {
+          "name": "aDeath4",
+          "x": 0,
+          "y": 1
+        },
+        {
+          "name": "aDeath4U",
+          "x": 1,
+          "y": 1
+        },
+        {
+          "name": "aFaithfulServant",
+          "x": 2,
+          "y": 1
+        },
+        {
+          "name": "aFaithfulServantU",
+          "x": 3,
+          "y": 1
+        },
+        {
+          "name": "aHighLevelGambling",
+          "x": 4,
+          "y": 1
+        },
+        {
+          "name": "aHighLevelGamblingU",
+          "x": 5,
+          "y": 1
+        },
+        {
+          "name": "aHonestWork",
+          "x": 6,
+          "y": 1
+        },
+        {
+          "name": "aHonestWorkU",
+          "x": 7,
+          "y": 1
+        },
+        {
+          "name": "aIdleGame",
+          "x": 8,
+          "y": 1
+        },
+        {
+          "name": "aIdleGameU",
+          "x": 9,
+          "y": 1
+        },
+        {
+          "name": "aJackpotOnFirstTicket",
+          "x": 10,
+          "y": 1
+        },
+        {
+          "name": "aJackpotOnFirstTicketU",
+          "x": 11,
+          "y": 1
+        },
+        {
+          "name": "aLuckyCat",
+          "x": 12,
+          "y": 1
+        },
+        {
+          "name": "aLuckyCatU",
+          "x": 13,
+          "y": 1
+        },
+        {
+          "name": "aLuckyTicket",
+          "x": 14,
+          "y": 1
+        },
+        {
+          "name": "aLuckyTicketU",
+          "x": 15,
+          "y": 1
+        },
+        {
+          "name": "aMaxOutSkillTree",
+          "x": 0,
+          "y": 2
+        },
+        {
+          "name": "aMaxOutSkillTreeU",
+          "x": 1,
+          "y": 2
+        },
+        {
+          "name": "aNapTime",
+          "x": 2,
+          "y": 2
+        },
+        {
+          "name": "aNapTimeU",
+          "x": 3,
+          "y": 2
+        },
+        {
+          "name": "aOneOfEachPlease",
+          "x": 4,
+          "y": 2
+        },
+        {
+          "name": "aOneOfEachPleaseU",
+          "x": 5,
+          "y": 2
+        },
+        {
+          "name": "aScratchFinalChanceWithoutDying",
+          "x": 6,
+          "y": 2
+        },
+        {
+          "name": "aScratchFinalChanceWithoutDyingU",
+          "x": 7,
+          "y": 2
+        },
+        {
+          "name": "aSkipACatalogue",
+          "x": 8,
+          "y": 2
+        },
+        {
+          "name": "aSkipACatalogueU",
+          "x": 9,
+          "y": 2
+        },
+        {
+          "name": "aSoulSiphon",
+          "x": 10,
+          "y": 2
+        },
+        {
+          "name": "aSoulSiphonU",
+          "x": 11,
+          "y": 2
+        },
+        {
+          "name": "aSpeedrun",
+          "x": 12,
+          "y": 2
+        },
+        {
+          "name": "aSpeedrunU",
+          "x": 13,
+          "y": 2
+        },
+        {
+          "name": "aSpendAllTheWorldsMoney",
+          "x": 14,
+          "y": 2
+        },
+        {
+          "name": "aSpendAllTheWorldsMoneyU",
+          "x": 15,
+          "y": 2
+        },
+        {
+          "name": "aSuperJackpot",
+          "x": 0,
+          "y": 3
+        },
+        {
+          "name": "aSuperJackpotU",
+          "x": 1,
+          "y": 3
+        },
+        {
+          "name": "aTakeLoan",
+          "x": 2,
+          "y": 3
+        },
+        {
+          "name": "aTakeLoanU",
+          "x": 3,
+          "y": 3
+        },
+        {
+          "name": "aTimeMachine",
+          "x": 4,
+          "y": 3
+        },
+        {
+          "name": "aTimeMachineU",
+          "x": 5,
+          "y": 3
+        },
+        {
+          "name": "aTrashJackpot",
+          "x": 6,
+          "y": 3
+        },
+        {
+          "name": "aTrashJackpotU",
+          "x": 7,
+          "y": 3
+        },
+        {
+          "name": "aVisitTheNightMarket",
+          "x": 8,
+          "y": 3
+        },
+        {
+          "name": "aVisitTheNightMarketU",
+          "x": 9,
+          "y": 3
+        },
+        {
+          "name": "aWalkInCloset",
+          "x": 10,
+          "y": 3
+        },
+        {
+          "name": "aWalkInClosetU",
+          "x": 11,
+          "y": 3
+        },
+        {
+          "name": "aWinYourJob",
+          "x": 12,
+          "y": 3
+        },
+        {
+          "name": "aWinYourJobU",
+          "x": 13,
+          "y": 3
+        },
+        {
+          "name": "aWinningStreak",
+          "x": 14,
+          "y": 3
+        },
+        {
+          "name": "aWinningStreakU",
+          "x": 15,
+          "y": 3
+        },
+        {
+          "name": "aWizard",
+          "x": 0,
+          "y": 4
+        },
+        {
+          "name": "aWizardU",
+          "x": 1,
+          "y": 4
+        },
+        {
+          "name": "aWorkaholic",
+          "x": 2,
+          "y": 4
+        },
+        {
+          "name": "aWorkaholicU",
+          "x": 3,
+          "y": 4
         }
-    ]
+      ]
+    },
+    {
+      "type": "cosmetics",
+      "data": [
+        {
+          "name": "cAstronomyTable",
+          "x": 4,
+          "y": 4
+        },
+        {
+          "name": "cBluePhone",
+          "x": 5,
+          "y": 4
+        },
+        {
+          "name": "cCreamPhone",
+          "x": 6,
+          "y": 4
+        },
+        {
+          "name": "cDirtyTable",
+          "x": 7,
+          "y": 4
+        },
+        {
+          "name": "cFabergeEggTimer",
+          "x": 8,
+          "y": 4
+        },
+        {
+          "name": "cFancyTable",
+          "x": 9,
+          "y": 4
+        },
+        {
+          "name": "cGalaxyTrashCan",
+          "x": 10,
+          "y": 4
+        },
+        {
+          "name": "cGoldenFan",
+          "x": 11,
+          "y": 4
+        },
+        {
+          "name": "cGoldenPhone",
+          "x": 12,
+          "y": 4
+        },
+        {
+          "name": "cGoldenScratchBot",
+          "x": 13,
+          "y": 4
+        },
+        {
+          "name": "cGoldenTrashCan",
+          "x": 14,
+          "y": 4
+        },
+        {
+          "name": "cGreyMundo",
+          "x": 15,
+          "y": 4
+        },
+        {
+          "name": "cLoveFan",
+          "x": 0,
+          "y": 5
+        },
+        {
+          "name": "cMahoganyTable",
+          "x": 1,
+          "y": 5
+        },
+        {
+          "name": "cNightFan",
+          "x": 2,
+          "y": 5
+        },
+        {
+          "name": "cOrangeMundo",
+          "x": 3,
+          "y": 5
+        },
+        {
+          "name": "cPicnicTable",
+          "x": 4,
+          "y": 5
+        },
+        {
+          "name": "cPinkTrashCan",
+          "x": 5,
+          "y": 5
+        },
+        {
+          "name": "cRustyTrashCan",
+          "x": 6,
+          "y": 5
+        },
+        {
+          "name": "cSmartEggTimer",
+          "x": 7,
+          "y": 5
+        },
+        {
+          "name": "cTortoiseshellMundo",
+          "x": 8,
+          "y": 5
+        },
+        {
+          "name": "cWhiteMundo",
+          "x": 9,
+          "y": 5
+        }
+      ]
+    },
+    {
+      "type": "gadgets",
+      "data": [
+        {
+          "name": "gBadgeCollection",
+          "x": 10,
+          "y": 5
+        },
+        {
+          "name": "gBuyingSpeed",
+          "x": 11,
+          "y": 5
+        },
+        {
+          "name": "gEggTimer",
+          "x": 12,
+          "y": 5
+        },
+        {
+          "name": "gFan",
+          "x": 13,
+          "y": 5
+        },
+        {
+          "name": "gFanBattery",
+          "x": 14,
+          "y": 5
+        },
+        {
+          "name": "gFanSpeed",
+          "x": 15,
+          "y": 5
+        },
+        {
+          "name": "gMundo",
+          "x": 0,
+          "y": 6
+        },
+        {
+          "name": "gMundoSpeed",
+          "x": 1,
+          "y": 6
+        },
+        {
+          "name": "gScratchBot",
+          "x": 2,
+          "y": 6
+        },
+        {
+          "name": "gScratchBotCapacity",
+          "x": 3,
+          "y": 6
+        },
+        {
+          "name": "gScratchBotSpeed",
+          "x": 4,
+          "y": 6
+        },
+        {
+          "name": "gScratchBotStrength",
+          "x": 5,
+          "y": 6
+        },
+        {
+          "name": "gSpellBook",
+          "x": 6,
+          "y": 6
+        },
+        {
+          "name": "gSpellChargeSpeed",
+          "x": 7,
+          "y": 6
+        },
+        {
+          "name": "gStickyMat",
+          "x": 8,
+          "y": 6
+        },
+        {
+          "name": "gSubscriptionBot",
+          "x": 9,
+          "y": 6
+        },
+        {
+          "name": "gTheMachine",
+          "x": 10,
+          "y": 6
+        },
+        {
+          "name": "gTimerCapacity",
+          "x": 11,
+          "y": 6
+        },
+        {
+          "name": "gTimerCharge",
+          "x": 12,
+          "y": 6
+        },
+        {
+          "name": "gTrashCan",
+          "x": 13,
+          "y": 6
+        },
+        {
+          "name": "gWarpSpeed",
+          "x": 14,
+          "y": 6
+        }
+      ]
+    },
+    {
+      "type": "misc",
+      "data": [
+        {
+          "name": "cyanStar",
+          "x": 15,
+          "y": 6
+        },
+        {
+          "name": "money",
+          "x": 0,
+          "y": 7
+        },
+        {
+          "name": "prestige",
+          "x": 1,
+          "y": 7
+        },
+        {
+          "name": "soul",
+          "x": 2,
+          "y": 7
+        },
+        {
+          "name": "star",
+          "x": 3,
+          "y": 7
+        },
+        {
+          "name": "token",
+          "x": 4,
+          "y": 7
+        }
+      ]
+    },
+    {
+      "type": "prestige",
+      "data": [
+        {
+          "name": "pAirCondition",
+          "x": 5,
+          "y": 7
+        },
+        {
+          "name": "pAllowance",
+          "x": 6,
+          "y": 7
+        },
+        {
+          "name": "pBigWinner",
+          "x": 7,
+          "y": 7
+        },
+        {
+          "name": "pBoosterKit",
+          "x": 8,
+          "y": 7
+        },
+        {
+          "name": "pBuiltDifferent",
+          "x": 9,
+          "y": 7
+        },
+        {
+          "name": "pCleanFreak",
+          "x": 10,
+          "y": 7
+        },
+        {
+          "name": "pCollector",
+          "x": 11,
+          "y": 7
+        },
+        {
+          "name": "pCompletionist",
+          "x": 12,
+          "y": 7
+        },
+        {
+          "name": "pDishwasher",
+          "x": 13,
+          "y": 7
+        },
+        {
+          "name": "pElectricFan",
+          "x": 14,
+          "y": 7
+        },
+        {
+          "name": "pExperienced",
+          "x": 15,
+          "y": 7
+        },
+        {
+          "name": "pFineDining",
+          "x": 0,
+          "y": 8
+        },
+        {
+          "name": "pFullyAutomated",
+          "x": 1,
+          "y": 8
+        },
+        {
+          "name": "pHotkeys",
+          "x": 2,
+          "y": 8
+        },
+        {
+          "name": "pIgnoranceIsBliss",
+          "x": 3,
+          "y": 8
+        },
+        {
+          "name": "pJackpotPower",
+          "x": 4,
+          "y": 8
+        },
+        {
+          "name": "pLearnByDoing",
+          "x": 5,
+          "y": 8
+        },
+        {
+          "name": "pLessIsMore",
+          "x": 6,
+          "y": 8
+        },
+        {
+          "name": "pLoanShark",
+          "x": 7,
+          "y": 8
+        },
+        {
+          "name": "pMagic",
+          "x": 8,
+          "y": 8
+        },
+        {
+          "name": "pMuscleMemory",
+          "x": 9,
+          "y": 8
+        },
+        {
+          "name": "pNightMarket",
+          "x": 10,
+          "y": 8
+        },
+        {
+          "name": "pPetLover",
+          "x": 11,
+          "y": 8
+        },
+        {
+          "name": "pPickyEater",
+          "x": 12,
+          "y": 8
+        },
+        {
+          "name": "pPlatemaster5000",
+          "x": 13,
+          "y": 8
+        },
+        {
+          "name": "pRecycling",
+          "x": 14,
+          "y": 8
+        },
+        {
+          "name": "pRefund",
+          "x": 15,
+          "y": 8
+        },
+        {
+          "name": "pSelfMadeMillionaire",
+          "x": 0,
+          "y": 9
+        },
+        {
+          "name": "pShoppingSpree",
+          "x": 1,
+          "y": 9
+        },
+        {
+          "name": "pSmartInvestment",
+          "x": 2,
+          "y": 9
+        },
+        {
+          "name": "pSoftHands",
+          "x": 3,
+          "y": 9
+        },
+        {
+          "name": "pStarterKit",
+          "x": 4,
+          "y": 9
+        },
+        {
+          "name": "pSuperLucky",
+          "x": 5,
+          "y": 9
+        },
+        {
+          "name": "pTimeTravel",
+          "x": 6,
+          "y": 9
+        },
+        {
+          "name": "pToolBelt",
+          "x": 7,
+          "y": 9
+        }
+      ]
+    },
+    {
+      "type": "tickets",
+      "data": [
+        {
+          "name": "tAppleTree",
+          "x": 8,
+          "y": 9
+        },
+        {
+          "name": "tBankBreak",
+          "x": 9,
+          "y": 9
+        },
+        {
+          "name": "tBerryPicking",
+          "x": 10,
+          "y": 9
+        },
+        {
+          "name": "tBoosterPack",
+          "x": 11,
+          "y": 9
+        },
+        {
+          "name": "tCatalog1",
+          "x": 12,
+          "y": 9
+        },
+        {
+          "name": "tCatalog2",
+          "x": 13,
+          "y": 9
+        },
+        {
+          "name": "tCatalog3",
+          "x": 14,
+          "y": 9
+        },
+        {
+          "name": "tCatalog4",
+          "x": 15,
+          "y": 9
+        },
+        {
+          "name": "tDayJob",
+          "x": 0,
+          "y": 10
+        },
+        {
+          "name": "tFinalChance",
+          "x": 1,
+          "y": 10
+        },
+        {
+          "name": "tLoan",
+          "x": 2,
+          "y": 10
+        },
+        {
+          "name": "tLuckyCat",
+          "x": 3,
+          "y": 10
+        },
+        {
+          "name": "tMiniScratch",
+          "x": 4,
+          "y": 10
+        },
+        {
+          "name": "tQuickCash",
+          "x": 5,
+          "y": 10
+        },
+        {
+          "name": "tSandDollars",
+          "x": 6,
+          "y": 10
+        },
+        {
+          "name": "tScratchMyBack",
+          "x": 7,
+          "y": 10
+        },
+        {
+          "name": "tSlotMachine",
+          "x": 8,
+          "y": 10
+        },
+        {
+          "name": "tSnakeEyes",
+          "x": 9,
+          "y": 10
+        },
+        {
+          "name": "tTheBomb",
+          "x": 10,
+          "y": 10
+        },
+        {
+          "name": "tThriftStore",
+          "x": 11,
+          "y": 10
+        },
+        {
+          "name": "tToTheMoon",
+          "x": 12,
+          "y": 10
+        },
+        {
+          "name": "tTrickOrTreat",
+          "x": 13,
+          "y": 10
+        },
+        {
+          "name": "tTwoWin",
+          "x": 14,
+          "y": 10
+        },
+        {
+          "name": "tUpgrades",
+          "x": 15,
+          "y": 10
+        },
+        {
+          "name": "tXmasCountdown",
+          "x": 0,
+          "y": 11
+        }
+      ]
+    }
+  ]
 }
