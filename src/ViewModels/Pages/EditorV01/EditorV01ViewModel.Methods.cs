@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Models.GameData;
 using System.Globalization;
+using System.Printing;
 using System.Windows;
 using System.Windows.Media;
 
@@ -99,6 +100,25 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private void MaxPrestige()
         {
             PrestigeText = int.MaxValue.ToString();
+        }
+
+        [RelayCommand]
+        private void MaxGadgetBuyCountAll()
+        {
+            foreach (var gadget in Gadgets) gadget.BuyCountText = gadget.Gadget != null ? gadget.Gadget.MaxBuyCount.ToString() : "0";
+        }
+
+        [RelayCommand]
+        private void MaxGadgetBuyCount(GadgetItem? item)
+        {
+            if (item == null || item.Gadget == null) return;
+            item.BuyCountText = item.Gadget.MaxBuyCount.ToString();
+        }
+
+        partial void OnSearchGadgetChanged(string value)
+        {
+            GadgetsView.Refresh();
+            OnPropertyChanged(nameof(HasGadgets));
         }
         #endregion
 

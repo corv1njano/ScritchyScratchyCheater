@@ -97,6 +97,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         [ObservableProperty]
         private ImageSource? _prestigeIcon;
+
+        [ObservableProperty]
+        private string _searchGadget = string.Empty;
+        public ObservableCollection<GadgetItem> Gadgets { get; } = new();
+        public ICollectionView GadgetsView { get; }
+        public bool HasGadgets => !GadgetsView.IsEmpty;
         #endregion
 
         #region Tab Achivements

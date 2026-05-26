@@ -87,6 +87,30 @@ namespace ScritchyScratchyCheater.Services
         }
 
         /// <summary>
+        /// Retrieves a list of gadgets from the current game data.
+        /// </summary>
+        /// <remarks>This method returns an empty list if the game data root is null, if no gadget
+        /// dataset is present, or if the gadget data is undefined or null.</remarks>
+        /// <returns>A list of <see cref="Gadget"/> objects representing the gadgets associated with the game data.</returns>
+        public List<Gadget> GetGadgets()
+        {
+            if (_gameDataRoot == null) return new();
+
+            GameDataset? dataset = _gameDataRoot.GameData?
+                .FirstOrDefault(x => string.Equals(x.Type, "gadgets", StringComparison.OrdinalIgnoreCase));
+
+            if (dataset == null) return new();
+            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
+
+            List<Gadget>? gadgets = dataset.Data.Deserialize<List<Gadget>>(App.JsonOptions);
+
+            return gadgets!
+                .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList()
+                ?? new();
+        }
+
+        /// <summary>
         /// Retrieves a list of achievements from the current game data.
         /// </summary>
         /// <remarks>This method returns an empty list if the game data root is null, if no achievement

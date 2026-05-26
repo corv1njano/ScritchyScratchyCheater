@@ -17,9 +17,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
     internal partial class EditorV01ViewModel : ObservableObject
     {
         private bool _isSaving = false;
-        public bool CanSave => !_isSaving
-            && IsMoneyValid && IsPrestigeValid && IsTokensValid && IsSoulsValid && IsTicketLevelValid
-            && IsMachineTierValid && IsEelectricFanChargeValid && IsEggTimerChargeValid;
+        public bool CanSave => !_isSaving && CheckCanSave();
 
         public EditorV01ViewModel()
         {
@@ -29,15 +27,34 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             TicketsView = CollectionViewSource.GetDefaultView(Tickets);
             TicketsView.Filter = item =>
-                item is TicketItem entry
+                item is TicketItem ticket
                 && (string.IsNullOrWhiteSpace(SearchTicket)
-                || entry.Ticket!.Name.Contains(SearchTicket, StringComparison.OrdinalIgnoreCase));
+                || ticket.Ticket!.Name.Contains(SearchTicket, StringComparison.OrdinalIgnoreCase));
+
+            GadgetsView = CollectionViewSource.GetDefaultView(Gadgets);
+            GadgetsView.Filter = item =>
+                item is GadgetItem gadget
+                && (string.IsNullOrWhiteSpace(SearchGadget)
+                || gadget.Gadget!.Name.Contains(SearchGadget, StringComparison.OrdinalIgnoreCase));
 
             AchievementsView = CollectionViewSource.GetDefaultView(Achievements);
             AchievementsView.Filter = item =>
-                item is AchievementItem entry
+                item is AchievementItem achievement
                 && (string.IsNullOrWhiteSpace(SearchAchievement)
-                || entry.Achievement!.Name.Contains(SearchAchievement, StringComparison.OrdinalIgnoreCase));
+                || achievement.Achievement!.Name.Contains(SearchAchievement, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private bool CheckCanSave()
+        {
+            return IsMoneyValid
+                && IsPrestigeValid
+                && IsTokensValid
+                && IsSoulsValid
+                && IsTicketLevelValid
+                && IsMachineTierValid
+                && IsEelectricFanChargeValid
+                && IsEggTimerChargeValid
+                && Gadgets.All(u => u.IsBuyCountValid);
         }
 
         /// <summary>
@@ -61,6 +78,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             TrashCanIcon = App.ResourceParser.GetSprite("gTrashCan");
 
             TicketsView.Refresh();
+            GadgetsView.Refresh();
             AchievementsView.Refresh();
 
             // lists, that are independent from loaded save file data, thus they need to bet set to index 0
@@ -76,8 +94,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 sf) return;
 
             MoneyText = SaveFileHelper.SanitizeDouble(sf.LayerOne!.Money).ToString(CultureInfo.InvariantCulture);
-            PrestigeText = sf.PrestigeCurrency.ToString();
-            TokensText = sf.Tokens.ToString();
             SoulsText = sf.LayerOne.Souls.ToString();
             MachineTierText = sf.LayerOne.MachineTier.ToString();
             SelectedAct = Acts.FirstOrDefault(a => a.ActId == sf.CurrentAct) ?? Acts.First(a => a.ActId == 1);
@@ -117,6 +133,24 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 });
             }
 
+            PrestigeText = sf.PrestigeCurrency.ToString();
+
+            var gadgetDic = sf.LayerOne.UpgradeDataDict ?? new Dictionary<string, UpgradeDataV01>();
+
+            Gadgets.Clear();
+            foreach (var gadget in App.GameDataParser.GetGadgets())
+            {
+                var item = new GadgetItem
+                {
+                    Gadget = gadget,
+                    BuyCountText = (gadgetDic.TryGetValue(gadget.Id, out var upgrade) ? upgrade.BuyCount : 0).ToString()
+                };
+
+                // subscribe to make GadgetItem ViewModel know when validity check changes
+                item.PropertyChanged += (_, _) => OnPropertyChanged(nameof(CanSave));
+                Gadgets.Add(item);
+            }
+
             var achievementsGotten = sf.AchievementsGotten ?? new List<string>();
             var achievementsClaimed = sf.AchievementsClaimed ?? new List<string>();
 
@@ -131,6 +165,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                     IsClaimed = achievementsClaimed.Contains(id),
                 });
             }
+
+            TokensText = sf.Tokens.ToString();
 
             var cosmeticsPurchased = sf.BoughtCosmetics ?? new List<string>();
             var cosmeticsEquipped = sf.EquippedCosmetics ?? new List<string>();
@@ -162,10 +198,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 sf) return;
 
-            // currencies, todo: move to upgrades save method
-            sf.PrestigeCurrency = int.Parse(PrestigeText);
-
             SaveProgress(sf);
+            SaveUpgrades(sf);
             SaveAchievements(sf);
             SaveCosmetics(sf);
 
@@ -213,7 +247,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 if (ticket.GottenJackpot) ticketsGottenJackpot.Add(id);
                 if (ticket.GottenSuperJackpot) ticketsGottenSuperJackpot.Add(id);
 
-                if (layer.TicketProgressionDict!.ContainsKey(id) == true)
+                if (layer.TicketProgressionDict!.ContainsKey(id))
                 {
                     layer.TicketProgressionDict[id] = new TicketDataV01
                     {
@@ -231,6 +265,30 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             layer.ClaimedCustomTableItems = catalogsClaimed.ToList();
             layer.JackpotsGotten = ticketsGottenJackpot.ToList();
             layer.SuperJackpotsGotten = ticketsGottenSuperJackpot.ToList();
+        }
+
+        private void SaveUpgrades(SaveFileV01 sf)
+        {
+            if (sf == null || sf.LayerOne == null) return;
+
+            var layer = sf.LayerOne;
+
+            foreach (var gadget in Gadgets)
+            {
+                var id = gadget.Gadget?.Id;
+                if (gadget.Gadget== null || string.IsNullOrWhiteSpace(id)) continue;
+
+                if (layer.UpgradeDataDict!.ContainsKey(id))
+                {
+                    layer.UpgradeDataDict[id] = new UpgradeDataV01
+                    {
+                        Id = id,
+                        BuyCount = int.Parse(gadget.BuyCountText)
+                    };
+                }
+            }
+
+            sf.PrestigeCurrency = int.Parse(PrestigeText);
         }
 
         private void SaveAchievements(SaveFileV01 sf)
@@ -377,6 +435,26 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
     }
 
     #region data containers
+    public sealed partial class GadgetItem : ObservableObject
+    {
+        public Gadget? Gadget { get; init; }
+
+        [ObservableProperty]
+        private string _buyCountText = "0";
+
+        public bool IsGadgetMaxedOut => int.TryParse(BuyCountText, out var value)
+            && value == Gadget?.MaxBuyCount;
+        public bool IsBuyCountValid => int.TryParse(BuyCountText, out var value)
+            && value >= 0
+            && value <= (Gadget?.MaxBuyCount ?? 0);
+
+        partial void OnBuyCountTextChanged(string value)
+        {
+            OnPropertyChanged(nameof(IsBuyCountValid));
+            OnPropertyChanged(nameof(IsGadgetMaxedOut));
+        }
+    }
+
     public sealed partial class CatalogItem : ObservableObject
     {
         public Catalog? Catalog { get; init; }

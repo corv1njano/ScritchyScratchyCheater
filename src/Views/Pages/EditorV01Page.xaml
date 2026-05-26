@@ -261,7 +261,7 @@
 
                             <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
 
-                            <Grid Grid.Row="6">
+                            <Grid Grid.Row="4">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -287,6 +287,7 @@
                 <Grid Style="{StaticResource contentGrid}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <Border Grid.Row="0" Style="{StaticResource Border.Default}">
@@ -301,6 +302,56 @@
                             <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Prestige:"/>
                             <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeValid}"/>
                             <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeCommand}"/>
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="1" Style="{StaticResource Border.Default}" Margin="0,8,0,0">
+                        <Grid Margin="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <controls:TextBoxPlaceholder Grid.Column="0"
+                                         Style="{StaticResource TextBox.ListSearch}"
+                                         PlaceholderText="Search gadget..."
+                                         IsClearable="True"
+                                         Text="{Binding SearchGadget, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Button Grid.Column="2" Content="Max All" Style="{StaticResource blockbtn}" Command="{Binding MaxGadgetBuyCountAllCommand}" ToolTip="Set maximum Level for all Gadgets"/>
+                            </Grid>
+
+                            <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
+
+                            <ListBox Grid.Row="2" Style="{StaticResource ListBox.Default}" ItemsSource="{Binding GadgetsView}" Visibility="{Binding HasGadgets, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <Image Height="30" Width="30" Source="{Binding Gadget.IconId, Converter={StaticResource IconIdToImageConverter}}"/>
+                                                <TextBlock Text="{Binding Gadget.Name}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <TextBlock ToolTip="Gadget is maxed out" Text="Maxed" Opacity="0.5" Style="{StaticResource TextBlock.Base}" VerticalAlignment="Center" Margin="0,0,16,0" Visibility="{Binding IsGadgetMaxedOut, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                <TextBlock Text="Buy Count:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                <controls:ValidatedTextBox Style="{StaticResource TextBox.Validated}" Width="50" Text="{Binding BuyCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsBuyCountValid}"/>
+                                                <Button Style="{StaticResource blockbtn}" Margin="3,0,0,0" Width="50" Command="{Binding DataContext.MaxGadgetBuyCountCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <TextBlock Text="No gadgets found with that name." HorizontalAlignment="Center" Style="{StaticResource TextBlock.Base}" Grid.Row="2" Visibility="{Binding HasGadgets, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -319,8 +370,8 @@
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="100"/>
-                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <controls:TextBoxPlaceholder Grid.Column="0"
                                              Style="{StaticResource TextBox.ListSearch}"

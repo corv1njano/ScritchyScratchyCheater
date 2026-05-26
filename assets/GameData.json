@@ -566,6 +566,221 @@
           "maxBuyCount": 3
         }
       ]
+    },
+    {
+      "type": "prestige",
+      "data": [
+        {
+          "id": "Muscle Memory",
+          "name": "Muscle Memory",
+          "iconId": "pMuscleMemory",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Starter Kit",
+          "name": "Starter Kit",
+          "iconId": "pStarterKit",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Booster Kit",
+          "name": "Booster Kit",
+          "iconId": "pBoosterKit",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Jackpot Power",
+          "name": "Jackpot Power",
+          "iconId": "pJackpotPower",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Big Winner",
+          "name": "Big Winner",
+          "iconId": "pBigWinner",
+          "maxBuyCount": 7
+        },
+        {
+          "id": "Tool Belt",
+          "name": "Tool Belt",
+          "iconId": "pToolBelt",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Night Market",
+          "name": "Night Market",
+          "iconId": "pNightMarket",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Ignorance is Bliss",
+          "name": "Ignorance is Bliss",
+          "iconId": "pIgnoranceIsBliss",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Electric Fan",
+          "name": "Electric Fan",
+          "iconId": "pElectricFan",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Clean Freak",
+          "name": "Clean Freak",
+          "iconId": "pCleanFreak",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Self Made Millionaire",
+          "name": "Self Made Millionaire",
+          "iconId": "pSelfMadeMillionaire",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Less is More",
+          "name": "Less is More",
+          "iconId": "pLessIsMore",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Allowance",
+          "name": "Allowance",
+          "iconId": "pAllowance",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Super Lucky",
+          "name": "Super Lucky",
+          "iconId": "pSuperLucky",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Pet Lover",
+          "name": "Pet Lover",
+          "iconId": "pPetLover",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Picky Eater",
+          "name": "Picky Eater",
+          "iconId": "pPickyEater",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Shopping Spree",
+          "name": "Shopping Spree",
+          "iconId": "pShoppingSpree",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Air Condition",
+          "name": "Air Condition",
+          "iconId": "pAirCondition",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Fully Automated",
+          "name": "Fully Automated",
+          "iconId": "pFullyAutomated",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Completionist",
+          "name": "Completionist",
+          "iconId": "pCompletionist",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Dishwasher",
+          "name": "Dishwasher",
+          "iconId": "pDishwasher",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Fine Dining",
+          "name": "Fine Dining",
+          "iconId": "pFineDining",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Learn by Doing",
+          "name": "Learn by Doing",
+          "iconId": "pLearnByDoing",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Time Travel",
+          "name": "Time Travel",
+          "iconId": "pTimeTravel",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "PlateMaster5000",
+          "name": "PlateMaster5000",
+          "iconId": "pPlatemaster5000",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Magic",
+          "name": "Magic?",
+          "iconId": "pMagic",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Soft Hands",
+          "name": "Soft Hands",
+          "iconId": "pSoftHands",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Recycling",
+          "name": "Recycling",
+          "iconId": "pRecycling",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Refund",
+          "name": "Refund",
+          "iconId": "pRefund",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Smart Investment",
+          "name": "Smart Investment",
+          "iconId": "pSmartInvestment",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Hotkeys",
+          "name": "Hotkeys",
+          "iconId": "pHotkeys",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Collector",
+          "name": "Collector",
+          "iconId": "pCollector",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Experienced",
+          "name": "Experienced",
+          "iconId": "pExperienced",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Built Different",
+          "name": "Built Different",
+          "iconId": "pBuiltDifferent",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Loan Shark",
+          "name": "Loan Shark",
+          "iconId": "pLoanShark",
+          "maxBuyCount": 1
+        }
+      ]
     }
   ]
 }
