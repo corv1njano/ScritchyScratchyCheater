@@ -10,7 +10,7 @@ namespace ScritchyScratchyCheater.Utilities
     /// </summary>
     public static class UpdateChecker
     {
-        private const string GTIHUB_API_URL = "https://api.github.com/repos/corv1njano/ScritchyScratchyCheater/releases/latest";
+        private const string GITHUB_API_URL = "https://api.github.com/repos/corv1njano/ScritchyScratchyCheater/releases/latest";
     
         /// <summary>
         /// Gets the latest release tag from GtiHub project API.
@@ -25,7 +25,7 @@ namespace ScritchyScratchyCheater.Utilities
                 client.DefaultRequestHeaders.UserAgent.ParseAdd("ScritchyScratchyCheater");
                 client.Timeout = TimeSpan.FromSeconds(5);
 
-                var response = await client.GetAsync(GTIHUB_API_URL);
+                var response = await client.GetAsync(GITHUB_API_URL);
                 if (!response.IsSuccessStatusCode) return null;
 
                 var json = await response.Content.ReadAsStringAsync();

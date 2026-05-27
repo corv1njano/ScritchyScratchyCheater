@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ScritchyScratchyCheater.Models.GameData;
+using ScritchyScratchyCheater.ViewModels.Data;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
@@ -99,10 +99,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private ImageSource? _prestigeIcon;
 
         [ObservableProperty]
-        private string _searchGadget = string.Empty;
-        public ObservableCollection<GadgetItem> Gadgets { get; } = new();
-        public ICollectionView GadgetsView { get; }
-        public bool HasGadgets => !GadgetsView.IsEmpty;
+        private string _searchUpgrade = string.Empty;
+        public ObservableCollection<UpgradeItem> Upgrades { get; } = new();
+        public ICollectionView UpgradesView { get; }
+        public bool HasUpgrades => !UpgradesView.IsEmpty;
         #endregion
 
         #region Tab Achivements

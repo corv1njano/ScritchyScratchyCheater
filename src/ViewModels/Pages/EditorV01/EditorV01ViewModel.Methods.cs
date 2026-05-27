@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Models.GameData;
+using ScritchyScratchyCheater.ViewModels.Data;
 using System.Globalization;
-using System.Printing;
 using System.Windows;
 using System.Windows.Media;
 
@@ -103,22 +103,22 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         }
 
         [RelayCommand]
-        private void MaxGadgetBuyCountAll()
+        private void MaxUpgradeBuyCountAll()
         {
-            foreach (var gadget in Gadgets) gadget.BuyCountText = gadget.Gadget != null ? gadget.Gadget.MaxBuyCount.ToString() : "0";
+            foreach (var gadget in Upgrades) gadget.BuyCountText = gadget.Upgrade != null ? gadget.Upgrade.MaxBuyCount.ToString() : "0";
         }
 
         [RelayCommand]
-        private void MaxGadgetBuyCount(GadgetItem? item)
+        private void MaxUpgradeBuyCount(UpgradeItem? item)
         {
-            if (item == null || item.Gadget == null) return;
-            item.BuyCountText = item.Gadget.MaxBuyCount.ToString();
+            if (item == null || item.Upgrade == null) return;
+            item.BuyCountText = item.Upgrade.MaxBuyCount.ToString();
         }
 
-        partial void OnSearchGadgetChanged(string value)
+        partial void OnSearchUpgradeChanged(string value)
         {
-            GadgetsView.Refresh();
-            OnPropertyChanged(nameof(HasGadgets));
+            UpgradesView.Refresh();
+            OnPropertyChanged(nameof(HasUpgrades));
         }
         #endregion
 

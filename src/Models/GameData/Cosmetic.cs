@@ -2,12 +2,8 @@
 
 namespace ScritchyScratchyCheater.Models.GameData
 {
-    public sealed class Cosmetic
+    public sealed class Cosmetic : GameDataEntry
     {
-        public string Id { get; init; } = string.Empty;
-        public string Name { get; init; } = string.Empty;
-        public string IconId { get; init; } = string.Empty;
-
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public CosmeticCategory Category { get; set; } = CosmeticCategory.Other;
     }

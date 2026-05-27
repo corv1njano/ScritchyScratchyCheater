@@ -449,121 +449,456 @@
       ]
     },
     {
-      "type": "gadgets",
+      "type": "upgrades",
       "data": [
         {
           "id": "Badge Collection",
           "name": "Badge Collection",
-          "iconId": "gBadgeCollection",
+          "iconId": "uBadgeCollection",
           "maxBuyCount": 1
         },
         {
           "id": "Buying Speed",
           "name": "Buying Speed",
-          "iconId": "gBuyingSpeed",
+          "iconId": "uBuyingSpeed",
           "maxBuyCount": 10
         },
         {
           "id": "Egg Timer",
           "name": "Egg Timer",
-          "iconId": "gEggTimer",
+          "iconId": "uEggTimer",
           "maxBuyCount": 1
         },
         {
           "id": "Fan",
           "name": "Fan",
-          "iconId": "gFan",
+          "iconId": "uFan",
           "maxBuyCount": 1
         },
         {
           "id": "Fan Battery",
           "name": "Fan Battery",
-          "iconId": "gFanBattery",
+          "iconId": "uFanBattery",
           "maxBuyCount": 5
         },
         {
           "id": "Fan Speed",
           "name": "Fan Speed",
-          "iconId": "gFanSpeed",
+          "iconId": "uFanSpeed",
           "maxBuyCount": 5
         },
         {
           "id": "Mundo",
           "name": "Mundo",
-          "iconId": "gMundo",
+          "iconId": "uMundo",
           "maxBuyCount": 1
         },
         {
           "id": "Scratch Bot",
           "name": "Scratch Bot",
-          "iconId": "gScratchBot",
+          "iconId": "uScratchBot",
           "maxBuyCount": 1
         },
         {
           "id": "Scratch Bot Capacity",
           "name": "Scratch Bot Capacity",
-          "iconId": "gScratchBotCapacity",
+          "iconId": "uScratchBotCapacity",
           "maxBuyCount": 10
         },
         {
           "id": "Scratch Bot Speed",
           "name": "Scratch Bot Speed",
-          "iconId": "gScratchBotSpeed",
+          "iconId": "uScratchBotSpeed",
           "maxBuyCount": 30
         },
         {
           "id": "Scratch Bot Strength",
           "name": "Scratch Bot Strength",
-          "iconId": "gScratchBotStrength",
+          "iconId": "uScratchBotStrength",
           "maxBuyCount": 20
         },
         {
           "id": "Spell Book",
           "name": "Spell Book",
-          "iconId": "gSpellBook",
+          "iconId": "uSpellBook",
           "maxBuyCount": 1
         },
         {
           "id": "Spell Charge Speed",
           "name": "Spell Charge Speed",
-          "iconId": "gSpellChargeSpeed",
+          "iconId": "uSpellChargeSpeed",
           "maxBuyCount": 10
         },
         {
           "id": "Sticky Mat",
           "name": "Sticky Mat",
-          "iconId": "gStickyMat",
+          "iconId": "uStickyMat",
           "maxBuyCount": 1
         },
         {
           "id": "Subscription Bot",
           "name": "Subscription Bot",
-          "iconId": "gSubscriptionBot",
+          "iconId": "uSubscriptionBot",
           "maxBuyCount": 1
         },
         {
           "id": "Timer Capacity",
           "name": "Timer Capacity",
-          "iconId": "gTimerCapacity",
+          "iconId": "uTimerCapacity",
           "maxBuyCount": 10
         },
         {
           "id": "Timer Charge",
           "name": "Timer Charge",
-          "iconId": "gTimerCharge",
+          "iconId": "uTimerCharge",
           "maxBuyCount": 10
         },
         {
           "id": "Trash Can",
           "name": "Trash Can",
-          "iconId": "gTrashCan",
+          "iconId": "uTrashCan",
           "maxBuyCount": 1
         },
         {
           "id": "Warp Speed",
           "name": "Warp Speed",
-          "iconId": "gWarpSpeed",
+          "iconId": "uWarpSpeed",
           "maxBuyCount": 3
+        },
+        {
+          "id": "The Machine",
+          "name": "The Machine",
+          "iconId": "uTheMachine",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Luck",
+          "name": "Scratch Luck",
+          "iconId": "uScratchLuck",
+          "maxBuyCount": 45
+        },
+        {
+          "id": "Scratch Size_Base Coin",
+          "name": "Scratch Size Base Coin",
+          "iconId": "uScratchSizeBaseCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Tin Coin",
+          "name": "Tin Coin",
+          "iconId": "uTinCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Tin Coin",
+          "name": "Scratch Size Tin Coin",
+          "iconId": "uScratchSizeTinCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Aluminum Coin",
+          "name": "Aluminum Coin",
+          "iconId": "uAluminumCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Aluminum Coin",
+          "name": "Scratch Size Aluminum Coin",
+          "iconId": "uScratchSizeAluminumCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Copper Coin",
+          "name": "Copper Coin",
+          "iconId": "uCopperCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Copper Coin",
+          "name": "Scratch Size Copper Coin",
+          "iconId": "uScratchSizeCopperCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Bronze Coin",
+          "name": "Bronze Coin",
+          "iconId": "uBronzeCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Bronze Coin",
+          "name": "Scratch Size Bronze Coin",
+          "iconId": "uScratchSizeBronzeCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Iron Coin",
+          "name": "Iron Coin",
+          "iconId": "uIronCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Iron Coin",
+          "name": "Scratch Size Iron Coin",
+          "iconId": "uScratchSizeIronCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Steel Coin",
+          "name": "Steel Coin",
+          "iconId": "uSteelCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Steel Coin",
+          "name": "Scratch Size Steel Coin",
+          "iconId": "uScratchSizeSteelCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Titanium Coin",
+          "name": "Titanium Coin",
+          "iconId": "uTitaniumCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Titanium Coin",
+          "name": "Scratch Size Titanium Coin",
+          "iconId": "uScratchSizeTitaniumCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Tungsten Coin",
+          "name": "Tungsten Coin",
+          "iconId": "uTungstenCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Tungsten Coin",
+          "name": "Scratch Size Tungsten Coin",
+          "iconId": "uScratchSizeTungstenCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Mundo Speed",
+          "name": "Mundo Speed",
+          "iconId": "uMundoSpeed",
+          "maxBuyCount": 10
+        }
+      ]
+    },
+    {
+      "type": "prestige",
+      "data": [
+        {
+          "id": "Muscle Memory",
+          "name": "Muscle Memory",
+          "iconId": "pMuscleMemory",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Starter Kit",
+          "name": "Starter Kit",
+          "iconId": "pStarterKit",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Booster Kit",
+          "name": "Booster Kit",
+          "iconId": "pBoosterKit",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Jackpot Power",
+          "name": "Jackpot Power",
+          "iconId": "pJackpotPower",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Big Winner",
+          "name": "Big Winner",
+          "iconId": "pBigWinner",
+          "maxBuyCount": 7
+        },
+        {
+          "id": "Tool Belt",
+          "name": "Tool Belt",
+          "iconId": "pToolBelt",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Night Market",
+          "name": "Night Market",
+          "iconId": "pNightMarket",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Ignorance is Bliss",
+          "name": "Ignorance is Bliss",
+          "iconId": "pIgnoranceIsBliss",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Electric Fan",
+          "name": "Electric Fan",
+          "iconId": "pElectricFan",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Clean Freak",
+          "name": "Clean Freak",
+          "iconId": "pCleanFreak",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Self Made Millionaire",
+          "name": "Self Made Millionaire",
+          "iconId": "pSelfMadeMillionaire",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Less is More",
+          "name": "Less is More",
+          "iconId": "pLessIsMore",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Allowance",
+          "name": "Allowance",
+          "iconId": "pAllowance",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Super Lucky",
+          "name": "Super Lucky",
+          "iconId": "pSuperLucky",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Pet Lover",
+          "name": "Pet Lover",
+          "iconId": "pPetLover",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Picky Eater",
+          "name": "Picky Eater",
+          "iconId": "pPickyEater",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Shopping Spree",
+          "name": "Shopping Spree",
+          "iconId": "pShoppingSpree",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Air Condition",
+          "name": "Air Condition",
+          "iconId": "pAirCondition",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Fully Automated",
+          "name": "Fully Automated",
+          "iconId": "pFullyAutomated",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Completionist",
+          "name": "Completionist",
+          "iconId": "pCompletionist",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Dishwasher",
+          "name": "Dishwasher",
+          "iconId": "pDishwasher",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Fine Dining",
+          "name": "Fine Dining",
+          "iconId": "pFineDining",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Learn by Doing",
+          "name": "Learn by Doing",
+          "iconId": "pLearnByDoing",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Time Travel",
+          "name": "Time Travel",
+          "iconId": "pTimeTravel",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "PlateMaster5000",
+          "name": "PlateMaster5000",
+          "iconId": "pPlatemaster5000",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Magic",
+          "name": "Magic?",
+          "iconId": "pMagic",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Soft Hands",
+          "name": "Soft Hands",
+          "iconId": "pSoftHands",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Recycling",
+          "name": "Recycling",
+          "iconId": "pRecycling",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Refund",
+          "name": "Refund",
+          "iconId": "pRefund",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Smart Investment",
+          "name": "Smart Investment",
+          "iconId": "pSmartInvestment",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Hotkeys",
+          "name": "Hotkeys",
+          "iconId": "pHotkeys",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Collector",
+          "name": "Collector",
+          "iconId": "pCollector",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Experienced",
+          "name": "Experienced",
+          "iconId": "pExperienced",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Built Different",
+          "name": "Built Different",
+          "iconId": "pBuiltDifferent",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Loan Shark",
+          "name": "Loan Shark",
+          "iconId": "pLoanShark",
+          "maxBuyCount": 1
         }
       ]
     }

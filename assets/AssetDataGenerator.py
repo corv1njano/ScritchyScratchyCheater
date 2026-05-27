@@ -8,7 +8,7 @@ OUTPUT_IMAGE_NAME = "SpriteImages.png"
 OUTPUT_JSON_NAME = "SpriteData.json"
 GAME_VERSION = "1.1.19d"
 
-EXCLUDED_FOLDER_NAMES = ["upgrades"]
+EXCLUDED_FOLDER_NAMES = []
 
 
 def next_power_of_two_grid(count: int) -> int:

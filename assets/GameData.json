@@ -449,121 +449,241 @@
       ]
     },
     {
-      "type": "gadgets",
+      "type": "upgrades",
       "data": [
         {
           "id": "Badge Collection",
           "name": "Badge Collection",
-          "iconId": "gBadgeCollection",
+          "iconId": "uBadgeCollection",
           "maxBuyCount": 1
         },
         {
           "id": "Buying Speed",
           "name": "Buying Speed",
-          "iconId": "gBuyingSpeed",
+          "iconId": "uBuyingSpeed",
           "maxBuyCount": 10
         },
         {
           "id": "Egg Timer",
           "name": "Egg Timer",
-          "iconId": "gEggTimer",
+          "iconId": "uEggTimer",
           "maxBuyCount": 1
         },
         {
           "id": "Fan",
           "name": "Fan",
-          "iconId": "gFan",
+          "iconId": "uFan",
           "maxBuyCount": 1
         },
         {
           "id": "Fan Battery",
           "name": "Fan Battery",
-          "iconId": "gFanBattery",
+          "iconId": "uFanBattery",
           "maxBuyCount": 5
         },
         {
           "id": "Fan Speed",
           "name": "Fan Speed",
-          "iconId": "gFanSpeed",
+          "iconId": "uFanSpeed",
           "maxBuyCount": 5
         },
         {
           "id": "Mundo",
           "name": "Mundo",
-          "iconId": "gMundo",
+          "iconId": "uMundo",
           "maxBuyCount": 1
         },
         {
           "id": "Scratch Bot",
           "name": "Scratch Bot",
-          "iconId": "gScratchBot",
+          "iconId": "uScratchBot",
           "maxBuyCount": 1
         },
         {
           "id": "Scratch Bot Capacity",
           "name": "Scratch Bot Capacity",
-          "iconId": "gScratchBotCapacity",
+          "iconId": "uScratchBotCapacity",
           "maxBuyCount": 10
         },
         {
           "id": "Scratch Bot Speed",
           "name": "Scratch Bot Speed",
-          "iconId": "gScratchBotSpeed",
+          "iconId": "uScratchBotSpeed",
           "maxBuyCount": 30
         },
         {
           "id": "Scratch Bot Strength",
           "name": "Scratch Bot Strength",
-          "iconId": "gScratchBotStrength",
+          "iconId": "uScratchBotStrength",
           "maxBuyCount": 20
         },
         {
           "id": "Spell Book",
           "name": "Spell Book",
-          "iconId": "gSpellBook",
+          "iconId": "uSpellBook",
           "maxBuyCount": 1
         },
         {
           "id": "Spell Charge Speed",
           "name": "Spell Charge Speed",
-          "iconId": "gSpellChargeSpeed",
+          "iconId": "uSpellChargeSpeed",
           "maxBuyCount": 10
         },
         {
           "id": "Sticky Mat",
           "name": "Sticky Mat",
-          "iconId": "gStickyMat",
+          "iconId": "uStickyMat",
           "maxBuyCount": 1
         },
         {
           "id": "Subscription Bot",
           "name": "Subscription Bot",
-          "iconId": "gSubscriptionBot",
+          "iconId": "uSubscriptionBot",
           "maxBuyCount": 1
         },
         {
           "id": "Timer Capacity",
           "name": "Timer Capacity",
-          "iconId": "gTimerCapacity",
+          "iconId": "uTimerCapacity",
           "maxBuyCount": 10
         },
         {
           "id": "Timer Charge",
           "name": "Timer Charge",
-          "iconId": "gTimerCharge",
+          "iconId": "uTimerCharge",
           "maxBuyCount": 10
         },
         {
           "id": "Trash Can",
           "name": "Trash Can",
-          "iconId": "gTrashCan",
+          "iconId": "uTrashCan",
           "maxBuyCount": 1
         },
         {
           "id": "Warp Speed",
           "name": "Warp Speed",
-          "iconId": "gWarpSpeed",
+          "iconId": "uWarpSpeed",
           "maxBuyCount": 3
+        },
+        {
+          "id": "The Machine",
+          "name": "The Machine",
+          "iconId": "uTheMachine",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Luck",
+          "name": "Scratch Luck",
+          "iconId": "uScratchLuck",
+          "maxBuyCount": 45
+        },
+        {
+          "id": "Scratch Size_Base Coin",
+          "name": "Scratch Size Base Coin",
+          "iconId": "uScratchSizeBaseCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Tin Coin",
+          "name": "Tin Coin",
+          "iconId": "uTinCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Tin Coin",
+          "name": "Scratch Size Tin Coin",
+          "iconId": "uScratchSizeTinCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Aluminum Coin",
+          "name": "Aluminum Coin",
+          "iconId": "uAluminumCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Aluminum Coin",
+          "name": "Scratch Size Aluminum Coin",
+          "iconId": "uScratchSizeAluminumCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Copper Coin",
+          "name": "Copper Coin",
+          "iconId": "uCopperCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Copper Coin",
+          "name": "Scratch Size Copper Coin",
+          "iconId": "uScratchSizeCopperCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Bronze Coin",
+          "name": "Bronze Coin",
+          "iconId": "uBronzeCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Bronze Coin",
+          "name": "Scratch Size Bronze Coin",
+          "iconId": "uScratchSizeBronzeCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Iron Coin",
+          "name": "Iron Coin",
+          "iconId": "uIronCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Iron Coin",
+          "name": "Scratch Size Iron Coin",
+          "iconId": "uScratchSizeIronCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Steel Coin",
+          "name": "Steel Coin",
+          "iconId": "uSteelCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Steel Coin",
+          "name": "Scratch Size Steel Coin",
+          "iconId": "uScratchSizeSteelCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Titanium Coin",
+          "name": "Titanium Coin",
+          "iconId": "uTitaniumCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Titanium Coin",
+          "name": "Scratch Size Titanium Coin",
+          "iconId": "uScratchSizeTitaniumCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Tungsten Coin",
+          "name": "Tungsten Coin",
+          "iconId": "uTungstenCoin",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Scratch Size_Tungsten Coin",
+          "name": "Scratch Size Tungsten Coin",
+          "iconId": "uScratchSizeTungstenCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Mundo Speed",
+          "name": "Mundo Speed",
+          "iconId": "uMundoSpeed",
+          "maxBuyCount": 10
         }
       ]
     },

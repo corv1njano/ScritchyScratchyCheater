@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Interfaces;
-using ScritchyScratchyCheater.Models.GameData;
 using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
 using ScritchyScratchyCheater.Utilities;
+using ScritchyScratchyCheater.ViewModels.Data;
 using ScritchyScratchyCheater.Views.Pages;
 using System.Diagnostics;
 using System.Globalization;
@@ -31,11 +31,11 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && (string.IsNullOrWhiteSpace(SearchTicket)
                 || ticket.Ticket!.Name.Contains(SearchTicket, StringComparison.OrdinalIgnoreCase));
 
-            GadgetsView = CollectionViewSource.GetDefaultView(Gadgets);
-            GadgetsView.Filter = item =>
-                item is GadgetItem gadget
-                && (string.IsNullOrWhiteSpace(SearchGadget)
-                || gadget.Gadget!.Name.Contains(SearchGadget, StringComparison.OrdinalIgnoreCase));
+            UpgradesView = CollectionViewSource.GetDefaultView(Upgrades);
+            UpgradesView.Filter = item =>
+                item is UpgradeItem gadget
+                && (string.IsNullOrWhiteSpace(SearchUpgrade)
+                || gadget.Upgrade!.Name.Contains(SearchUpgrade, StringComparison.OrdinalIgnoreCase));
 
             AchievementsView = CollectionViewSource.GetDefaultView(Achievements);
             AchievementsView.Filter = item =>
@@ -54,7 +54,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && IsMachineTierValid
                 && IsEelectricFanChargeValid
                 && IsEggTimerChargeValid
-                && Gadgets.All(u => u.IsBuyCountValid);
+                && Upgrades.All(u => u.IsBuyCountValid);
         }
 
         /// <summary>
@@ -65,20 +65,20 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             await App.ResourceParser.LoadSpritesAsync();
 
-            MoneyIcon = App.ResourceParser.GetSprite("money");
-            PrestigeIcon = App.ResourceParser.GetSprite("prestige");
-            TokensIcon = App.ResourceParser.GetSprite("token");
-            SoulsIcon = App.ResourceParser.GetSprite("soul");
-            StarIcon = App.ResourceParser.GetSprite("star");
-            CyanStarIcon = App.ResourceParser.GetSprite("cyanStar");
-            TheMachine = App.ResourceParser.GetSprite("gTheMachine");
-            ElectricFanIcon = App.ResourceParser.GetSprite("gFan");
-            EggTimerIcon = App.ResourceParser.GetSprite("gEggTimer");
-            MundoIcon = App.ResourceParser.GetSprite("gMundo");
-            TrashCanIcon = App.ResourceParser.GetSprite("gTrashCan");
+            MoneyIcon = App.ResourceParser.GetSprite("mMoney");
+            PrestigeIcon = App.ResourceParser.GetSprite("mPrestige");
+            TokensIcon = App.ResourceParser.GetSprite("mToken");
+            SoulsIcon = App.ResourceParser.GetSprite("mSoul");
+            StarIcon = App.ResourceParser.GetSprite("mStar");
+            CyanStarIcon = App.ResourceParser.GetSprite("mCyanStar");
+            TheMachine = App.ResourceParser.GetSprite("uTheMachine");
+            ElectricFanIcon = App.ResourceParser.GetSprite("uFan");
+            EggTimerIcon = App.ResourceParser.GetSprite("uEggTimer");
+            MundoIcon = App.ResourceParser.GetSprite("uMundo");
+            TrashCanIcon = App.ResourceParser.GetSprite("uTrashCan");
 
             TicketsView.Refresh();
-            GadgetsView.Refresh();
+            UpgradesView.Refresh();
             AchievementsView.Refresh();
 
             // lists, that are independent from loaded save file data, thus they need to bet set to index 0
@@ -135,20 +135,20 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             PrestigeText = sf.PrestigeCurrency.ToString();
 
-            var gadgetDic = sf.LayerOne.UpgradeDataDict ?? new Dictionary<string, UpgradeDataV01>();
+            var upgradeDic = sf.LayerOne.UpgradeDataDict ?? new Dictionary<string, UpgradeDataV01>();
 
-            Gadgets.Clear();
-            foreach (var gadget in App.GameDataParser.GetGadgets())
+            Upgrades.Clear();
+            foreach (var upgrade in App.GameDataParser.GetUpgrades())
             {
-                var item = new GadgetItem
+                var item = new UpgradeItem
                 {
-                    Gadget = gadget,
-                    BuyCountText = (gadgetDic.TryGetValue(gadget.Id, out var upgrade) ? upgrade.BuyCount : 0).ToString()
+                    Upgrade = upgrade,
+                    BuyCountText = (upgradeDic.TryGetValue(upgrade.Id, out var value) ? value.BuyCount : 0).ToString()
                 };
 
                 // subscribe to make GadgetItem ViewModel know when validity check changes
                 item.PropertyChanged += (_, _) => OnPropertyChanged(nameof(CanSave));
-                Gadgets.Add(item);
+                Upgrades.Add(item);
             }
 
             var achievementsGotten = sf.AchievementsGotten ?? new List<string>();
@@ -190,6 +190,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             IsTrashCanDead = sf.LayerOne.TrashCanDead;
         }
 
+        #region save methods
         [RelayCommand]
         private async Task SaveChanges()
         {
@@ -220,7 +221,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             _isSaving = false;
         }
 
-        #region save methods
         private void SaveProgress(SaveFileV01 sf)
         {
             if (sf == null || sf.LayerOne == null) return;
@@ -273,17 +273,17 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             var layer = sf.LayerOne;
 
-            foreach (var gadget in Gadgets)
+            foreach (var upgrade in Upgrades)
             {
-                var id = gadget.Gadget?.Id;
-                if (gadget.Gadget== null || string.IsNullOrWhiteSpace(id)) continue;
+                var id = upgrade.Upgrade?.Id;
+                if (upgrade.Upgrade == null || string.IsNullOrWhiteSpace(id)) continue;
 
                 if (layer.UpgradeDataDict!.ContainsKey(id))
                 {
                     layer.UpgradeDataDict[id] = new UpgradeDataV01
                     {
                         Id = id,
-                        BuyCount = int.Parse(gadget.BuyCountText)
+                        BuyCount = int.Parse(upgrade.BuyCountText)
                     };
                 }
             }
@@ -433,75 +433,4 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             LoadDataToUi();
         }
     }
-
-    #region data containers
-    public sealed partial class GadgetItem : ObservableObject
-    {
-        public Gadget? Gadget { get; init; }
-
-        [ObservableProperty]
-        private string _buyCountText = "0";
-
-        public bool IsGadgetMaxedOut => int.TryParse(BuyCountText, out var value)
-            && value == Gadget?.MaxBuyCount;
-        public bool IsBuyCountValid => int.TryParse(BuyCountText, out var value)
-            && value >= 0
-            && value <= (Gadget?.MaxBuyCount ?? 0);
-
-        partial void OnBuyCountTextChanged(string value)
-        {
-            OnPropertyChanged(nameof(IsBuyCountValid));
-            OnPropertyChanged(nameof(IsGadgetMaxedOut));
-        }
-    }
-
-    public sealed partial class CatalogItem : ObservableObject
-    {
-        public Catalog? Catalog { get; init; }
-
-        [ObservableProperty]
-        private bool _isClaimed;
-    }
-
-    public sealed partial class TicketItem : ObservableObject
-    {
-        public Ticket? Ticket { get; init; }
-
-        [ObservableProperty]
-        private bool _gottenJackpot;
-
-        [ObservableProperty]
-        private bool _gottenSuperJackpot;
-
-        [ObservableProperty]
-        private int _level; // check if int
-
-        [ObservableProperty]
-        private int _xp; // check if int
-    }
-
-    public sealed partial class AchievementItem : ObservableObject
-    {
-        public Achievement? Achievement { get; init; }
-
-        [ObservableProperty]
-        private bool _isUnlocked;
-
-        [ObservableProperty]
-        private bool _isClaimed;
-    }
-
-    public sealed partial class CosmeticItem : ObservableObject
-    {
-        public Cosmetic? Cosmetic { get; init; }
-
-        [ObservableProperty]
-        private bool _isPurchased;
-
-        [ObservableProperty]
-        private bool _isEquipped;
-
-        public string DisplayName => Cosmetic?.Name ?? "None (default)";
-    }
-    #endregion
 }

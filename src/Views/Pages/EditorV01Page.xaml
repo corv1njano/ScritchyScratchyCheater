@@ -194,17 +194,19 @@
 
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <controls:TextBoxPlaceholder Grid.Column="0"
+                                <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Ticket:" Margin="0,0,8,0"/>
+                                <controls:TextBoxPlaceholder Grid.Column="1"
                                                              Style="{StaticResource TextBox.ListSearch}"
                                                              PlaceholderText="Search ticket..."
                                                              IsClearable="True"
                                                              Text="{Binding SearchTicket, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Button Grid.Column="1" Content="Jackpot All" Style="{StaticResource blockbtn}" Command="{Binding JackpotAllTicketsCommand}" ToolTip="All Tickets get Jackpots"/>
-                                <Button Grid.Column="2" Content="Super Jackpot All" Style="{StaticResource blockbtn}" Command="{Binding SuperJackpotAllTicketsCommand}" ToolTip="All Tickets get Super Jackpots"/>
+                                <Button Grid.Column="2" Content="Jackpot All" Style="{StaticResource blockbtn}" Command="{Binding JackpotAllTicketsCommand}" ToolTip="All Tickets get Jackpots"/>
+                                <Button Grid.Column="3" Content="Super Jackpot All" Style="{StaticResource blockbtn}" Command="{Binding SuperJackpotAllTicketsCommand}" ToolTip="All Tickets get Super Jackpots"/>
                             </Grid>
 
                             <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
@@ -286,22 +288,53 @@
             <controls:IconTabItem Header="Upgrades" Icon="{StaticResource Icon.Upgrades}">
                 <Grid Style="{StaticResource contentGrid}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
                     <Border Grid.Row="0" Style="{StaticResource Border.Default}">
                         <Grid Margin="8">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding PrestigeIcon}"/>
-                            <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Prestige:"/>
-                            <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeValid}"/>
-                            <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeCommand}"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding PrestigeIcon}"/>
+                                <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Prestige:"/>
+                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeValid}"/>
+                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeCommand}"/>
+                            </Grid>
+
+                            <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
+
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Prestige Upgrade:" Margin="0,0,8,0"/>
+                                <controls:TextBoxPlaceholder Grid.Column="1"
+                                                             Style="{StaticResource TextBox.ListSearch}"
+                                                             PlaceholderText="Search prestige upgrade..."
+                                                             IsClearable="True"
+                                                             Text="{Binding SearchPrestige, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Button Grid.Column="2" Content="Max All" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeAllCommand}" ToolTip="Set maximum Level for all Prestige Upgrades"/>
+                            </Grid>
+
+                            <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
+
                         </Grid>
                     </Border>
 
@@ -315,21 +348,22 @@
 
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <controls:TextBoxPlaceholder Grid.Column="0"
+                                <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Gadget / Upgrade:" Margin="0,0,8,0"/>
+                                <controls:TextBoxPlaceholder Grid.Column="1"
                                          Style="{StaticResource TextBox.ListSearch}"
-                                         PlaceholderText="Search gadget..."
+                                         PlaceholderText="Search gadget or upgrade..."
                                          IsClearable="True"
-                                         Text="{Binding SearchGadget, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Button Grid.Column="2" Content="Max All" Style="{StaticResource blockbtn}" Command="{Binding MaxGadgetBuyCountAllCommand}" ToolTip="Set maximum Level for all Gadgets"/>
+                                         Text="{Binding SearchUpgrade, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Button Grid.Column="2" Content="Max All" Style="{StaticResource blockbtn}" Command="{Binding MaxUpgradeBuyCountAllCommand}" ToolTip="Set maximum Level for all Upgrades and Gadgets"/>
                             </Grid>
 
                             <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
 
-                            <ListBox Grid.Row="2" Style="{StaticResource ListBox.Default}" ItemsSource="{Binding GadgetsView}" Visibility="{Binding HasGadgets, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <ListBox Grid.Row="2" Style="{StaticResource ListBox.Default}" ItemsSource="{Binding UpgradesView}" Visibility="{Binding HasUpgrades, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -338,20 +372,20 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
-                                                <Image Height="30" Width="30" Source="{Binding Gadget.IconId, Converter={StaticResource IconIdToImageConverter}}"/>
-                                                <TextBlock Text="{Binding Gadget.Name}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                                <Image Height="30" Width="30" Source="{Binding Upgrade.IconId, Converter={StaticResource IconIdToImageConverter}}"/>
+                                                <TextBlock Text="{Binding Upgrade.Name}" Margin="5,0,0,0" VerticalAlignment="Center"/>
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                <TextBlock ToolTip="Gadget is maxed out" Text="Maxed" Opacity="0.5" Style="{StaticResource TextBlock.Base}" VerticalAlignment="Center" Margin="0,0,16,0" Visibility="{Binding IsGadgetMaxedOut, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                <TextBlock ToolTip="Buy Count is maxed out" Text="Maxed" Foreground="{StaticResource CJG.Accent}" Style="{StaticResource TextBlock.Base}" VerticalAlignment="Center" Margin="0,0,16,0" Visibility="{Binding IsMaxedOut, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                 <TextBlock Text="Buy Count:" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                                 <controls:ValidatedTextBox Style="{StaticResource TextBox.Validated}" Width="50" Text="{Binding BuyCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsBuyCountValid}"/>
-                                                <Button Style="{StaticResource blockbtn}" Margin="3,0,0,0" Width="50" Command="{Binding DataContext.MaxGadgetBuyCountCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
+                                                <Button Style="{StaticResource blockbtn}" Margin="3,0,0,0" Width="50" Command="{Binding DataContext.MaxUpgradeBuyCountCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
                                             </StackPanel>
                                         </Grid>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
-                            <TextBlock Text="No gadgets found with that name." HorizontalAlignment="Center" Style="{StaticResource TextBlock.Base}" Grid.Row="2" Visibility="{Binding HasGadgets, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                            <TextBlock Text="No gadgets or upgrades found with that name." HorizontalAlignment="Center" Style="{StaticResource TextBlock.Base}" Grid.Row="2" Visibility="{Binding HasUpgrades, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                         </Grid>
                     </Border>
                 </Grid>
@@ -369,17 +403,19 @@
 
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <controls:TextBoxPlaceholder Grid.Column="0"
+                                <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Achievement:" Margin="0,0,8,0"/>
+                                <controls:TextBoxPlaceholder Grid.Column="1"
                                              Style="{StaticResource TextBox.ListSearch}"
                                              PlaceholderText="Search achievement..."
                                              IsClearable="True"
                                              Text="{Binding SearchAchievement, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Button Grid.Column="1" Content="Unlock All" Style="{StaticResource blockbtn}" Command="{Binding UnlockAllAchievementsCommand}" ToolTip="Unlock all Achievements"/>
-                                <Button Grid.Column="2" Content="Claim All" Style="{StaticResource blockbtn}" Command="{Binding ClaimAllAchievementsCommand}" ToolTip="Claim all Achievements"/>
+                                <Button Grid.Column="2" Content="Unlock All" Style="{StaticResource blockbtn}" Command="{Binding UnlockAllAchievementsCommand}" ToolTip="Unlock all Achievements"/>
+                                <Button Grid.Column="3" Content="Claim All" Style="{StaticResource blockbtn}" Command="{Binding ClaimAllAchievementsCommand}" ToolTip="Claim all Achievements"/>
                             </Grid>
 
                             <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
