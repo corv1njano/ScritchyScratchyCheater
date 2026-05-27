@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Interfaces;
-using ScritchyScratchyCheater.Models.GameData;
 using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
 using ScritchyScratchyCheater.Utilities;
@@ -27,28 +26,16 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             LoadDataToUi();
 
             TicketsView = CollectionViewSource.GetDefaultView(Tickets);
-            TicketsView.Filter = item =>
-                item is TicketItem ticket
-                && (string.IsNullOrWhiteSpace(SearchTicket)
-                || ticket.Ticket!.Name.Contains(SearchTicket, StringComparison.OrdinalIgnoreCase));
+            TicketsView.Filter = Utils.CreateNameFilter<TicketItem>(t => t.Ticket?.Name, () => SearchTicket);
 
             PrestigeUpgradesView = CollectionViewSource.GetDefaultView(PrestigeUpgrades);
-            PrestigeUpgradesView.Filter = item =>
-                item is PrestigeUpgradeItem prestigeUpgrade
-                && (string.IsNullOrWhiteSpace(SearchPrestigeUpgrade)
-                || prestigeUpgrade.PrestigeUpgrade!.Name.Contains(SearchPrestigeUpgrade, StringComparison.OrdinalIgnoreCase));
+            PrestigeUpgradesView.Filter = Utils.CreateNameFilter<PrestigeUpgradeItem>(p => p.PrestigeUpgrade?.Name, () => SearchPrestigeUpgrade);
 
             UpgradesView = CollectionViewSource.GetDefaultView(Upgrades);
-            UpgradesView.Filter = item =>
-                item is UpgradeItem upgrade
-                && (string.IsNullOrWhiteSpace(SearchUpgrade)
-                || upgrade.Upgrade!.Name.Contains(SearchUpgrade, StringComparison.OrdinalIgnoreCase));
+            UpgradesView.Filter = Utils.CreateNameFilter<UpgradeItem>(u => u.Upgrade?.Name, () => SearchUpgrade);
 
             AchievementsView = CollectionViewSource.GetDefaultView(Achievements);
-            AchievementsView.Filter = item =>
-                item is AchievementItem achievement
-                && (string.IsNullOrWhiteSpace(SearchAchievement)
-                || achievement.Achievement!.Name.Contains(SearchAchievement, StringComparison.OrdinalIgnoreCase));
+            AchievementsView.Filter = Utils.CreateNameFilter<AchievementItem>(a => a.Achievement?.Name, () => SearchAchievement);
         }
 
         private bool CheckCanSave()
