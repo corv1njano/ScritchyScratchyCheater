@@ -99,6 +99,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private ImageSource? _prestigeIcon;
 
         [ObservableProperty]
+        private string _searchPrestigeUpgrade = string.Empty;
+        public ObservableCollection<PrestigeUpgradeItem> PrestigeUpgrades { get; } = new();
+        public ICollectionView PrestigeUpgradesView { get; }
+        public bool HasPrestigeUpgrades => !PrestigeUpgradesView.IsEmpty;
+
+        [ObservableProperty]
         private string _searchUpgrade = string.Empty;
         public ObservableCollection<UpgradeItem> Upgrades { get; } = new();
         public ICollectionView UpgradesView { get; }

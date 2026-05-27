@@ -9,6 +9,7 @@
     <Color x:Key="CJG.Color.TitleBar.Close">#CF4848</Color>
     <SolidColorBrush x:Key="CJG.StatusBar" Color="#101622"/>
     
+    
     <SolidColorBrush x:Key="CJG.Block.Background" Color="#1B222E"/>
     <Color x:Key="CJG.Block.Background.Color">#1B222E</Color>
     <SolidColorBrush x:Key="CJG.Block2.Background" Color="#1C2534"/>

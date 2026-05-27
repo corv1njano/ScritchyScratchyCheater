@@ -8,6 +8,13 @@ namespace ScritchyScratchyCheater.Controls
     /// </summary>
     public class ValidatedTextBox : TextBox
     {
+        static ValidatedTextBox()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(ValidatedTextBox),
+                new FrameworkPropertyMetadata(typeof(ValidatedTextBox)));
+        }
+
         public static readonly DependencyProperty IsValidProperty =
         DependencyProperty.Register(
             nameof(IsValid),
@@ -19,13 +26,6 @@ namespace ScritchyScratchyCheater.Controls
         {
             get => (bool)GetValue(IsValidProperty);
             set => SetValue(IsValidProperty, value);
-        }
-
-        static ValidatedTextBox()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(
-                typeof(ValidatedTextBox),
-                new FrameworkPropertyMetadata(typeof(ValidatedTextBox)));
         }
     }
 }

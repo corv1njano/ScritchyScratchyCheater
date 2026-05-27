@@ -32,7 +32,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="Resources\Fonts\montserrat_bold.ttf" />
 		<None Remove="Resources\montserrat_medium.ttf" />
 	</ItemGroup>
 
@@ -43,9 +42,9 @@
 	<ItemGroup>
 		<Resource Include="Resources\Data\GameData.json" />
 		<Resource Include="Resources\Data\SpriteData.json" />
-		<Resource Include="Resources\Fonts\montserrat_bold.ttf" />
+		<Resource Include="Resources\Fonts\MontserratBold.ttf" />
 		<Resource Include="Resources\Images\AppLogo.png" />
-		<Resource Include="Resources\Fonts\montserrat_medium.ttf" />
+		<Resource Include="Resources\Fonts\MontserratMedium.ttf" />
 		<Resource Include="Resources\Images\SpriteImages.png" />
 	</ItemGroup>
 

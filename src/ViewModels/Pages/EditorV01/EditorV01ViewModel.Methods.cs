@@ -103,9 +103,26 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         }
 
         [RelayCommand]
+        private void MaxPrestigeUpgradeBuyCountAll()
+        {
+            foreach (var upgrade in PrestigeUpgrades) upgrade.BuyCountText = upgrade.PrestigeUpgrade != null
+                    ? upgrade.PrestigeUpgrade.MaxBuyCount.ToString()
+                    : "0";
+        }
+
+        [RelayCommand]
+        private void MaxPrestigeUpgradeBuyCount(PrestigeUpgradeItem? item)
+        {
+            if (item == null || item.PrestigeUpgrade == null) return;
+            item.BuyCountText = item.PrestigeUpgrade.MaxBuyCount.ToString();
+        }
+
+        [RelayCommand]
         private void MaxUpgradeBuyCountAll()
         {
-            foreach (var gadget in Upgrades) gadget.BuyCountText = gadget.Upgrade != null ? gadget.Upgrade.MaxBuyCount.ToString() : "0";
+            foreach (var gadget in Upgrades) gadget.BuyCountText = gadget.Upgrade != null
+                    ? gadget.Upgrade.MaxBuyCount.ToString()
+                    : "0";
         }
 
         [RelayCommand]
@@ -113,6 +130,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (item == null || item.Upgrade == null) return;
             item.BuyCountText = item.Upgrade.MaxBuyCount.ToString();
+        }
+
+        partial void OnSearchPrestigeUpgradeChanged(string value)
+        {
+            PrestigeUpgradesView.Refresh();
+            OnPropertyChanged(nameof(HasPrestigeUpgrades));
         }
 
         partial void OnSearchUpgradeChanged(string value)

@@ -300,7 +300,6 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
                             <Grid Grid.Row="0">
@@ -329,12 +328,35 @@
                                                              Style="{StaticResource TextBox.ListSearch}"
                                                              PlaceholderText="Search prestige upgrade..."
                                                              IsClearable="True"
-                                                             Text="{Binding SearchPrestige, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Button Grid.Column="2" Content="Max All" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeAllCommand}" ToolTip="Set maximum Level for all Prestige Upgrades"/>
+                                                             Text="{Binding SearchPrestigeUpgrade, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Button Grid.Column="2" Content="Max All" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeUpgradeBuyCountAllCommand}" ToolTip="Set maximum Buy Count for all Prestige Upgrades"/>
                             </Grid>
 
                             <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
 
+                            <ListBox Grid.Row="4" Style="{StaticResource ListBox.Default}" ItemsSource="{Binding PrestigeUpgradesView}" Visibility="{Binding HasPrestigeUpgrades, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                <Image Height="30" Width="30" Source="{Binding PrestigeUpgrade.IconId, Converter={StaticResource IconIdToImageConverter}}"/>
+                                                <TextBlock Text="{Binding PrestigeUpgrade.Name}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                <TextBlock ToolTip="Buy Count is maxed out" Text="Maxed" Foreground="{StaticResource CJG.Accent}" Style="{StaticResource TextBlock.Base}" VerticalAlignment="Center" Margin="0,0,16,0" Visibility="{Binding IsMaxedOut, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                                                <TextBlock Text="Buy Count:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                                <controls:ValidatedTextBox Style="{StaticResource TextBox.Validated}" Width="50" Text="{Binding BuyCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsBuyCountValid}"/>
+                                                <Button Style="{StaticResource blockbtn}" Margin="3,0,0,0" Width="50" Command="{Binding DataContext.MaxPrestigeUpgradeBuyCountCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <TextBlock Text="No prestige upgrades found with that name." HorizontalAlignment="Center" Style="{StaticResource TextBlock.Base}" Grid.Row="4" Visibility="{Binding HasPrestigeUpgrades, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                         </Grid>
                     </Border>
 
@@ -358,7 +380,7 @@
                                          PlaceholderText="Search gadget or upgrade..."
                                          IsClearable="True"
                                          Text="{Binding SearchUpgrade, UpdateSourceTrigger=PropertyChanged}"/>
-                                <Button Grid.Column="2" Content="Max All" Style="{StaticResource blockbtn}" Command="{Binding MaxUpgradeBuyCountAllCommand}" ToolTip="Set maximum Level for all Upgrades and Gadgets"/>
+                                <Button Grid.Column="2" Content="Max All" Style="{StaticResource blockbtn}" Command="{Binding MaxUpgradeBuyCountAllCommand}" ToolTip="Set maximum Buy Count for all Upgrades and Gadgets"/>
                             </Grid>
 
                             <Border Grid.Row="1" Style="{StaticResource blockBod}"/>

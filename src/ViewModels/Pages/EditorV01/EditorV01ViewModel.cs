@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Interfaces;
+using ScritchyScratchyCheater.Models.GameData;
 using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
 using ScritchyScratchyCheater.Utilities;
@@ -31,11 +32,17 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && (string.IsNullOrWhiteSpace(SearchTicket)
                 || ticket.Ticket!.Name.Contains(SearchTicket, StringComparison.OrdinalIgnoreCase));
 
+            PrestigeUpgradesView = CollectionViewSource.GetDefaultView(PrestigeUpgrades);
+            PrestigeUpgradesView.Filter = item =>
+                item is PrestigeUpgradeItem prestigeUpgrade
+                && (string.IsNullOrWhiteSpace(SearchPrestigeUpgrade)
+                || prestigeUpgrade.PrestigeUpgrade!.Name.Contains(SearchPrestigeUpgrade, StringComparison.OrdinalIgnoreCase));
+
             UpgradesView = CollectionViewSource.GetDefaultView(Upgrades);
             UpgradesView.Filter = item =>
-                item is UpgradeItem gadget
+                item is UpgradeItem upgrade
                 && (string.IsNullOrWhiteSpace(SearchUpgrade)
-                || gadget.Upgrade!.Name.Contains(SearchUpgrade, StringComparison.OrdinalIgnoreCase));
+                || upgrade.Upgrade!.Name.Contains(SearchUpgrade, StringComparison.OrdinalIgnoreCase));
 
             AchievementsView = CollectionViewSource.GetDefaultView(Achievements);
             AchievementsView.Filter = item =>
@@ -54,7 +61,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && IsMachineTierValid
                 && IsEelectricFanChargeValid
                 && IsEggTimerChargeValid
-                && Upgrades.All(u => u.IsBuyCountValid);
+                && Upgrades.All(u => u.IsBuyCountValid)
+                && PrestigeUpgrades.All(u => u.IsBuyCountValid);
         }
 
         /// <summary>
@@ -78,6 +86,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             TrashCanIcon = App.ResourceParser.GetSprite("uTrashCan");
 
             TicketsView.Refresh();
+            PrestigeUpgradesView.Refresh();
             UpgradesView.Refresh();
             AchievementsView.Refresh();
 
@@ -134,6 +143,22 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             }
 
             PrestigeText = sf.PrestigeCurrency.ToString();
+
+            var prestigeUpgradeDic = sf.BoughtPrestigeUpgrades ?? new Dictionary<string, int>();
+
+            PrestigeUpgrades.Clear();
+            foreach (var prestigeUpgrade in App.GameDataParser.GetPrestigeUpgrades())
+            {
+                var item = new PrestigeUpgradeItem
+                {
+                    PrestigeUpgrade = prestigeUpgrade,
+                    BuyCountText = (prestigeUpgradeDic.TryGetValue(prestigeUpgrade.Id, out var value) ? value : 0).ToString()
+                };
+
+                // subscribe to make GadgetItem ViewModel know when validity check changes
+                item.PropertyChanged += (_, _) => OnPropertyChanged(nameof(CanSave));
+                PrestigeUpgrades.Add(item);
+            }
 
             var upgradeDic = sf.LayerOne.UpgradeDataDict ?? new Dictionary<string, UpgradeDataV01>();
 
@@ -271,16 +296,25 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (sf == null || sf.LayerOne == null) return;
 
-            var layer = sf.LayerOne;
+            foreach (var entry in PrestigeUpgrades)
+            {
+                var id = entry.PrestigeUpgrade?.Id;
+                if (entry.PrestigeUpgrade == null || string.IsNullOrWhiteSpace(id)) continue;
+
+                if (sf.BoughtPrestigeUpgrades!.ContainsKey(id))
+                {
+                    sf.BoughtPrestigeUpgrades[id] = int.TryParse(entry.BuyCountText, out var count) ? count : 0;
+                }
+            }
 
             foreach (var upgrade in Upgrades)
             {
                 var id = upgrade.Upgrade?.Id;
                 if (upgrade.Upgrade == null || string.IsNullOrWhiteSpace(id)) continue;
 
-                if (layer.UpgradeDataDict!.ContainsKey(id))
+                if (sf.LayerOne!.UpgradeDataDict!.ContainsKey(id))
                 {
-                    layer.UpgradeDataDict[id] = new UpgradeDataV01
+                    sf.LayerOne.UpgradeDataDict[id] = new UpgradeDataV01
                     {
                         Id = id,
                         BuyCount = int.Parse(upgrade.BuyCountText)
