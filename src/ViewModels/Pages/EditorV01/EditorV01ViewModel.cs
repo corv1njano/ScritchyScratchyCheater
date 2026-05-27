@@ -85,6 +85,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             UpdateCurrentCosmeticImage();
         }
 
+        #region loading data
         private void LoadDataToUi()
         {
             if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 sf) return;
@@ -131,6 +132,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             PrestigeText = sf.PrestigeCurrency.ToString();
 
+            _deathByFinalChanceCount = sf.DeathByFinalChanceCount;
             var prestigeUpgradeDic = sf.BoughtPrestigeUpgrades ?? new Dictionary<string, int>();
 
             PrestigeUpgrades.Clear();
@@ -142,10 +144,15 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                     BuyCountText = (prestigeUpgradeDic.TryGetValue(prestigeUpgrade.Id, out var value) ? value : 0).ToString()
                 };
 
-                // subscribe to make GadgetItem ViewModel know when validity check changes
-                item.PropertyChanged += (_, _) => OnPropertyChanged(nameof(CanSave));
+                // validate input and update final chance death counter if needed
+                item.PropertyChanged += (_, e) =>
+                {
+                    OnPropertyChanged(nameof(CanSave));
+                    if (e.PropertyName == nameof(PrestigeUpgradeItem.BuyCountText)) UpdateDeathCount(item);
+                };
                 PrestigeUpgrades.Add(item);
             }
+            foreach (var item in PrestigeUpgrades) UpdateDeathCount(item);
 
             var upgradeDic = sf.LayerOne.UpgradeDataDict ?? new Dictionary<string, UpgradeDataV01>();
 
@@ -201,8 +208,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             IsMundoDead = sf.LayerOne.MundoDead;
             IsTrashCanDead = sf.LayerOne.TrashCanDead;
         }
+        #endregion
 
-        #region save methods
+        #region saveing data
         [RelayCommand]
         private async Task SaveChanges()
         {
@@ -310,6 +318,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             }
 
             sf.PrestigeCurrency = int.Parse(PrestigeText);
+            sf.DeathByFinalChanceCount = _deathByFinalChanceCount;
         }
 
         private void SaveAchievements(SaveFileV01 sf)

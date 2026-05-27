@@ -108,13 +108,41 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             foreach (var upgrade in PrestigeUpgrades) upgrade.BuyCountText = upgrade.PrestigeUpgrade != null
                     ? upgrade.PrestigeUpgrade.MaxBuyCount.ToString()
                     : "0";
+
+            if (_deathByFinalChanceCount < 4) _deathByFinalChanceCount = 4;
         }
 
         [RelayCommand]
         private void MaxPrestigeUpgradeBuyCount(PrestigeUpgradeItem? item)
         {
             if (item == null || item.PrestigeUpgrade == null) return;
+
             item.BuyCountText = item.PrestigeUpgrade.MaxBuyCount.ToString();
+
+            UpdateDeathCount(item);
+        }
+
+        private void UpdateDeathCount(PrestigeUpgradeItem item)
+        {
+            if (!int.TryParse(item.BuyCountText, out var count) || count <= 0) return;
+
+            switch (item.PrestigeUpgrade?.Id)
+            {
+                case "Muscle Memory":
+                    if (_deathByFinalChanceCount < 1) _deathByFinalChanceCount = 1;
+                    break;
+                case "Allowance":
+                    if (_deathByFinalChanceCount < 2) _deathByFinalChanceCount = 2;
+                    break;
+                case "Super Lucky":
+                    if (_deathByFinalChanceCount < 3) _deathByFinalChanceCount = 3;
+                    break;
+                case "Time Travel":
+                    if (_deathByFinalChanceCount < 4) _deathByFinalChanceCount = 4;
+                    break;
+                default:
+                    break;
+            }
         }
 
         [RelayCommand]

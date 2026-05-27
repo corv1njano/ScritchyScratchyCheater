@@ -109,6 +109,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         public ObservableCollection<UpgradeItem> Upgrades { get; } = new();
         public ICollectionView UpgradesView { get; }
         public bool HasUpgrades => !UpgradesView.IsEmpty;
+
+        private int _deathByFinalChanceCount;
         #endregion
 
         #region Tab Achivements
