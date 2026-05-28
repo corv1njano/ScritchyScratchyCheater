@@ -18,6 +18,14 @@
         DragOver="Window_DragOver"
         Drop="Window_Drop">
 
+    <Window.InputBindings>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.SaveChangesCommand}"/>
+        <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.ReloadSaveFileCommand}"/>
+        <KeyBinding Key="W" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.CloseSaveFileCommand}"/>
+        <KeyBinding Key="B" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.CreateBackupCommand}"/>
+        <KeyBinding Key="L" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.OpenFileExplorerCommand}"/>
+    </Window.InputBindings>
+
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="32"
                       UseAeroCaptionButtons="False"

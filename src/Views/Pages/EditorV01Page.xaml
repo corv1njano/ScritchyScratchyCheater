@@ -57,7 +57,7 @@
                             Style="{StaticResource Button.WithIcon}"
                             Text="Save"
                             Icon="{StaticResource Icon.Save}"
-                            ToolTip="Save all Changes"/>
+                            ToolTip="Save all Changes (Crtl+S)"/>
                         <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding CanSave, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                     </Grid>
                     <controls:ButtonWithIcon Command="{Binding ReloadSaveFileCommand}" 
@@ -65,7 +65,7 @@
                         Margin="0,8,8,8" 
                         Text="Reload" 
                         Icon="{StaticResource Icon.Refresh}" 
-                        ToolTip="Reload current Save File"/>
+                        ToolTip="Reload current Save File (Crtl+R)"/>
                     <controls:ButtonWithIcon Command="{Binding CloseSaveFileCommand}" 
                         Style="{StaticResource Button.WithIcon}"
                         Margin="0,8,0,8" 
@@ -73,7 +73,7 @@
                         Icon="{StaticResource Icon.Close}"
                         IconHeight="22"
                         IconWidth="22"
-                        ToolTip="Close current Save File"/>
+                        ToolTip="Close current Save File (Crtl+W)"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
                     <controls:ButtonWithIcon Command="{Binding CreateBackupCommand}" 
@@ -81,7 +81,7 @@
                          Text="Backup"
                          Margin="0,8"
                          Icon="{StaticResource Icon.Files}"
-                         ToolTip="Create a Backup of current Save File"/>
+                         ToolTip="Create a Backup of current Save File (Crtl+B)"/>
                     <controls:ButtonWithIcon Command="{Binding OpenFileExplorerCommand}" 
                          Style="{StaticResource Button.WithIcon}"
                          Margin="8"
@@ -89,7 +89,7 @@
                          Icon="{StaticResource Icon.Folder}" 
                          IconHeight="19"
                          IconWidth="19"
-                         ToolTip="Open current Save File in File Explorer"/>
+                         ToolTip="Open current Save File in File Explorer (Crtl+L)"/>
                 </StackPanel>
             </Grid>
         </Border>

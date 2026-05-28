@@ -42,11 +42,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
         {
             Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater");
         }
+
         [RelayCommand]
         private void OpenSponsor()
         {
             Utils.OpenUrl("https://github.com/sponsors/corv1njano");
         }
+        
         [RelayCommand]
         private void OpenSamples()
         {

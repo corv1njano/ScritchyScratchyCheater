@@ -90,6 +90,16 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (App.SaveFileService.LoadedSaveFile is not SaveFileV01 sf) return;
 
+            LoadProgress(sf);
+            LoadUpgrades(sf);
+            LoadAchievements(sf);
+            LoadCosmetics(sf);
+        }
+        
+        private void LoadProgress(SaveFileV01 sf)
+        {
+            if (sf == null || sf.LayerOne == null) return;
+
             MoneyText = SaveFileHelper.SanitizeDouble(sf.LayerOne!.Money).ToString(CultureInfo.InvariantCulture);
             SoulsText = sf.LayerOne.Souls.ToString();
             MachineTierText = sf.LayerOne.MachineTier.ToString();
@@ -129,6 +139,11 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                     GottenSuperJackpot = ticketsGottenSuperJackpot.Contains(id)
                 });
             }
+        }
+        
+        private void LoadUpgrades(SaveFileV01 sf)
+        {
+            if (sf == null || sf.LayerOne == null) return;
 
             PrestigeText = sf.PrestigeCurrency.ToString();
 
@@ -152,6 +167,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 };
                 PrestigeUpgrades.Add(item);
             }
+
             foreach (var item in PrestigeUpgrades) UpdateDeathCount(item);
 
             var upgradeDic = sf.LayerOne.UpgradeDataDict ?? new Dictionary<string, UpgradeDataV01>();
@@ -169,6 +185,11 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 item.PropertyChanged += (_, _) => OnPropertyChanged(nameof(CanSave));
                 Upgrades.Add(item);
             }
+        }
+        
+        private void LoadAchievements(SaveFileV01 sf)
+        {
+            if (sf == null) return;
 
             var achievementsGotten = sf.AchievementsGotten ?? new List<string>();
             var achievementsClaimed = sf.AchievementsClaimed ?? new List<string>();
@@ -184,6 +205,11 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                     IsClaimed = achievementsClaimed.Contains(id),
                 });
             }
+        }
+        
+        private void LoadCosmetics(SaveFileV01 sf)
+        {
+            if (sf == null || sf.LayerOne == null) return;
 
             TokensText = sf.Tokens.ToString();
 
