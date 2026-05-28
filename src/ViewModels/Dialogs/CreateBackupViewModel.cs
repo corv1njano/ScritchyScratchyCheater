@@ -97,5 +97,11 @@ namespace ScritchyScratchyCheater.ViewModels.Dialogs
                 Process.Start("explorer.exe", $"/select,\"{destinationPath}\"");
             }
         }
+
+        [RelayCommand]
+        private void Exit()
+        {
+            App.Current.Windows.OfType<CreateBackupDialog>().FirstOrDefault()?.Close();
+        }
     }
 }

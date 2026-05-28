@@ -12,6 +12,11 @@
         WindowStartupLocation="CenterOwner"
         Background="{StaticResource CJG.Window}">
 
+    <Window.InputBindings>
+        <KeyBinding Key="Return" Command="{Binding CreateBackupCommand}"/>
+        <KeyBinding Key="Esc" Command="{Binding ExitCommand}"/>
+    </Window.InputBindings>
+
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="40"
                       ResizeBorderThickness="0"

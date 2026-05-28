@@ -1,5 +1,6 @@
 ﻿using System.Media;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace ScritchyScratchyCheater.Views.Dialogs
@@ -75,6 +76,13 @@ namespace ScritchyScratchyCheater.Views.Dialogs
                     SystemSounds.Hand.Play(); break;
                 default: break;
             }
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+            if (e.Key == Key.Enter) ButtonYes_Click(this, new RoutedEventArgs());
+            if (e.Key == Key.Escape) ButtonNo_Click(this, new RoutedEventArgs());
         }
 
         private void ButtonYes_Click(object sender, RoutedEventArgs e)
