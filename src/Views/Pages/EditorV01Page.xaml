@@ -41,6 +41,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- savefile controlbar -->
         <Border Grid.Row="0"
                 BorderThickness="0,0,0,1"
                 Background="{StaticResource CJG.ControlBar}"
@@ -152,6 +153,12 @@
 
                     <Border Grid.Row="1" Style="{StaticResource Border.Default}" Margin="0,8">
                         <Grid Margin="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
                             <Grid Grid.Row="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -178,6 +185,24 @@
                                 </ComboBox>
                                 <CheckBox Grid.Column="4" Style="{StaticResource CheckBox.Default}" IsChecked="{Binding SelectedCatalog.IsClaimed}" Content="Claimed" Margin="8,0,0,0"/>
                                 <Button Grid.Column="5" Style="{StaticResource blockbtn}" Content="Claim All" ToolTip="Claim all Catalogs" Command="{Binding ClaimAllCatalogsCommand}"/>
+                            </Grid>
+
+                            <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
+
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Style="{StaticResource blockTxt}" Text="Last Goal:" Margin="0,0,8,0"/>
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding Goals}" SelectedItem="{Binding SelectedGoal}" Margin="0,0,16,0" Style="{StaticResource ComboBox.Default}"/>
+                                <TextBlock Grid.Column="2" Style="{StaticResource blockTxt}" Text="Progression:" Margin="0,0,8,0"/>
+                                <controls:ValidatedTextBox Grid.Column="3" MaxLength="500" Style="{StaticResource TextBox.Validated}" Text="{Binding ProgressionText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsProgressionValid}"/>
+                                <Button Grid.Column="4" Style="{StaticResource blockbtn}" Command="{Binding MaxProgressionCommand}"/>
                             </Grid>
                         </Grid>
                     </Border>

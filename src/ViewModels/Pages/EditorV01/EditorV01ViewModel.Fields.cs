@@ -28,6 +28,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [NotifyPropertyChangedFor(nameof(IsMachineTierValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _machineTierText = string.Empty;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsProgressionValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
+        private string _progressionText = "0";
 
         [ObservableProperty]
         private ImageSource? _moneyIcon;
@@ -54,6 +58,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             && value <= MAX_TICKET_LEVEL;
         public bool IsMachineTierValid => int.TryParse(MachineTierText, out var value)
             && value <= MAX_MACHINE_TIER;
+        public bool IsProgressionValid => SelectedGoal != null
+            && double.TryParse(ProgressionText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
+            && !double.IsNaN(value)
+            && !double.IsInfinity(value)
+            && value >= 0
+            && value <= (Goals.FirstOrDefault(g => g.Index == SelectedGoal.Index + 1)?.Goal ?? double.MaxValue);
 
         public bool IsTicketSelected => SelectedTicket != null;
 
@@ -79,12 +89,46 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             new() { Name = "Act 1", ActId = 1 },
             new() { Name = "Act 2", ActId = 2 },
             new() { Name = "Act 3", ActId = 3 },
-            new() { Name = "Act 4", ActId = 4 },
-            new() { Name = "Act 5", ActId = 5 }
-        }.OrderBy(c => c.Name).ToList();
+            new() { Name = "Act 4", ActId = 4 }
+        }.OrderBy(i => i.Name).ToList();
 
         [ObservableProperty]
         private Act? _selectedAct;
+
+        public IReadOnlyList<ProgressionGoal> Goals { get; } = new List<ProgressionGoal>
+        {
+            new() { Index = 0, Goal = 0 },
+            new() { Index = 1, Goal = 3 },
+            new() { Index = 2, Goal = 10 },
+            new() { Index = 3, Goal = 50 },
+            new() { Index = 4, Goal = 100 },
+            new() { Index = 5, Goal = 2000 },
+            new() { Index = 6, Goal = 10000 },
+            new() { Index = 7, Goal = 50000 },
+            new() { Index = 8, Goal = 100000 },
+            new() { Index = 9, Goal = 300000 },
+            new() { Index = 10, Goal = 2e7 },
+            new() { Index = 11, Goal = 1e8 },
+            new() { Index = 12, Goal = 5e8 },
+            new() { Index = 13, Goal = 2e9 },
+            new() { Index = 14, Goal = 1e10 },
+            new() { Index = 15, Goal = 2e11 },
+            new() { Index = 16, Goal = 2e14 },
+            new() { Index = 17, Goal = 1e16 },
+            new() { Index = 18, Goal = 1e17 },
+            new() { Index = 19, Goal = 5e17 },
+            new() { Index = 20, Goal = 2e19 },
+            new() { Index = 21, Goal = 1e23 },
+            new() { Index = 22, Goal = 1e24 },
+            new() { Index = 23, Goal = 5e24 },
+            new() { Index = 24, Goal = 8e26 },
+            new() { Index = 25, Goal = 3e28 },
+            new() { Index = 26, Goal = 1e30 },
+            new() { Index = 27, Goal = 1e30 },
+        }.OrderBy(i => i.Index).ToList();
+
+        [ObservableProperty]
+        private ProgressionGoal? _selectedGoal;
         #endregion
 
         #region Tab Upgrades

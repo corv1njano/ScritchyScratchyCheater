@@ -46,6 +46,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && IsSoulsValid
                 && IsTicketLevelValid
                 && IsMachineTierValid
+                && IsProgressionValid
                 && IsEelectricFanChargeValid
                 && IsEggTimerChargeValid
                 && Upgrades.All(u => u.IsBuyCountValid)
@@ -103,7 +104,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             MoneyText = SaveFileHelper.SanitizeDouble(sf.LayerOne!.Money).ToString(CultureInfo.InvariantCulture);
             SoulsText = sf.LayerOne.Souls.ToString();
             MachineTierText = sf.LayerOne.MachineTier.ToString();
-            SelectedAct = Acts.FirstOrDefault(a => a.ActId == sf.CurrentAct) ?? Acts.First(a => a.ActId == 1);
+            SelectedAct = Acts.FirstOrDefault(a => a.ActId == sf.CurrentAct) ?? Acts.First(a => a.ActId == 4);
 
             var claiemdCatalogs = sf.LayerOne.ClaimedCustomTableItems ?? new List<string>();
 
@@ -118,6 +119,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 });
             }
             SelectedCatalog = Catalogs.Count > 0 ? Catalogs[0] : null;
+
+            SelectedGoal = Goals.FirstOrDefault(g => g.Goal == sf.LayerOne.LastUnlockedProgressionGoal) ?? Goals[0];
+            ProgressionText = sf.LayerOne.TotalMoneyEarnedThisProgressionGoal.ToString();
 
             var ticketsGottenJackpot = sf.LayerOne.JackpotsGotten ?? new List<string>();
             var ticketsGottenSuperJackpot = sf.LayerOne.SuperJackpotsGotten ?? new List<string>();
@@ -311,6 +315,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             layer.ClaimedCustomTableItems = catalogsClaimed.ToList();
             layer.JackpotsGotten = ticketsGottenJackpot.ToList();
             layer.SuperJackpotsGotten = ticketsGottenSuperJackpot.ToList();
+            layer.LastUnlockedProgressionGoal = SelectedGoal?.Goal ?? 0;
+            layer.TotalMoneyEarnedThisProgressionGoal = double.Parse(ProgressionText);
         }
 
         private void SaveUpgrades(SaveFileV01 sf)

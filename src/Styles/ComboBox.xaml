@@ -75,7 +75,7 @@
                             BorderBrush="{StaticResource CJG.CheckBox.Border}"
                             BorderThickness="1"
                             CornerRadius="4">
-                        <ScrollViewer x:Name="DropDownScrollViewer">
+                        <ScrollViewer x:Name="DropDownScrollViewer" CanContentScroll="False">
                             <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas x:Name="canvas"
                                         HorizontalAlignment="Left"

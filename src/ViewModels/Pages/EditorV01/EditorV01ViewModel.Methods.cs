@@ -63,6 +63,17 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             foreach (var entry in Catalogs) entry.IsClaimed = true;
         }
 
+        [RelayCommand]
+        private void MaxProgression()
+        {
+            if (SelectedGoal == null) return;
+
+            var nextGoal = Goals.FirstOrDefault(g => g.Index == SelectedGoal.Index + 1);
+            ProgressionText = nextGoal != null
+                ? nextGoal.Goal.ToString(CultureInfo.InvariantCulture)
+                : double.MaxValue.ToString(CultureInfo.InvariantCulture);
+        }
+
         partial void OnSearchTicketChanged(string value)
         {
             TicketsView.Refresh();
@@ -92,6 +103,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             var temp = SelectedCatalog;
             SelectedCatalog = null;
             SelectedCatalog = temp;
+        }
+
+        partial void OnSelectedGoalChanged(ProgressionGoal? value)
+        {
+            OnPropertyChanged(nameof(IsProgressionValid));
+            OnPropertyChanged(nameof(CanSave));
         }
         #endregion
 
