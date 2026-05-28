@@ -43,7 +43,7 @@ namespace ScritchyScratchyCheater.Services
         /// <param name="loadFromDefaultPath"><c>true</c> if save file loaded from default location, <c>false</c> if otherwise.</param>
         /// <returns>A LoadResult indicating whether the operation succeeded, the detected save file version if successful, and a
         /// status message describing the outcome.</returns>
-        public async Task<LoadResult> Load(string filePath, bool loadFromDefaultPath = false)
+        public async Task<LoadResult> LoadAsync(string filePath, bool loadFromDefaultPath = false)
         {
             Reset();
 
@@ -153,7 +153,7 @@ namespace ScritchyScratchyCheater.Services
         /// Saves the currently loaded save file to the current file path asynchronously.
         /// </summary>
         /// <returns>A task that represents the asynchronous save operation. The task completes when the save operation finishes.</returns>
-        public async Task<SaveResult> Save()
+        public async Task<SaveResult> SaveAsync()
         {
             if (LoadedSaveFile == null
                 || string.IsNullOrWhiteSpace(CurrentFilePath)

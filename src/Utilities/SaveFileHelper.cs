@@ -32,7 +32,7 @@ namespace ScritchyScratchyCheater.Utilities
         {
             if (string.IsNullOrWhiteSpace(filePath)) return;
 
-            LoadResult loadResult = await App.SaveFileService.Load(filePath, isLoadedFromDefaultPath);
+            LoadResult loadResult = await App.SaveFileService.LoadAsync(filePath, isLoadedFromDefaultPath);
 
             if (!loadResult.Success)
             {

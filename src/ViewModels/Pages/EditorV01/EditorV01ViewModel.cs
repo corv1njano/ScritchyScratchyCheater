@@ -224,7 +224,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             SaveAchievements(sf);
             SaveCosmetics(sf);
 
-            SaveResult result = await App.SaveFileService.Save();
+            SaveResult result = await App.SaveFileService.SaveAsync();
             if (result.Success)
             {
                 ShowMessage.Info("File saved",
@@ -389,7 +389,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 return;
             }
 
-            LoadResult loadResult = await App.SaveFileService.Load(oldPath);
+            LoadResult loadResult = await App.SaveFileService.LoadAsync(oldPath);
 
             if (loadResult.Version != oldVersion)
             {
