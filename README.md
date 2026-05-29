@@ -8,7 +8,7 @@ A save file editor for the idle game **Scritchy Scratchy**.
 
 ## Preview
 
-<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/docs/resources/app_1-3-0.gif" alt="App UI" width="300"/>
+<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/docs/resources/app_1-4-0.gif" alt="App UI" height="300"/>
 
 
 
@@ -18,10 +18,14 @@ A save file editor for the idle game **Scritchy Scratchy**.
 - 🏆 `Edit achievements`: unlock and claim any achievement
 - 🎟️ `Edit tickets`: set jackpot and super jackpot states and adjust ticket levels
 - 🎨 `Edit cosmetics`: browse by category and equip or purchase any cosmetic item
+- 🔼 `Edit upgrades`: edit Prestige Upgrades, normal Upgrades and Gadgets
+- 🧩 `Edit DLCs`: enable additional DLC content to use in-game
 - 📂 `Load save files`: load from the default path, any custom location or via drag & drop
 - 🔄 `Quick reload`: reload the current save file at any time during a session
 - 🔍 `Locate`: open the current save file location directly in File Explorer
 - 💾 `Create backups`: create backups on the spot to prevent data loss or corruption
+
+And many, many more features!
 
 
 ## Build Info
