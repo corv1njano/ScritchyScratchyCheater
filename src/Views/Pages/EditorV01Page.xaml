@@ -664,7 +664,29 @@
             </controls:IconTabItem>
 
             <controls:IconTabItem Header="Misc" Icon="{StaticResource Icon.Misc}">
-                <TextBlock Style="{StaticResource TextBlock.Base}" HorizontalAlignment="Center" Text="Other editing options will be available soon!"/>
+                <Grid Style="{StaticResource contentGrid}">
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" Style="{StaticResource Border.Default}">
+                                <Grid Margin="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="0,0,8,0" Grid.Column="0" Style="{StaticResource blockTxt}" Text="Available DLCs:"/>
+                                    <ComboBox Grid.Column="1" Style="{StaticResource ComboBox.Default}" ItemsSource="{Binding Dlcs}" SelectedItem="{Binding SelectedDlc}"/>
+                                    <CheckBox Grid.Column="2" Margin="8,0,0,0" Style="{StaticResource CheckBox.Default}" Content="Unlocked" IsChecked="{Binding SelectedDlc.IsUnlocked}"/>
+                                    <Button Grid.Column="3" Style="{StaticResource blockbtn}" Content="Unlock All" ToolTip="Unlock all available DLCs" Command="{Binding UnlockAllDlcsCommand}"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ScrollViewer>
+                </Grid>
             </controls:IconTabItem>
         </TabControl>
     </Grid>

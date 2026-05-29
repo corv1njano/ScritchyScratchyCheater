@@ -35,6 +35,9 @@ if %errorlevel% neq 0 (
 )
 echo ReleaseNetIncluded build successful!
 
+for /f "tokens=*" %%i in ('powershell -Command "(Select-Xml -Path '.\ScritchyScratchyCheater.csproj' -XPath '//Version').Node.InnerText"') do set VERSION=%%i
+set VERSION_FILENAME=%VERSION:.=-%
+
 echo.
 echo Compressing builds...
 powershell -Command "Compress-Archive -Path 'bin\Release\net9.0-windows\win-x64\publish\*' -DestinationPath 'Publish\ssc_win64_v%VERSION_FILENAME%.zip' -Force"

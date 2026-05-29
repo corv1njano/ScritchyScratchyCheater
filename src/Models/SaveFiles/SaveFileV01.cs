@@ -4,7 +4,7 @@ using System.Text.Json;
 namespace ScritchyScratchyCheater.Models.SaveFiles
 {
     /// <summary>
-    /// JSON structure for save file version 0.1, last used in Scritchy Scratchy version 1.0.30d
+    /// JSON structure for save file version 0.1, last used in Scritchy Scratchy version 1.1.19d
     /// </summary>
     internal class SaveFileV01 : ISaveFile
     {
@@ -39,7 +39,7 @@ namespace ScritchyScratchyCheater.Models.SaveFiles
         public List<string>? EquippedCosmetics { get; set; }
 
         public List<object>? CompletedOnboardingSteps { get; set; }
-        public List<object>? DlcUnlocked { get; set; }
+        public List<int>? DlcUnlocked { get; set; }
 
         public bool IsPrestiging { get; set; }
         public bool DeathByFinalChance { get; set; }

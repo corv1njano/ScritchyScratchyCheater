@@ -198,6 +198,31 @@ namespace ScritchyScratchyCheater.Services
                 .ThenBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
                 .ToList();
         }
+
+
+        /// <summary>
+        /// Retrieves a list of DLC items from the current game data.
+        /// </summary>
+        /// <remarks>This method returns an empty list if the game data root is null, if no DLC
+        /// dataset is present, or if the DLC data is undefined or null.</remarks>
+        /// <returns>A list of <see cref="Dlc"/> objects representing the DLC item associated with the game data.</returns>
+        public List<Dlc> GetDlcs()
+        {
+            if (_gameDataRoot == null) return new();
+
+            GameDataset? dataset = _gameDataRoot.GameData?
+                .FirstOrDefault(x => string.Equals(x.Type, "dlcs", StringComparison.OrdinalIgnoreCase));
+
+            if (dataset == null) return new();
+            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
+
+            List<Dlc>? dlcs = dataset.Data.Deserialize<List<Dlc>>(App.JsonOptions);
+
+            return dlcs!
+                .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
+                .ToList()
+                ?? new();
+        }
     }
 
     #region game data containers

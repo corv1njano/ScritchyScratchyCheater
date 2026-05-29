@@ -95,6 +95,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             LoadUpgrades(sf);
             LoadAchievements(sf);
             LoadCosmetics(sf);
+            LoadMisc(sf);
         }
         
         private void LoadProgress(SaveFileV01 sf)
@@ -238,6 +239,24 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             IsMundoDead = sf.LayerOne.MundoDead;
             IsTrashCanDead = sf.LayerOne.TrashCanDead;
         }
+        
+        private void LoadMisc(SaveFileV01 sf)
+        {
+            if (sf == null) return;
+
+            var unlockedDlcs = sf.DlcUnlocked ?? new List<int>();
+
+            Dlcs.Clear();
+            foreach (var dlc in App.GameDataParser.GetDlcs())
+            {
+                Dlcs.Add(new DlcItem
+                {
+                    Dlc = dlc,
+                    IsUnlocked = unlockedDlcs.Contains(dlc.Id)
+                });
+            }
+            SelectedDlc = Dlcs.Count > 0 ? Dlcs[0] : null;
+        }
         #endregion
 
         #region saveing data
@@ -253,6 +272,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             SaveUpgrades(sf);
             SaveAchievements(sf);
             SaveCosmetics(sf);
+            SaveMisc(sf);
 
             SaveResult result = await App.SaveFileService.SaveAsync();
             if (result.Success)
@@ -398,6 +418,22 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             sf.LayerOne.FanPaused = IsElectricFanPaused;
             sf.LayerOne.MundoDead = IsMundoDead;
             sf.LayerOne.TrashCanDead = IsTrashCanDead;
+        }
+        
+        private void SaveMisc(SaveFileV01 sf)
+        {
+            if (sf == null) return;
+
+            var unlockedDlcs = new HashSet<int>();
+
+            foreach (var dlc in Dlcs)
+            {
+                if (dlc.Dlc == null) continue;
+
+                if (dlc.IsUnlocked) unlockedDlcs.Add(dlc.Dlc.Id);
+            }
+
+            sf.DlcUnlocked = unlockedDlcs.ToList();
         }
         #endregion
 

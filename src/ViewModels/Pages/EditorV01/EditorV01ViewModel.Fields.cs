@@ -11,7 +11,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 {
     internal partial class EditorV01ViewModel : ObservableObject
     {
-        #region Tab Progress
+        #region tab progress
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsMoneyValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
@@ -89,7 +89,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             new() { Name = "Act 1", ActId = 1 },
             new() { Name = "Act 2", ActId = 2 },
             new() { Name = "Act 3", ActId = 3 },
-            new() { Name = "Act 4", ActId = 4 }
+            new() { Name = "Act 4", ActId = 4 },
+            new() { Name = "Act 5", ActId = 5 }
         }.OrderBy(i => i.Name).ToList();
 
         [ObservableProperty]
@@ -123,15 +124,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             new() { Index = 23, Goal = 5e24 },
             new() { Index = 24, Goal = 8e26 },
             new() { Index = 25, Goal = 3e28 },
-            new() { Index = 26, Goal = 1e30 },
-            new() { Index = 27, Goal = 1e30 },
+            new() { Index = 26, Goal = 1e30 }
         }.OrderBy(i => i.Index).ToList();
 
         [ObservableProperty]
         private ProgressionGoal? _selectedGoal;
         #endregion
 
-        #region Tab Upgrades
+        #region tab upgrades
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsPrestigeValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
@@ -157,7 +157,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private int _deathByFinalChanceCount;
         #endregion
 
-        #region Tab Achivements
+        #region tab achivements
         [ObservableProperty]
         private string _searchAchievement = string.Empty;
         public ObservableCollection<AchievementItem> Achievements { get; } = new();
@@ -165,7 +165,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         public bool HasAchievements => !AchievementsView.IsEmpty;
         #endregion
 
-        #region Tab Cosmetics
+        #region tab cosmetics
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsTokensValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
@@ -235,6 +235,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private bool _isMundoDead;
         [ObservableProperty]
         private bool _isTrashCanDead;
+        #endregion
+
+        #region tab misc
+        public ObservableCollection<DlcItem> Dlcs { get; } = new();
+        [ObservableProperty]
+        private DlcItem? _selectedDlc;
         #endregion
     }
 }

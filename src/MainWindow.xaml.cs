@@ -1,7 +1,6 @@
 ﻿using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.ViewModels;
 using ScritchyScratchyCheater.Views.Pages;
-using System.Diagnostics;
 using System.IO;
 using System.Windows;
 

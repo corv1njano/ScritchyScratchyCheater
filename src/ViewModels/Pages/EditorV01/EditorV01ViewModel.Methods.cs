@@ -10,7 +10,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 {
     internal partial class EditorV01ViewModel : ObservableObject
     {
-        #region Tab Progress
+        #region tab progress
         [RelayCommand]
         private void MaxMoney()
         {
@@ -112,7 +112,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         }
         #endregion
 
-        #region Tab Upgrades
+        #region tab upgrades
         [RelayCommand]
         private void MaxPrestige()
         {
@@ -190,7 +190,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         }
         #endregion
 
-        #region Tab Achievements
+        #region tab achievements
         [RelayCommand]
         private void UnlockAllAchievements()
         {
@@ -210,7 +210,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         }
         #endregion
 
-        #region Tab Cosmetics
+        #region tab cosmetics
         [RelayCommand]
         private void MaxTokens()
         {
@@ -294,6 +294,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             CurrentCosmeticItem = SelectedCosmetic?.Cosmetic != null
                 ? App.ResourceParser.GetSprite(SelectedCosmetic.Cosmetic.IconId)
                 : Application.Current.TryFindResource("Generic.None") as ImageSource;
+        }
+        #endregion
+
+        #region tab misc
+        [RelayCommand]
+        private void UnlockAllDlcs()
+        {
+            foreach (var entry in Dlcs) entry.IsUnlocked = true;
         }
         #endregion
     }
