@@ -1,4 +1,4 @@
-﻿namespace ScritchyScratchyCheater.Interfaces
+﻿namespace ScritchyScratchyCheater.Models.SaveFiles
 {
     public interface ISaveFile
     {

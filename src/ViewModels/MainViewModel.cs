@@ -8,7 +8,7 @@ using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
 namespace ScritchyScratchyCheater.ViewModels
 {
-    internal partial class MainViewModel : ObservableObject
+    public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
         private bool _isDragging = false;

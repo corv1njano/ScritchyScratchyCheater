@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ScritchyScratchyCheater.Models.GameData;
-using ScritchyScratchyCheater.ViewModels.Data;
+using ScritchyScratchyCheater.ViewModels.Items;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 {
-    internal partial class EditorV01ViewModel : ObservableObject
+    public partial class EditorV01ViewModel : ObservableObject
     {
         #region tab progress
         [ObservableProperty]
@@ -62,8 +62,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             && double.TryParse(ProgressionText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
             && !double.IsNaN(value)
             && !double.IsInfinity(value)
-            && value >= 0
-            && value <= (Goals.FirstOrDefault(g => g.Index == SelectedGoal.Index + 1)?.Goal ?? double.MaxValue);
+            && value >= 0;
+            //&& value <= (Goals.FirstOrDefault(g => g.Index == SelectedGoal.Index + 1)?.Goal ?? double.MaxValue);
 
         public bool IsTicketSelected => SelectedTicket != null;
 
@@ -76,9 +76,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [ObservableProperty]
         private TicketItem? _selectedTicket;
 
-        public string? SelectedTicketToolTip => SelectedTicket == null
+        public string? SelectedTicketToolTip => SelectedTicket == null || SelectedTicket.Ticket == null
             ? null
-            : $"Ticket: '{SelectedTicket.Ticket!.Name}'";
+            : $"Ticket: '{SelectedTicket.Ticket.Name}'";
 
         public ObservableCollection<CatalogItem> Catalogs { get; } = new();
         [ObservableProperty]
@@ -200,6 +200,17 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             double.TryParse(EggTimerChargeText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
             && !double.IsNaN(value)
             && !double.IsInfinity(value);
+
+        public string? CurrentCosmeticItemToolTip
+        {
+            get
+            {
+                var item = FilteredCosmetics.FirstOrDefault(c => c.IsEquipped);
+                return item?.Cosmetic == null
+                    ? null
+                    : $"Current Item: {item.Cosmetic.Name}";
+            }
+        }
 
         public IReadOnlyList<CosmeticCategoryItem> CosmeticCategories { get; } = new List<CosmeticCategoryItem>
         {

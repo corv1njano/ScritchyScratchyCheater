@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ScritchyScratchyCheater.Models.GameData;
 
-namespace ScritchyScratchyCheater.ViewModels.Data
+namespace ScritchyScratchyCheater.ViewModels.Items
 {
     public sealed partial class CosmeticItem : ObservableObject
     {

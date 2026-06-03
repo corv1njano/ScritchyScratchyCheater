@@ -1,5 +1,4 @@
-﻿using ScritchyScratchyCheater.Interfaces;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace ScritchyScratchyCheater.Models.SaveFiles
 {

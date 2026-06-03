@@ -11,7 +11,7 @@
                 ? Goal.ToString("E2")
                 : Goal.ToString("N0");
 
-            return $"Goal {Index}: {formatted}";
+            return $"Goal {Index}: $ {formatted}";
         }
     }
 }

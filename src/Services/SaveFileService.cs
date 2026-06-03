@@ -1,5 +1,4 @@
-﻿using ScritchyScratchyCheater.Interfaces;
-using ScritchyScratchyCheater.Models.Results;
+﻿using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
 using System.Diagnostics;
 using System.IO;

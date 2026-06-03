@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using ScritchyScratchyCheater.Interfaces;
+using CommunityToolkit.Mvvm.Messaging;
 using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
 using ScritchyScratchyCheater.Utilities;
-using ScritchyScratchyCheater.ViewModels.Data;
+using ScritchyScratchyCheater.ViewModels.Items;
 using ScritchyScratchyCheater.Views.Pages;
 using System.Diagnostics;
 using System.Globalization;
@@ -14,10 +14,13 @@ using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
 namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 {
-    internal partial class EditorV01ViewModel : ObservableObject
+    public partial class EditorV01ViewModel : ObservableObject
     {
         private bool _isSaving = false;
         public bool CanSave => !_isSaving && CheckCanSave();
+
+        // needed to inform MainWindow to maximize when save file has been loaded 
+        public record MaximizeWindowMessage;
 
         public EditorV01ViewModel()
         {
@@ -96,6 +99,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             LoadAchievements(sf);
             LoadCosmetics(sf);
             LoadMisc(sf);
+
+            // send a message to inform MainWindow to maximize
+            OnLoadingComplete();
         }
         
         private void LoadProgress(SaveFileV01 sf)
@@ -122,7 +128,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             SelectedCatalog = Catalogs.Count > 0 ? Catalogs[0] : null;
 
             SelectedGoal = Goals.FirstOrDefault(g => g.Goal == sf.LayerOne.LastUnlockedProgressionGoal) ?? Goals[0];
-            ProgressionText = sf.LayerOne.TotalMoneyEarnedThisProgressionGoal.ToString();
+            ProgressionText = SaveFileHelper.SanitizeDouble(sf.LayerOne.TotalMoneyEarnedThisProgressionGoal).ToString();
 
             var ticketsGottenJackpot = sf.LayerOne.JackpotsGotten ?? new List<string>();
             var ticketsGottenSuperJackpot = sf.LayerOne.SuperJackpotsGotten ?? new List<string>();
@@ -525,10 +531,22 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             Process.Start("explorer.exe", $"/select,\"{filePath}\"");
         }
 
+        /// <summary>
+        /// Is called when the current save file data has changed in <see cref="App.SaveFileService"/>.
+        /// </summary>
+        /// <param name="saveFile">The new save file data.</param>
         private void HandleSaveFileChanged(ISaveFile? saveFile)
         {
             if (saveFile == null) return;
             LoadDataToUi();
+        }
+
+        /// <summary>
+        /// Sends a new message of MaximizeWindowMessage.
+        /// </summary>
+        private void OnLoadingComplete()
+        {
+            WeakReferenceMessenger.Default.Send(new MaximizeWindowMessage());
         }
     }
 }

@@ -588,7 +588,7 @@
                                     <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsCosmeticEquipped, Mode=TwoWay}" Margin="16,0,0,0" Content="Currently Equipped"/>
                                 </StackPanel>
                             </Grid>
-                            <Border Grid.Column="1" Style="{StaticResource Border.Preview}" Grid.RowSpan="3">
+                            <Border Grid.Column="1" Style="{StaticResource Border.Preview}" Grid.RowSpan="3" ToolTip="{Binding CurrentCosmeticItemToolTip}">
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Text="Current" Margin="4,4,4,6" Style="{StaticResource TextBlock.Base}" Opacity="0.5" FontSize="10" HorizontalAlignment="Center"/>
                                     <Image HorizontalAlignment="Center" VerticalAlignment="Center" Height="70" Width="70"

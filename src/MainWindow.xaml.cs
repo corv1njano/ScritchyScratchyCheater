@@ -1,8 +1,10 @@
-﻿using ScritchyScratchyCheater.Utilities;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.ViewModels;
 using ScritchyScratchyCheater.Views.Pages;
 using System.IO;
 using System.Windows;
+using static ScritchyScratchyCheater.ViewModels.Pages.EditorV01.EditorV01ViewModel;
 
 namespace ScritchyScratchyCheater
 {
@@ -20,7 +22,16 @@ namespace ScritchyScratchyCheater
             _windowWrapper = new(this);
             DataContext = new MainViewModel();
 
-            Loaded += async (_, _) => await _viewModel.CheckForUpdateAsync();
+            Loaded += async (_, _) =>
+            {
+                await _viewModel.CheckForUpdateAsync();
+            };
+
+            // register MaximizeWindowMessage so that a message refernce is sent, this method will be called
+            WeakReferenceMessenger.Default.Register<MaximizeWindowMessage>(this, (_, _) =>
+            {
+                _windowWrapper.MaximizeOrRestoreWindow();
+            });
         }
 
         private void Button_Minimize(object sender, RoutedEventArgs e)

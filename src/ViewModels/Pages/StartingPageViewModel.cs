@@ -1,15 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
-using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Utilities;
-using ScritchyScratchyCheater.Views.Dialogs;
-using ScritchyScratchyCheater.Views.Pages;
-using static ScritchyScratchyCheater.Views.Dialogs.MessageDialog;
 
 namespace ScritchyScratchyCheater.ViewModels.Pages
 {
-    internal partial class StartingPageViewModel : ObservableObject
+    public partial class StartingPageViewModel : ObservableObject
     {
         public StartingPageViewModel() { }
 
@@ -27,7 +23,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages
             {
                 Title = "Select a Scritchy Scratchy Save File...",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Filter = "Save File (*.json)|*.json",
+                Filter = "Save/Backup File (*.json, *.backup)|*.json;*.backup",
                 Multiselect = false
             };
 

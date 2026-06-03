@@ -2,7 +2,7 @@
 using ScritchyScratchyCheater.Models.GameData;
 using System.Xml.Linq;
 
-namespace ScritchyScratchyCheater.ViewModels.Data
+namespace ScritchyScratchyCheater.ViewModels.Items
 {
     public sealed partial class DlcItem : ObservableObject
     {

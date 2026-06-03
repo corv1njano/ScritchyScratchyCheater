@@ -1,14 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Models.GameData;
-using ScritchyScratchyCheater.ViewModels.Data;
+using ScritchyScratchyCheater.ViewModels.Items;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
 
 namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 {
-    internal partial class EditorV01ViewModel : ObservableObject
+    public partial class EditorV01ViewModel : ObservableObject
     {
         #region tab progress
         [RelayCommand]
@@ -258,7 +258,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             SelectedCosmetic = FilteredCosmetics.FirstOrDefault(c => c.IsEquipped) ?? noneItem;
             //SelectedCosmetic = FilteredCosmetics.FirstOrDefault();
+
             UpdateCurrentCosmeticImage();
+            OnPropertyChanged(nameof(CurrentCosmeticItemToolTip));
         }
 
         partial void OnSelectedCosmeticChanged(CosmeticItem? value)
@@ -284,6 +286,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             {
                 foreach (var cosmetic in FilteredCosmetics) cosmetic.IsEquipped = false;
                 UpdateCurrentCosmeticImage();
+                OnPropertyChanged(nameof(CurrentCosmeticItemToolTip));
             }
 
             SelectedCosmetic.IsEquipped = value;
