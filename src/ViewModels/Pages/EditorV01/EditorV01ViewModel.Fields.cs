@@ -208,7 +208,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 var item = FilteredCosmetics.FirstOrDefault(c => c.IsEquipped);
                 return item?.Cosmetic == null
                     ? null
-                    : $"Current Item: {item.Cosmetic.Name}";
+                    : $"Current Item: '{item.Cosmetic.Name}'";
             }
         }
 

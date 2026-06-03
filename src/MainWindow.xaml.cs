@@ -30,7 +30,7 @@ namespace ScritchyScratchyCheater
             // register MaximizeWindowMessage so that a message refernce is sent, this method will be called
             WeakReferenceMessenger.Default.Register<MaximizeWindowMessage>(this, (_, _) =>
             {
-                _windowWrapper.MaximizeOrRestoreWindow();
+                if (WindowState != WindowState.Maximized) _windowWrapper.MaximizeOrRestoreWindow();
             });
         }
 
