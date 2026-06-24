@@ -37,7 +37,7 @@
                    Style="{StaticResource TextBlock.Base}"
                    Foreground="{StaticResource CJG.Font.TitleBar}"/>
         <TextBlock Grid.Row="1"
-                   Text="Do you want to create a backup of your save file before editing?"
+                   Text="Do you want to create a backup of the current save file?"
                    FontSize="14"
                    Margin="0,15"
                    Style="{StaticResource TextBlock.Base}"

@@ -394,9 +394,15 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             CornerRadius="4">
-                        <ContentPresenter Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter x:Name="Content" Margin="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource CJG.Button.Background.Disabled}"/>
+                            <Setter Property="BorderBrush" Value="{StaticResource CJG.Button.Border}"/>
+                            <Setter Property="Foreground" Value="{StaticResource CJG.Font.Normal}"/>
+                            <Setter Property="Opacity" TargetName="Content" Value="0.5"/>
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>

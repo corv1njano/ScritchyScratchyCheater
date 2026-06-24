@@ -302,7 +302,10 @@
                                     <controls:ValidatedTextBox Style="{StaticResource TextBox.Validated}" Text="{Binding TicketLevelText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTicketLevelValid}" IsEnabled="{Binding IsTicketSelected}"/>
                                     <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding IsTicketSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                                 </Grid>
-                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxTicketLevelCommand}"/>
+                                <Grid Grid.Column="3">
+                                    <Button Style="{StaticResource blockbtn}" Command="{Binding MaxTicketLevelCommand}" IsEnabled="{Binding IsTicketSelected}"/>
+                                    <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding IsTicketSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                                </Grid>
                                 <Button Grid.Column="4" Style="{StaticResource blockbtn}" Command="{Binding MaxTicketLevelAllCommand}" Content="Max All" Margin="8,0,0,0" ToolTip="Set maximum Level for all Tickets"/>
                             </Grid>
                         </Grid>
