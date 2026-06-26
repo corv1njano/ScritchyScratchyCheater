@@ -304,7 +304,7 @@
                                 </Grid>
                                 <Grid Grid.Column="3">
                                     <Button Style="{StaticResource blockbtn}" Command="{Binding MaxTicketLevelCommand}" IsEnabled="{Binding IsTicketSelected}"/>
-                                    <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding IsTicketSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                                    <Rectangle Margin="8,0,0,0" Fill="Transparent" Cursor="No" Visibility="{Binding IsTicketSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                                 </Grid>
                                 <Button Grid.Column="4" Style="{StaticResource blockbtn}" Command="{Binding MaxTicketLevelAllCommand}" Content="Max All" Margin="8,0,0,0" ToolTip="Set maximum Level for all Tickets"/>
                             </Grid>
@@ -316,8 +316,9 @@
             <controls:IconTabItem Header="Upgrades" Icon="{StaticResource Icon.Upgrades}">
                 <Grid Style="{StaticResource contentGrid}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*" MinHeight="153"/>
+                        <RowDefinition Height="8"/>
+                        <RowDefinition Height="*" MinHeight="106"/>
                     </Grid.RowDefinitions>
 
                     <Border Grid.Row="0" Style="{StaticResource Border.Default}">
@@ -362,7 +363,7 @@
 
                             <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
 
-                            <ListBox Grid.Row="4" Style="{StaticResource ListBox.Default}" ItemsSource="{Binding PrestigeUpgradesView}" Visibility="{Binding HasPrestigeUpgrades, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <ListBox Grid.Row="4" Style="{StaticResource ListBox.Default}" ItemsSource="{Binding PrestigeUpgradesView}" SelectedItem="{Binding SelectedPrestigeUpgrade}" Visibility="{Binding HasPrestigeUpgrades, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -388,7 +389,34 @@
                         </Grid>
                     </Border>
 
-                    <Border Grid.Row="1" Style="{StaticResource Border.Default}" Margin="0,8,0,0">
+                    <GridSplitter Grid.Row="1" Margin="-999,0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="Transparent" SnapsToDevicePixels="True"
+                                  IsTabStop="False" FocusVisualStyle="{x:Null}">
+                        <GridSplitter.Style>
+                            <Style TargetType="GridSplitter">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="GridSplitter">
+                                            <Grid Background="{TemplateBinding Background}">
+                                                <Rectangle x:Name="HoverLine"
+                                                           Height="4"
+                                                           Fill="{StaticResource CJG.Block.Border}"
+                                                           StrokeDashArray="0,0"
+                                                           Opacity="0"
+                                                           RadiusX="1" RadiusY="1"/>
+                                            </Grid>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="HoverLine" Property="Opacity" Value="1"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GridSplitter.Style>
+                    </GridSplitter>
+                    
+                    <Border Grid.Row="2" Style="{StaticResource Border.Default}">
                         <Grid Margin="8">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
