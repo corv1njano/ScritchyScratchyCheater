@@ -8,6 +8,9 @@ namespace ScritchyScratchyCheater.Services
     /// </summary>
     public class PageNavigator
     {
+        /// <summary>
+        /// The current page that is being loaded and shown in the app.
+        /// </summary>
         public UserControl CurrentPage { get; private set; }
         public event Action<UserControl>? CurrentPageChanged;
 
@@ -19,8 +22,6 @@ namespace ScritchyScratchyCheater.Services
         /// <summary>
         /// Navigates to the specified page and updates the current page of MainWindow.
         /// </summary>
-        /// <remarks>This method raises the CurrentPageChanged event if the navigation is successful,
-        /// allowing subscribers to respond to the page change.</remarks>
         /// <param name="page">The page to navigate to. This parameter must not be null; if null, the navigation is ignored.</param>
         public void Navigate(UserControl page)
         {

@@ -285,11 +285,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             if (value)
             {
                 foreach (var cosmetic in FilteredCosmetics) cosmetic.IsEquipped = false;
+                SelectedCosmetic.IsEquipped = true;
                 UpdateCurrentCosmeticImage();
                 OnPropertyChanged(nameof(CurrentCosmeticItemToolTip));
             }
-
-            SelectedCosmetic.IsEquipped = value;
         }
 
         private void UpdateCurrentCosmeticImage()

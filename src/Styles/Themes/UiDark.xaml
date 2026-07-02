@@ -70,7 +70,7 @@
     <SolidColorBrush x:Key="CJG.DialogType.Error" Color="#F26D6D"/>
 
 
-    <SolidColorBrush x:Key="CJG.Accent" Color="#6BE6A7"/>
     <Color x:Key="CJG.Accent.Color">#6BE6A7</Color>
+    <SolidColorBrush x:Key="CJG.Accent" Color="{StaticResource CJG.Accent.Color}"/>
 
 </ResourceDictionary>

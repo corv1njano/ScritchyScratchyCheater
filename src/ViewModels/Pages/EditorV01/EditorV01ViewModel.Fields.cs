@@ -125,7 +125,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             new() { Index = 24, Goal = 8e26 },
             new() { Index = 25, Goal = 3e28 },
             new() { Index = 26, Goal = 1e30 }
-        }.OrderBy(i => i.Index).ToList();
+        };//.OrderBy(i => i.Index).ToList();
 
         [ObservableProperty]
         private ProgressionGoal? _selectedGoal;

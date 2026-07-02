@@ -66,7 +66,7 @@
                         Margin="0,8,8,8" 
                         Text="Reload" 
                         Icon="{StaticResource Icon.Refresh}" 
-                        ToolTip="Reload current Save File (Crtl+R)"/>
+                        ToolTip="Reload current Save File (F5)"/>
                     <controls:ButtonWithIcon Command="{Binding CloseSaveFileCommand}" 
                         Style="{StaticResource Button.WithIcon}"
                         Margin="0,8,0,8" 

@@ -20,7 +20,7 @@
 
     <Window.InputBindings>
         <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.SaveChangesCommand}"/>
-        <KeyBinding Key="R" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.ReloadSaveFileCommand}"/>
+        <KeyBinding Key="F5" Command="{Binding CurrentPage.DataContext.ReloadSaveFileCommand}"/>
         <KeyBinding Key="W" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.CloseSaveFileCommand}"/>
         <KeyBinding Key="B" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.CreateBackupCommand}"/>
         <KeyBinding Key="L" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.OpenFileExplorerCommand}"/>
