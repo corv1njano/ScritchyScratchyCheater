@@ -41,7 +41,7 @@ namespace ScritchyScratchyCheater.ViewModels
             if (UpdateChecker.IsNewerVersion(latest))
             {
                 // show update button in titlebar
-
+                UpdateAvailable = true;
 
                 // show update modal
                 var latestFormatted = latest.Replace("rel-", string.Empty);
@@ -53,10 +53,7 @@ namespace ScritchyScratchyCheater.ViewModels
                     DialogSound.Info,
                     DialogSize.Medium);
 
-                if (result == true)
-                {
-                    Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater/releases/latest");
-                }
+                if (result == true) UpdateApp();
             }
         }
 
@@ -92,6 +89,12 @@ namespace ScritchyScratchyCheater.ViewModels
         private void OpenSupportMe()
         {
             Utils.OpenUrl("https://github.com/sponsors/corv1njano");
+        }
+
+        [RelayCommand]
+        private void UpdateApp()
+        {
+            Utils.OpenUrl("https://github.com/corv1njano/ScritchyScratchyCheater/releases/latest");
         }
     }
 }

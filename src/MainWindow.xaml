@@ -44,11 +44,13 @@
                 Background="{StaticResource CJG.TitleBar}"
                 BorderThickness="0,0,0,1"
                 BorderBrush="{StaticResource CJG.Block.Border}">
+            
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
                     <Image Source="/Resources/Images/AppLogo.png"
                            Width="20"
@@ -69,6 +71,15 @@
                             <Setter Property="Fill" Value="{DynamicResource CJG.Font.TitleBar}"/>
                         </Style>
                     </StackPanel.Resources>
+                    
+                    <!-- update button (only visible when update check successfull) -->
+                    <Button Style="{StaticResource Button.Titlebar.Update}"
+                            Content="Update"
+                            Visibility="{Binding UpdateAvailable, Converter={StaticResource BoolToVisibilityConverter}}"
+                            Command="{Binding UpdateAppCommand}"
+                            ToolTip="Download the latest update now"/>
+
+                    <!-- info and support button -->
                     <Button Style="{StaticResource Button.TitleBar}" ToolTip="Support me!" Command="{Binding OpenSupportMeCommand}" Cursor="Hand">
                         <Rectangle Width="18" Height="18" Fill="{StaticResource CJG.Glyph.Heart}">
                             <Rectangle.OpacityMask>
@@ -83,6 +94,8 @@
                             </Rectangle.OpacityMask>
                         </Rectangle>
                     </Button>
+                    
+                    <!-- window controls -->
                     <Button Style="{StaticResource Button.TitleBar}" Click="Button_Minimize">
                         <Rectangle>
                             <Rectangle.OpacityMask>
