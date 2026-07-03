@@ -33,7 +33,7 @@ namespace ScritchyScratchyCheater.Models.SaveFiles
         public List<string>? AchievementsGotten { get; set; }
         public List<string>? AchievementsClaimed { get; set; }
 
-        public List<object>? UnlockedCosmetics { get; set; }
+        public List<string>? UnlockedCosmetics { get; set; }
         public List<string>? BoughtCosmetics { get; set; }
         public List<string>? EquippedCosmetics { get; set; }
 

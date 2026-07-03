@@ -157,6 +157,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             if (sf == null || sf.LayerOne == null) return;
 
             PrestigeText = sf.PrestigeCurrency.ToString();
+            PrestigeCountText = sf.PrestigeCount.ToString();
 
             _deathByFinalChanceCount = sf.DeathByFinalChanceCount;
             var prestigeUpgradeDic = sf.BoughtPrestigeUpgrades ?? new Dictionary<string, int>();
@@ -265,7 +266,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         }
         #endregion
 
-        #region saveing data
+        #region saving data
         [RelayCommand]
         private async Task SaveChanges()
         {
@@ -376,6 +377,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             }
 
             sf.PrestigeCurrency = int.Parse(PrestigeText);
+            sf.PrestigeCount = int.Parse(PrestigeCountText);
             sf.DeathByFinalChanceCount = _deathByFinalChanceCount;
         }
 

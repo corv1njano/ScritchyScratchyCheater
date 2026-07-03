@@ -136,8 +136,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [NotifyPropertyChangedFor(nameof(IsPrestigeValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _prestigeText = string.Empty;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsPrestigeCountValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
+        private string _prestigeCountText = string.Empty;
 
         public bool IsPrestigeValid => int.TryParse(PrestigeText, out _);
+        public bool IsPrestigeCountValid => int.TryParse(PrestigeCountText, out _);
 
         [ObservableProperty]
         private ImageSource? _prestigeIcon;

@@ -120,6 +120,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         }
 
         [RelayCommand]
+        private void MaxPrestigeCount()
+        {
+            PrestigeCountText = int.MaxValue.ToString();
+        }
+
+        [RelayCommand]
         private void MaxPrestigeUpgradeBuyCountAll()
         {
             foreach (var upgrade in PrestigeUpgrades) upgrade.BuyCountText = upgrade.PrestigeUpgrade != null
