@@ -45,6 +45,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             return IsMoneyValid
                 && IsPrestigeValid
+                && IsPrestigeCountValid
                 && IsTokensValid
                 && IsSoulsValid
                 && IsTicketLevelValid
