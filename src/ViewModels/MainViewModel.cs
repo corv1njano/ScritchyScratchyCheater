@@ -11,10 +11,13 @@ namespace ScritchyScratchyCheater.ViewModels
     public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
-        private bool _isDragging = false;
+        private bool _isDragging;
 
         [ObservableProperty]
         private UserControl? _currentPage = new StartingPage();
+
+        [ObservableProperty]
+        private bool _updateAvailable;
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(SaveFileTooltip))]
@@ -37,6 +40,10 @@ namespace ScritchyScratchyCheater.ViewModels
 
             if (UpdateChecker.IsNewerVersion(latest))
             {
+                // show update button in titlebar
+
+
+                // show update modal
                 var latestFormatted = latest.Replace("rel-", string.Empty);
 
                 bool result = ShowMessage.Info("Update available",

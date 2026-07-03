@@ -141,7 +141,7 @@
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding SoulsIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Souls:"/>
                                 <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding SoulsText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsSoulsValid}"/>
-                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Margin="8,0,16,0" Command="{Binding MaxSoulsCommand}"/>
+                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Margin="8,0,8,0" Command="{Binding MaxSoulsCommand}"/>
 
                                 <Image Grid.Column="4" Style="{StaticResource blockImg}" Source="{Binding TheMachine}"/>
                                 <TextBlock Grid.Column="5" Style="{StaticResource blockTxt}" Text="Machine Tier:"/>
@@ -169,7 +169,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Style="{StaticResource blockTxt}" Text="Act:" Margin="0,0,8,0"/>
-                                <ComboBox Grid.Column="1" ItemsSource="{Binding Acts}" SelectedItem="{Binding SelectedAct}" Margin="0,0,16,0" Style="{StaticResource ComboBox.Default}"/>
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding Acts}" SelectedItem="{Binding SelectedAct}" Margin="0,0,8,0" Style="{StaticResource ComboBox.Default}"/>
                                 <TextBlock Grid.Column="2" Style="{StaticResource blockTxt}" Text="Catalog:" Margin="0,0,8,0"/>
                                 <ComboBox Grid.Column="3" Style="{StaticResource ComboBox.Default}"
                                           ItemsSource="{Binding Catalogs}"
@@ -197,9 +197,8 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-
                                 <TextBlock Grid.Column="0" Style="{StaticResource blockTxt}" Text="Last Goal:" Margin="0,0,8,0"/>
-                                <ComboBox Grid.Column="1" ItemsSource="{Binding Goals}" SelectedItem="{Binding SelectedGoal}" Margin="0,0,16,0" Style="{StaticResource ComboBox.Default}"/>
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding Goals}" SelectedItem="{Binding SelectedGoal}" Margin="0,0,8,0" Style="{StaticResource ComboBox.Default}"/>
                                 <TextBlock Grid.Column="2" Style="{StaticResource blockTxt}" Text="Progression:" Margin="0,0,8,0"/>
                                 <controls:ValidatedTextBox Grid.Column="3" MaxLength="500" Style="{StaticResource TextBox.Validated}" Text="{Binding ProgressionText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsProgressionValid}"/>
                                 <Button Grid.Column="4" Style="{StaticResource blockbtn}" Command="{Binding MaxProgressionCommand}"/>
@@ -337,11 +336,18 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
+                                
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding PrestigeIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Prestige:"/>
                                 <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeValid}"/>
                                 <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeCommand}"/>
+                                <TextBlock Grid.Column="4" Margin="8,0" Style="{StaticResource blockTxt}" Text="Prestige Count:"/>
+                                <controls:ValidatedTextBox Grid.Column="5" Style="{StaticResource TextBox.Validated}" Text="{Binding PrestigeCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeCountValid}"/>
+                                <Button Grid.Column="6" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeCountCommand}"/>
                             </Grid>
 
                             <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
@@ -616,7 +622,7 @@
                                         <Rectangle Fill="Transparent" Cursor="No"
                                                    Visibility="{Binding NoneCosmeticNotSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                                     </Grid>
-                                    <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsCosmeticEquipped, Mode=TwoWay}" Margin="16,0,0,0" Content="Currently Equipped"/>
+                                    <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsCosmeticEquipped, Mode=TwoWay}" Margin="8,0,0,0" Content="Currently Equipped"/>
                                 </StackPanel>
                             </Grid>
                             <Border Grid.Column="1" Style="{StaticResource Border.Preview}" Grid.RowSpan="3" ToolTip="{Binding CurrentCosmeticItemToolTip}">
@@ -650,7 +656,7 @@
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding ElectricFanIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Margin="8,0" Text="Fan Charge Left:"/>
                                 <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" MaxLength="500" Text="{Binding ElectricFanChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEelectricFanChargeValid}"/>
-                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxElectricFanChargeCommand}"/>
+                                <Button Grid.Column="3" Content="Unlimited" ToolTip="Set maximum Value for unlimited Charge" Style="{StaticResource blockbtn}" Command="{Binding MaxElectricFanChargeCommand}"/>
                                 <CheckBox Margin="8,0,0,0" Content="Fan Paused" Grid.Column="4" Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsElectricFanPaused}"/>
                             </Grid>
 
@@ -666,13 +672,13 @@
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding EggTimerIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Timer Charge Left:"/>
                                 <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" MaxLength="500" Text="{Binding EggTimerChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEggTimerChargeValid}"/>
-                                <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxEggTimerChargeCommand}"/>
+                                <Button Grid.Column="3" Content="Unlimited" ToolTip="Set maximum Value for unlimited Charge" Style="{StaticResource blockbtn}" Command="{Binding MaxEggTimerChargeCommand}"/>
                             </Grid>
 
                             <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
 
                             <StackPanel Grid.Row="4" Orientation="Horizontal">
-                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsMundoDead}" Margin="0,0,16,0">
+                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsMundoDead}" Margin="0,0,8,0">
                                     <CheckBox.Content>
                                         <StackPanel Orientation="Horizontal">
                                             <Image Style="{StaticResource blockImg}" Source="{Binding MundoIcon}" Margin="0,0,4,0"/>
