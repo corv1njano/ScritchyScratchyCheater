@@ -1,11 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
+using ScritchyScratchyCheater.Models.GameData;
 using ScritchyScratchyCheater.Models.Results;
 using ScritchyScratchyCheater.Models.SaveFiles;
 using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.ViewModels.Items;
 using ScritchyScratchyCheater.Views.Pages;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -46,6 +48,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 OnPropertyChanged(nameof(LoansCountText));
                 OnPropertyChanged(nameof(LoanCountNotReached));
             };
+
+            LoanIds = new ObservableCollection<Loan>(App.GameDataParser.GetLoans());
         }
 
         private bool CheckCanSave()

@@ -11,5 +11,7 @@
         /// Servity value levels. [0] is servity 1, [1] is servity 2 and so on.
         /// </summary>
         public int[] Levels { get; init; } = new int[3];
+
+        public override string ToString() { return Id; }
     }
 }

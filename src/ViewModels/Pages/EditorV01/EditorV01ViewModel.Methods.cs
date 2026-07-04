@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Models.GameData;
 using ScritchyScratchyCheater.ViewModels.Items;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
@@ -318,15 +319,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (Loans.Count >= 3) return;
 
-            var defaultLoan = new Loan()
+            // use first item as default loan entry for dropdown, so no need for second parameter
+            var newLoanEntry = new LoanItem(LoanIds)
             {
-                Id = "Income reduction",
-                Description = "test"
-            };
-
-            var newLoanEntry = new LoanItem()
-            {
-                Loan = defaultLoan,
                 Index = Loans.Count + 1,
                 LoanNum = IsLoanCountValid ? int.Parse(LoanCountText) + 1 : 1,
                 Servity = 1,
@@ -335,6 +330,16 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             Loans.Add(newLoanEntry);
             LoanCountText = IsLoanCountValid ? (int.Parse(LoanCountText) + 1).ToString() : "1";
+        }
+
+        [RelayCommand]
+        private void RemoveLoan(LoanItem? item)
+        {
+            if (item == null) return;
+
+            Loans.Remove(item);
+            LoanCountText = IsLoanCountValid ? (int.Parse(LoanCountText) - 1).ToString() : "1";
+            OnPropertyChanged(nameof(LoanCountNotReached));
         }
 
         [RelayCommand]

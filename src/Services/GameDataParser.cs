@@ -223,6 +223,30 @@ namespace ScritchyScratchyCheater.Services
                 .ToList()
                 ?? new();
         }
+
+        /// <summary>
+        /// Retrieves a list of Loan items from the current game data.
+        /// </summary>
+        /// <remarks>This method returns an empty list if the game data root is null, if no Loan
+        /// dataset is present, or if the Loan data is undefined or null.</remarks>
+        /// <returns>A list of <see cref="Loan"/> objects representing the Loan item associated with the game data.</returns>
+        public List<Loan> GetLoans()
+        {
+            if (_gameDataRoot == null) return new();
+
+            GameDataset? dataset = _gameDataRoot.GameData?
+                .FirstOrDefault(x => string.Equals(x.Type, "loans", StringComparison.OrdinalIgnoreCase));
+
+            if (dataset == null) return new();
+            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
+
+            List<Loan>? loans = dataset.Data.Deserialize<List<Loan>>(App.JsonOptions);
+
+            return loans!
+                .OrderBy(x => x.Id, StringComparer.OrdinalIgnoreCase)
+                .ToList()
+                ?? new();
+        }
     }
 
     #region game data containers

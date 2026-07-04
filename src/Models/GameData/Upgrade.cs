@@ -5,6 +5,9 @@
         public int MaxBuyCount { get; init; }
     }
 
+    /// <summary>
+    /// Currently unused.
+    /// </summary>
     public enum UpgradeType
     {
         Normal,

@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:ScritchyScratchyCheater.Views.Pages"
              xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
              xmlns:converters="clr-namespace:ScritchyScratchyCheater.Utilities.Converters"
-             mc:Ignorable="d" 
-             x:Name="Root"
+             mc:Ignorable="d"
              d:DesignHeight="650" d:DesignWidth="670"
              Background="{StaticResource CJG.Window}"
              Loaded="Editor_Loaded">
@@ -769,7 +768,7 @@
                                             <DataTemplate>
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
                                                     <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
@@ -777,7 +776,29 @@
                                                         <TextBlock Text="{Binding LoanIdPretty}" Margin="5,0,0,0" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                        <ComboBox />
+                                                        <TextBlock Margin="8,0" VerticalAlignment="Center" Text="ID:"/>
+                                                        <ComboBox ItemsSource="{Binding LoanIds}" SelectedItem="{Binding Loan, Mode=TwoWay}" Width="220"/>
+                                                        
+                                                        <!-- info description for loan type + servity -->
+                                                        <Rectangle ToolTip="{Binding LoanDescriptionPretty}" Margin="4,0,0,0" Width="15" Height="15">
+                                                            <Rectangle.OpacityMask>
+                                                                <ImageBrush ImageSource="{StaticResource Icon.Info}"/>
+                                                            </Rectangle.OpacityMask>
+                                                            <Rectangle.Style>
+                                                                <Style TargetType="Rectangle">
+                                                                    <Setter Property="Fill" Value="{StaticResource CJG.Font.Normal}"/>
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter Property="Fill" Value="{StaticResource CJG.Font.Focused}"/>
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Rectangle.Style>
+                                                        </Rectangle>
+                                                        
+                                                        <TextBlock Margin="8,0" VerticalAlignment="Center" Text="Servity:"/>
+                                                        <ComboBox ItemsSource="{Binding LoanServities}" SelectedValue="{Binding Servity, Mode=TwoWay}" SelectedValuePath="Servity" Width="100"/>
+                                                        <Button Margin="8,0,4,0" ToolTip="Remove" Style="{StaticResource Button.SearchBox.Clear}" Command="{Binding DataContext.RemoveLoanCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
                                                     </StackPanel>
                                                 </Grid>
                                             </DataTemplate>

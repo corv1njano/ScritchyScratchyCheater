@@ -95,7 +95,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             new() { Name = "Act 3", ActId = 3 },
             new() { Name = "Act 4", ActId = 4 },
             new() { Name = "Act 5", ActId = 5 }
-        }.OrderBy(i => i.Name).ToList();
+        };
 
         [ObservableProperty]
         private Act? _selectedAct;
@@ -264,6 +264,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         #region tab misc
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsLoanCountValid))]
+        [NotifyPropertyChangedFor(nameof(LoanCountNotReached))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _loanCountText = string.Empty;
 
@@ -284,10 +285,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         public string MaxLoansText => MAX_LOANS.ToString();
         public string LoansCountText => Loans.Count.ToString();
-        public bool LoanCountNotReached => Loans.Count < MAX_LOANS;
+        public bool LoanCountNotReached => Loans.Count < MAX_LOANS
+            && (!int.TryParse(LoanCountText, out var value) || value < int.MaxValue); //makes sure that another loan entry cannot be added when int max value has been reached
 
         [ObservableProperty]
         private bool _bankruptcyWarningGiven;
+
+        [ObservableProperty]
+        private ObservableCollection<Loan> _loanIds = new();
         #endregion
     }
 }
