@@ -901,6 +901,36 @@
           "maxBuyCount": 1
         }
       ]
+    },
+    {
+      "type": "loans",
+      "data": [
+        {
+          "id": "Income reduction",
+          "description": "Your income is reduced by {0}%",
+          "levels": [30, 60, 90]
+        },
+        {
+          "id": "Ticket price increase",
+          "description": "Tickets are {0}% more expansive",
+          "levels": [10, 20, 30]
+        },
+        {
+          "id": "Smaller scratch size",
+          "description": "Your scratch size is reduced by {0}",
+          "levels": [1, 2, 3]
+        },
+        {
+          "id": "Scratch bot slowed",
+          "description": "Scratch bot speed is reduced by {0}%",
+          "levels": [30, 60, 90]
+        },
+        {
+          "id": "Wrong delivery",
+          "description": "1 in {0} Tickets will be different from what you ordered",
+          "levels": [20, 10, 5]
+        }
+      ]
     }
   ]
 }

@@ -75,7 +75,7 @@ namespace ScritchyScratchyCheater.Models.SaveFiles
 
         public bool FirstTicketOpened { get; set; }
 
-        public List<object>? Loans { get; set; }
+        public List<LoanDataV01>? Loans { get; set; }
 
         public bool BankruptcyWarningGiven { get; set; }
         public bool InitializedChallenge { get; set; }
@@ -112,5 +112,15 @@ namespace ScritchyScratchyCheater.Models.SaveFiles
     {
         public string? Id { get; set; }
         public int BuyCount { get; set; }
+    }
+
+    internal sealed class LoanDataV01
+    {
+        public string? Id { get; set; }
+        public int Index { get; set; }
+        public int LoanNum { get; set; }
+        public int Servity { get; set; }
+        public double Amount { get; set; }
+
     }
 }

@@ -127,7 +127,7 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <Style TargetType="{x:Type ComboBox}" x:Key="ComboBox.Default">
+    <Style TargetType="{x:Type ComboBox}">
         <Setter Property="Background" Value="{StaticResource CJG.ComboBox.Background}"/>
         <Setter Property="BorderBrush" Value="{StaticResource CJG.ComboBox.Border}"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>

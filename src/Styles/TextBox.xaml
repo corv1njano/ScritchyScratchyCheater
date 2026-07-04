@@ -46,7 +46,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="TextBox.ListSearch" TargetType="{x:Type local:TextBoxPlaceholder}" BasedOn="{StaticResource TextBox.Default}">
+    <Style TargetType="{x:Type local:TextBoxPlaceholder}" BasedOn="{StaticResource TextBox.Default}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:TextBoxPlaceholder}">
@@ -129,7 +129,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type local:ValidatedTextBox}" x:Key="TextBox.Validated" BasedOn="{StaticResource TextBox.Default}">
+    <Style TargetType="{x:Type local:ValidatedTextBox}" BasedOn="{StaticResource TextBox.Default}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ValidatedTextBox}">

@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace ScritchyScratchyCheater.Controls
@@ -9,9 +8,26 @@ namespace ScritchyScratchyCheater.Controls
     /// </summary>
     public class TextBoxPlaceholder : TextBox
     {
+        /// <summary>
+        /// Static constructor, because the default style for this custom element can only be
+        /// set once. The style cannot be overwritten a second time. The moment this element
+        /// is being used inside XAML, an instance of this class is being created. When this
+        /// control is used more times, it will get instantiated multiple times, but again, the
+        /// metadata can only be overwritten once. So that's why a static constructor is being
+        /// used to make sure the class not tries to overwrite the metadata with each new object
+        /// of it (this will also never happen, because the app will crash when the metadata has
+        /// already been overwritten before).
+        /// </summary>
+        static TextBoxPlaceholder()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(TextBoxPlaceholder),
+                new FrameworkPropertyMetadata(typeof(TextBoxPlaceholder)));
+        }
+
         public TextBoxPlaceholder()
         {
-            TextChanged += (_, __) => UpdateHasText();
+            TextChanged += (_, _) => UpdateHasText();
             UpdateHasText();
         }
 

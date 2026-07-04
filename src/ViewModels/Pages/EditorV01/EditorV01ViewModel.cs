@@ -39,6 +39,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             AchievementsView = CollectionViewSource.GetDefaultView(Achievements);
             AchievementsView.Filter = Utils.CreateNameFilter<AchievementItem>(a => a.Achievement?.Name, () => SearchAchievement);
+
+            Loans.CollectionChanged += (_, _) =>
+            {
+                OnPropertyChanged(nameof(HasLoans));
+                OnPropertyChanged(nameof(LoansCountText));
+                OnPropertyChanged(nameof(LoanCountNotReached));
+            };
         }
 
         private bool CheckCanSave()
@@ -53,6 +60,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && IsProgressionValid
                 && IsEelectricFanChargeValid
                 && IsEggTimerChargeValid
+                && IsLoanCountValid
                 && Upgrades.All(u => u.IsBuyCountValid)
                 && PrestigeUpgrades.All(u => u.IsBuyCountValid);
         }
@@ -76,6 +84,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             EggTimerIcon = App.ResourceParser.GetSprite("uEggTimer");
             MundoIcon = App.ResourceParser.GetSprite("uMundo");
             TrashCanIcon = App.ResourceParser.GetSprite("uTrashCan");
+            LoanIcon = App.ResourceParser.GetSprite("mLoan");
 
             TicketsView.Refresh();
             PrestigeUpgradesView.Refresh();
@@ -252,6 +261,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (sf == null) return;
 
+            LoanCountText = sf.LoanCount.ToString();
             var unlockedDlcs = sf.DlcUnlocked ?? new List<int>();
 
             Dlcs.Clear();
@@ -443,6 +453,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             }
 
             sf.DlcUnlocked = unlockedDlcs.ToList();
+            sf.LoanCount = int.Parse(LoanCountText);
         }
         #endregion
 

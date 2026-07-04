@@ -41,7 +41,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="ListBox.Default" TargetType="ListBox">
+    <Style TargetType="ListBox">
         <Setter Property="BorderBrush" Value="{StaticResource CJG.ListBox.Background}"/>
         <Setter Property="Background" Value="{StaticResource CJG.ListBox.Background}"/>
         <Setter Property="BorderThickness" Value="0"/>

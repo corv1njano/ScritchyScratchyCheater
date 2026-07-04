@@ -56,12 +56,10 @@
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Margin="8,0" Text="Destination:"/>
                     <controls:ValidatedTextBox Grid.Column="1"
-                                               Style="{StaticResource TextBox.Validated}"
                                                Text="{Binding TargetPath, UpdateSourceTrigger=PropertyChanged}"
                                                MaxLength="250"
                                                IsValid="{Binding IsTargetPathValid}"/>
-                    <controls:ButtonWithIcon Style="{StaticResource Button.WithIcon}"
-                                             Margin="8,0"
+                    <controls:ButtonWithIcon Margin="8,0"
                                              Grid.Column="2"
                                              Text="Browse"
                                              ToolTip="Browse for Destination Folder"
@@ -80,8 +78,8 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base.Bold}" Text="Export Settings"/>
                 <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,8,0,0">
-                    <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IncludeTimestamp, Mode=TwoWay}" Content="Include Timestamp in File Name"/>
-                    <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding OpenFolder, Mode=TwoWay}" Content="Open Destination Folder after Export"/>
+                    <CheckBox  IsChecked="{Binding IncludeTimestamp, Mode=TwoWay}" Content="Include Timestamp in File Name"/>
+                    <CheckBox  IsChecked="{Binding OpenFolder, Mode=TwoWay}" Content="Open Destination Folder after Export"/>
                 </StackPanel>
             </Grid>
         </Border>

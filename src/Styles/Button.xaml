@@ -309,7 +309,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type controls:ButtonWithIcon}" x:Key="Button.WithIcon" BasedOn="{StaticResource Button.Base}">
+    <Style TargetType="{x:Type controls:ButtonWithIcon}" BasedOn="{StaticResource Button.Base}">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{StaticResource CJG.Button.Border}"/>
         <Setter Property="Background" Value="{StaticResource CJG.ControlBar}"/>

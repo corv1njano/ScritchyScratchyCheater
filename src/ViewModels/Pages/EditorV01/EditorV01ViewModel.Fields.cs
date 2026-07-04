@@ -52,12 +52,16 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         public bool IsMoneyValid =>
             double.TryParse(MoneyText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
             && !double.IsNaN(value)
-            && !double.IsInfinity(value);
-        public bool IsSoulsValid => int.TryParse(SoulsText, out _);
+            && !double.IsInfinity(value)
+            && value >= 0;
+        public bool IsSoulsValid => int.TryParse(SoulsText, out var value)
+            && value >= 0;
         public bool IsTicketLevelValid => int.TryParse(TicketLevelText, out var value)
-            && value <= MAX_TICKET_LEVEL;
+            && value <= MAX_TICKET_LEVEL
+            && value >= 0;
         public bool IsMachineTierValid => int.TryParse(MachineTierText, out var value)
-            && value <= MAX_MACHINE_TIER;
+            && value <= MAX_MACHINE_TIER
+            && value >= 0;
         public bool IsProgressionValid => SelectedGoal != null
             && double.TryParse(ProgressionText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
             && !double.IsNaN(value)
@@ -141,8 +145,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _prestigeCountText = string.Empty;
 
-        public bool IsPrestigeValid => int.TryParse(PrestigeText, out _);
-        public bool IsPrestigeCountValid => int.TryParse(PrestigeCountText, out _);
+        public bool IsPrestigeValid => int.TryParse(PrestigeText, out var value)
+            && value >= 0;
+        public bool IsPrestigeCountValid => int.TryParse(PrestigeCountText, out var value)
+            && value >= 0;
 
         [ObservableProperty]
         private ImageSource? _prestigeIcon;
@@ -200,11 +206,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         public bool IsEelectricFanChargeValid =>
             double.TryParse(ElectricFanChargeText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
             && !double.IsNaN(value)
-            && !double.IsInfinity(value);
+            && !double.IsInfinity(value)
+            && value >= 0;
         public bool IsEggTimerChargeValid =>
             double.TryParse(EggTimerChargeText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
             && !double.IsNaN(value)
-            && !double.IsInfinity(value);
+            && !double.IsInfinity(value)
+            && value >= 0;
 
         public string? CurrentCosmeticItemToolTip
         {
@@ -254,9 +262,32 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         #endregion
 
         #region tab misc
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsLoanCountValid))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
+        private string _loanCountText = string.Empty;
+
+        public bool IsLoanCountValid => int.TryParse(LoanCountText, out var value)
+            && value >= 0;
+
+        [ObservableProperty]
+        private ImageSource? _loanIcon;
+
         public ObservableCollection<DlcItem> Dlcs { get; } = new();
         [ObservableProperty]
         private DlcItem? _selectedDlc;
+
+        private const int MAX_LOANS = 3;
+
+        public ObservableCollection<LoanItem> Loans { get; } = new();
+        public bool HasLoans => Loans.Count > 0;
+
+        public string MaxLoansText => MAX_LOANS.ToString();
+        public string LoansCountText => Loans.Count.ToString();
+        public bool LoanCountNotReached => Loans.Count < MAX_LOANS;
+
+        [ObservableProperty]
+        private bool _bankruptcyWarningGiven;
         #endregion
     }
 }

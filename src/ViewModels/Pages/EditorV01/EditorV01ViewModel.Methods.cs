@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Models.GameData;
 using ScritchyScratchyCheater.ViewModels.Items;
+using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
@@ -310,6 +311,36 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private void UnlockAllDlcs()
         {
             foreach (var entry in Dlcs) entry.IsUnlocked = true;
+        }
+
+        [RelayCommand]
+        private void AddLoan()
+        {
+            if (Loans.Count >= 3) return;
+
+            var defaultLoan = new Loan()
+            {
+                Id = "Income reduction",
+                Description = "test"
+            };
+
+            var newLoanEntry = new LoanItem()
+            {
+                Loan = defaultLoan,
+                Index = Loans.Count + 1,
+                LoanNum = IsLoanCountValid ? int.Parse(LoanCountText) + 1 : 1,
+                Servity = 1,
+                Amount = 1,
+            };
+
+            Loans.Add(newLoanEntry);
+            LoanCountText = IsLoanCountValid ? (int.Parse(LoanCountText) + 1).ToString() : "1";
+        }
+
+        [RelayCommand]
+        private void MaxLoanCount()
+        {
+            LoanCountText = int.MaxValue.ToString();
         }
         #endregion
     }

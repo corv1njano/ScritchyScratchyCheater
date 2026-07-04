@@ -63,11 +63,11 @@
                         <ColumnDefinition Width="8"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <controls:ButtonWithIcon Grid.Column="0" Style="{StaticResource Button.WithIcon}" Height="30" Text="GitHub" Icon="{StaticResource Icon.GitHub}" IconHeight="17" IconWidth="17"
+                    <controls:ButtonWithIcon Grid.Column="0" Height="30" Text="GitHub" Icon="{StaticResource Icon.GitHub}" IconHeight="17" IconWidth="17"
                                              Command="{Binding OpenGitHubCommand}"/>
-                    <controls:ButtonWithIcon Grid.Column="2" Style="{StaticResource Button.WithIcon}" Height="30" Text="License" Icon="{StaticResource Icon.License}"
+                    <controls:ButtonWithIcon Grid.Column="2" Height="30" Text="License" Icon="{StaticResource Icon.License}"
                                              Command="{Binding OpenLicenseCommand}"/>
-                    <controls:ButtonWithIcon Grid.Column="4" Style="{StaticResource Button.WithIcon}" Height="30" Text="Sponsor" Icon="{StaticResource Icon.Heart}"
+                    <controls:ButtonWithIcon Grid.Column="4" Height="30" Text="Sponsor" Icon="{StaticResource Icon.Heart}"
                                              Command="{Binding OpenSponsorCommand}"/>
                 </Grid>
             </StackPanel>

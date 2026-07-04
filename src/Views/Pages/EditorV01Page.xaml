@@ -7,6 +7,7 @@
              xmlns:controls="clr-namespace:ScritchyScratchyCheater.Controls"
              xmlns:converters="clr-namespace:ScritchyScratchyCheater.Utilities.Converters"
              mc:Ignorable="d" 
+             x:Name="Root"
              d:DesignHeight="650" d:DesignWidth="670"
              Background="{StaticResource CJG.Window}"
              Loaded="Editor_Loaded">
@@ -53,22 +54,22 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
                     <Grid Margin="8">
-                        <controls:ButtonWithIcon Command="{Binding SaveChangesCommand}"
+                        <controls:ButtonWithIcon
+                            Command="{Binding SaveChangesCommand}"
                             IsEnabled="{Binding CanSave}"
-                            Style="{StaticResource Button.WithIcon}"
                             Text="Save"
                             Icon="{StaticResource Icon.Save}"
                             ToolTip="Save all Changes (Crtl+S)"/>
                         <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding CanSave, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                     </Grid>
-                    <controls:ButtonWithIcon Command="{Binding ReloadSaveFileCommand}" 
-                        Style="{StaticResource Button.WithIcon}"
+                    <controls:ButtonWithIcon
+                        Command="{Binding ReloadSaveFileCommand}"
                         Margin="0,8,8,8" 
                         Text="Reload" 
                         Icon="{StaticResource Icon.Refresh}" 
                         ToolTip="Reload current Save File (F5)"/>
-                    <controls:ButtonWithIcon Command="{Binding CloseSaveFileCommand}" 
-                        Style="{StaticResource Button.WithIcon}"
+                    <controls:ButtonWithIcon
+                        Command="{Binding CloseSaveFileCommand}"
                         Margin="0,8,0,8" 
                         Text="Close" 
                         Icon="{StaticResource Icon.Close}"
@@ -77,25 +78,25 @@
                         ToolTip="Close current Save File (Crtl+W)"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-                    <controls:ButtonWithIcon Command="{Binding CreateBackupCommand}" 
-                         Style="{StaticResource Button.WithIcon}"
-                         Text="Backup"
-                         Margin="0,8"
-                         Icon="{StaticResource Icon.Files}"
-                         ToolTip="Create a Backup of current Save File (Crtl+B)"/>
-                    <controls:ButtonWithIcon Command="{Binding OpenFileExplorerCommand}" 
-                         Style="{StaticResource Button.WithIcon}"
-                         Margin="8"
-                         Text="Locate Save" 
-                         Icon="{StaticResource Icon.Folder}" 
-                         IconHeight="19"
-                         IconWidth="19"
-                         ToolTip="Open current Save File in File Explorer (Crtl+L)"/>
+                    <controls:ButtonWithIcon
+                        Command="{Binding CreateBackupCommand}"
+                        Text="Backup"
+                        Margin="0,8"
+                        Icon="{StaticResource Icon.Files}"
+                        ToolTip="Create a Backup of current Save File (Crtl+B)"/>
+                    <controls:ButtonWithIcon
+                        Command="{Binding OpenFileExplorerCommand}"
+                        Margin="8"
+                        Text="Locate Save" 
+                        Icon="{StaticResource Icon.Folder}" 
+                        IconHeight="19"
+                        IconWidth="19"
+                        ToolTip="Open current Save File in File Explorer (Crtl+L)"/>
                 </StackPanel>
             </Grid>
         </Border>
 
-        <TabControl Grid.Row="1" Style="{StaticResource TabControl.Modern}" Margin="10,0,10,10">
+        <TabControl Grid.Row="1" Margin="10,0,10,10">
             <controls:IconTabItem Header="Progress" Icon="{StaticResource Icon.Progress}">
                 <Grid Style="{StaticResource contentGrid}">
                     <Grid.RowDefinitions>
@@ -121,7 +122,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding MoneyIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Money:"/>
-                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" MaxLength="500" Text="{Binding MoneyText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsMoneyValid}"/>
+                                <controls:ValidatedTextBox Grid.Column="2" MaxLength="500" Text="{Binding MoneyText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsMoneyValid}"/>
                                 <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxMoneyCommand}"/>
                             </Grid>
 
@@ -140,12 +141,12 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding SoulsIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Souls:"/>
-                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding SoulsText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsSoulsValid}"/>
+                                <controls:ValidatedTextBox Grid.Column="2"  Text="{Binding SoulsText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsSoulsValid}"/>
                                 <Button Grid.Column="3" Style="{StaticResource blockbtn}" Margin="8,0,8,0" Command="{Binding MaxSoulsCommand}"/>
 
                                 <Image Grid.Column="4" Style="{StaticResource blockImg}" Source="{Binding TheMachine}"/>
                                 <TextBlock Grid.Column="5" Style="{StaticResource blockTxt}" Text="Machine Tier:"/>
-                                <controls:ValidatedTextBox Grid.Column="6" Style="{StaticResource TextBox.Validated}" Text="{Binding MachineTierText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsMachineTierValid}"/>
+                                <controls:ValidatedTextBox Grid.Column="6"  Text="{Binding MachineTierText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsMachineTierValid}"/>
                                 <Button Grid.Column="7" Style="{StaticResource blockbtn}" Margin="8,0,0,0" Command="{Binding MaxMachineTierCommand}"/>
                             </Grid>
                         </Grid>
@@ -169,9 +170,9 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Style="{StaticResource blockTxt}" Text="Act:" Margin="0,0,8,0"/>
-                                <ComboBox Grid.Column="1" ItemsSource="{Binding Acts}" SelectedItem="{Binding SelectedAct}" Margin="0,0,8,0" Style="{StaticResource ComboBox.Default}"/>
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding Acts}" SelectedItem="{Binding SelectedAct}" Margin="0,0,8,0" />
                                 <TextBlock Grid.Column="2" Style="{StaticResource blockTxt}" Text="Catalog:" Margin="0,0,8,0"/>
-                                <ComboBox Grid.Column="3" Style="{StaticResource ComboBox.Default}"
+                                <ComboBox Grid.Column="3" 
                                           ItemsSource="{Binding Catalogs}"
                                           SelectedValue="{Binding SelectedCatalog}">
                                     <ComboBox.ItemTemplate>
@@ -183,7 +184,7 @@
                                         </DataTemplate>
                                     </ComboBox.ItemTemplate>
                                 </ComboBox>
-                                <CheckBox Grid.Column="4" Style="{StaticResource CheckBox.Default}" IsChecked="{Binding SelectedCatalog.IsClaimed}" Content="Claimed" Margin="8,0,0,0"/>
+                                <CheckBox Grid.Column="4"  IsChecked="{Binding SelectedCatalog.IsClaimed}" Content="Claimed" Margin="8,0,0,0"/>
                                 <Button Grid.Column="5" Style="{StaticResource blockbtn}" Content="Claim All" ToolTip="Claim all Catalogs" Command="{Binding ClaimAllCatalogsCommand}"/>
                             </Grid>
 
@@ -198,9 +199,9 @@
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Style="{StaticResource blockTxt}" Text="Last Goal:" Margin="0,0,8,0"/>
-                                <ComboBox Grid.Column="1" ItemsSource="{Binding Goals}" SelectedItem="{Binding SelectedGoal}" Margin="0,0,8,0" Style="{StaticResource ComboBox.Default}"/>
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding Goals}" SelectedItem="{Binding SelectedGoal}" Margin="0,0,8,0" />
                                 <TextBlock Grid.Column="2" Style="{StaticResource blockTxt}" Text="Progression:" Margin="0,0,8,0"/>
-                                <controls:ValidatedTextBox Grid.Column="3" MaxLength="500" Style="{StaticResource TextBox.Validated}" Text="{Binding ProgressionText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsProgressionValid}"/>
+                                <controls:ValidatedTextBox Grid.Column="3" MaxLength="500"  Text="{Binding ProgressionText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsProgressionValid}"/>
                                 <Button Grid.Column="4" Style="{StaticResource blockbtn}" Command="{Binding MaxProgressionCommand}"/>
                             </Grid>
                         </Grid>
@@ -225,7 +226,6 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Ticket:" Margin="0,0,8,0"/>
                                 <controls:TextBoxPlaceholder Grid.Column="1"
-                                                             Style="{StaticResource TextBox.ListSearch}"
                                                              PlaceholderText="Search ticket..."
                                                              IsClearable="True"
                                                              Text="{Binding SearchTicket, UpdateSourceTrigger=PropertyChanged}"/>
@@ -235,7 +235,7 @@
 
                             <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
 
-                            <ListBox Grid.Row="2" Style="{StaticResource ListBox.Default}" ItemsSource="{Binding TicketsView}" Visibility="{Binding HasTickets, Converter={StaticResource BoolToVisibilityConverter}}" SelectedItem="{Binding SelectedTicket}">
+                            <ListBox Grid.Row="2"  ItemsSource="{Binding TicketsView}" Visibility="{Binding HasTickets, Converter={StaticResource BoolToVisibilityConverter}}" SelectedItem="{Binding SelectedTicket}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -274,9 +274,9 @@
                                                         </Style>
                                                     </Image.Style>
                                                 </Image>
-                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding GottenJackpot, Mode=TwoWay}"/>
+                                                <CheckBox  IsChecked="{Binding GottenJackpot, Mode=TwoWay}"/>
                                                 <TextBlock Text="Jackpot" VerticalAlignment="Center"/>
-                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding GottenSuperJackpot, Mode=TwoWay}" Margin="16,0,0,0"/>
+                                                <CheckBox  IsChecked="{Binding GottenSuperJackpot, Mode=TwoWay}" Margin="8,0,0,0"/>
                                                 <TextBlock Text="Super Jackpot" Margin="0,0,8,0" VerticalAlignment="Center"/>
                                             </StackPanel>
                                         </Grid>
@@ -298,7 +298,7 @@
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding CurrentTicketImage}" ToolTip="{Binding SelectedTicketToolTip}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Ticket Level:"/>
                                 <Grid Grid.Column="2">
-                                    <controls:ValidatedTextBox Style="{StaticResource TextBox.Validated}" Text="{Binding TicketLevelText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTicketLevelValid}" IsEnabled="{Binding IsTicketSelected}"/>
+                                    <controls:ValidatedTextBox  Text="{Binding TicketLevelText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTicketLevelValid}" IsEnabled="{Binding IsTicketSelected}"/>
                                     <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding IsTicketSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                                 </Grid>
                                 <Grid Grid.Column="3">
@@ -343,10 +343,10 @@
                                 
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding PrestigeIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Prestige:"/>
-                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeValid}"/>
+                                <controls:ValidatedTextBox Grid.Column="2"  Text="{Binding PrestigeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeValid}"/>
                                 <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeCommand}"/>
                                 <TextBlock Grid.Column="4" Margin="8,0" Style="{StaticResource blockTxt}" Text="Prestige Count:"/>
-                                <controls:ValidatedTextBox Grid.Column="5" Style="{StaticResource TextBox.Validated}" Text="{Binding PrestigeCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeCountValid}"/>
+                                <controls:ValidatedTextBox Grid.Column="5"  Text="{Binding PrestigeCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsPrestigeCountValid}"/>
                                 <Button Grid.Column="6" Style="{StaticResource blockbtn}" Command="{Binding MaxPrestigeCountCommand}"/>
                             </Grid>
 
@@ -360,7 +360,6 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Prestige Upgrade:" Margin="0,0,8,0"/>
                                 <controls:TextBoxPlaceholder Grid.Column="1"
-                                                             Style="{StaticResource TextBox.ListSearch}"
                                                              PlaceholderText="Search prestige upgrade..."
                                                              IsClearable="True"
                                                              Text="{Binding SearchPrestigeUpgrade, UpdateSourceTrigger=PropertyChanged}"/>
@@ -369,7 +368,7 @@
 
                             <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
 
-                            <ListBox Grid.Row="4" Style="{StaticResource ListBox.Default}" ItemsSource="{Binding PrestigeUpgradesView}" SelectedItem="{Binding SelectedPrestigeUpgrade}" Visibility="{Binding HasPrestigeUpgrades, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <ListBox Grid.Row="4" ItemsSource="{Binding PrestigeUpgradesView}" Visibility="{Binding HasPrestigeUpgrades, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -384,7 +383,7 @@
                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                                                 <TextBlock ToolTip="Buy Count is maxed out" Text="Maxed" Foreground="{StaticResource CJG.Accent}" Style="{StaticResource TextBlock.Base}" VerticalAlignment="Center" Margin="0,0,16,0" Visibility="{Binding IsMaxedOut, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                 <TextBlock Text="Buy Count:" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                                <controls:ValidatedTextBox Style="{StaticResource TextBox.Validated}" Width="50" Text="{Binding BuyCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsBuyCountValid}"/>
+                                                <controls:ValidatedTextBox  Width="50" Text="{Binding BuyCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsBuyCountValid}"/>
                                                 <Button Style="{StaticResource blockbtn}" Margin="3,0,0,0" Width="50" Command="{Binding DataContext.MaxPrestigeUpgradeBuyCountCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
                                             </StackPanel>
                                         </Grid>
@@ -438,7 +437,6 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Gadget / Upgrade:" Margin="0,0,8,0"/>
                                 <controls:TextBoxPlaceholder Grid.Column="1"
-                                         Style="{StaticResource TextBox.ListSearch}"
                                          PlaceholderText="Search gadget or upgrade..."
                                          IsClearable="True"
                                          Text="{Binding SearchUpgrade, UpdateSourceTrigger=PropertyChanged}"/>
@@ -447,7 +445,7 @@
 
                             <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
 
-                            <ListBox Grid.Row="2" Style="{StaticResource ListBox.Default}" ItemsSource="{Binding UpgradesView}" Visibility="{Binding HasUpgrades, Converter={StaticResource BoolToVisibilityConverter}}">
+                            <ListBox Grid.Row="2"  ItemsSource="{Binding UpgradesView}" Visibility="{Binding HasUpgrades, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
@@ -462,7 +460,7 @@
                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                                                 <TextBlock ToolTip="Buy Count is maxed out" Text="Maxed" Foreground="{StaticResource CJG.Accent}" Style="{StaticResource TextBlock.Base}" VerticalAlignment="Center" Margin="0,0,16,0" Visibility="{Binding IsMaxedOut, Converter={StaticResource BoolToVisibilityConverter}}"/>
                                                 <TextBlock Text="Buy Count:" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                                <controls:ValidatedTextBox Style="{StaticResource TextBox.Validated}" Width="50" Text="{Binding BuyCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsBuyCountValid}"/>
+                                                <controls:ValidatedTextBox  Width="50" Text="{Binding BuyCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsBuyCountValid}"/>
                                                 <Button Style="{StaticResource blockbtn}" Margin="3,0,0,0" Width="50" Command="{Binding DataContext.MaxUpgradeBuyCountCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
                                             </StackPanel>
                                         </Grid>
@@ -494,7 +492,6 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Achievement:" Margin="0,0,8,0"/>
                                 <controls:TextBoxPlaceholder Grid.Column="1"
-                                             Style="{StaticResource TextBox.ListSearch}"
                                              PlaceholderText="Search achievement..."
                                              IsClearable="True"
                                              Text="{Binding SearchAchievement, UpdateSourceTrigger=PropertyChanged}"/>
@@ -505,7 +502,6 @@
                             <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
 
                             <ListBox Grid.Row="2"
-                                     Style="{StaticResource ListBox.Default}"
                                      ItemsSource="{Binding AchievementsView}"
                                      Visibility="{Binding HasAchievements, Converter={StaticResource BoolToVisibilityConverter}}">
                                 <ListBox.ItemTemplate>
@@ -520,9 +516,9 @@
                                                 <TextBlock Text="{Binding Achievement.Name}" Margin="5,0,0,0" VerticalAlignment="Center"/>
                                             </StackPanel>
                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsUnlocked, Mode=TwoWay}" Margin="8,0,0,0"/>
+                                                <CheckBox  IsChecked="{Binding IsUnlocked, Mode=TwoWay}" Margin="8,0,0,0"/>
                                                 <TextBlock Text="Unlocked" VerticalAlignment="Center"/>
-                                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsClaimed, Mode=TwoWay}" Margin="16,0,0,0"/>
+                                                <CheckBox  IsChecked="{Binding IsClaimed, Mode=TwoWay}" Margin="16,0,0,0"/>
                                                 <TextBlock Text="Claimed" Margin="0,0,8,0" VerticalAlignment="Center"/>
                                             </StackPanel>
                                         </Grid>
@@ -554,7 +550,7 @@
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding TokensIcon}"/>
                             <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Tokens:"/>
-                            <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" Text="{Binding TokensText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTokensValid}"/>
+                            <controls:ValidatedTextBox Grid.Column="2"  Text="{Binding TokensText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTokensValid}"/>
                             <Button Grid.Column="3" Style="{StaticResource blockbtn}" Command="{Binding MaxTokensCommand}"/>
                         </Grid>
                     </Border>
@@ -579,7 +575,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Category:"/>
-                                    <ComboBox Grid.Column="1" Style="{StaticResource ComboBox.Default}"
+                                    <ComboBox Grid.Column="1" 
                                               ItemsSource="{Binding CosmeticCategories}"
                                               SelectedValue="{Binding SelectedCosmeticCategory}"
                                               DisplayMemberPath="Name"/>
@@ -592,7 +588,7 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Style="{StaticResource TextBlock.Base}" Text="Cosmetic:"/>
-                                    <ComboBox Grid.Column="1" Margin="0,0,8,0" Style="{StaticResource ComboBox.Default}"
+                                    <ComboBox Grid.Column="1" Margin="0,0,8,0" 
                                               ItemsSource="{Binding FilteredCosmetics}"
                                               SelectedItem="{Binding SelectedCosmetic}">
                                         <ComboBox.ItemTemplate>
@@ -618,11 +614,11 @@
                                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                                     <Rectangle Fill="Transparent" Width="80"/>
                                     <Grid>
-                                        <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding SelectedCosmetic.IsPurchased, Mode=TwoWay}" Content="Purchased" IsEnabled="{Binding NoneCosmeticNotSelected}"/>
+                                        <CheckBox  IsChecked="{Binding SelectedCosmetic.IsPurchased, Mode=TwoWay}" Content="Purchased" IsEnabled="{Binding NoneCosmeticNotSelected}"/>
                                         <Rectangle Fill="Transparent" Cursor="No"
                                                    Visibility="{Binding NoneCosmeticNotSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                                     </Grid>
-                                    <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsCosmeticEquipped, Mode=TwoWay}" Margin="8,0,0,0" Content="Currently Equipped"/>
+                                    <CheckBox  IsChecked="{Binding IsCosmeticEquipped, Mode=TwoWay}" Margin="8,0,0,0" Content="Currently Equipped"/>
                                 </StackPanel>
                             </Grid>
                             <Border Grid.Column="1" Style="{StaticResource Border.Preview}" Grid.RowSpan="3" ToolTip="{Binding CurrentCosmeticItemToolTip}">
@@ -655,9 +651,9 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding ElectricFanIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Margin="8,0" Text="Fan Charge Left:"/>
-                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" MaxLength="500" Text="{Binding ElectricFanChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEelectricFanChargeValid}"/>
+                                <controls:ValidatedTextBox Grid.Column="2"  MaxLength="500" Text="{Binding ElectricFanChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEelectricFanChargeValid}"/>
                                 <Button Grid.Column="3" Content="Unlimited" ToolTip="Set maximum Value for unlimited Charge" Style="{StaticResource blockbtn}" Command="{Binding MaxElectricFanChargeCommand}"/>
-                                <CheckBox Margin="8,0,0,0" Content="Fan Paused" Grid.Column="4" Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsElectricFanPaused}"/>
+                                <CheckBox Margin="8,0,0,0" Content="Fan Paused" Grid.Column="4"  IsChecked="{Binding IsElectricFanPaused}"/>
                             </Grid>
 
                             <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
@@ -671,14 +667,14 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding EggTimerIcon}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Timer Charge Left:"/>
-                                <controls:ValidatedTextBox Grid.Column="2" Style="{StaticResource TextBox.Validated}" MaxLength="500" Text="{Binding EggTimerChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEggTimerChargeValid}"/>
+                                <controls:ValidatedTextBox Grid.Column="2"  MaxLength="500" Text="{Binding EggTimerChargeText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsEggTimerChargeValid}"/>
                                 <Button Grid.Column="3" Content="Unlimited" ToolTip="Set maximum Value for unlimited Charge" Style="{StaticResource blockbtn}" Command="{Binding MaxEggTimerChargeCommand}"/>
                             </Grid>
 
                             <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
 
                             <StackPanel Grid.Row="4" Orientation="Horizontal">
-                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsMundoDead}" Margin="0,0,8,0">
+                                <CheckBox  IsChecked="{Binding IsMundoDead}" Margin="0,0,8,0">
                                     <CheckBox.Content>
                                         <StackPanel Orientation="Horizontal">
                                             <Image Style="{StaticResource blockImg}" Source="{Binding MundoIcon}" Margin="0,0,4,0"/>
@@ -686,7 +682,7 @@
                                         </StackPanel>
                                     </CheckBox.Content>
                                 </CheckBox>
-                                <CheckBox Style="{StaticResource CheckBox.Default}" IsChecked="{Binding IsTrashCanDead}" >
+                                <CheckBox  IsChecked="{Binding IsTrashCanDead}" >
                                     <CheckBox.Content>
                                         <StackPanel Orientation="Horizontal">
                                             <Image Style="{StaticResource blockImg}" Source="{Binding TrashCanIcon}" Margin="0,0,4,0"/>
@@ -706,7 +702,9 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
+                            
                             <Border Grid.Row="0" Style="{StaticResource Border.Default}">
                                 <Grid Margin="8">
                                     <Grid.ColumnDefinitions>
@@ -716,11 +714,88 @@
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Margin="0,0,8,0" Grid.Column="0" Style="{StaticResource blockTxt}" Text="Available DLCs:"/>
-                                    <ComboBox Grid.Column="1" Style="{StaticResource ComboBox.Default}" ItemsSource="{Binding Dlcs}" SelectedItem="{Binding SelectedDlc}"/>
-                                    <CheckBox Grid.Column="2" Margin="8,0,0,0" Style="{StaticResource CheckBox.Default}" Content="Unlocked" IsChecked="{Binding SelectedDlc.IsUnlocked}"/>
+                                    <ComboBox Grid.Column="1"  ItemsSource="{Binding Dlcs}" SelectedItem="{Binding SelectedDlc}"/>
+                                    <CheckBox Grid.Column="2" Margin="8,0,0,0"  Content="Unlocked" IsChecked="{Binding SelectedDlc.IsUnlocked}"/>
                                     <Button Grid.Column="3" Style="{StaticResource blockbtn}" Content="Unlock All" ToolTip="Unlock all available DLCs" Command="{Binding UnlockAllDlcsCommand}"/>
                                 </Grid>
                             </Border>
+
+                            <Border Margin="0,8,0,0" Grid.Row="1" Style="{StaticResource Border.Default}">
+                                <Grid Margin="8">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                            <!-- fixed width value to make sure that the different number widths don't shift the content around a little bit -->
+                                            <TextBlock Style="{StaticResource blockTxt}" Text="{Binding LoansCountText}" Margin="0" TextAlignment="Left" Width="12"/>
+                                            <TextBlock Style="{StaticResource blockTxt}" Text="/" Margin="0,0,4,0"/>
+                                            <TextBlock Style="{StaticResource blockTxt}" Text="{Binding MaxLoansText}" Margin="0"/>
+                                            <TextBlock Style="{StaticResource blockTxt}" Text="Loans" Margin="4,0,8,0"/>
+                                        </StackPanel>
+                                        <Grid Grid.Column="1">
+                                            <controls:ButtonWithIcon Margin="0" Command="{Binding AddLoanCommand}" IsEnabled="{Binding LoanCountNotReached}" Text="Add" ToolTip="Add a new Loan Entry" Icon="{StaticResource Icon.Add}"/>
+                                            <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding LoanCountNotReached, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                                        </Grid>
+
+                                        <TextBlock Grid.Column="2" Style="{StaticResource blockTxt}" Text="Loan Count:"/>
+                                        <controls:ValidatedTextBox Grid.Column="3" Text="{Binding LoanCountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsLoanCountValid}" />
+                                        <Button Grid.Column="4" Style="{StaticResource blockbtn}" Command="{Binding MaxLoanCountCommand}"/>
+                                        <CheckBox Grid.Column="5" Margin="8,0,0,0" Content="Bankruptcy Warned" IsChecked="{Binding BankruptcyWarningGiven, Mode=TwoWay}"/>
+                                    </Grid>
+
+                                    <Border Grid.Row="1" Style="{StaticResource blockBod}"/>
+
+                                    <ListBox Grid.Row="2"
+                                             ItemsSource="{Binding Loans}"
+                                             Visibility="{Binding HasLoans, Converter={StaticResource BoolToVisibilityConverter}}"
+                                             Height="126"
+                                             ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
+                                                        <Image Height="30" Width="30" Source="{Binding DataContext.LoanIcon, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                                                        <TextBlock Text="{Binding LoanIdPretty}" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                                        <ComboBox />
+                                                    </StackPanel>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                    <!-- needs same height as listbox, because height is fixed -->
+                                    <Grid Height="126" Grid.Row="2" Visibility="{Binding HasLoans, Converter={StaticResource InvertedBoolToVisibilityConverter}}">
+                                        <TextBlock Text="There are no loan entries yet. Click the '+ Add' button to create a new entry." HorizontalAlignment="Center" Style="{StaticResource TextBlock.Base}"/>
+                                    </Grid>
+                                    
+                                    <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
+
+                                    <Grid Grid.Row="4">
+                                        
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                            
                         </Grid>
                     </ScrollViewer>
                 </Grid>
