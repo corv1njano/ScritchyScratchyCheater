@@ -9,12 +9,12 @@ namespace ScritchyScratchyCheater.ViewModels.Items
         /// <summary>
         /// List of all available loans from the game data JSON.
         /// </summary>
-        public ObservableCollection<Loan> LoanIds { get; }
-        public static ObservableCollection<LoanServity> LoanServities { get; } = new()
+        public ObservableCollection<Loan> AvailableLoans { get; init; }
+        public static ObservableCollection<LoanSeverity> LoanSeverities { get; } = new()
         {
-            new LoanServity { Name = "Level 1", Servity = 1 },
-            new LoanServity { Name = "Level 2", Servity = 2 },
-            new LoanServity { Name = "Level 3", Servity = 3 },
+            new LoanSeverity { Name = "Level 1", Severity = 1 },
+            new LoanSeverity { Name = "Level 2", Severity = 2 },
+            new LoanSeverity { Name = "Level 3", Severity = 3 },
         };
 
         [ObservableProperty]
@@ -30,21 +30,37 @@ namespace ScritchyScratchyCheater.ViewModels.Items
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(LoanDescriptionPretty))]
-        private int _servity = 1;
+        private int _severity = 1;
 
         [ObservableProperty]
         private double _amount = 1;
 
         public string LoanIdPretty => "#" + LoanNum;
         public string LoanDescriptionPretty =>
-            Loan is null
+            Loan == null
                 ? string.Empty
-                : string.Format(Loan.Description, Loan.Levels[Servity - 1]);
+                : string.Format(Loan.Description, Loan.Levels[Severity - 1]);
 
+        /// <summary>
+        /// Called when a new loan entry is created by the user.
+        /// </summary>
         public LoanItem(ObservableCollection<Loan> availableLoans, Loan? initialLoan = null)
         {
-            LoanIds = availableLoans;
+            AvailableLoans = availableLoans;
             Loan = initialLoan ?? availableLoans.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Called when new loan entry is loaded from the save file into the editor.
+        /// </summary>
+        public LoanItem(Loan? loan, int index, int loanNum, int severity, double amount, ObservableCollection<Loan> availableLoans)
+        {
+            Loan = loan;
+            Index = index;
+            LoanNum = loanNum;
+            Severity = severity;
+            Amount = amount;
+            AvailableLoans = availableLoans;
         }
     }
 }

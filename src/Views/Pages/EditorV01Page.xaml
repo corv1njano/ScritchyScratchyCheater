@@ -771,13 +771,14 @@
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
+                                                    
                                                     <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
                                                         <Image Height="30" Width="30" Source="{Binding DataContext.LoanIcon, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
                                                         <TextBlock Text="{Binding LoanIdPretty}" Margin="5,0,0,0" VerticalAlignment="Center"/>
                                                     </StackPanel>
                                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                                                         <TextBlock Margin="8,0" VerticalAlignment="Center" Text="ID:"/>
-                                                        <ComboBox ItemsSource="{Binding LoanIds}" SelectedItem="{Binding Loan, Mode=TwoWay}" Width="220"/>
+                                                        <ComboBox ItemsSource="{Binding AvailableLoans}" SelectedItem="{Binding Loan, Mode=TwoWay}" Width="220"/>
                                                         
                                                         <!-- info description for loan type + servity -->
                                                         <Rectangle ToolTip="{Binding LoanDescriptionPretty}" Margin="4,0,0,0" Width="15" Height="15">
@@ -797,7 +798,7 @@
                                                         </Rectangle>
                                                         
                                                         <TextBlock Margin="8,0" VerticalAlignment="Center" Text="Servity:"/>
-                                                        <ComboBox ItemsSource="{Binding LoanServities}" SelectedValue="{Binding Servity, Mode=TwoWay}" SelectedValuePath="Servity" Width="100"/>
+                                                        <ComboBox ItemsSource="{Binding LoanSeverities}" SelectedValue="{Binding Severity, Mode=TwoWay}" SelectedValuePath="Severity" Width="100"/>
                                                         <Button Margin="8,0,4,0" ToolTip="Remove" Style="{StaticResource Button.SearchBox.Clear}" Command="{Binding DataContext.RemoveLoanCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
                                                     </StackPanel>
                                                 </Grid>

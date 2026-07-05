@@ -8,7 +8,7 @@
         public string Id { get; init; } = string.Empty;
         public string Description { get; init; } = string.Empty;
         /// <summary>
-        /// Servity value levels. [0] is servity 1, [1] is servity 2 and so on.
+        /// Servity value levels. [0] is severity 1, [1] is servity 2 and so on.
         /// </summary>
         public int[] Levels { get; init; } = new int[3];
 

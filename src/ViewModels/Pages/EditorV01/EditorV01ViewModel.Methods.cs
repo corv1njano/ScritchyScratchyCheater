@@ -2,8 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using ScritchyScratchyCheater.Models.GameData;
 using ScritchyScratchyCheater.ViewModels.Items;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Media;
@@ -317,14 +315,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [RelayCommand]
         private void AddLoan()
         {
-            if (Loans.Count >= 3) return;
+            if (Loans.Count >= MAX_LOANS) return;
 
             // use first item as default loan entry for dropdown, so no need for second parameter
-            var newLoanEntry = new LoanItem(LoanIds)
+            var newLoanEntry = new LoanItem(AvailableLoans)
             {
-                Index = Loans.Count + 1,
+                Index = Loans.Count,
                 LoanNum = IsLoanCountValid ? int.Parse(LoanCountText) + 1 : 1,
-                Servity = 1,
+                Severity = 1,
                 Amount = 1,
             };
 

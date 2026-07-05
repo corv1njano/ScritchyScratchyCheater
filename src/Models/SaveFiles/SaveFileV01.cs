@@ -119,7 +119,7 @@ namespace ScritchyScratchyCheater.Models.SaveFiles
         public string? Id { get; set; }
         public int Index { get; set; }
         public int LoanNum { get; set; }
-        public int Servity { get; set; }
+        public int Severity { get; set; }
         public double Amount { get; set; }
 
     }

@@ -292,7 +292,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private bool _bankruptcyWarningGiven;
 
         [ObservableProperty]
-        private ObservableCollection<Loan> _loanIds = new();
+        private ObservableCollection<Loan> _availableLoans = new();
         #endregion
     }
 }

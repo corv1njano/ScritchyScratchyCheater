@@ -28,8 +28,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             App.SaveFileService.SaveFileChanged += HandleSaveFileChanged;
 
-            LoadDataToUi();
-
             TicketsView = CollectionViewSource.GetDefaultView(Tickets);
             TicketsView.Filter = Utils.CreateNameFilter<TicketItem>(t => t.Ticket?.Name, () => SearchTicket);
 
@@ -49,7 +47,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 OnPropertyChanged(nameof(LoanCountNotReached));
             };
 
-            LoanIds = new ObservableCollection<Loan>(App.GameDataParser.GetLoans());
+            AvailableLoans = new ObservableCollection<Loan>(App.GameDataParser.GetLoans());
+
+            LoadDataToUi();
         }
 
         private bool CheckCanSave()
@@ -263,10 +263,18 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         
         private void LoadMisc(SaveFileV01 sf)
         {
-            if (sf == null) return;
+            if (sf == null || sf.LayerOne == null) return;
 
             LoanCountText = sf.LoanCount.ToString();
+            BankruptcyWarningGiven = sf.LayerOne.BankruptcyWarningGiven;
             var unlockedDlcs = sf.DlcUnlocked ?? new List<int>();
+            var loadedLoans = sf.LayerOne.Loans ?? new List<LoanDataV01>();
+
+            var validLoans = loadedLoans
+                .Where(entry => entry.Severity is >= 1 and <= 3)
+                .Where(entry => entry.Amount > 0)
+                .DistinctBy(entry => entry.Index)
+                .ToList();
 
             Dlcs.Clear();
             foreach (var dlc in App.GameDataParser.GetDlcs())
@@ -278,6 +286,16 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 });
             }
             SelectedDlc = Dlcs.Count > 0 ? Dlcs[0] : null;
+
+            Loans.Clear();
+            foreach (var entry in validLoans)
+            {
+                // checks if the loan entry ID matches with one of the loaded IDs from the game data JSON
+                var matchedLoan = AvailableLoans.FirstOrDefault(i => i.Id == entry.Id)
+                    ?? AvailableLoans.FirstOrDefault();
+
+                Loans.Add(new LoanItem(matchedLoan, entry.Index, entry.LoanNum, entry.Severity, entry.Amount, AvailableLoans));
+            }
         }
         #endregion
 
@@ -445,7 +463,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         
         private void SaveMisc(SaveFileV01 sf)
         {
-            if (sf == null) return;
+            if (sf == null || sf.LayerOne == null) return;
 
             var unlockedDlcs = new HashSet<int>();
 
@@ -456,8 +474,26 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 if (dlc.IsUnlocked) unlockedDlcs.Add(dlc.Dlc.Id);
             }
 
+            var loans = new HashSet<LoanDataV01>();
+
+            foreach (var loan in Loans)
+            {
+                if (loan.Loan == null) continue;
+
+                loans.Add(new LoanDataV01()
+                {
+                    Id = loan.Loan.Id,
+                    Index = loan.Index,
+                    LoanNum = loan.LoanNum,
+                    Severity = loan.Severity,
+                    Amount = loan.Amount
+                });
+            }
+
             sf.DlcUnlocked = unlockedDlcs.ToList();
+            sf.LayerOne.Loans = loans.ToList();
             sf.LoanCount = int.Parse(LoanCountText);
+            sf.LayerOne.BankruptcyWarningGiven = BankruptcyWarningGiven;
         }
         #endregion
 
