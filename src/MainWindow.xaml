@@ -18,6 +18,7 @@
         DragOver="Window_DragOver"
         Drop="Window_Drop">
 
+    <!-- will throw binding errors when on start page, TODO: is there a fix? -->
     <Window.InputBindings>
         <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding CurrentPage.DataContext.SaveChangesCommand}"/>
         <KeyBinding Key="F5" Command="{Binding CurrentPage.DataContext.ReloadSaveFileCommand}"/>

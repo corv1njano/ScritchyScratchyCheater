@@ -79,7 +79,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         [ObservableProperty]
         private TicketItem? _selectedTicket;
-
         public string? SelectedTicketToolTip => SelectedTicket == null || SelectedTicket.Ticket == null
             ? null
             : $"Ticket: '{SelectedTicket.Ticket.Name}'";
@@ -273,6 +272,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         [ObservableProperty]
         private ImageSource? _loanIcon;
+        [ObservableProperty]
+        private ImageSource? _currentLoanImage = (ImageSource)Application.Current.TryFindResource("Generic.None");
 
         public ObservableCollection<DlcItem> Dlcs { get; } = new();
         [ObservableProperty]
@@ -281,7 +282,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private const int MAX_LOANS = 3;
 
         public ObservableCollection<LoanItem> Loans { get; } = new();
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsLoanSelected))]
+        private LoanItem? _selectedLoan;
+        public bool IsLoanSelected => SelectedLoan != null;
+
         public bool HasLoans => Loans.Count > 0;
+        public bool LoansNotAvailable => Loans.Count <= 0; //checks if there are any loans available to edit
 
         public string MaxLoansText => MAX_LOANS.ToString();
         public string LoansCountText => Loans.Count.ToString();
@@ -293,6 +300,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         [ObservableProperty]
         private ObservableCollection<Loan> _availableLoans = new();
+
+        public string? SelectedLoanToolTip => SelectedLoan == null
+            ? null
+            : $"Loan: '#{SelectedLoan.LoanNum}'";
         #endregion
     }
 }

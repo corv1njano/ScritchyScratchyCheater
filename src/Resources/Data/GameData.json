@@ -912,7 +912,7 @@
         },
         {
           "id": "Ticket price increase",
-          "description": "Tickets are {0}% more expansive",
+          "description": "Tickets are {0}% more expensive",
           "levels": [10, 20, 30]
         },
         {

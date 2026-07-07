@@ -131,7 +131,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="70"/>
-                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
@@ -333,7 +333,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
@@ -517,7 +517,7 @@
                                             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                                                 <CheckBox  IsChecked="{Binding IsUnlocked, Mode=TwoWay}" Margin="8,0,0,0"/>
                                                 <TextBlock Text="Unlocked" VerticalAlignment="Center"/>
-                                                <CheckBox  IsChecked="{Binding IsClaimed, Mode=TwoWay}" Margin="16,0,0,0"/>
+                                                <CheckBox  IsChecked="{Binding IsClaimed, Mode=TwoWay}" Margin="8,0,0,0"/>
                                                 <TextBlock Text="Claimed" Margin="0,0,8,0" VerticalAlignment="Center"/>
                                             </StackPanel>
                                         </Grid>
@@ -761,17 +761,18 @@
 
                                     <ListBox Grid.Row="2"
                                              ItemsSource="{Binding Loans}"
+                                             SelectedItem="{Binding SelectedLoan}"
                                              Visibility="{Binding HasLoans, Converter={StaticResource BoolToVisibilityConverter}}"
                                              Height="126"
                                              ScrollViewer.VerticalScrollBarVisibility="Disabled">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
-                                                <Grid>
+                                                <Grid x:Name="fullItem" Background="Transparent">
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="Auto"/>
                                                         <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    
+
                                                     <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal">
                                                         <Image Height="30" Width="30" Source="{Binding DataContext.LoanIcon, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
                                                         <TextBlock Text="{Binding LoanIdPretty}" Margin="5,0,0,0" VerticalAlignment="Center"/>
@@ -779,7 +780,7 @@
                                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                                                         <TextBlock Margin="8,0" VerticalAlignment="Center" Text="ID:"/>
                                                         <ComboBox ItemsSource="{Binding AvailableLoans}" SelectedItem="{Binding Loan, Mode=TwoWay}" Width="220"/>
-                                                        
+
                                                         <!-- info description for loan type + servity -->
                                                         <Rectangle ToolTip="{Binding LoanDescriptionPretty}" Margin="4,0,0,0" Width="15" Height="15">
                                                             <Rectangle.OpacityMask>
@@ -796,12 +797,20 @@
                                                                 </Style>
                                                             </Rectangle.Style>
                                                         </Rectangle>
-                                                        
-                                                        <TextBlock Margin="8,0" VerticalAlignment="Center" Text="Servity:"/>
+
+                                                        <TextBlock Margin="8,0" VerticalAlignment="Center" Text="Severity:"/>
                                                         <ComboBox ItemsSource="{Binding LoanSeverities}" SelectedValue="{Binding Severity, Mode=TwoWay}" SelectedValuePath="Severity" Width="100"/>
-                                                        <Button Margin="8,0,4,0" ToolTip="Remove" Style="{StaticResource Button.SearchBox.Clear}" Command="{Binding DataContext.RemoveLoanCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
+                                                        <Button x:Name="removeBtn" Visibility="Visible" Margin="8,0,4,0" ToolTip="Remove" Style="{StaticResource Button.SearchBox.Clear}" Command="{Binding DataContext.RemoveLoanCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" CommandParameter="{Binding}"/>
                                                     </StackPanel>
                                                 </Grid>
+                                                <!--<DataTemplate.Triggers>
+                                                    set source name to make hover-trigger apply on whole grid and not just the data template
+                                                    also set grid background so that the whole grid is targeted, which is not the case for "empty" space
+                                                
+                                                    <Trigger SourceName="fullItem" Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="removeBtn" Property="Visibility" Value="Visible"/>
+                                                    </Trigger>
+                                                </DataTemplate.Triggers>-->
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
                                     </ListBox>
@@ -813,7 +822,28 @@
                                     <Border Grid.Row="3" Style="{StaticResource blockBod}"/>
 
                                     <Grid Grid.Row="4">
-                                        
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding CurrentLoanImage}" ToolTip="{Binding SelectedLoanToolTip}"/>
+                                        <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Loan Amount:"/>
+                                        <Grid Grid.Column="2">
+                                            <controls:ValidatedTextBox Text="{Binding SelectedLoan.AmountText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding SelectedLoan.IsAmountValid}" IsEnabled="{Binding IsLoanSelected}"/>
+                                            <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding IsLoanSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                                        </Grid>
+                                        <Grid Grid.Column="3">
+                                            <Button Style="{StaticResource blockbtn}" Command="{Binding MaxLoanAmountCommand}" IsEnabled="{Binding IsLoanSelected}"/>
+                                            <Rectangle Margin="8,0,0,0" Fill="Transparent" Cursor="No" Visibility="{Binding IsLoanSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                                        </Grid>
+                                        <Grid Grid.Column="4">
+                                            <Button Style="{StaticResource blockbtn}" Command="{Binding MaxLoanAmountAllCommand}" Content="Max All" ToolTip="Set maximum Amount for all Loans" IsEnabled="{Binding HasLoans}"/>
+                                            <Rectangle Margin="8,0,0,0" Fill="Transparent" Cursor="No" Visibility="{Binding HasLoans, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                             </Border>

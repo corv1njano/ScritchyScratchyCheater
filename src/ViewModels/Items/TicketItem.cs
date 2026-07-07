@@ -14,9 +14,9 @@ namespace ScritchyScratchyCheater.ViewModels.Items
         private bool _gottenSuperJackpot;
 
         [ObservableProperty]
-        private int _level; // check if int
+        private int _level; // TODO: move level validation in this class (see LoanItem.cs)
 
         [ObservableProperty]
-        private int _xp; // check if int
+        private int _xp;
     }
 }

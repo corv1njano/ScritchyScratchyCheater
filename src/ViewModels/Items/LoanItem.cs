@@ -1,11 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ScritchyScratchyCheater.Models.GameData;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace ScritchyScratchyCheater.ViewModels.Items
 {
     public sealed partial class LoanItem : ObservableObject
     {
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsAmountValid))]
+        private string _amountText = "1";
+
         /// <summary>
         /// List of all available loans from the game data JSON.
         /// </summary>
@@ -35,6 +40,10 @@ namespace ScritchyScratchyCheater.ViewModels.Items
         [ObservableProperty]
         private double _amount = 1;
 
+        public bool IsAmountValid =>
+            double.TryParse(AmountText, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
+            && value > 0;
+
         public string LoanIdPretty => "#" + LoanNum;
         public string LoanDescriptionPretty =>
             Loan == null
@@ -61,6 +70,15 @@ namespace ScritchyScratchyCheater.ViewModels.Items
             Severity = severity;
             Amount = amount;
             AvailableLoans = availableLoans;
+        }
+
+        // only a correctly validated amount should be stored
+        partial void OnAmountTextChanged(string value)
+        {
+            if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsed) && parsed >= 0)
+            {
+                Amount = parsed;
+            }
         }
     }
 }

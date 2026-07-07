@@ -82,9 +82,15 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         partial void OnSelectedTicketChanged(TicketItem? oldValue, TicketItem? newValue)
         {
-            if (oldValue != null) if (!int.TryParse(TicketLevelText, out var level) || level > MAX_TICKET_LEVEL) oldValue.Level = 0;
+            if (oldValue != null)
+            {
+                if (!int.TryParse(TicketLevelText, out var level) || level > MAX_TICKET_LEVEL)
+                {
+                    oldValue.Level = 0;
+                }
+            }
 
-            TicketLevelText = newValue?.Level.ToString() ?? "0";
+            TicketLevelText = newValue != null ? newValue.Level.ToString() : "0";
 
             UpdateCurrentTicketImage();
             OnPropertyChanged(nameof(IsTicketSelected));
@@ -344,6 +350,50 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         private void MaxLoanCount()
         {
             LoanCountText = int.MaxValue.ToString();
+        }
+
+        [RelayCommand]
+        private void MaxLoanAmount()
+        {
+            if (SelectedLoan is null) return;
+            SelectedLoan.AmountText = 1e300.ToString(CultureInfo.InvariantCulture);
+        }
+
+        [RelayCommand]
+        private void MaxLoanAmountAll()
+        {
+            foreach (var entry in Loans)
+            {
+                entry.AmountText = 1e300.ToString(CultureInfo.InvariantCulture);
+            }
+        }
+
+        partial void OnSelectedLoanChanged(LoanItem? oldValue, LoanItem? newValue)
+        {
+            if (oldValue != null)
+            {
+                if (!double.TryParse(oldValue.AmountText, out var amount) || amount <= 0)
+                {
+                    oldValue.Amount = 1;
+                    oldValue.AmountText = "1";
+                }
+            }
+
+            if (newValue != null)
+            {
+                newValue.AmountText = newValue.Amount.ToString(CultureInfo.InvariantCulture);
+            }
+
+            UpdateCurrentLoanImage();
+            OnPropertyChanged(nameof(IsLoanSelected));
+            OnPropertyChanged(nameof(SelectedLoanToolTip));
+        }
+
+        private void UpdateCurrentLoanImage()
+        {
+            CurrentLoanImage = SelectedLoan != null
+                ? App.ResourceParser.GetSprite("mLoan")
+                : Application.Current.TryFindResource("Generic.None") as ImageSource;
         }
         #endregion
     }

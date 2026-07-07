@@ -8,6 +8,7 @@ using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.ViewModels.Items;
 using ScritchyScratchyCheater.Views.Pages;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -28,19 +29,19 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             App.SaveFileService.SaveFileChanged += HandleSaveFileChanged;
 
-            TicketsView = CollectionViewSource.GetDefaultView(Tickets);
-            TicketsView.Filter = Utils.CreateNameFilter<TicketItem>(t => t.Ticket?.Name, () => SearchTicket);
+            TicketsView                     = CollectionViewSource.GetDefaultView(Tickets);
+            TicketsView.Filter              = Utils.CreateNameFilter<TicketItem>(t => t.Ticket?.Name, () => SearchTicket);
+            PrestigeUpgradesView            = CollectionViewSource.GetDefaultView(PrestigeUpgrades);
+            PrestigeUpgradesView.Filter     = Utils.CreateNameFilter<PrestigeUpgradeItem>(p => p.PrestigeUpgrade?.Name, () => SearchPrestigeUpgrade);
+            UpgradesView                    = CollectionViewSource.GetDefaultView(Upgrades);
+            UpgradesView.Filter             = Utils.CreateNameFilter<UpgradeItem>(u => u.Upgrade?.Name, () => SearchUpgrade);
+            AchievementsView                = CollectionViewSource.GetDefaultView(Achievements);
+            AchievementsView.Filter         = Utils.CreateNameFilter<AchievementItem>(a => a.Achievement?.Name, () => SearchAchievement);
 
-            PrestigeUpgradesView = CollectionViewSource.GetDefaultView(PrestigeUpgrades);
-            PrestigeUpgradesView.Filter = Utils.CreateNameFilter<PrestigeUpgradeItem>(p => p.PrestigeUpgrade?.Name, () => SearchPrestigeUpgrade);
-
-            UpgradesView = CollectionViewSource.GetDefaultView(Upgrades);
-            UpgradesView.Filter = Utils.CreateNameFilter<UpgradeItem>(u => u.Upgrade?.Name, () => SearchUpgrade);
-
-            AchievementsView = CollectionViewSource.GetDefaultView(Achievements);
-            AchievementsView.Filter = Utils.CreateNameFilter<AchievementItem>(a => a.Achievement?.Name, () => SearchAchievement);
-
-            Loans.CollectionChanged += (_, _) =>
+            // checks every item in Loans and subscribes to the validity property of that view model to let the
+            // save function know if the save can be saved or not due to the validity check
+            ObserveableCollectionValidation<LoanItem>(Loans, nameof(LoanItem.IsAmountValid));
+            Loans.CollectionChanged += (_, e) =>
             {
                 OnPropertyChanged(nameof(HasLoans));
                 OnPropertyChanged(nameof(LoansCountText));
@@ -50,6 +51,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             AvailableLoans = new ObservableCollection<Loan>(App.GameDataParser.GetLoans());
 
             LoadDataToUi();
+        }
+
+        private void OnLoanItemPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(LoanItem.IsAmountValid))
+            {
+                OnPropertyChanged(nameof(CanSave));
+            }
         }
 
         private bool CheckCanSave()
@@ -65,30 +74,30 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && IsEelectricFanChargeValid
                 && IsEggTimerChargeValid
                 && IsLoanCountValid
+                && Loans.All(l => l.IsAmountValid)
                 && Upgrades.All(u => u.IsBuyCountValid)
-                && PrestigeUpgrades.All(u => u.IsBuyCountValid);
+                && PrestigeUpgrades.All(p => p.IsBuyCountValid);
         }
 
         /// <summary>
-        /// Asynchronously loads and initializes the user interface (like icons etc.).
+        /// Asynchronously loads UI related components (like image icons etc.).
         /// </summary>
-        /// <returns>A task that represents the async operation.</returns>
         public async Task LoadUiAsync()
         {
             await App.ResourceParser.LoadSpritesAsync();
 
-            MoneyIcon = App.ResourceParser.GetSprite("mMoney");
-            PrestigeIcon = App.ResourceParser.GetSprite("mPrestige");
-            TokensIcon = App.ResourceParser.GetSprite("mToken");
-            SoulsIcon = App.ResourceParser.GetSprite("mSoul");
-            StarIcon = App.ResourceParser.GetSprite("mStar");
-            CyanStarIcon = App.ResourceParser.GetSprite("mCyanStar");
-            TheMachine = App.ResourceParser.GetSprite("uTheMachine");
-            ElectricFanIcon = App.ResourceParser.GetSprite("uFan");
-            EggTimerIcon = App.ResourceParser.GetSprite("uEggTimer");
-            MundoIcon = App.ResourceParser.GetSprite("uMundo");
-            TrashCanIcon = App.ResourceParser.GetSprite("uTrashCan");
-            LoanIcon = App.ResourceParser.GetSprite("mLoan");
+            MoneyIcon           = App.ResourceParser.GetSprite("mMoney");
+            PrestigeIcon        = App.ResourceParser.GetSprite("mPrestige");
+            TokensIcon          = App.ResourceParser.GetSprite("mToken");
+            SoulsIcon           = App.ResourceParser.GetSprite("mSoul");
+            StarIcon            = App.ResourceParser.GetSprite("mStar");
+            CyanStarIcon        = App.ResourceParser.GetSprite("mCyanStar");
+            TheMachine          = App.ResourceParser.GetSprite("uTheMachine");
+            ElectricFanIcon     = App.ResourceParser.GetSprite("uFan");
+            EggTimerIcon        = App.ResourceParser.GetSprite("uEggTimer");
+            MundoIcon           = App.ResourceParser.GetSprite("uMundo");
+            TrashCanIcon        = App.ResourceParser.GetSprite("uTrashCan");
+            LoanIcon            = App.ResourceParser.GetSprite("mLoan");
 
             TicketsView.Refresh();
             PrestigeUpgradesView.Refresh();
@@ -122,7 +131,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (sf == null || sf.LayerOne == null) return;
 
-            MoneyText = SaveFileHelper.SanitizeDouble(sf.LayerOne!.Money).ToString(CultureInfo.InvariantCulture);
+            MoneyText = SaveFileHelper.SanitizeDouble(sf.LayerOne.Money).ToString(CultureInfo.InvariantCulture);
             SoulsText = sf.LayerOne.Souls.ToString();
             MachineTierText = sf.LayerOne.MachineTier.ToString();
             SelectedAct = Acts.FirstOrDefault(a => a.ActId == sf.CurrentAct) ?? Acts.First(a => a.ActId == 4);
@@ -294,7 +303,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 var matchedLoan = AvailableLoans.FirstOrDefault(i => i.Id == entry.Id)
                     ?? AvailableLoans.FirstOrDefault();
 
-                Loans.Add(new LoanItem(matchedLoan, entry.Index, entry.LoanNum, entry.Severity, entry.Amount, AvailableLoans));
+                double sanitizedAmount = SaveFileHelper.SanitizeDouble(entry.Amount);
+                Loans.Add(new LoanItem(matchedLoan, entry.Index, entry.LoanNum, entry.Severity, sanitizedAmount, AvailableLoans));
             }
         }
         #endregion
@@ -596,11 +606,46 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         }
 
         /// <summary>
-        /// Sends a new message of MaximizeWindowMessage.
+        /// Sends a new message of MaximizeWindowMessage to maximize the window upon successfull save file loading.
         /// </summary>
         private void OnLoadingComplete()
         {
             WeakReferenceMessenger.Default.Send(new MaximizeWindowMessage());
+        }
+
+        /// <summary>
+        /// Local helper method for checking a validity property of view model items inside a list where
+        /// the validity rule is not part of this view model. This methods notifys <see cref="CanSave"/>
+        /// if the validity rule of the view model item fails or is valid again.
+        /// </summary>
+        /// <typeparam name="T">View model item class that inherits from <see cref="INotifyPropertyChanged"/>.</typeparam>
+        /// <param name="collection">Name of the list with the view model items.</param>
+        /// <param name="validityPropertyName">The validity property name of that view model item from T.</param>
+        private void ObserveableCollectionValidation<T>(ObservableCollection<T> collection, string validityPropertyName)
+            where T : INotifyPropertyChanged
+        {
+            void ItemChanged(object? sender, PropertyChangedEventArgs args)
+            {
+                if (args.PropertyName == validityPropertyName)
+                {
+                    OnPropertyChanged(nameof(CanSave));
+                }
+            }
+
+            collection.CollectionChanged += (_, e) =>
+            {
+                if (e.NewItems != null)
+                {
+                    foreach (T item in e.NewItems) item.PropertyChanged += ItemChanged;
+                }
+
+                if (e.OldItems != null)
+                {
+                    foreach (T item in e.OldItems) item.PropertyChanged -= ItemChanged;
+                }
+            };
+
+            OnPropertyChanged(nameof(CanSave));
         }
     }
 }

@@ -29,6 +29,8 @@ namespace ScritchyScratchyCheater.ViewModels
 
         public MainViewModel()
         {
+
+
             App.PageNavigator.CurrentPageChanged += HandleCurrentPageChanged;
             App.SaveFileService.FilePathChanged += HandleFilePathChanged;
         }
