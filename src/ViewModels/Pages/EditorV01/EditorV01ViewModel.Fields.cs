@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ScritchyScratchyCheater.Models.GameData;
+using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.ViewModels.Items;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -266,9 +267,20 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [NotifyPropertyChangedFor(nameof(LoanCountNotReached))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _loanCountText = string.Empty;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsTimeSpentInThisPrestigeValid))]
+        [NotifyPropertyChangedFor(nameof(ConvertedTimeSpentInThisPrestige))]
+        [NotifyPropertyChangedFor(nameof(CanSave))]
+        private string _timeSpentInThisPrestige = string.Empty;
 
         public bool IsLoanCountValid => int.TryParse(LoanCountText, out var value)
             && value >= 0;
+
+        public bool IsTimeSpentInThisPrestigeValid =>
+           double.TryParse(TimeSpentInThisPrestige, NumberStyles.Any, CultureInfo.InvariantCulture, out var value)
+           && !double.IsNaN(value)
+           && !double.IsInfinity(value)
+           && value >= 0;
 
         [ObservableProperty]
         private ImageSource? _loanIcon;
@@ -295,8 +307,15 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         public bool LoanCountNotReached => Loans.Count < MAX_LOANS
             && (!int.TryParse(LoanCountText, out var value) || value < int.MaxValue); //makes sure that another loan entry cannot be added when int max value has been reached
 
+        public string ConvertedTimeSpentInThisPrestige
+            => double.TryParse(TimeSpentInThisPrestige, NumberStyles.Any, CultureInfo.InvariantCulture, out double value)
+                ? Utils.GetTimeFormatted(value)
+                : Utils.GetTimeFormatted(0);
+
         [ObservableProperty]
         private bool _bankruptcyWarningGiven;
+        [ObservableProperty]
+        private bool _isPrestiging;
 
         [ObservableProperty]
         private ObservableCollection<Loan> _availableLoans = new();

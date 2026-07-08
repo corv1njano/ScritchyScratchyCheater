@@ -368,6 +368,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             }
         }
 
+        [RelayCommand]
+        private void ResetTimeSpentInThisPrestige()
+        {
+            TimeSpentInThisPrestige = "0";
+        }
+
         partial void OnSelectedLoanChanged(LoanItem? oldValue, LoanItem? newValue)
         {
             if (oldValue != null)

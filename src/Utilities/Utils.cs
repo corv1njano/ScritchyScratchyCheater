@@ -39,5 +39,23 @@ namespace ScritchyScratchyCheater.Utilities
                 return nameSelector(entry)?.Contains(searchSelector(), StringComparison.OrdinalIgnoreCase) ?? false;
             };
         }
+
+        /// <summary>
+        /// Converts a double value time counted in seconds to a pretty formatted string representation.
+        /// </summary>
+        /// <param name="timeInSeconds">Total time to convert in seconds.</param>
+        /// <returns>Pretty time formatted as "hh, mm, ss".</returns>
+        public static string GetTimeFormatted(double timeInSeconds)
+        {
+            if (timeInSeconds <= 0) return "0h, 0m, 0s";
+
+            int totalSeconds = (int)timeInSeconds;
+
+            int hours = totalSeconds / 3600;
+            int minutes = (totalSeconds % 3600) / 60;
+            int seconds = totalSeconds % 60;
+
+            return $"{hours}h, {minutes}m, {seconds}s";
+        }
     }
 }

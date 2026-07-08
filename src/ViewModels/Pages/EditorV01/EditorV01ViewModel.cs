@@ -110,6 +110,10 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             UpdateCurrentCatalogImage();
             UpdateCurrentCosmeticImage();
+
+            // send a message to inform MainWindow to maximize, only when save is loaded from starting page,
+            // not from a reload
+            OnLoadingComplete();
         }
 
         #region loading data
@@ -122,19 +126,16 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             LoadAchievements(sf);
             LoadCosmetics(sf);
             LoadMisc(sf);
-
-            // send a message to inform MainWindow to maximize
-            OnLoadingComplete();
         }
         
         private void LoadProgress(SaveFileV01 sf)
         {
             if (sf == null || sf.LayerOne == null) return;
 
-            MoneyText = SaveFileHelper.SanitizeDouble(sf.LayerOne.Money).ToString(CultureInfo.InvariantCulture);
-            SoulsText = sf.LayerOne.Souls.ToString();
+            MoneyText       = SaveFileHelper.SanitizeDouble(sf.LayerOne.Money).ToString(CultureInfo.InvariantCulture);
+            SoulsText       = sf.LayerOne.Souls.ToString();
             MachineTierText = sf.LayerOne.MachineTier.ToString();
-            SelectedAct = Acts.FirstOrDefault(a => a.ActId == sf.CurrentAct) ?? Acts.First(a => a.ActId == 4);
+            SelectedAct     = Acts.FirstOrDefault(a => a.ActId == sf.CurrentAct) ?? Acts.First(a => a.ActId == 4);
 
             var claiemdCatalogs = sf.LayerOne.ClaimedCustomTableItems ?? new List<string>();
 
@@ -148,14 +149,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                     IsClaimed = claiemdCatalogs.Contains(id)
                 });
             }
-            SelectedCatalog = Catalogs.Count > 0 ? Catalogs[0] : null;
 
-            SelectedGoal = Goals.FirstOrDefault(g => g.Goal == sf.LayerOne.LastUnlockedProgressionGoal) ?? Goals[0];
+            SelectedCatalog = Catalogs.Count > 0 ? Catalogs[0] : null;
+            SelectedGoal    = Goals.FirstOrDefault(g => g.Goal == sf.LayerOne.LastUnlockedProgressionGoal) ?? Goals[0];
             ProgressionText = SaveFileHelper.SanitizeDouble(sf.LayerOne.TotalMoneyEarnedThisProgressionGoal).ToString();
 
-            var ticketsGottenJackpot = sf.LayerOne.JackpotsGotten ?? new List<string>();
+            var ticketsGottenJackpot      = sf.LayerOne.JackpotsGotten ?? new List<string>();
             var ticketsGottenSuperJackpot = sf.LayerOne.SuperJackpotsGotten ?? new List<string>();
-            var ticketDic = sf.LayerOne.TicketProgressionDict ?? new Dictionary<string, TicketDataV01>();
+            var ticketDic                 = sf.LayerOne.TicketProgressionDict ?? new Dictionary<string, TicketDataV01>();
 
             Tickets.Clear();
             foreach (var ticket in App.GameDataParser.GetTickets())
@@ -179,11 +180,11 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (sf == null || sf.LayerOne == null) return;
 
-            PrestigeText = sf.PrestigeCurrency.ToString();
+            PrestigeText      = sf.PrestigeCurrency.ToString();
             PrestigeCountText = sf.PrestigeCount.ToString();
 
             _deathByFinalChanceCount = sf.DeathByFinalChanceCount;
-            var prestigeUpgradeDic = sf.BoughtPrestigeUpgrades ?? new Dictionary<string, int>();
+            var prestigeUpgradeDic   = sf.BoughtPrestigeUpgrades ?? new Dictionary<string, int>();
 
             PrestigeUpgrades.Clear();
             foreach (var prestigeUpgrade in App.GameDataParser.GetPrestigeUpgrades())
@@ -274,17 +275,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (sf == null || sf.LayerOne == null) return;
 
-            LoanCountText = sf.LoanCount.ToString();
-            BankruptcyWarningGiven = sf.LayerOne.BankruptcyWarningGiven;
+            LoanCountText           = sf.LoanCount.ToString();
+            BankruptcyWarningGiven  = sf.LayerOne.BankruptcyWarningGiven;
+            IsPrestiging            = sf.IsPrestiging;
+            TimeSpentInThisPrestige = SaveFileHelper.SanitizeDouble(sf.LayerOne.TimeSpentInThisPrestige).ToString(CultureInfo.InvariantCulture);
+
             var unlockedDlcs = sf.DlcUnlocked ?? new List<int>();
-            var loadedLoans = sf.LayerOne.Loans ?? new List<LoanDataV01>();
-
-            var validLoans = loadedLoans
-                .Where(entry => entry.Severity is >= 1 and <= 3)
-                .Where(entry => entry.Amount > 0)
-                .DistinctBy(entry => entry.Index)
-                .ToList();
-
             Dlcs.Clear();
             foreach (var dlc in App.GameDataParser.GetDlcs())
             {
@@ -295,6 +291,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 });
             }
             SelectedDlc = Dlcs.Count > 0 ? Dlcs[0] : null;
+
+            var loadedLoans = sf.LayerOne.Loans ?? new List<LoanDataV01>();
+            var validLoans = loadedLoans
+                .Where(entry => entry.Severity is >= 1 and <= 3)
+                .Where(entry => entry.Amount > 0)
+                .DistinctBy(entry => entry.Index)
+                .ToList();
 
             Loans.Clear();
             foreach (var entry in validLoans)
@@ -476,16 +479,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             if (sf == null || sf.LayerOne == null) return;
 
             var unlockedDlcs = new HashSet<int>();
-
             foreach (var dlc in Dlcs)
             {
                 if (dlc.Dlc == null) continue;
-
                 if (dlc.IsUnlocked) unlockedDlcs.Add(dlc.Dlc.Id);
             }
 
             var loans = new HashSet<LoanDataV01>();
-
             foreach (var loan in Loans)
             {
                 if (loan.Loan == null) continue;
@@ -504,6 +504,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             sf.LayerOne.Loans = loans.ToList();
             sf.LoanCount = int.Parse(LoanCountText);
             sf.LayerOne.BankruptcyWarningGiven = BankruptcyWarningGiven;
+            sf.LayerOne.TimeSpentInThisPrestige = double.Parse(TimeSpentInThisPrestige);
+            sf.IsPrestiging = IsPrestiging;
         }
         #endregion
 

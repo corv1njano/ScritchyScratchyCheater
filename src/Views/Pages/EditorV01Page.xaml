@@ -702,6 +702,7 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             
                             <Border Grid.Row="0" Style="{StaticResource Border.Default}">
@@ -719,7 +720,26 @@
                                 </Grid>
                             </Border>
 
-                            <Border Margin="0,8,0,0" Grid.Row="1" Style="{StaticResource Border.Default}">
+                            <Border Grid.Row="1" Margin="0,8,0,0" Style="{StaticResource Border.Default}">
+                                <Grid Margin="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Margin="0,0,8,0" Grid.Column="0" Style="{StaticResource blockTxt}" Text="Time spent:"/>
+                                    <controls:ValidatedTextBox Grid.Column="1" Text="{Binding TimeSpentInThisPrestige, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTimeSpentInThisPrestigeValid}" />
+                                    <TextBlock Grid.Column="2" Opacity="0.7" Style="{StaticResource blockTxt}" Text="{Binding ConvertedTimeSpentInThisPrestige}"/>
+                                    
+                                    <Button Grid.Column="3" Margin="0" Content="Reset" ToolTip="Reset Time spent in current Session" Style="{StaticResource blockbtn}" Command="{Binding ResetTimeSpentInThisPrestigeCommand}"/>
+                                    <CheckBox Grid.Column="4" Margin="8,0,0,0" Content="Is Prestiging" IsChecked="{Binding IsPrestiging, Mode=TwoWay}"/>
+                                </Grid>
+                            </Border>
+                            
+                            <Border Margin="0,8,0,0" Grid.Row="2" Style="{StaticResource Border.Default}">
                                 <Grid Margin="8">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>

@@ -20,7 +20,7 @@ namespace ScritchyScratchyCheater.Services
         }
 
         /// <summary>
-        /// Loads and provides game data from the game_data.json resource.
+        /// Loads and provides game data from the game data JSON resource.
         /// </summary>
         /// <exception cref="InvalidOperationException">Thrown when the game data could not be loaded or deserialized.</exception>
         public void LoadGameData()
@@ -246,6 +246,25 @@ namespace ScritchyScratchyCheater.Services
                 .OrderBy(x => x.Id, StringComparer.OrdinalIgnoreCase)
                 .ToList()
                 ?? new();
+        }
+
+        /// <summary>
+        /// Gets a data set by name from the game data JSON file.
+        /// </summary>
+        /// <typeparam name="T">The type of the data object to parse to.</typeparam>
+        /// <param name="dataSetName">The name of the data set type.</param>
+        /// <returns>A list with all game objects by the given data set group.</returns>
+        public List<T> GetDataSet<T>(string dataSetName) where T : class
+        {
+            if (_gameDataRoot == null || string.IsNullOrWhiteSpace(dataSetName)) return new();
+
+            GameDataset? dataset = _gameDataRoot.GameData?
+                .FirstOrDefault(x => string.Equals(x.Type, dataSetName, StringComparison.OrdinalIgnoreCase));
+
+            if (dataset == null) return new();
+            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
+
+            return dataset.Data.Deserialize<List<T>>(App.JsonOptions) ?? new();
         }
     }
 
