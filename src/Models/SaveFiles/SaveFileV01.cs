@@ -21,7 +21,7 @@ namespace ScritchyScratchyCheater.Models.SaveFiles
         public bool FadeInFromWhite { get; set; }
 
         public List<object>? DiamondsGottenFromTicket { get; set; }
-        public List<object>? DialoguesPlayed { get; set; }
+        public List<string>? DialoguesPlayed { get; set; }
 
         public Dictionary<string, int>? BoughtPrestigeUpgrades { get; set; }
 

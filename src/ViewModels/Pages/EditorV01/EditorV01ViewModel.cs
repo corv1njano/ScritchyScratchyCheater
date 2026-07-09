@@ -73,6 +73,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && IsProgressionValid
                 && IsEelectricFanChargeValid
                 && IsEggTimerChargeValid
+                && IsTimeSpentInThisPrestigeValid
                 && IsLoanCountValid
                 && Loans.All(l => l.IsAmountValid)
                 && Upgrades.All(u => u.IsBuyCountValid)
@@ -309,6 +310,18 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 double sanitizedAmount = SaveFileHelper.SanitizeDouble(entry.Amount);
                 Loans.Add(new LoanItem(matchedLoan, entry.Index, entry.LoanNum, entry.Severity, sanitizedAmount, AvailableLoans));
             }
+
+            var dialogsPlayed = sf.DialoguesPlayed ?? new List<string>();
+            foreach (var entry in App.GameDataParser.GetDataSet<string>("dialogs"))
+            {
+                Dialogs.Add(new DialogItem
+                {
+                    DialogId = entry,
+                    Played = dialogsPlayed.Contains(entry)
+                });
+            }
+
+            SelectedDialog = Dialogs.Count > 0 ? Dialogs[0] : null;
         }
         #endregion
 
@@ -478,18 +491,17 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (sf == null || sf.LayerOne == null) return;
 
-            var unlockedDlcs = new HashSet<int>();
+            var unlockedDlcs = new List<int>();
             foreach (var dlc in Dlcs)
             {
                 if (dlc.Dlc == null) continue;
                 if (dlc.IsUnlocked) unlockedDlcs.Add(dlc.Dlc.Id);
             }
 
-            var loans = new HashSet<LoanDataV01>();
+            var loans = new List<LoanDataV01>();
             foreach (var loan in Loans)
             {
                 if (loan.Loan == null) continue;
-
                 loans.Add(new LoanDataV01()
                 {
                     Id = loan.Loan.Id,
@@ -500,12 +512,24 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 });
             }
 
+            var dialogsPlayed = new List<string>();
+            foreach (var dialog in Dialogs)
+            {
+
+                if (string.IsNullOrWhiteSpace(dialog.DialogId)) continue;
+                if (dialog.Played)
+                {
+                    dialogsPlayed.Add(dialog.DialogId);
+                }
+            }
+
             sf.DlcUnlocked = unlockedDlcs.ToList();
             sf.LayerOne.Loans = loans.ToList();
             sf.LoanCount = int.Parse(LoanCountText);
             sf.LayerOne.BankruptcyWarningGiven = BankruptcyWarningGiven;
             sf.LayerOne.TimeSpentInThisPrestige = double.Parse(TimeSpentInThisPrestige);
             sf.IsPrestiging = IsPrestiging;
+            sf.DialoguesPlayed = dialogsPlayed;
         }
         #endregion
 

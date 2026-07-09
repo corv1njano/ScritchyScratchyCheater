@@ -47,7 +47,7 @@ namespace ScritchyScratchyCheater.Utilities
         /// <returns>Pretty time formatted as "hh, mm, ss".</returns>
         public static string GetTimeFormatted(double timeInSeconds)
         {
-            if (timeInSeconds <= 0) return "0h, 0m, 0s";
+            if (timeInSeconds <= 0) return "0h 0m 0s";
 
             int totalSeconds = (int)timeInSeconds;
 
@@ -55,7 +55,7 @@ namespace ScritchyScratchyCheater.Utilities
             int minutes = (totalSeconds % 3600) / 60;
             int seconds = totalSeconds % 60;
 
-            return $"{hours}h, {minutes}m, {seconds}s";
+            return $"{hours}h {minutes}m {seconds}s";
         }
     }
 }

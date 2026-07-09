@@ -319,10 +319,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         [ObservableProperty]
         private ObservableCollection<Loan> _availableLoans = new();
+        [ObservableProperty]
+        private ObservableCollection<DialogItem> _dialogs = new();
 
         public string? SelectedLoanToolTip => SelectedLoan == null
             ? null
             : $"Loan: '#{SelectedLoan.LoanNum}'";
+        [ObservableProperty]
+        private DialogItem? _selectedDialog;
         #endregion
     }
 }

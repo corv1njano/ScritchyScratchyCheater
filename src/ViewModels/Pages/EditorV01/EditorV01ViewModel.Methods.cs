@@ -374,6 +374,12 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             TimeSpentInThisPrestige = "0";
         }
 
+        [RelayCommand]
+        private void AllDialogsPlayed()
+        {
+            foreach (var entry in Dialogs) entry.Played = true;
+        }
+
         partial void OnSelectedLoanChanged(LoanItem? oldValue, LoanItem? newValue)
         {
             if (oldValue != null)
