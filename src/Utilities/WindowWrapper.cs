@@ -53,8 +53,6 @@ namespace ScritchyScratchyCheater.Utilities
         /// <summary>
         /// Toggles the window state between maximized and normal for the target window.
         /// </summary>
-        /// <remarks>If the window is currently maximized, calling this method restores it to its normal
-        /// size. If the window is in any other state, it is maximized.</remarks>
         public void MaximizeOrRestoreWindow()
         {
             _targetWindow.WindowState = _targetWindow.WindowState == WindowState.Maximized
@@ -69,7 +67,7 @@ namespace ScritchyScratchyCheater.Utilities
         /// </summary>
         /// <returns>A GridLength representing the combined height of the window's caption and top resize border. Returns a
         /// GridLength of 0 if the window chrome is not available.</returns>
-        /// <remarks>Can be applied to the <see cref="System.Windows.Controls.Grid"/> Height property.</remarks>
+        /// <remarks>May be applied to the <see cref="System.Windows.Controls.Grid"/> Height property.</remarks>
         public GridLength GetTitlebarGridHeight()
         {
             var chrome = WindowChrome.GetWindowChrome(_targetWindow);

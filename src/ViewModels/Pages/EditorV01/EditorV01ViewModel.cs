@@ -48,7 +48,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 OnPropertyChanged(nameof(LoanCountNotReached));
             };
 
-            AvailableLoans = new ObservableCollection<Loan>(App.GameDataParser.GetLoans());
+            AvailableLoans = new ObservableCollection<Loan>(App.GameDataParser.GetDataSet<Loan>("loans"));
 
             LoadDataToUi();
         }
@@ -141,7 +141,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             var claiemdCatalogs = sf.LayerOne.ClaimedCustomTableItems ?? new List<string>();
 
             Catalogs.Clear();
-            foreach (var catalog in App.GameDataParser.GetCatalogs())
+            foreach (var catalog in App.GameDataParser.GetDataSet<Catalog>("catalogs"))
             {
                 var id = catalog.Id;
                 Catalogs.Add(new CatalogItem
@@ -160,7 +160,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             var ticketDic                 = sf.LayerOne.TicketProgressionDict ?? new Dictionary<string, TicketDataV01>();
 
             Tickets.Clear();
-            foreach (var ticket in App.GameDataParser.GetTickets())
+            foreach (var ticket in App.GameDataParser.GetDataSet<Ticket>("tickets"))
             {
                 var id = ticket.Id;
                 var progression = ticketDic.TryGetValue(id, out var progress) ? progress : null;
@@ -188,7 +188,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             var prestigeUpgradeDic   = sf.BoughtPrestigeUpgrades ?? new Dictionary<string, int>();
 
             PrestigeUpgrades.Clear();
-            foreach (var prestigeUpgrade in App.GameDataParser.GetPrestigeUpgrades())
+            foreach (var prestigeUpgrade in App.GameDataParser.GetDataSet<PrestigeUpgrade>("prestige"))
             {
                 var item = new PrestigeUpgradeItem
                 {
@@ -210,7 +210,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             var upgradeDic = sf.LayerOne.UpgradeDataDict ?? new Dictionary<string, UpgradeDataV01>();
 
             Upgrades.Clear();
-            foreach (var upgrade in App.GameDataParser.GetUpgrades())
+            foreach (var upgrade in App.GameDataParser.GetDataSet<Upgrade>("upgrades"))
             {
                 var item = new UpgradeItem
                 {
@@ -232,7 +232,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             var achievementsClaimed = sf.AchievementsClaimed ?? new List<string>();
 
             Achievements.Clear();
-            foreach (var achievement in App.GameDataParser.GetAchievements())
+            foreach (var achievement in App.GameDataParser.GetDataSet<Achievement>("achievements"))
             {
                 var id = achievement.Id;
                 Achievements.Add(new AchievementItem
@@ -283,7 +283,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
             var unlockedDlcs = sf.DlcUnlocked ?? new List<int>();
             Dlcs.Clear();
-            foreach (var dlc in App.GameDataParser.GetDlcs())
+            foreach (var dlc in App.GameDataParser.GetDataSet<Dlc>("dlcs"))
             {
                 Dlcs.Add(new DlcItem
                 {

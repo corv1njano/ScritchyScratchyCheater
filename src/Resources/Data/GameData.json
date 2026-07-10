@@ -6,6 +6,11 @@
       "type": "achievements",
       "data": [
         {
+          "id": "Death_2",
+          "name": "A loosing bet",
+          "iconId": "aDeath2"
+        },
+        {
           "id": "Achievement Hunter",
           "name": "Achievement Hunter",
           "iconId": "aAchievementHunter"
@@ -16,14 +21,14 @@
           "iconId": "aBadKitty"
         },
         {
-          "id": "Big win",
-          "name": "Big win",
-          "iconId": "aBigWin"
-        },
-        {
           "id": "Broken Plates",
           "name": "Bad Luck",
           "iconId": "aBrokenPlates"
+        },
+        {
+          "id": "Big win",
+          "name": "Big win",
+          "iconId": "aBigWin"
         },
         {
           "id": "Clicker minigame",
@@ -31,14 +36,19 @@
           "iconId": "aClickerMinigame"
         },
         {
+          "id": "Take Loan",
+          "name": "Don't read the fine print",
+          "iconId": "aTakeLoan"
+        },
+        {
+          "id": "Faithful Servant",
+          "name": "Faithful Servant",
+          "iconId": "aFaithfulServant"
+        },
+        {
           "id": "Death_1",
           "name": "Gambling never pays off",
           "iconId": "aDeath1"
-        },
-        {
-          "id": "Death_2",
-          "name": "A loosing bet",
-          "iconId": "aDeath2"
         },
         {
           "id": "Death_3",
@@ -46,14 +56,9 @@
           "iconId": "aDeath3"
         },
         {
-          "id": "Death_4",
-          "name": "House always wins",
-          "iconId": "aDeath4"
-        },
-        {
-          "id": "Faithful Servant",
-          "name": "Faithful Servant",
-          "iconId": "aFaithfulServant"
+          "id": "Jackpot on First Ticket",
+          "name": "Good luck",
+          "iconId": "aJackpotOnFirstTicket"
         },
         {
           "id": "High level gambling",
@@ -66,14 +71,14 @@
           "iconId": "aHonestWork"
         },
         {
+          "id": "Death_4",
+          "name": "House always wins",
+          "iconId": "aDeath4"
+        },
+        {
           "id": "Idle game",
           "name": "Idle game",
           "iconId": "aIdleGame"
-        },
-        {
-          "id": "Jackpot on First Ticket",
-          "name": "Good luck",
-          "iconId": "aJackpotOnFirstTicket"
         },
         {
           "id": "Lucky cat",
@@ -101,11 +106,6 @@
           "iconId": "aOneOfEachPlease"
         },
         {
-          "id": "Scratch Final Chance Without Dying",
-          "name": "Win everything?",
-          "iconId": "aScratchFinalChanceWithoutDying"
-        },
-        {
           "id": "Skip a catalogue",
           "name": "Skip a catalogue",
           "iconId": "aSkipACatalogue"
@@ -126,24 +126,9 @@
           "iconId": "aSpendAllTheWorldsMoney"
         },
         {
-          "id": "Super Jackpot",
-          "name": "What are the odds?",
-          "iconId": "aSuperJackpot"
-        },
-        {
-          "id": "Take Loan",
-          "name": "Don't read the fine print",
-          "iconId": "aTakeLoan"
-        },
-        {
           "id": "Time machine",
           "name": "Time machine",
           "iconId": "aTimeMachine"
-        },
-        {
-          "id": "Trash Jackpot",
-          "name": "Why?",
-          "iconId": "aTrashJackpot"
         },
         {
           "id": "Visit the Night Market",
@@ -154,6 +139,21 @@
           "id": "Walk-in-closet",
           "name": "Walk-in-closet",
           "iconId": "aWalkInCloset"
+        },
+        {
+          "id": "Super Jackpot",
+          "name": "What are the odds?",
+          "iconId": "aSuperJackpot"
+        },
+        {
+          "id": "Trash Jackpot",
+          "name": "Why?",
+          "iconId": "aTrashJackpot"
+        },
+        {
+          "id": "Scratch Final Chance Without Dying",
+          "name": "Win everything?",
+          "iconId": "aScratchFinalChanceWithoutDying"
         },
         {
           "id": "Win your job",
@@ -452,9 +452,21 @@
       "type": "upgrades",
       "data": [
         {
+          "id": "Aluminum Coin",
+          "name": "Aluminum Coin",
+          "iconId": "uAluminumCoin",
+          "maxBuyCount": 1
+        },
+        {
           "id": "Badge Collection",
           "name": "Badge Collection",
           "iconId": "uBadgeCollection",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Bronze Coin",
+          "name": "Bronze Coin",
+          "iconId": "uBronzeCoin",
           "maxBuyCount": 1
         },
         {
@@ -462,6 +474,12 @@
           "name": "Buying Speed",
           "iconId": "uBuyingSpeed",
           "maxBuyCount": 10
+        },
+        {
+          "id": "Copper Coin",
+          "name": "Copper Coin",
+          "iconId": "uCopperCoin",
+          "maxBuyCount": 1
         },
         {
           "id": "Egg Timer",
@@ -488,10 +506,22 @@
           "maxBuyCount": 5
         },
         {
+          "id": "Iron Coin",
+          "name": "Iron Coin",
+          "iconId": "uIronCoin",
+          "maxBuyCount": 1
+        },
+        {
           "id": "Mundo",
           "name": "Mundo",
           "iconId": "uMundo",
           "maxBuyCount": 1
+        },
+        {
+          "id": "Mundo Speed",
+          "name": "Mundo Speed",
+          "iconId": "uMundoSpeed",
+          "maxBuyCount": 10
         },
         {
           "id": "Scratch Bot",
@@ -518,6 +548,66 @@
           "maxBuyCount": 20
         },
         {
+          "id": "Scratch Luck",
+          "name": "Scratch Luck",
+          "iconId": "uScratchLuck",
+          "maxBuyCount": 45
+        },
+        {
+          "id": "Scratch Size_Aluminum Coin",
+          "name": "Scratch Size Aluminum Coin",
+          "iconId": "uScratchSizeAluminumCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Scratch Size_Base Coin",
+          "name": "Scratch Size Base Coin",
+          "iconId": "uScratchSizeBaseCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Scratch Size_Bronze Coin",
+          "name": "Scratch Size Bronze Coin",
+          "iconId": "uScratchSizeBronzeCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Scratch Size_Copper Coin",
+          "name": "Scratch Size Copper Coin",
+          "iconId": "uScratchSizeCopperCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Scratch Size_Iron Coin",
+          "name": "Scratch Size Iron Coin",
+          "iconId": "uScratchSizeIronCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Scratch Size_Steel Coin",
+          "name": "Scratch Size Steel Coin",
+          "iconId": "uScratchSizeSteelCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Scratch Size_Tin Coin",
+          "name": "Scratch Size Tin Coin",
+          "iconId": "uScratchSizeTinCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Scratch Size_Titanium Coin",
+          "name": "Scratch Size Titanium Coin",
+          "iconId": "uScratchSizeTitaniumCoin",
+          "maxBuyCount": 2
+        },
+        {
+          "id": "Scratch Size_Tungsten Coin",
+          "name": "Scratch Size Tungsten Coin",
+          "iconId": "uScratchSizeTungstenCoin",
+          "maxBuyCount": 2
+        },
+        {
           "id": "Spell Book",
           "name": "Spell Book",
           "iconId": "uSpellBook",
@@ -530,6 +620,12 @@
           "maxBuyCount": 10
         },
         {
+          "id": "Steel Coin",
+          "name": "Steel Coin",
+          "iconId": "uSteelCoin",
+          "maxBuyCount": 1
+        },
+        {
           "id": "Sticky Mat",
           "name": "Sticky Mat",
           "iconId": "uStickyMat",
@@ -539,6 +635,12 @@
           "id": "Subscription Bot",
           "name": "Subscription Bot",
           "iconId": "uSubscriptionBot",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "The Machine",
+          "name": "The Machine",
+          "iconId": "uTheMachine",
           "maxBuyCount": 1
         },
         {
@@ -554,106 +656,10 @@
           "maxBuyCount": 10
         },
         {
-          "id": "Trash Can",
-          "name": "Trash Can",
-          "iconId": "uTrashCan",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Warp Speed",
-          "name": "Warp Speed",
-          "iconId": "uWarpSpeed",
-          "maxBuyCount": 3
-        },
-        {
-          "id": "The Machine",
-          "name": "The Machine",
-          "iconId": "uTheMachine",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Scratch Luck",
-          "name": "Scratch Luck",
-          "iconId": "uScratchLuck",
-          "maxBuyCount": 45
-        },
-        {
-          "id": "Scratch Size_Base Coin",
-          "name": "Scratch Size Base Coin",
-          "iconId": "uScratchSizeBaseCoin",
-          "maxBuyCount": 2
-        },
-        {
           "id": "Tin Coin",
           "name": "Tin Coin",
           "iconId": "uTinCoin",
           "maxBuyCount": 1
-        },
-        {
-          "id": "Scratch Size_Tin Coin",
-          "name": "Scratch Size Tin Coin",
-          "iconId": "uScratchSizeTinCoin",
-          "maxBuyCount": 2
-        },
-        {
-          "id": "Aluminum Coin",
-          "name": "Aluminum Coin",
-          "iconId": "uAluminumCoin",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Scratch Size_Aluminum Coin",
-          "name": "Scratch Size Aluminum Coin",
-          "iconId": "uScratchSizeAluminumCoin",
-          "maxBuyCount": 2
-        },
-        {
-          "id": "Copper Coin",
-          "name": "Copper Coin",
-          "iconId": "uCopperCoin",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Scratch Size_Copper Coin",
-          "name": "Scratch Size Copper Coin",
-          "iconId": "uScratchSizeCopperCoin",
-          "maxBuyCount": 2
-        },
-        {
-          "id": "Bronze Coin",
-          "name": "Bronze Coin",
-          "iconId": "uBronzeCoin",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Scratch Size_Bronze Coin",
-          "name": "Scratch Size Bronze Coin",
-          "iconId": "uScratchSizeBronzeCoin",
-          "maxBuyCount": 2
-        },
-        {
-          "id": "Iron Coin",
-          "name": "Iron Coin",
-          "iconId": "uIronCoin",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Scratch Size_Iron Coin",
-          "name": "Scratch Size Iron Coin",
-          "iconId": "uScratchSizeIronCoin",
-          "maxBuyCount": 2
-        },
-        {
-          "id": "Steel Coin",
-          "name": "Steel Coin",
-          "iconId": "uSteelCoin",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Scratch Size_Steel Coin",
-          "name": "Scratch Size Steel Coin",
-          "iconId": "uScratchSizeSteelCoin",
-          "maxBuyCount": 2
         },
         {
           "id": "Titanium Coin",
@@ -662,10 +668,10 @@
           "maxBuyCount": 1
         },
         {
-          "id": "Scratch Size_Titanium Coin",
-          "name": "Scratch Size Titanium Coin",
-          "iconId": "uScratchSizeTitaniumCoin",
-          "maxBuyCount": 2
+          "id": "Trash Can",
+          "name": "Trash Can",
+          "iconId": "uTrashCan",
+          "maxBuyCount": 1
         },
         {
           "id": "Tungsten Coin",
@@ -674,16 +680,10 @@
           "maxBuyCount": 1
         },
         {
-          "id": "Scratch Size_Tungsten Coin",
-          "name": "Scratch Size Tungsten Coin",
-          "iconId": "uScratchSizeTungstenCoin",
-          "maxBuyCount": 2
-        },
-        {
-          "id": "Mundo Speed",
-          "name": "Mundo Speed",
-          "iconId": "uMundoSpeed",
-          "maxBuyCount": 10
+          "id": "Warp Speed",
+          "name": "Warp Speed",
+          "iconId": "uWarpSpeed",
+          "maxBuyCount": 3
         }
       ]
     },
@@ -691,28 +691,16 @@
       "type": "prestige",
       "data": [
         {
-          "id": "Muscle Memory",
-          "name": "Muscle Memory",
-          "iconId": "pMuscleMemory",
+          "id": "Air Condition",
+          "name": "Air Condition",
+          "iconId": "pAirCondition",
           "maxBuyCount": 1
         },
         {
-          "id": "Starter Kit",
-          "name": "Starter Kit",
-          "iconId": "pStarterKit",
+          "id": "Allowance",
+          "name": "Allowance",
+          "iconId": "pAllowance",
           "maxBuyCount": 1
-        },
-        {
-          "id": "Booster Kit",
-          "name": "Booster Kit",
-          "iconId": "pBoosterKit",
-          "maxBuyCount": 5
-        },
-        {
-          "id": "Jackpot Power",
-          "name": "Jackpot Power",
-          "iconId": "pJackpotPower",
-          "maxBuyCount": 5
         },
         {
           "id": "Big Winner",
@@ -721,15 +709,69 @@
           "maxBuyCount": 7
         },
         {
-          "id": "Tool Belt",
-          "name": "Tool Belt",
-          "iconId": "pToolBelt",
+          "id": "Booster Kit",
+          "name": "Booster Kit",
+          "iconId": "pBoosterKit",
           "maxBuyCount": 5
         },
         {
-          "id": "Night Market",
-          "name": "Night Market",
-          "iconId": "pNightMarket",
+          "id": "Built Different",
+          "name": "Built Different",
+          "iconId": "pBuiltDifferent",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Clean Freak",
+          "name": "Clean Freak",
+          "iconId": "pCleanFreak",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Collector",
+          "name": "Collector",
+          "iconId": "pCollector",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Completionist",
+          "name": "Completionist",
+          "iconId": "pCompletionist",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Dishwasher",
+          "name": "Dishwasher",
+          "iconId": "pDishwasher",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Electric Fan",
+          "name": "Electric Fan",
+          "iconId": "pElectricFan",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Experienced",
+          "name": "Experienced",
+          "iconId": "pExperienced",
+          "maxBuyCount": 5
+        },
+        {
+          "id": "Fine Dining",
+          "name": "Fine Dining",
+          "iconId": "pFineDining",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Fully Automated",
+          "name": "Fully Automated",
+          "iconId": "pFullyAutomated",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Hotkeys",
+          "name": "Hotkeys",
+          "iconId": "pHotkeys",
           "maxBuyCount": 1
         },
         {
@@ -739,22 +781,16 @@
           "maxBuyCount": 5
         },
         {
-          "id": "Electric Fan",
-          "name": "Electric Fan",
-          "iconId": "pElectricFan",
-          "maxBuyCount": 1
+          "id": "Jackpot Power",
+          "name": "Jackpot Power",
+          "iconId": "pJackpotPower",
+          "maxBuyCount": 5
         },
         {
-          "id": "Clean Freak",
-          "name": "Clean Freak",
-          "iconId": "pCleanFreak",
-          "maxBuyCount": 10
-        },
-        {
-          "id": "Self Made Millionaire",
-          "name": "Self Made Millionaire",
-          "iconId": "pSelfMadeMillionaire",
-          "maxBuyCount": 10
+          "id": "Learn by Doing",
+          "name": "Learn by Doing",
+          "iconId": "pLearnByDoing",
+          "maxBuyCount": 5
         },
         {
           "id": "Less is More",
@@ -763,15 +799,27 @@
           "maxBuyCount": 10
         },
         {
-          "id": "Allowance",
-          "name": "Allowance",
-          "iconId": "pAllowance",
+          "id": "Loan Shark",
+          "name": "Loan Shark",
+          "iconId": "pLoanShark",
           "maxBuyCount": 1
         },
         {
-          "id": "Super Lucky",
-          "name": "Super Lucky",
-          "iconId": "pSuperLucky",
+          "id": "Magic",
+          "name": "Magic?",
+          "iconId": "pMagic",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Muscle Memory",
+          "name": "Muscle Memory",
+          "iconId": "pMuscleMemory",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Night Market",
+          "name": "Night Market",
+          "iconId": "pNightMarket",
           "maxBuyCount": 1
         },
         {
@@ -787,70 +835,10 @@
           "maxBuyCount": 1
         },
         {
-          "id": "Shopping Spree",
-          "name": "Shopping Spree",
-          "iconId": "pShoppingSpree",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Air Condition",
-          "name": "Air Condition",
-          "iconId": "pAirCondition",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Fully Automated",
-          "name": "Fully Automated",
-          "iconId": "pFullyAutomated",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Completionist",
-          "name": "Completionist",
-          "iconId": "pCompletionist",
-          "maxBuyCount": 5
-        },
-        {
-          "id": "Dishwasher",
-          "name": "Dishwasher",
-          "iconId": "pDishwasher",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Fine Dining",
-          "name": "Fine Dining",
-          "iconId": "pFineDining",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Learn by Doing",
-          "name": "Learn by Doing",
-          "iconId": "pLearnByDoing",
-          "maxBuyCount": 5
-        },
-        {
-          "id": "Time Travel",
-          "name": "Time Travel",
-          "iconId": "pTimeTravel",
-          "maxBuyCount": 1
-        },
-        {
           "id": "PlateMaster5000",
           "name": "PlateMaster5000",
           "iconId": "pPlatemaster5000",
           "maxBuyCount": 1
-        },
-        {
-          "id": "Magic",
-          "name": "Magic?",
-          "iconId": "pMagic",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Soft Hands",
-          "name": "Soft Hands",
-          "iconId": "pSoftHands",
-          "maxBuyCount": 5
         },
         {
           "id": "Recycling",
@@ -865,40 +853,52 @@
           "maxBuyCount": 10
         },
         {
+          "id": "Self Made Millionaire",
+          "name": "Self Made Millionaire",
+          "iconId": "pSelfMadeMillionaire",
+          "maxBuyCount": 10
+        },
+        {
+          "id": "Shopping Spree",
+          "name": "Shopping Spree",
+          "iconId": "pShoppingSpree",
+          "maxBuyCount": 1
+        },
+        {
           "id": "Smart Investment",
           "name": "Smart Investment",
           "iconId": "pSmartInvestment",
           "maxBuyCount": 5
         },
         {
-          "id": "Hotkeys",
-          "name": "Hotkeys",
-          "iconId": "pHotkeys",
-          "maxBuyCount": 1
-        },
-        {
-          "id": "Collector",
-          "name": "Collector",
-          "iconId": "pCollector",
-          "maxBuyCount": 10
-        },
-        {
-          "id": "Experienced",
-          "name": "Experienced",
-          "iconId": "pExperienced",
+          "id": "Soft Hands",
+          "name": "Soft Hands",
+          "iconId": "pSoftHands",
           "maxBuyCount": 5
         },
         {
-          "id": "Built Different",
-          "name": "Built Different",
-          "iconId": "pBuiltDifferent",
-          "maxBuyCount": 5
+          "id": "Starter Kit",
+          "name": "Starter Kit",
+          "iconId": "pStarterKit",
+          "maxBuyCount": 1
         },
         {
-          "id": "Loan Shark",
-          "name": "Loan Shark",
-          "iconId": "pLoanShark",
+          "id": "Super Lucky",
+          "name": "Super Lucky",
+          "iconId": "pSuperLucky",
           "maxBuyCount": 1
+        },
+        {
+          "id": "Time Travel",
+          "name": "Time Travel",
+          "iconId": "pTimeTravel",
+          "maxBuyCount": 1
+        },
+        {
+          "id": "Tool Belt",
+          "name": "Tool Belt",
+          "iconId": "pToolBelt",
+          "maxBuyCount": 5
         }
       ]
     },
@@ -908,27 +908,47 @@
         {
           "id": "Income reduction",
           "description": "Your income is reduced by {0}%",
-          "levels": [ 30, 60, 90 ]
-        },
-        {
-          "id": "Ticket price increase",
-          "description": "Tickets are {0}% more expensive",
-          "levels": [ 10, 20, 30 ]
-        },
-        {
-          "id": "Smaller scratch size",
-          "description": "Your scratch size is reduced by {0}",
-          "levels": [ 1, 2, 3 ]
+          "levels": [
+            30,
+            60,
+            90
+          ]
         },
         {
           "id": "Scratch bot slowed",
           "description": "Scratch bot speed is reduced by {0}%",
-          "levels": [ 30, 60, 90 ]
+          "levels": [
+            30,
+            60,
+            90
+          ]
+        },
+        {
+          "id": "Smaller scratch size",
+          "description": "Your scratch size is reduced by {0}",
+          "levels": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": "Ticket price increase",
+          "description": "Tickets are {0}% more expensive",
+          "levels": [
+            10,
+            20,
+            30
+          ]
         },
         {
           "id": "Wrong delivery",
           "description": "1 in {0} Tickets will be different from what you ordered",
-          "levels": [ 20, 10, 5 ]
+          "levels": [
+            20,
+            10,
+            5
+          ]
         }
       ]
     },

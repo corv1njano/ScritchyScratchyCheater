@@ -39,213 +39,31 @@ namespace ScritchyScratchyCheater.Services
         }
 
         /// <summary>
-        /// Retrieves a list of catalogs from the current game data.
-        /// </summary>
-        /// <remarks>This method returns an empty list if the game data root is null, if no catalog
-        /// dataset is present, or if the catalog data is undefined or null.</remarks>
-        /// <returns>A list of <see cref="Catalog"/> objects representing the catalogs associated with the game data.</returns>
-        public List<Catalog> GetCatalogs()
-        {
-            if (_gameDataRoot == null) return new();
-
-            GameDataset? dataset = _gameDataRoot.GameData?
-                .FirstOrDefault(x => string.Equals(x.Type, "catalogs", StringComparison.OrdinalIgnoreCase));
-
-            if (dataset == null) return new();
-            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
-
-            List<Catalog>? catalogs = dataset.Data.Deserialize<List<Catalog>>(App.JsonOptions);
-
-            return catalogs!
-                .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList()
-                ?? new();
-        }
-
-        /// <summary>
-        /// Retrieves a list of tickets from the current game data.
-        /// </summary>
-        /// <remarks>This method returns an empty list if the game data root is null, if no ticket
-        /// dataset is present, or if the ticket data is undefined or null.</remarks>
-        /// <returns>A list of <see cref="Ticket"/> objects representing the tickets associated with the game data.</returns>
-        public List<Ticket> GetTickets()
-        {
-            if (_gameDataRoot == null) return new();
-
-            GameDataset? dataset = _gameDataRoot.GameData?
-                .FirstOrDefault(x => string.Equals(x.Type, "tickets", StringComparison.OrdinalIgnoreCase));
-
-            if (dataset == null) return new();
-            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
-
-            List<Ticket>? tickets = dataset.Data.Deserialize<List<Ticket>>(App.JsonOptions);
-
-            return tickets!
-                .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList()
-                ?? new();
-        }
-
-        /// <summary>
-        /// Retrieves a list of prestige upgrades from the current game data.
-        /// </summary>
-        /// <remarks>This method returns an empty list if the game data root is null, if no prestige
-        /// dataset is present, or if the prestige data is undefined or null.</remarks>
-        /// <returns>A list of <see cref="PrestigeUpgrade"/> objects representing the prestige upgrades associated with the game data.</returns>
-        public List<PrestigeUpgrade> GetPrestigeUpgrades()
-        {
-            if (_gameDataRoot == null) return new();
-
-            GameDataset? dataset = _gameDataRoot.GameData?
-                .FirstOrDefault(x => string.Equals(x.Type, "prestige", StringComparison.OrdinalIgnoreCase));
-
-            if (dataset == null) return new();
-            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
-
-            List<PrestigeUpgrade>? prestigeUpgrades = dataset.Data.Deserialize<List<PrestigeUpgrade>>(App.JsonOptions);
-
-            return prestigeUpgrades!
-                .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList()
-                ?? new();
-        }
-
-        /// <summary>
-        /// Retrieves a list of upgardes (including gadgets) from the current game data.
-        /// </summary>
-        /// <remarks>This method returns an empty list if the game data root is null, if no upgrade
-        /// dataset is present, or if the upgrade data is undefined or null.</remarks>
-        /// <returns>A list of <see cref="Upgrade"/> objects representing the upgrades and gadgets associated with the game data.</returns>
-        public List<Upgrade> GetUpgrades()
-        {
-            if (_gameDataRoot == null) return new();
-
-            GameDataset? dataset = _gameDataRoot.GameData?
-                .FirstOrDefault(x => string.Equals(x.Type, "upgrades", StringComparison.OrdinalIgnoreCase));
-
-            if (dataset == null) return new();
-            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
-
-            List<Upgrade>? upgrades = dataset.Data.Deserialize<List<Upgrade>>(App.JsonOptions);
-
-            return upgrades!
-                .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList()
-                ?? new();
-        }
-
-        /// <summary>
-        /// Retrieves a list of achievements from the current game data.
-        /// </summary>
-        /// <remarks>This method returns an empty list if the game data root is null, if no achievement
-        /// dataset is present, or if the achievement data is undefined or null.</remarks>
-        /// <returns>A list of <see cref="Achievement"/> objects representing the achievements associated with the game data.</returns>
-        public List<Achievement> GetAchievements()
-        {
-            if (_gameDataRoot == null) return new();
-
-            GameDataset? dataset = _gameDataRoot.GameData?
-                .FirstOrDefault(x => string.Equals(x.Type, "achievements", StringComparison.OrdinalIgnoreCase));
-
-            if (dataset == null) return new();
-            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
-
-            List<Achievement>? achievements = dataset.Data.Deserialize<List<Achievement>>(App.JsonOptions);
-
-            return achievements!
-                .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList()
-                ?? new();
-        }
-
-        /// <summary>
         /// Retrieves a list of cosmetic items from the current game data.
         /// </summary>
-        /// <remarks>This method returns an empty list if the game data root is null, if no cosmetic
-        /// dataset is present, or if the cosmetic data is undefined or null.</remarks>
         /// <returns>A list of <see cref="Cosmetic"/> objects representing the comsetic item associated with the game data.</returns>
         public List<Cosmetic> GetCosmetics()
         {
-            if (_gameDataRoot == null) return new();
+            var cosmetics = GetDataSet<Cosmetic>("cosmetics");
 
-            GameDataset? dataset = _gameDataRoot.GameData?
-                .FirstOrDefault(x => string.Equals(x.Type, "cosmetics", StringComparison.OrdinalIgnoreCase));
-
-            if (dataset == null) return new();
-            if (dataset.Data.ValueKind is JsonValueKind.Undefined or JsonValueKind.Null) return new();
-
-            List<Cosmetic>? cosmetics = dataset.Data.Deserialize<List<Cosmetic>>(App.JsonOptions);
-
-            if (cosmetics == null) return new();
-
-            foreach (Cosmetic cosmetic in cosmetics)
+            foreach (Cosmetic entry in cosmetics)
             {
-                cosmetic.Category = cosmetic.Category switch
+                entry.Category = entry.Category switch
                 {
-                    CosmeticCategory.Phone => CosmeticCategory.Phone,
-                    CosmeticCategory.Table => CosmeticCategory.Table,
-                    CosmeticCategory.TrashCan => CosmeticCategory.TrashCan,
+                    CosmeticCategory.Phone       => CosmeticCategory.Phone,
+                    CosmeticCategory.Table       => CosmeticCategory.Table,
+                    CosmeticCategory.TrashCan    => CosmeticCategory.TrashCan,
                     CosmeticCategory.ElectricFan => CosmeticCategory.ElectricFan,
-                    CosmeticCategory.Mundo => CosmeticCategory.Mundo,
-                    CosmeticCategory.EggTimer => CosmeticCategory.EggTimer,
-                    CosmeticCategory.ScratchBot => CosmeticCategory.ScratchBot,
+                    CosmeticCategory.Mundo       => CosmeticCategory.Mundo,
+                    CosmeticCategory.EggTimer    => CosmeticCategory.EggTimer,
+                    CosmeticCategory.ScratchBot  => CosmeticCategory.ScratchBot,
+
+                    // this fallback should never happen, as "Other" category will not appear in the UI
                     _ => CosmeticCategory.Other
                 };
             }
 
-            return cosmetics
-                .OrderBy(x => x.Category)
-                .ThenBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList();
-        }
-
-
-        /// <summary>
-        /// Retrieves a list of DLC items from the current game data.
-        /// </summary>
-        /// <remarks>This method returns an empty list if the game data root is null, if no DLC
-        /// dataset is present, or if the DLC data is undefined or null.</remarks>
-        /// <returns>A list of <see cref="Dlc"/> objects representing the DLC item associated with the game data.</returns>
-        public List<Dlc> GetDlcs()
-        {
-            if (_gameDataRoot == null) return new();
-
-            GameDataset? dataset = _gameDataRoot.GameData?
-                .FirstOrDefault(x => string.Equals(x.Type, "dlcs", StringComparison.OrdinalIgnoreCase));
-
-            if (dataset == null) return new();
-            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
-
-            List<Dlc>? dlcs = dataset.Data.Deserialize<List<Dlc>>(App.JsonOptions);
-
-            return dlcs!
-                .OrderBy(x => x.Name, StringComparer.OrdinalIgnoreCase)
-                .ToList()
-                ?? new();
-        }
-
-        /// <summary>
-        /// Retrieves a list of Loan items from the current game data.
-        /// </summary>
-        /// <remarks>This method returns an empty list if the game data root is null, if no Loan
-        /// dataset is present, or if the Loan data is undefined or null.</remarks>
-        /// <returns>A list of <see cref="Loan"/> objects representing the Loan item associated with the game data.</returns>
-        public List<Loan> GetLoans()
-        {
-            if (_gameDataRoot == null) return new();
-
-            GameDataset? dataset = _gameDataRoot.GameData?
-                .FirstOrDefault(x => string.Equals(x.Type, "loans", StringComparison.OrdinalIgnoreCase));
-
-            if (dataset == null) return new();
-            if (dataset.Data.ValueKind == JsonValueKind.Undefined || dataset.Data.ValueKind == JsonValueKind.Null) return new();
-
-            List<Loan>? loans = dataset.Data.Deserialize<List<Loan>>(App.JsonOptions);
-
-            return loans!
-                .OrderBy(x => x.Id, StringComparer.OrdinalIgnoreCase)
-                .ToList()
-                ?? new();
+            return cosmetics;
         }
 
         /// <summary>

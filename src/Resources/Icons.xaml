@@ -30,19 +30,37 @@
     </DrawingGroup>
     <DrawingImage x:Key="WindowControl.Minimize" Drawing="{StaticResource minimizeDrawingGroup}" />
 
-    <DrawingImage x:Key="WindowControl.Maximize">
-        <DrawingImage.Drawing>
-            <DrawingGroup ClipGeometry="M0,0 V31 H31 V0 H0 Z">
-                <DrawingGroup Opacity="1">
-                    <GeometryDrawing Geometry="F0 M31,31z M0,0z M27.72,7.299L27.72,23.421C27.72,25.794,25.794,27.72,23.421,27.72L7.299,27.72C4.926,27.72,3,25.794,3,23.421L3,7.299C3,4.926,4.926,3,7.299,3L23.421,3C25.794,3,27.72,4.926,27.72,7.299z">
-                        <GeometryDrawing.Pen>
-                            <Pen Brush="#FF000000" Thickness="4.08" StartLineCap="Round" EndLineCap="Round" LineJoin="Round" />
-                        </GeometryDrawing.Pen>
-                    </GeometryDrawing>
-                </DrawingGroup>
-            </DrawingGroup>
-        </DrawingImage.Drawing>
-    </DrawingImage>
+    <DrawingGroup x:Key="maximizeDrawingGroup" ClipGeometry="M0,0 V128 H128 V0 H0 Z">
+        <DrawingGroup Opacity="1" Transform="1.21762,-1.74582E-16,1.27349E-16,1.00973,-16.1974,-38.2616">
+            <GeometryDrawing Brush="#000000">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="18.641,44.324,94.447,26.718" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Opacity="1" Transform="-1.50476E-17,-1.02244,0.449128,-7.94345E-17,-13.407,140.119">
+            <GeometryDrawing Brush="#000000">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="18.641,44.324,94.447,26.718" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Opacity="1" Transform="-1.50476E-17,-1.02244,0.449128,-7.94345E-17,89.593,140.222">
+            <GeometryDrawing Brush="#000000">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="18.641,44.324,94.447,26.718" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+        <DrawingGroup Opacity="1" Transform="-1.04821,1.85446E-16,-1.60706E-16,-0.449128,133.039,140.967">
+            <GeometryDrawing Brush="#000000">
+                <GeometryDrawing.Geometry>
+                    <RectangleGeometry RadiusX="0" RadiusY="0" Rect="18.641,44.324,94.447,26.718" />
+                </GeometryDrawing.Geometry>
+            </GeometryDrawing>
+        </DrawingGroup>
+    </DrawingGroup>
+    <DrawingImage x:Key="WindowControl.Maximize" Drawing="{StaticResource maximizeDrawingGroup}" />
 
     <DrawingImage x:Key="CheckBox.Check">
         <DrawingImage.Drawing>
