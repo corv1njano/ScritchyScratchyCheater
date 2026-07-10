@@ -10,7 +10,7 @@ For AI notice, see last section of this README.
 
 ## Preview
 
-<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/docs/resources/app_1-4-0.gif" alt="App UI" height="300"/>
+<img src="https://raw.githubusercontent.com/corv1njano/ScritchyScratchyCheater/refs/heads/master/docs/resources/app_1-5-0.gif" alt="App UI" height="300"/>
 
 
 
