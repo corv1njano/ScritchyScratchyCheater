@@ -22,10 +22,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _soulsText = string.Empty;
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsTicketLevelValid))]
-        [NotifyPropertyChangedFor(nameof(CanSave))]
-        private string _ticketLevelText = "0";
-        [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsMachineTierValid))]
         [NotifyPropertyChangedFor(nameof(CanSave))]
         private string _machineTierText = string.Empty;
@@ -47,7 +43,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [ObservableProperty]
         private ImageSource? _currentTicketImage = (ImageSource)Application.Current.TryFindResource("Generic.None");
 
-        private const int MAX_TICKET_LEVEL = int.MaxValue;
         private const int MAX_MACHINE_TIER = 26;
 
         public bool IsMoneyValid =>
@@ -56,9 +51,6 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             && !double.IsInfinity(value)
             && value >= 0;
         public bool IsSoulsValid => int.TryParse(SoulsText, out var value)
-            && value >= 0;
-        public bool IsTicketLevelValid => int.TryParse(TicketLevelText, out var value)
-            && value <= MAX_TICKET_LEVEL
             && value >= 0;
         public bool IsMachineTierValid => int.TryParse(MachineTierText, out var value)
             && value <= MAX_MACHINE_TIER
@@ -129,7 +121,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             new() { Index = 24, Goal = 8e26 },
             new() { Index = 25, Goal = 3e28 },
             new() { Index = 26, Goal = 1e30 }
-        };//.OrderBy(i => i.Index).ToList();
+        };
 
         [ObservableProperty]
         private ProgressionGoal? _selectedGoal;

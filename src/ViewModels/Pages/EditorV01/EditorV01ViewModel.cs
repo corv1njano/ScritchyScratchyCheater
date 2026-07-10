@@ -8,6 +8,7 @@ using ScritchyScratchyCheater.Utilities;
 using ScritchyScratchyCheater.ViewModels.Items;
 using ScritchyScratchyCheater.Views.Pages;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
@@ -38,6 +39,8 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
             AchievementsView                = CollectionViewSource.GetDefaultView(Achievements);
             AchievementsView.Filter         = Utils.CreateNameFilter<AchievementItem>(a => a.Achievement?.Name, () => SearchAchievement);
 
+            ObserveableCollectionValidation<TicketItem>(Tickets, nameof(TicketItem.IsLevelValid));
+
             // checks every item in Loans and subscribes to the validity property of that view model to let the
             // save function know if the save can be saved or not due to the validity check
             ObserveableCollectionValidation<LoanItem>(Loans, nameof(LoanItem.IsAmountValid));
@@ -47,18 +50,9 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 OnPropertyChanged(nameof(LoansCountText));
                 OnPropertyChanged(nameof(LoanCountNotReached));
             };
-
             AvailableLoans = new ObservableCollection<Loan>(App.GameDataParser.GetDataSet<Loan>("loans"));
 
             LoadDataToUi();
-        }
-
-        private void OnLoanItemPropertyChanged(object? sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(LoanItem.IsAmountValid))
-            {
-                OnPropertyChanged(nameof(CanSave));
-            }
         }
 
         private bool CheckCanSave()
@@ -68,13 +62,13 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 && IsPrestigeCountValid
                 && IsTokensValid
                 && IsSoulsValid
-                && IsTicketLevelValid
                 && IsMachineTierValid
                 && IsProgressionValid
                 && IsEelectricFanChargeValid
                 && IsEggTimerChargeValid
                 && IsTimeSpentInThisPrestigeValid
                 && IsLoanCountValid
+                && Tickets.All(t => t.IsLevelValid)
                 && Loans.All(l => l.IsAmountValid)
                 && Upgrades.All(u => u.IsBuyCountValid)
                 && PrestigeUpgrades.All(p => p.IsBuyCountValid);
@@ -165,12 +159,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 var id = ticket.Id;
                 var progression = ticketDic.TryGetValue(id, out var progress) ? progress : null;
                 var level = progression?.Level ?? 0;
+                var sanitizedLevel = level is < 0 or > int.MaxValue ? 0 : level;
 
                 Tickets.Add(new TicketItem
                 {
                     Ticket = ticket,
                     Xp = progression!.Xp,
-                    Level = level is < 0 or > MAX_TICKET_LEVEL ? 0 : level,
+                    Level = sanitizedLevel,
+                    LevelText = sanitizedLevel.ToString(),
                     GottenJackpot = ticketsGottenJackpot.Contains(id),
                     GottenSuperJackpot = ticketsGottenSuperJackpot.Contains(id)
                 });
@@ -658,16 +654,30 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
                 }
             }
 
+            void Subscribe(IEnumerable<T> items)
+            {
+                foreach (var item in items) item.PropertyChanged += ItemChanged;
+            }
+
+            void Unsubscribe(IEnumerable<T> items)
+            {
+                foreach (var item in items) item.PropertyChanged -= ItemChanged;
+            }
+
+            // fix: subscribe to already existing items
+            Subscribe(collection);
+
             collection.CollectionChanged += (_, e) =>
             {
-                if (e.NewItems != null)
+                if (e.Action == NotifyCollectionChangedAction.Reset)
                 {
-                    foreach (T item in e.NewItems) item.PropertyChanged += ItemChanged;
+                    // fallback when collecton changed doesnt recognized what changed
+                    Subscribe(collection);
                 }
-
-                if (e.OldItems != null)
+                else
                 {
-                    foreach (T item in e.OldItems) item.PropertyChanged -= ItemChanged;
+                    if (e.OldItems != null) Unsubscribe(e.OldItems.Cast<T>());
+                    if (e.NewItems != null) Subscribe(e.NewItems.Cast<T>());
                 }
             };
 

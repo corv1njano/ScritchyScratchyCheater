@@ -75,7 +75,7 @@ namespace ScritchyScratchyCheater.ViewModels.Items
         // only a correctly validated amount should be stored
         partial void OnAmountTextChanged(string value)
         {
-            if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsed) && parsed >= 0)
+            if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsed) && parsed > 0)
             {
                 Amount = parsed;
             }

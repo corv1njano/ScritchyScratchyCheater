@@ -297,7 +297,7 @@
                                 <Image Grid.Column="0" Style="{StaticResource blockImg}" Source="{Binding CurrentTicketImage}" ToolTip="{Binding SelectedTicketToolTip}"/>
                                 <TextBlock Grid.Column="1" Style="{StaticResource blockTxt}" Text="Ticket Level:"/>
                                 <Grid Grid.Column="2">
-                                    <controls:ValidatedTextBox  Text="{Binding TicketLevelText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding IsTicketLevelValid}" IsEnabled="{Binding IsTicketSelected}"/>
+                                    <controls:ValidatedTextBox  Text="{Binding SelectedTicket.LevelText, UpdateSourceTrigger=PropertyChanged}" IsValid="{Binding SelectedTicket.IsLevelValid}" IsEnabled="{Binding IsTicketSelected}"/>
                                     <Rectangle Fill="Transparent" Cursor="No" Visibility="{Binding IsTicketSelected, Converter={StaticResource InvertedBoolToVisibilityConverter}}"/>
                                 </Grid>
                                 <Grid Grid.Column="3">

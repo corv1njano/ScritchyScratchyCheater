@@ -46,15 +46,18 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         {
             if (SelectedTicket == null) return;
 
-            SelectedTicket.Level = MAX_TICKET_LEVEL;
-            if (SelectedTicket != null) TicketLevelText = MAX_TICKET_LEVEL.ToString();
+            SelectedTicket.Level = int.MaxValue;
+            SelectedTicket.LevelText = int.MaxValue.ToString();
         }
 
         [RelayCommand]
         private void MaxTicketLevelAll()
         {
-            foreach (var entry in Tickets) entry.Level = MAX_TICKET_LEVEL;
-            if (SelectedTicket != null) TicketLevelText = MAX_TICKET_LEVEL.ToString();
+            foreach (var entry in Tickets)
+            {
+                entry.Level = int.MaxValue;
+                entry.LevelText = int.MaxValue.ToString();
+            }
         }
 
         [RelayCommand]
@@ -82,15 +85,14 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
 
         partial void OnSelectedTicketChanged(TicketItem? oldValue, TicketItem? newValue)
         {
-            if (oldValue != null)
+            if (oldValue != null && !int.TryParse(oldValue.LevelText, out _))
             {
-                if (!int.TryParse(TicketLevelText, out var level) || level > MAX_TICKET_LEVEL)
-                {
-                    oldValue.Level = 0;
-                }
+                oldValue.LevelText = oldValue.Level.ToString();
             }
-
-            TicketLevelText = newValue != null ? newValue.Level.ToString() : "0";
+            if (newValue != null)
+            {
+                newValue.LevelText = newValue.Level.ToString();
+            }
 
             UpdateCurrentTicketImage();
             OnPropertyChanged(nameof(IsTicketSelected));
@@ -355,7 +357,7 @@ namespace ScritchyScratchyCheater.ViewModels.Pages.EditorV01
         [RelayCommand]
         private void MaxLoanAmount()
         {
-            if (SelectedLoan is null) return;
+            if (SelectedLoan == null) return;
             SelectedLoan.AmountText = 1e300.ToString(CultureInfo.InvariantCulture);
         }
 
